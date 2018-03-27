@@ -1,0 +1,591 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CDD41601206ABB9400988317 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD41600206ABB9400988317 /* AppDelegate.swift */; };
+		CDD41603206ABB9400988317 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD41602206ABB9400988317 /* ViewController.swift */; };
+		CDD41606206ABB9400988317 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDD41604206ABB9400988317 /* Main.storyboard */; };
+		CDD41609206ABB9400988317 /* Team4Bootcamp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CDD41607206ABB9400988317 /* Team4Bootcamp.xcdatamodeld */; };
+		CDD4160B206ABB9400988317 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDD4160A206ABB9400988317 /* Assets.xcassets */; };
+		CDD4160E206ABB9400988317 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDD4160C206ABB9400988317 /* LaunchScreen.storyboard */; };
+		CDD41619206ABB9400988317 /* Team4BootcampTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD41618206ABB9400988317 /* Team4BootcampTests.swift */; };
+		CDD41624206ABB9400988317 /* Team4BootcampUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD41623206ABB9400988317 /* Team4BootcampUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CDD41615206ABB9400988317 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CDD415F5206ABB9400988317 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CDD415FC206ABB9400988317;
+			remoteInfo = Team4Bootcamp;
+		};
+		CDD41620206ABB9400988317 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CDD415F5206ABB9400988317 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CDD415FC206ABB9400988317;
+			remoteInfo = Team4Bootcamp;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		CDD415FD206ABB9400988317 /* Team4Bootcamp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Team4Bootcamp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CDD41600206ABB9400988317 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		CDD41602206ABB9400988317 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		CDD41605206ABB9400988317 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		CDD41608206ABB9400988317 /* Team4Bootcamp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Team4Bootcamp.xcdatamodel; sourceTree = "<group>"; };
+		CDD4160A206ABB9400988317 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CDD4160D206ABB9400988317 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		CDD4160F206ABB9400988317 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CDD41614206ABB9400988317 /* Team4BootcampTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Team4BootcampTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CDD41618206ABB9400988317 /* Team4BootcampTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team4BootcampTests.swift; sourceTree = "<group>"; };
+		CDD4161A206ABB9400988317 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CDD4161F206ABB9400988317 /* Team4BootcampUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Team4BootcampUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CDD41623206ABB9400988317 /* Team4BootcampUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team4BootcampUITests.swift; sourceTree = "<group>"; };
+		CDD41625206ABB9400988317 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CDD415FA206ABB9400988317 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CDD41611206ABB9400988317 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CDD4161C206ABB9400988317 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		CDD415F4206ABB9400988317 = {
+			isa = PBXGroup;
+			children = (
+				CDD415FF206ABB9400988317 /* Team4Bootcamp */,
+				CDD41617206ABB9400988317 /* Team4BootcampTests */,
+				CDD41622206ABB9400988317 /* Team4BootcampUITests */,
+				CDD415FE206ABB9400988317 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		CDD415FE206ABB9400988317 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CDD415FD206ABB9400988317 /* Team4Bootcamp.app */,
+				CDD41614206ABB9400988317 /* Team4BootcampTests.xctest */,
+				CDD4161F206ABB9400988317 /* Team4BootcampUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CDD415FF206ABB9400988317 /* Team4Bootcamp */ = {
+			isa = PBXGroup;
+			children = (
+				CDD41600206ABB9400988317 /* AppDelegate.swift */,
+				CDD41602206ABB9400988317 /* ViewController.swift */,
+				CDD41604206ABB9400988317 /* Main.storyboard */,
+				CDD4160A206ABB9400988317 /* Assets.xcassets */,
+				CDD4160C206ABB9400988317 /* LaunchScreen.storyboard */,
+				CDD4160F206ABB9400988317 /* Info.plist */,
+				CDD41607206ABB9400988317 /* Team4Bootcamp.xcdatamodeld */,
+			);
+			path = Team4Bootcamp;
+			sourceTree = "<group>";
+		};
+		CDD41617206ABB9400988317 /* Team4BootcampTests */ = {
+			isa = PBXGroup;
+			children = (
+				CDD41618206ABB9400988317 /* Team4BootcampTests.swift */,
+				CDD4161A206ABB9400988317 /* Info.plist */,
+			);
+			path = Team4BootcampTests;
+			sourceTree = "<group>";
+		};
+		CDD41622206ABB9400988317 /* Team4BootcampUITests */ = {
+			isa = PBXGroup;
+			children = (
+				CDD41623206ABB9400988317 /* Team4BootcampUITests.swift */,
+				CDD41625206ABB9400988317 /* Info.plist */,
+			);
+			path = Team4BootcampUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CDD415FC206ABB9400988317 /* Team4Bootcamp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CDD41628206ABB9400988317 /* Build configuration list for PBXNativeTarget "Team4Bootcamp" */;
+			buildPhases = (
+				CDD415F9206ABB9400988317 /* Sources */,
+				CDD415FA206ABB9400988317 /* Frameworks */,
+				CDD415FB206ABB9400988317 /* Resources */,
+				CDD41631206ABBAF00988317 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Team4Bootcamp;
+			productName = Team4Bootcamp;
+			productReference = CDD415FD206ABB9400988317 /* Team4Bootcamp.app */;
+			productType = "com.apple.product-type.application";
+		};
+		CDD41613206ABB9400988317 /* Team4BootcampTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CDD4162B206ABB9400988317 /* Build configuration list for PBXNativeTarget "Team4BootcampTests" */;
+			buildPhases = (
+				CDD41610206ABB9400988317 /* Sources */,
+				CDD41611206ABB9400988317 /* Frameworks */,
+				CDD41612206ABB9400988317 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CDD41616206ABB9400988317 /* PBXTargetDependency */,
+			);
+			name = Team4BootcampTests;
+			productName = Team4BootcampTests;
+			productReference = CDD41614206ABB9400988317 /* Team4BootcampTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		CDD4161E206ABB9400988317 /* Team4BootcampUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CDD4162E206ABB9400988317 /* Build configuration list for PBXNativeTarget "Team4BootcampUITests" */;
+			buildPhases = (
+				CDD4161B206ABB9400988317 /* Sources */,
+				CDD4161C206ABB9400988317 /* Frameworks */,
+				CDD4161D206ABB9400988317 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CDD41621206ABB9400988317 /* PBXTargetDependency */,
+			);
+			name = Team4BootcampUITests;
+			productName = Team4BootcampUITests;
+			productReference = CDD4161F206ABB9400988317 /* Team4BootcampUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CDD415F5206ABB9400988317 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0920;
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = alessandra.l.pereira;
+				TargetAttributes = {
+					CDD415FC206ABB9400988317 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+					CDD41613206ABB9400988317 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = CDD415FC206ABB9400988317;
+					};
+					CDD4161E206ABB9400988317 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = CDD415FC206ABB9400988317;
+					};
+				};
+			};
+			buildConfigurationList = CDD415F8206ABB9400988317 /* Build configuration list for PBXProject "Team4Bootcamp" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CDD415F4206ABB9400988317;
+			productRefGroup = CDD415FE206ABB9400988317 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CDD415FC206ABB9400988317 /* Team4Bootcamp */,
+				CDD41613206ABB9400988317 /* Team4BootcampTests */,
+				CDD4161E206ABB9400988317 /* Team4BootcampUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CDD415FB206ABB9400988317 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CDD4160E206ABB9400988317 /* LaunchScreen.storyboard in Resources */,
+				CDD4160B206ABB9400988317 /* Assets.xcassets in Resources */,
+				CDD41606206ABB9400988317 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CDD41612206ABB9400988317 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CDD4161D206ABB9400988317 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		CDD41631206ABBAF00988317 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CDD415F9206ABB9400988317 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CDD41603206ABB9400988317 /* ViewController.swift in Sources */,
+				CDD41609206ABB9400988317 /* Team4Bootcamp.xcdatamodeld in Sources */,
+				CDD41601206ABB9400988317 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CDD41610206ABB9400988317 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CDD41619206ABB9400988317 /* Team4BootcampTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CDD4161B206ABB9400988317 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CDD41624206ABB9400988317 /* Team4BootcampUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CDD41616206ABB9400988317 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CDD415FC206ABB9400988317 /* Team4Bootcamp */;
+			targetProxy = CDD41615206ABB9400988317 /* PBXContainerItemProxy */;
+		};
+		CDD41621206ABB9400988317 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CDD415FC206ABB9400988317 /* Team4Bootcamp */;
+			targetProxy = CDD41620206ABB9400988317 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		CDD41604206ABB9400988317 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CDD41605206ABB9400988317 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		CDD4160C206ABB9400988317 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CDD4160D206ABB9400988317 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		CDD41626206ABB9400988317 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		CDD41627206ABB9400988317 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		CDD41629206ABB9400988317 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = Team4Bootcamp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = br.com.concrete.Team4Bootcamp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CDD4162A206ABB9400988317 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = Team4Bootcamp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = br.com.concrete.Team4Bootcamp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		CDD4162C206ABB9400988317 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = Team4BootcampTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = br.com.concrete.Team4BootcampTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Team4Bootcamp.app/Team4Bootcamp";
+			};
+			name = Debug;
+		};
+		CDD4162D206ABB9400988317 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = Team4BootcampTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = br.com.concrete.Team4BootcampTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Team4Bootcamp.app/Team4Bootcamp";
+			};
+			name = Release;
+		};
+		CDD4162F206ABB9400988317 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = Team4BootcampUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = br.com.concrete.Team4BootcampUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Team4Bootcamp;
+			};
+			name = Debug;
+		};
+		CDD41630206ABB9400988317 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = Team4BootcampUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = br.com.concrete.Team4BootcampUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Team4Bootcamp;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CDD415F8206ABB9400988317 /* Build configuration list for PBXProject "Team4Bootcamp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CDD41626206ABB9400988317 /* Debug */,
+				CDD41627206ABB9400988317 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CDD41628206ABB9400988317 /* Build configuration list for PBXNativeTarget "Team4Bootcamp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CDD41629206ABB9400988317 /* Debug */,
+				CDD4162A206ABB9400988317 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CDD4162B206ABB9400988317 /* Build configuration list for PBXNativeTarget "Team4BootcampTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CDD4162C206ABB9400988317 /* Debug */,
+				CDD4162D206ABB9400988317 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CDD4162E206ABB9400988317 /* Build configuration list for PBXNativeTarget "Team4BootcampUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CDD4162F206ABB9400988317 /* Debug */,
+				CDD41630206ABB9400988317 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		CDD41607206ABB9400988317 /* Team4Bootcamp.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				CDD41608206ABB9400988317 /* Team4Bootcamp.xcdatamodel */,
+			);
+			currentVersion = CDD41608206ABB9400988317 /* Team4Bootcamp.xcdatamodel */;
+			path = Team4Bootcamp.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = CDD415F5206ABB9400988317 /* Project object */;
+}

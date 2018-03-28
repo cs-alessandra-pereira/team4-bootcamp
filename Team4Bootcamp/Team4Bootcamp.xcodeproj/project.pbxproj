@@ -15,6 +15,8 @@
 		CDD4160E206ABB9400988317 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDD4160C206ABB9400988317 /* LaunchScreen.storyboard */; };
 		CDD41619206ABB9400988317 /* Team4BootcampTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD41618206ABB9400988317 /* Team4BootcampTests.swift */; };
 		CDD41624206ABB9400988317 /* Team4BootcampUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD41623206ABB9400988317 /* Team4BootcampUITests.swift */; };
+		CDD41634206B110300988317 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD41633206B110300988317 /* Movie.swift */; };
+		CDD41636206B12FB00988317 /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD41635206B12FB00988317 /* Genre.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		CDD4161F206ABB9400988317 /* Team4BootcampUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Team4BootcampUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDD41623206ABB9400988317 /* Team4BootcampUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team4BootcampUITests.swift; sourceTree = "<group>"; };
 		CDD41625206ABB9400988317 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CDD41633206B110300988317 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		CDD41635206B12FB00988317 /* Genre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genre.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +83,7 @@
 		CDD415F4206ABB9400988317 = {
 			isa = PBXGroup;
 			children = (
+				CDD41632206B108B00988317 /* Model */,
 				CDD415FF206ABB9400988317 /* Team4Bootcamp */,
 				CDD41617206ABB9400988317 /* Team4BootcampTests */,
 				CDD41622206ABB9400988317 /* Team4BootcampUITests */,
@@ -126,6 +131,15 @@
 				CDD41625206ABB9400988317 /* Info.plist */,
 			);
 			path = Team4BootcampUITests;
+			sourceTree = "<group>";
+		};
+		CDD41632206B108B00988317 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CDD41633206B110300988317 /* Movie.swift */,
+				CDD41635206B12FB00988317 /* Genre.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -281,7 +295,9 @@
 			files = (
 				CDD41603206ABB9400988317 /* ViewController.swift in Sources */,
 				CDD41609206ABB9400988317 /* Team4Bootcamp.xcdatamodeld in Sources */,
+				CDD41634206B110300988317 /* Movie.swift in Sources */,
 				CDD41601206ABB9400988317 /* AppDelegate.swift in Sources */,
+				CDD41636206B12FB00988317 /* Genre.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

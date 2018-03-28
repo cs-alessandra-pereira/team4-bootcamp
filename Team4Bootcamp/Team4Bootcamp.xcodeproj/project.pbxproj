@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		CDD41601206ABB9400988317 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD41600206ABB9400988317 /* AppDelegate.swift */; };
-		CDD41603206ABB9400988317 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD41602206ABB9400988317 /* ViewController.swift */; };
 		CDD41606206ABB9400988317 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDD41604206ABB9400988317 /* Main.storyboard */; };
 		CDD41609206ABB9400988317 /* Team4Bootcamp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CDD41607206ABB9400988317 /* Team4Bootcamp.xcdatamodeld */; };
 		CDD4160B206ABB9400988317 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDD4160A206ABB9400988317 /* Assets.xcassets */; };
@@ -17,6 +16,8 @@
 		CDD41624206ABB9400988317 /* Team4BootcampUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD41623206ABB9400988317 /* Team4BootcampUITests.swift */; };
 		CDD41634206B110300988317 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD41633206B110300988317 /* Movie.swift */; };
 		CDD41636206B12FB00988317 /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD41635206B12FB00988317 /* Genre.swift */; };
+		CDD4163B206C491500988317 /* MovieListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD4163A206C491500988317 /* MovieListViewController.swift */; };
+		CDD4163E206C4E6D00988317 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD4163D206C4E6D00988317 /* Extensions.swift */; };
 		EA71E3A0206BE70100970A47 /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA71E39E206BE70100970A47 /* Kingfisher.framework */; };
 		EA71E3A1206BE70100970A47 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA71E39F206BE70100970A47 /* Alamofire.framework */; };
 /* End PBXBuildFile section */
@@ -41,7 +42,6 @@
 /* Begin PBXFileReference section */
 		CDD415FD206ABB9400988317 /* Team4Bootcamp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Team4Bootcamp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDD41600206ABB9400988317 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CDD41602206ABB9400988317 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		CDD41605206ABB9400988317 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CDD41608206ABB9400988317 /* Team4Bootcamp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Team4Bootcamp.xcdatamodel; sourceTree = "<group>"; };
 		CDD4160A206ABB9400988317 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -55,6 +55,8 @@
 		CDD41625206ABB9400988317 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CDD41633206B110300988317 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		CDD41635206B12FB00988317 /* Genre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genre.swift; sourceTree = "<group>"; };
+		CDD4163A206C491500988317 /* MovieListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListViewController.swift; sourceTree = "<group>"; };
+		CDD4163D206C4E6D00988317 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		EA71E39E206BE70100970A47 /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
 		EA71E39F206BE70100970A47 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -89,6 +91,8 @@
 		CDD415F4206ABB9400988317 = {
 			isa = PBXGroup;
 			children = (
+				CDD4163C206C4E2000988317 /* Extensions */,
+				CDD41637206C2B7F00988317 /* Controllers */,
 				CDD41632206B108B00988317 /* Model */,
 				CDD415FF206ABB9400988317 /* Team4Bootcamp */,
 				CDD41617206ABB9400988317 /* Team4BootcampTests */,
@@ -112,7 +116,6 @@
 			isa = PBXGroup;
 			children = (
 				CDD41600206ABB9400988317 /* AppDelegate.swift */,
-				CDD41602206ABB9400988317 /* ViewController.swift */,
 				CDD41604206ABB9400988317 /* Main.storyboard */,
 				CDD4160A206ABB9400988317 /* Assets.xcassets */,
 				CDD4160C206ABB9400988317 /* LaunchScreen.storyboard */,
@@ -147,6 +150,22 @@
 				CDD41635206B12FB00988317 /* Genre.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		CDD41637206C2B7F00988317 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				CDD4163A206C491500988317 /* MovieListViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		CDD4163C206C4E2000988317 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				CDD4163D206C4E6D00988317 /* Extensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		EA71E39D206BE70000970A47 /* Frameworks */ = {
@@ -312,9 +331,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CDD41603206ABB9400988317 /* ViewController.swift in Sources */,
 				CDD41609206ABB9400988317 /* Team4Bootcamp.xcdatamodeld in Sources */,
 				CDD41634206B110300988317 /* Movie.swift in Sources */,
+				CDD4163B206C491500988317 /* MovieListViewController.swift in Sources */,
+				CDD4163E206C4E6D00988317 /* Extensions.swift in Sources */,
 				CDD41601206ABB9400988317 /* AppDelegate.swift in Sources */,
 				CDD41636206B12FB00988317 /* Genre.swift in Sources */,
 			);

@@ -9,12 +9,10 @@
 import Foundation
 
 struct Movie {
-    
     let id: Int
     let title: String
     let releaseDate: String
     let genresIds: [Int]
     let overview: String
-    let posterPath: String?
-    
+    let posterPath: String
 }

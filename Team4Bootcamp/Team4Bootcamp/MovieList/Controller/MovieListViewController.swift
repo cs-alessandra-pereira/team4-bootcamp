@@ -9,6 +9,8 @@
 import UIKit
 
 class MovieListViewController: UIViewController {
+    
+    var service: MoviesServiceProtocol = MoviesAPI()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,7 +23,6 @@ class MovieListViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
     /*
     // MARK: - Navigation
 

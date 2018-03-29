@@ -18,6 +18,10 @@
 		CDD41636206B12FB00988317 /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD41635206B12FB00988317 /* Genre.swift */; };
 		CDD4163B206C491500988317 /* MovieListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD4163A206C491500988317 /* MovieListViewController.swift */; };
 		CDD4163E206C4E6D00988317 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD4163D206C4E6D00988317 /* Extensions.swift */; };
+		EA284CC0206D0D0200E4D7CD /* MoviesServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA284CBF206D0D0200E4D7CD /* MoviesServiceProtocol.swift */; };
+		EA284CC2206D0ED400E4D7CD /* FetchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA284CC1206D0ED400E4D7CD /* FetchResult.swift */; };
+		EA284CC4206D106B00E4D7CD /* MoviesAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA284CC3206D106B00E4D7CD /* MoviesAPI.swift */; };
+		EA284CC6206D137200E4D7CD /* MoviesConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA284CC5206D137200E4D7CD /* MoviesConstants.swift */; };
 		EA71E3A0206BE70100970A47 /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA71E39E206BE70100970A47 /* Kingfisher.framework */; };
 		EA71E3A1206BE70100970A47 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA71E39F206BE70100970A47 /* Alamofire.framework */; };
 /* End PBXBuildFile section */
@@ -57,6 +61,10 @@
 		CDD41635206B12FB00988317 /* Genre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genre.swift; sourceTree = "<group>"; };
 		CDD4163A206C491500988317 /* MovieListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListViewController.swift; sourceTree = "<group>"; };
 		CDD4163D206C4E6D00988317 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		EA284CBF206D0D0200E4D7CD /* MoviesServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesServiceProtocol.swift; sourceTree = "<group>"; };
+		EA284CC1206D0ED400E4D7CD /* FetchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchResult.swift; sourceTree = "<group>"; };
+		EA284CC3206D106B00E4D7CD /* MoviesAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesAPI.swift; sourceTree = "<group>"; };
+		EA284CC5206D137200E4D7CD /* MoviesConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesConstants.swift; sourceTree = "<group>"; };
 		EA71E39E206BE70100970A47 /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
 		EA71E39F206BE70100970A47 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -91,9 +99,6 @@
 		CDD415F4206ABB9400988317 = {
 			isa = PBXGroup;
 			children = (
-				CDD4163C206C4E2000988317 /* Extensions */,
-				CDD41637206C2B7F00988317 /* Controllers */,
-				CDD41632206B108B00988317 /* Model */,
 				CDD415FF206ABB9400988317 /* Team4Bootcamp */,
 				CDD41617206ABB9400988317 /* Team4BootcampTests */,
 				CDD41622206ABB9400988317 /* Team4BootcampUITests */,
@@ -115,12 +120,12 @@
 		CDD415FF206ABB9400988317 /* Team4Bootcamp */ = {
 			isa = PBXGroup;
 			children = (
-				CDD41600206ABB9400988317 /* AppDelegate.swift */,
+				EA284CBD206D079800E4D7CD /* Favorites */,
+				EA284CBB206D072300E4D7CD /* MovieList */,
+				CDD4163C206C4E2000988317 /* Extensions */,
+				CDD41632206B108B00988317 /* Model */,
+				EA284CBC206D078300E4D7CD /* Supporting Files */,
 				CDD41604206ABB9400988317 /* Main.storyboard */,
-				CDD4160A206ABB9400988317 /* Assets.xcassets */,
-				CDD4160C206ABB9400988317 /* LaunchScreen.storyboard */,
-				CDD4160F206ABB9400988317 /* Info.plist */,
-				CDD41607206ABB9400988317 /* Team4Bootcamp.xcdatamodeld */,
 			);
 			path = Team4Bootcamp;
 			sourceTree = "<group>";
@@ -152,12 +157,12 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		CDD41637206C2B7F00988317 /* Controllers */ = {
+		CDD41637206C2B7F00988317 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
 				CDD4163A206C491500988317 /* MovieListViewController.swift */,
 			);
-			path = Controllers;
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		CDD4163C206C4E2000988317 /* Extensions */ = {
@@ -166,6 +171,45 @@
 				CDD4163D206C4E6D00988317 /* Extensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		EA284CBB206D072300E4D7CD /* MovieList */ = {
+			isa = PBXGroup;
+			children = (
+				EA284CBE206D0CDC00E4D7CD /* Service */,
+				CDD41637206C2B7F00988317 /* Controller */,
+			);
+			path = MovieList;
+			sourceTree = "<group>";
+		};
+		EA284CBC206D078300E4D7CD /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				CDD41600206ABB9400988317 /* AppDelegate.swift */,
+				CDD4160A206ABB9400988317 /* Assets.xcassets */,
+				CDD4160C206ABB9400988317 /* LaunchScreen.storyboard */,
+				CDD4160F206ABB9400988317 /* Info.plist */,
+				CDD41607206ABB9400988317 /* Team4Bootcamp.xcdatamodeld */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		EA284CBD206D079800E4D7CD /* Favorites */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Favorites;
+			sourceTree = "<group>";
+		};
+		EA284CBE206D0CDC00E4D7CD /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				EA284CBF206D0D0200E4D7CD /* MoviesServiceProtocol.swift */,
+				EA284CC1206D0ED400E4D7CD /* FetchResult.swift */,
+				EA284CC3206D106B00E4D7CD /* MoviesAPI.swift */,
+				EA284CC5206D137200E4D7CD /* MoviesConstants.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 		EA71E39D206BE70000970A47 /* Frameworks */ = {
@@ -333,8 +377,12 @@
 			files = (
 				CDD41609206ABB9400988317 /* Team4Bootcamp.xcdatamodeld in Sources */,
 				CDD41634206B110300988317 /* Movie.swift in Sources */,
+				EA284CC4206D106B00E4D7CD /* MoviesAPI.swift in Sources */,
 				CDD4163B206C491500988317 /* MovieListViewController.swift in Sources */,
 				CDD4163E206C4E6D00988317 /* Extensions.swift in Sources */,
+				EA284CC6206D137200E4D7CD /* MoviesConstants.swift in Sources */,
+				EA284CC0206D0D0200E4D7CD /* MoviesServiceProtocol.swift in Sources */,
+				EA284CC2206D0ED400E4D7CD /* FetchResult.swift in Sources */,
 				CDD41601206ABB9400988317 /* AppDelegate.swift in Sources */,
 				CDD41636206B12FB00988317 /* Genre.swift in Sources */,
 			);
@@ -508,7 +556,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = Team4Bootcamp/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Team4Bootcamp/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.concrete.Team4Bootcamp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -527,7 +575,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = Team4Bootcamp/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Team4Bootcamp/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.concrete.Team4Bootcamp;
 				PRODUCT_NAME = "$(TARGET_NAME)";

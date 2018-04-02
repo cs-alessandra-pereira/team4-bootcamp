@@ -38,6 +38,9 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="ckd-VN-ez5">
+                                <rect key="frame" x="177.5" y="323.5" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -45,10 +48,16 @@
                             <constraint firstItem="Nvi-OE-ODc" firstAttribute="trailing" secondItem="SPj-kH-0Jt" secondAttribute="trailing" id="Aep-na-oHr"/>
                             <constraint firstItem="Nvi-OE-ODc" firstAttribute="top" secondItem="SPj-kH-0Jt" secondAttribute="top" id="RSh-m2-Z7l"/>
                             <constraint firstItem="Nvi-OE-ODc" firstAttribute="bottom" secondItem="SPj-kH-0Jt" secondAttribute="bottom" id="S99-rM-6H9"/>
+                            <constraint firstItem="ckd-VN-ez5" firstAttribute="centerX" secondItem="KSX-8o-OpI" secondAttribute="centerX" id="au1-Oy-Fye"/>
+                            <constraint firstItem="ckd-VN-ez5" firstAttribute="centerY" secondItem="KSX-8o-OpI" secondAttribute="centerY" id="tR4-sl-2IF"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="SPj-kH-0Jt"/>
                     </view>
                     <navigationItem key="navigationItem" title="Movies" id="gMG-Zs-FZo"/>
+                    <connections>
+                        <outlet property="activityIndicator" destination="ckd-VN-ez5" id="T2H-AZ-0yD"/>
+                        <outlet property="collectionView" destination="Nvi-OE-ODc" id="nmI-x7-9d6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fqa-mD-IOo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

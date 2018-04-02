@@ -12,6 +12,8 @@ import SnapKit
 
 class MovieCollectionViewCell: UICollectionViewCell {
     
+    let imageFetchable: ImageFetchable = KFImageFetchable()
+    
     lazy var imageView: UIImageView = {
         let view = UIImageView(frame: .zero)
         view.contentMode = UIViewContentMode.scaleToFill
@@ -39,6 +41,12 @@ class MovieCollectionViewCell: UICollectionViewCell {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func setup(movie: Movie) {
+        textLabel.text = movie.title
+        let path = MoviesConstants.Endpoints.moviePoster(movie.posterPath).path
+        imageFetchable.fetch(imageURL: path, onImage: imageView) {}
     }
 }
 

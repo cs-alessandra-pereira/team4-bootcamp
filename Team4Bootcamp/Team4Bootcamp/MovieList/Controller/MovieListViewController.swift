@@ -80,9 +80,8 @@ extension MovieListViewController: UICollectionViewDataSource {
         }
         
         let movie = self.movies[indexPath.row]
-        //cell.textLabel.text = "Text"
-        cell.imageView.image = UIImage(named: "starwars")
-        cell.textLabel.text = movie.title
+        //cell.iconImgView.image = UIImage(named: "poster-placeholder2")
+        cell.setup(movie: movie)
         
         //if let imageURL = URL(string:movie.posterPath) {
         //    let imageResource = ImageResource(downloadURL: imageURL)

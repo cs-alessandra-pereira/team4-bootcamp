@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class MovieListViewController: UIViewController {
     
@@ -21,14 +22,11 @@ class MovieListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
+        fetchMovies()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         setupCollectionView()
-        setupDatasource()
-        //fetchMovies()
     }
 
     func setupCollectionView() {
@@ -47,11 +45,13 @@ class MovieListViewController: UIViewController {
     }
     
     func fetchMovies() {
+        self.activityIndicator.isHidden = false
         self.activityIndicator.startAnimating()
         self.collectionView.isHidden = true
         movieService.fetchMovies { movies in
-            self.activityIndicator.stopAnimating()
             self.collectionView.isHidden = false
+            self.activityIndicator.stopAnimating()
+            self.activityIndicator.isHidden = true
             self.movies = movies
         }
     }
@@ -71,7 +71,7 @@ class MovieListViewController: UIViewController {
 extension MovieListViewController: UICollectionViewDataSource {
     //collectionView(_:numberOfItemsInSection:) and collectionView(_:cellForItemAt:)
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 100
+        return movies.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -79,12 +79,17 @@ extension MovieListViewController: UICollectionViewDataSource {
             return collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
         }
         
-        //let movie = self.movies[indexPath.row]
-        cell.textLabel.text = "Text"
+        let movie = self.movies[indexPath.row]
+        //cell.textLabel.text = "Text"
         cell.iconImgView.image = UIImage(named: "favorite_empty_icon")
         cell.imageView.image = UIImage(named: "starwars")
-        //cell.textLabel?.text = movie.title
+        cell.textLabel?.text = movie.title
         
+        //if let imageURL = URL(string:movie.posterPath) {
+        //    let imageResource = ImageResource(downloadURL: imageURL)
+        //    cell.imageView.kf.setImage(with: imageResource)
+        //}
+
         return cell
     }
     

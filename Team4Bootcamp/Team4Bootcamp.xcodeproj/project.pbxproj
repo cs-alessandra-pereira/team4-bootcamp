@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CD91F9D82073EE96002BB9EE /* CodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD91F9D42073EE96002BB9EE /* CodeView.swift */; };
+		CD91F9D92073EE96002BB9EE /* ImageFetchable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD91F9D52073EE96002BB9EE /* ImageFetchable.swift */; };
+		CD91F9DA2073EE96002BB9EE /* MovieCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD91F9D62073EE96002BB9EE /* MovieCollectionViewCell.swift */; };
+		CD91F9DD2073F034002BB9EE /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD91F9DC2073F034002BB9EE /* SnapKit.framework */; };
 		CDD41601206ABB9400988317 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD41600206ABB9400988317 /* AppDelegate.swift */; };
 		CDD41606206ABB9400988317 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDD41604206ABB9400988317 /* Main.storyboard */; };
 		CDD41609206ABB9400988317 /* Team4Bootcamp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CDD41607206ABB9400988317 /* Team4Bootcamp.xcdatamodeld */; };
@@ -18,13 +22,11 @@
 		CDD41636206B12FB00988317 /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD41635206B12FB00988317 /* Genre.swift */; };
 		CDD4163B206C491500988317 /* MovieListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD4163A206C491500988317 /* MovieListViewController.swift */; };
 		CDD4163E206C4E6D00988317 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD4163D206C4E6D00988317 /* Extensions.swift */; };
-		EA1183862072646900524431 /* MovieCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1183852072646900524431 /* MovieCollectionViewCell.swift */; };
 		EA284CC0206D0D0200E4D7CD /* MoviesServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA284CBF206D0D0200E4D7CD /* MoviesServiceProtocol.swift */; };
 		EA284CC2206D0ED400E4D7CD /* FetchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA284CC1206D0ED400E4D7CD /* FetchResult.swift */; };
 		EA284CC4206D106B00E4D7CD /* MoviesAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA284CC3206D106B00E4D7CD /* MoviesAPI.swift */; };
 		EA284CC6206D137200E4D7CD /* MoviesConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA284CC5206D137200E4D7CD /* MoviesConstants.swift */; };
 		EA71E3A0206BE70100970A47 /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA71E39E206BE70100970A47 /* Kingfisher.framework */; };
-		EA71E3A1206BE70100970A47 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA71E39F206BE70100970A47 /* Alamofire.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +47,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CD91F9D42073EE96002BB9EE /* CodeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CodeView.swift; path = Team4Bootcamp/MovieList/View/CodeView.swift; sourceTree = SOURCE_ROOT; };
+		CD91F9D52073EE96002BB9EE /* ImageFetchable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageFetchable.swift; path = Team4Bootcamp/MovieList/View/ImageFetchable.swift; sourceTree = SOURCE_ROOT; };
+		CD91F9D62073EE96002BB9EE /* MovieCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MovieCollectionViewCell.swift; path = Team4Bootcamp/MovieList/View/MovieCollectionViewCell.swift; sourceTree = SOURCE_ROOT; };
+		CD91F9DC2073F034002BB9EE /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapKit.framework; path = Carthage/Build/iOS/SnapKit.framework; sourceTree = "<group>"; };
 		CDD415FD206ABB9400988317 /* Team4Bootcamp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Team4Bootcamp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDD41600206ABB9400988317 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CDD41605206ABB9400988317 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -62,7 +68,6 @@
 		CDD41635206B12FB00988317 /* Genre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genre.swift; sourceTree = "<group>"; };
 		CDD4163A206C491500988317 /* MovieListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListViewController.swift; sourceTree = "<group>"; };
 		CDD4163D206C4E6D00988317 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		EA1183852072646900524431 /* MovieCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCollectionViewCell.swift; sourceTree = "<group>"; };
 		EA284CBF206D0D0200E4D7CD /* MoviesServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesServiceProtocol.swift; sourceTree = "<group>"; };
 		EA284CC1206D0ED400E4D7CD /* FetchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchResult.swift; sourceTree = "<group>"; };
 		EA284CC3206D106B00E4D7CD /* MoviesAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesAPI.swift; sourceTree = "<group>"; };
@@ -76,8 +81,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD91F9DD2073F034002BB9EE /* SnapKit.framework in Frameworks */,
 				EA71E3A0206BE70100970A47 /* Kingfisher.framework in Frameworks */,
-				EA71E3A1206BE70100970A47 /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,6 +103,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CD91F9D12073EE59002BB9EE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CD91F9D42073EE96002BB9EE /* CodeView.swift */,
+				CD91F9D52073EE96002BB9EE /* ImageFetchable.swift */,
+				CD91F9D62073EE96002BB9EE /* MovieCollectionViewCell.swift */,
+			);
+			name = View;
+			path = "New Group";
+			sourceTree = "<group>";
+		};
 		CDD415F4206ABB9400988317 = {
 			isa = PBXGroup;
 			children = (
@@ -122,7 +138,6 @@
 		CDD415FF206ABB9400988317 /* Team4Bootcamp */ = {
 			isa = PBXGroup;
 			children = (
-				EA284CBD206D079800E4D7CD /* Favorites */,
 				EA284CBB206D072300E4D7CD /* MovieList */,
 				CDD4163C206C4E2000988317 /* Extensions */,
 				CDD41632206B108B00988317 /* Model */,
@@ -163,7 +178,6 @@
 			isa = PBXGroup;
 			children = (
 				CDD4163A206C491500988317 /* MovieListViewController.swift */,
-				EA1183852072646900524431 /* MovieCollectionViewCell.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -179,6 +193,7 @@
 		EA284CBB206D072300E4D7CD /* MovieList */ = {
 			isa = PBXGroup;
 			children = (
+				CD91F9D12073EE59002BB9EE /* View */,
 				EA284CBE206D0CDC00E4D7CD /* Service */,
 				CDD41637206C2B7F00988317 /* Controller */,
 			);
@@ -197,13 +212,6 @@
 			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		EA284CBD206D079800E4D7CD /* Favorites */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Favorites;
-			sourceTree = "<group>";
-		};
 		EA284CBE206D0CDC00E4D7CD /* Service */ = {
 			isa = PBXGroup;
 			children = (
@@ -218,6 +226,7 @@
 		EA71E39D206BE70000970A47 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CD91F9DC2073F034002BB9EE /* SnapKit.framework */,
 				EA71E39F206BE70100970A47 /* Alamofire.framework */,
 				EA71E39E206BE70100970A47 /* Kingfisher.framework */,
 			);
@@ -288,7 +297,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0920;
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = alessandra.l.pereira;
 				TargetAttributes = {
 					CDD415FC206ABB9400988317 = {
@@ -361,8 +370,8 @@
 			files = (
 			);
 			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Kingfisher.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SnapKit.framework",
 			);
 			name = "Run Script";
 			outputPaths = (
@@ -378,16 +387,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD91F9D92073EE96002BB9EE /* ImageFetchable.swift in Sources */,
 				CDD41609206ABB9400988317 /* Team4Bootcamp.xcdatamodeld in Sources */,
 				CDD41634206B110300988317 /* Movie.swift in Sources */,
 				EA284CC4206D106B00E4D7CD /* MoviesAPI.swift in Sources */,
 				CDD4163B206C491500988317 /* MovieListViewController.swift in Sources */,
 				CDD4163E206C4E6D00988317 /* Extensions.swift in Sources */,
 				EA284CC6206D137200E4D7CD /* MoviesConstants.swift in Sources */,
+				CD91F9D82073EE96002BB9EE /* CodeView.swift in Sources */,
 				EA284CC0206D0D0200E4D7CD /* MoviesServiceProtocol.swift in Sources */,
 				EA284CC2206D0ED400E4D7CD /* FetchResult.swift in Sources */,
-				EA1183862072646900524431 /* MovieCollectionViewCell.swift in Sources */,
 				CDD41601206ABB9400988317 /* AppDelegate.swift in Sources */,
+				CD91F9DA2073EE96002BB9EE /* MovieCollectionViewCell.swift in Sources */,
 				CDD41636206B12FB00988317 /* Genre.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -457,6 +468,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -464,6 +476,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -514,6 +527,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -521,6 +535,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;

@@ -21,4 +21,24 @@ extension UIColor {
     }
     
     static let primaryColor = UIColor(hex: 0xF7CE5B)
+    static let secondaryColor = UIColor(hex: 0x2D3047)
+    static let terciaryColor = UIColor(hex: 0xD8D8D8)
+    static let accentColor = UIColor(hex: 0xD9971E)
+    
+}
+
+extension UIImage {
+    enum Icons: String {
+        case favFull = "favorite_full_icon"
+        case favEmpty = "favorite_empty_icon"
+        case favGray = "favorite_gray_icon"
+        case check = "check_icon"
+        case filter = "FilterIcon"
+        case list = "list_icon"
+        case search = "search_icon"
+    }
+    
+    convenience init?(icon: Icons) {
+        self.init(named: icon.rawValue)
+    }
 }

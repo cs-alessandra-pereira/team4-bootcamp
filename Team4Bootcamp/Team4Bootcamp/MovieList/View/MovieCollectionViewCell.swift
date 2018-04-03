@@ -22,20 +22,20 @@ class MovieCollectionViewCell: UICollectionViewCell {
     
     lazy var textLabel: UILabel = {
         let view = UILabel(frame: .zero)
+        view.sizeToFit()
         view.textColor = UIColor.primaryColor
+        view.numberOfLines = 2
         view.lineBreakMode = .byClipping
         view.adjustsFontSizeToFitWidth = true
-        view.numberOfLines = 2
         view.textAlignment = NSTextAlignment.center
-        view.sizeToFit()
         view.baselineAdjustment = .alignCenters
         return view
     }()
     
     lazy var iconButton: UIButton = {
         let view = UIButton(frame: .zero)
-        view.setImage(#imageLiteral(resourceName: "favorite_gray_icon"), for: UIControlState.normal)
-        view.setImage(#imageLiteral(resourceName: "favorite_full_icon"), for: UIControlState.selected)
+        view.setImage(UIImage(icon: .favGray), for: UIControlState.normal)
+        view.setImage(UIImage(icon: .favFull), for: UIControlState.selected)
         view.contentMode = UIViewContentMode.scaleAspectFit
         return view
     }()
@@ -68,9 +68,9 @@ extension MovieCollectionViewCell: CodeView {
     func buildConstraints() {
         
         imageView.snp.makeConstraints { make in
+            make.height.equalTo(frame.size.height*3/4)
             make.top.equalTo(safeAreaLayoutGuide.snp.topMargin)
             make.left.right.equalTo(self)
-            make.height.equalTo(frame.size.height*3/4)
         }
         
         iconButton.snp.makeConstraints { make in

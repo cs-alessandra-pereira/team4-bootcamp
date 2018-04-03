@@ -80,7 +80,6 @@ extension MovieListViewController: UICollectionViewDataSource {
         }
         
         let movie = self.movies[indexPath.row]
-        //cell.iconImgView.image = UIImage(named: "poster-placeholder2")
         cell.setup(movie: movie)
         
         //if let imageURL = URL(string:movie.posterPath) {

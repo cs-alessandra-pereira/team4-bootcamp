@@ -23,6 +23,12 @@ class MovieCollectionViewCell: UICollectionViewCell {
     lazy var textLabel: UILabel = {
         let view = UILabel(frame: .zero)
         view.textColor = UIColor.primaryColor
+        view.lineBreakMode = .byClipping
+        view.adjustsFontSizeToFitWidth = true
+        view.numberOfLines = 2
+        view.textAlignment = NSTextAlignment.center
+        view.sizeToFit()
+        view.baselineAdjustment = .alignCenters
         return view
     }()
     
@@ -54,8 +60,8 @@ extension MovieCollectionViewCell: CodeView {
     
     func buildHierarchy() {
         addSubview(imageView)
-        addSubview(textLabel)
         addSubview(iconButton)
+        addSubview(textLabel)
         
     }
     
@@ -64,23 +70,24 @@ extension MovieCollectionViewCell: CodeView {
         imageView.snp.makeConstraints { make in
             make.top.equalTo(safeAreaLayoutGuide.snp.topMargin)
             make.left.right.equalTo(self)
-            make.height.equalTo(frame.size.height*2/3)
+            make.height.equalTo(frame.size.height*3/4)
         }
         
         iconButton.snp.makeConstraints { make in
+            make.height.equalTo(frame.size.height/12)
             make.topMargin.equalTo(imageView.snp.bottom).offset(25)
             make.right.equalTo(imageView.snp.rightMargin)
         }
         
         textLabel.snp.makeConstraints { make in
-            make.topMargin.equalTo(imageView.snp.bottom).offset(25)
-            make.left.equalTo(imageView.snp.leftMargin)
+            make.width.equalTo(frame.size.width*6/8)
             make.right.equalTo(iconButton.snp.left)
+            make.centerY.equalTo(iconButton.snp.centerY)
+            make.left.equalTo(imageView.snp.leftMargin)
         }
-    
     }
     
     func configure() {
-        backgroundColor = .darkGray
+        backgroundColor = UIColor.secondaryColor
     }
 }

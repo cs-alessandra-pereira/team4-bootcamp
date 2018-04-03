@@ -10,12 +10,12 @@ import UIKit
 import Kingfisher
 
 protocol ImageFetchable {
-    func fetch(imageURL:String, onImage: UIImageView, callback: @escaping () -> Void)
+    func fetch(imageURL: String, onImage: UIImageView, callback: @escaping () -> Void)
 }
 
 final class KFImageFetchable: ImageFetchable {
-    func fetch(imageURL:String, onImage: UIImageView, callback: @escaping () -> Void) {
-        guard let imageURL = URL(string:imageURL) else {
+    func fetch(imageURL: String, onImage: UIImageView, callback: @escaping () -> Void) {
+        guard let imageURL = URL(string: imageURL) else {
             callback()
             return
         }

@@ -21,4 +21,8 @@ extension UIColor {
     }
     
     static let primaryColor = UIColor(hex: 0xF7CE5B)
+    static let secondaryColor = UIColor(hex: 0x2D3047)
+    static let terciaryColor = UIColor(hex: 0xD8D8D8)
+    static let accentColor = UIColor(hex: 0xD9971E)
+    
 }

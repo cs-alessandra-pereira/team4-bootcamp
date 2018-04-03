@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Alamofire
 
 final class MoviesAPI {
     

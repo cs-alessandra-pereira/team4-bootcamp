@@ -32,13 +32,7 @@ class MovieCollectionViewCell: UICollectionViewCell {
         return view
     }()
     
-    lazy var iconButton: UIButton = {
-        let view = UIButton(frame: .zero)
-        view.setImage(UIImage(icon: .favGray), for: UIControlState.normal)
-        view.setImage(UIImage(icon: .favFull), for: UIControlState.selected)
-        view.contentMode = UIViewContentMode.scaleAspectFit
-        return view
-    }()
+    lazy var iconButton = FavoriteButton()
     
     override init(frame: CGRect) {
         super.init(frame: frame)

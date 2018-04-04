@@ -11,6 +11,8 @@
 		CD91F9D92073EE96002BB9EE /* ImageFetchable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD91F9D52073EE96002BB9EE /* ImageFetchable.swift */; };
 		CD91F9DA2073EE96002BB9EE /* MovieCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD91F9D62073EE96002BB9EE /* MovieCollectionViewCell.swift */; };
 		CD91F9DD2073F034002BB9EE /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD91F9DC2073F034002BB9EE /* SnapKit.framework */; };
+		CD91F9E220743B38002BB9EE /* FavoriteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD91F9E120743B38002BB9EE /* FavoriteButton.swift */; };
+		CD91F9E52074413C002BB9EE /* MovieListDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD91F9E42074413C002BB9EE /* MovieListDatasource.swift */; };
 		CDD41601206ABB9400988317 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD41600206ABB9400988317 /* AppDelegate.swift */; };
 		CDD41606206ABB9400988317 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDD41604206ABB9400988317 /* Main.storyboard */; };
 		CDD41609206ABB9400988317 /* Team4Bootcamp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CDD41607206ABB9400988317 /* Team4Bootcamp.xcdatamodeld */; };
@@ -51,6 +53,8 @@
 		CD91F9D52073EE96002BB9EE /* ImageFetchable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageFetchable.swift; path = Team4Bootcamp/MovieList/View/ImageFetchable.swift; sourceTree = SOURCE_ROOT; };
 		CD91F9D62073EE96002BB9EE /* MovieCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MovieCollectionViewCell.swift; path = Team4Bootcamp/MovieList/View/MovieCollectionViewCell.swift; sourceTree = SOURCE_ROOT; };
 		CD91F9DC2073F034002BB9EE /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapKit.framework; path = Carthage/Build/iOS/SnapKit.framework; sourceTree = "<group>"; };
+		CD91F9E120743B38002BB9EE /* FavoriteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FavoriteButton.swift; path = "Team4Bootcamp/Supporting Files/FavoriteButton.swift"; sourceTree = SOURCE_ROOT; };
+		CD91F9E42074413C002BB9EE /* MovieListDatasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListDatasource.swift; sourceTree = "<group>"; };
 		CDD415FD206ABB9400988317 /* Team4Bootcamp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Team4Bootcamp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDD41600206ABB9400988317 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CDD41605206ABB9400988317 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -106,12 +110,29 @@
 		CD91F9D12073EE59002BB9EE /* View */ = {
 			isa = PBXGroup;
 			children = (
+				CD91F9E020743AF5002BB9EE /* Buttons */,
 				CD91F9D42073EE96002BB9EE /* CodeView.swift */,
 				CD91F9D52073EE96002BB9EE /* ImageFetchable.swift */,
 				CD91F9D62073EE96002BB9EE /* MovieCollectionViewCell.swift */,
 			);
 			name = View;
 			path = "New Group";
+			sourceTree = "<group>";
+		};
+		CD91F9E020743AF5002BB9EE /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				CD91F9E120743B38002BB9EE /* FavoriteButton.swift */,
+			);
+			path = Buttons;
+			sourceTree = "<group>";
+		};
+		CD91F9E320744108002BB9EE /* Datasources */ = {
+			isa = PBXGroup;
+			children = (
+				CD91F9E42074413C002BB9EE /* MovieListDatasource.swift */,
+			);
+			path = Datasources;
 			sourceTree = "<group>";
 		};
 		CDD415F4206ABB9400988317 = {
@@ -195,6 +216,7 @@
 			children = (
 				CD91F9D12073EE59002BB9EE /* View */,
 				EA284CBE206D0CDC00E4D7CD /* Service */,
+				CD91F9E320744108002BB9EE /* Datasources */,
 				CDD41637206C2B7F00988317 /* Controller */,
 			);
 			path = MovieList;
@@ -398,8 +420,10 @@
 				EA284CC0206D0D0200E4D7CD /* MoviesServiceProtocol.swift in Sources */,
 				EA284CC2206D0ED400E4D7CD /* FetchResult.swift in Sources */,
 				CDD41601206ABB9400988317 /* AppDelegate.swift in Sources */,
+				CD91F9E220743B38002BB9EE /* FavoriteButton.swift in Sources */,
 				CD91F9DA2073EE96002BB9EE /* MovieCollectionViewCell.swift in Sources */,
 				CDD41636206B12FB00988317 /* Genre.swift in Sources */,
+				CD91F9E52074413C002BB9EE /* MovieListDatasource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

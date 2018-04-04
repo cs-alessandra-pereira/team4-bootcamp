@@ -22,7 +22,10 @@ class MovieListViewController: UIViewController {
     }
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
     var datasource: MovieListDatasource?
+    var delegate: MovieListDelegate?
+    
     var movieService: MoviesServiceProtocol = MoviesAPI()
     var movies: [Movie] = [] {
         didSet {
@@ -32,13 +35,18 @@ class MovieListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupDelegate()
         fetchMovies()
     }
     
     func setupDatasource() {
-        collectionView.delegate = self
         datasource = MovieListDatasource(collectioView: collectionView, movies: movies)
         collectionView.dataSource = datasource
+    }
+    
+    func setupDelegate() {
+        delegate = MovieListDelegate()
+        collectionView.delegate = delegate
     }
     
     func fetchMovies() {
@@ -53,10 +61,4 @@ class MovieListViewController: UIViewController {
         }
     }
     
-}
-
-extension MovieListViewController: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("User tapped on item \(indexPath.row)")
-    }
 }

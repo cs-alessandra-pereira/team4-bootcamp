@@ -14,7 +14,7 @@ class MovieListDatasource: NSObject, UICollectionViewDataSource {
     init(collectioView: UICollectionView, movies: [Movie]) {
         self.movies = movies
         super.init()
-        collectioView.register(MovieCollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
+        collectioView.register(MovieCollectionViewCell.self, forCellWithReuseIdentifier: MovieCollectionViewCell.movieListCell)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -23,17 +23,12 @@ class MovieListDatasource: NSObject, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as? MovieCollectionViewCell else {
-            return collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MovieCollectionViewCell.movieListCell, for: indexPath) as? MovieCollectionViewCell else {
+            return collectionView.dequeueReusableCell(withReuseIdentifier: MovieCollectionViewCell.movieListCell, for: indexPath)
         }
         
         let movie = self.movies[indexPath.row]
         cell.setup(movie: movie)
-        
-        //if let imageURL = URL(string:movie.posterPath) {
-        //    let imageResource = ImageResource(downloadURL: imageURL)
-        //    cell.imageView.kf.setImage(with: imageResource)
-        //}
         
         return cell
     }

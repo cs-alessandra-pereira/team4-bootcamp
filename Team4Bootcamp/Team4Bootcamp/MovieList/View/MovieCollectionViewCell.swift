@@ -14,6 +14,8 @@ class MovieCollectionViewCell: UICollectionViewCell {
     
     let imageFetchable: ImageFetchable = KFImageFetchable()
     
+    static let movieListCell = "MovieCell"
+    
     lazy var imageView: UIImageView = {
         let view = UIImageView(frame: .zero)
         view.contentMode = UIViewContentMode.scaleToFill

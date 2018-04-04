@@ -10,7 +10,7 @@ import UIKit
 import Kingfisher
 import SnapKit
 
-class MovieCollectionViewCell: UICollectionViewCell {
+final class MovieCollectionViewCell: UICollectionViewCell {
     
     let imageFetchable: ImageFetchable = KFImageFetchable()
     

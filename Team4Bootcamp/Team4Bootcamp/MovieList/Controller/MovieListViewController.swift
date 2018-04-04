@@ -23,8 +23,8 @@ class MovieListViewController: UIViewController {
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
-    var datasource: MovieListDatasource?
-    var delegate: MovieListDelegate?
+    var datasource: UICollectionViewDataSource?
+    var delegate: UICollectionViewDelegate?
     
     var movieService: MoviesServiceProtocol = MoviesAPI()
     var movies: [Movie] = [] {

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MovieListDatasource: NSObject, UICollectionViewDataSource {
+final class MovieListDatasource: NSObject, UICollectionViewDataSource {
     let movies: [Movie]
     
     init(collectioView: UICollectionView, movies: [Movie]) {

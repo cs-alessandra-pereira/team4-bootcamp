@@ -122,11 +122,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Team4Bootcamp/MovieList/View/MovieCollectionViewCell.swift"
-            timestampString = "544544073.565315"
+            timestampString = "544559331.5340919"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "65"
-            endingLineNumber = "65"
+            startingLineNumber = "67"
+            endingLineNumber = "67"
             landmarkName = "buildConstraints()"
             landmarkType = "7">
             <Locations>
@@ -166,7 +166,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Team4Bootcamp/MovieList/View/ImageFetchable.swift"
@@ -182,7 +182,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Team4Bootcamp/MovieList/View/ImageFetchable.swift"
@@ -198,7 +198,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Team4Bootcamp/MovieList/View/ImageFetchable.swift"
@@ -214,7 +214,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Team4Bootcamp/MovieList/View/ImageFetchable.swift"
@@ -227,14 +227,14 @@
             landmarkType = "7">
             <Locations>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "Team4Bootcamp.KFImageFetchable.fetch(imageURL: Swift.String, onImage: __ObjC.UIImageView, callback: () -&gt; ()) -&gt; ()"
                   moduleName = "Team4Bootcamp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/a.portela.rodrigues/Developer/DesafioNewHire/team4-bootcamp/Team4Bootcamp/Team4Bootcamp/MovieList/View/ImageFetchable.swift"
-                  timestampString = "544544073.6994359"
+                  timestampString = "544557993.27411"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "23"
@@ -242,14 +242,14 @@
                   offsetFromSymbolStart = "239">
                </Location>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "closure #1 (Swift.Optional&lt;__ObjC.UIImage&gt;, Swift.Optional&lt;__ObjC.NSError&gt;, Kingfisher.CacheType, Swift.Optional&lt;Foundation.URL&gt;) -&gt; () in Team4Bootcamp.KFImageFetchable.fetch(imageURL: Swift.String, onImage: __ObjC.UIImageView, callback: () -&gt; ()) -&gt; ()"
                   moduleName = "Team4Bootcamp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/a.portela.rodrigues/Developer/DesafioNewHire/team4-bootcamp/Team4Bootcamp/Team4Bootcamp/MovieList/View/ImageFetchable.swift"
-                  timestampString = "544544073.70198"
+                  timestampString = "544557993.277866"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "24"
@@ -266,7 +266,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Team4Bootcamp/MovieList/Controller/MovieListViewController.swift"
-            timestampString = "544544073.565436"
+            timestampString = "544559331.534222"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "32"
@@ -282,7 +282,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Team4Bootcamp/MovieList/Controller/MovieListViewController.swift"
-            timestampString = "544544073.565756"
+            timestampString = "544559331.534582"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "53"
@@ -298,7 +298,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Team4Bootcamp/MovieList/Controller/MovieListViewController.swift"
-            timestampString = "544544073.565984"
+            timestampString = "544559331.534851"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "44"

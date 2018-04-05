@@ -27,9 +27,14 @@ class MovieListViewController: UIViewController {
     var delegate: UICollectionViewDelegate?
     
     var movieService: MoviesServiceProtocol = MoviesAPI()
-    var genres: [Int:String] = [:]
+    var genres: Genres = [:] {
+        didSet {
+            fetchMovies()
+        }
+    }
     var movies: [Movie] = [] {
         didSet {
+            //-->> método para mapear string dos generos nos filmes
             setupDatasource()
         }
     }
@@ -37,7 +42,8 @@ class MovieListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupDelegate()
-        fetchMovies()
+        //fetchMovies()
+        fetchGenres()
     }
     
     func setupDatasource() {
@@ -51,21 +57,42 @@ class MovieListViewController: UIViewController {
     }
     
     func fetchMovies() {
-        self.activityIndicator.isHidden = false
-        self.activityIndicator.startAnimating()
-        self.collectionView.isHidden = true
         movieService.fetchMovies { movies in
-            self.collectionView.isHidden = false
-            self.activityIndicator.stopAnimating()
-            self.activityIndicator.isHidden = true
             self.movies = movies
+            self.state = .initial
         }
     }
     
     func fetchGenres() {
-        self.activityIndicator.isHidden = false
-        self.activityIndicator.startAnimating()
-        self.collectionView.isHidden = true
+        self.state = .loading
+        movieService.fetchGenres { self.genres = $0 }
     }
+    
+    private enum UIState {
+        case initial
+        case error
+        case loading
+    }
+    
+    private var state: UIState = .initial {
+        didSet {
+            switch state {
+            case .initial:
+                activityIndicator.stopAnimating()
+                self.activityIndicator.isHidden = true
+                collectionView.isHidden = false
+            case .loading:
+                collectionView.isHidden = true
+                activityIndicator.isHidden = false
+                activityIndicator.startAnimating()
+            case .error:
+                activityIndicator.stopAnimating()
+                self.activityIndicator.isHidden = true
+                collectionView.isHidden = false
+                //Tratar tela para erro
+            }
+        }
+    }
+    
     
 }

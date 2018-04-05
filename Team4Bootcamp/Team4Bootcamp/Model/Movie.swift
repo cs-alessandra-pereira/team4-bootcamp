@@ -9,6 +9,7 @@
 import Foundation
 
 struct Movie {
+    
     let id: Int
     let title: String
     let releaseDate: Date
@@ -26,7 +27,7 @@ struct Movie {
     }
 }
 
-extension Movie : Decodable {
+extension Movie: Decodable {
     init(from decoder: Decoder) throws {
         
         let values = try decoder.container(keyedBy: CodingKeys.self)
@@ -37,6 +38,9 @@ extension Movie : Decodable {
         posterPath = try values.decode(String.self, forKey: .posterPath)
         
         let dateString = try values.decode(String.self, forKey: .releaseDate)
+        
+        let asd = dateString.split(separator: "-")
+        
         let genreIds = try values.decode([Int].self, forKey: .genresIds)
         
         var genres: [String] = []

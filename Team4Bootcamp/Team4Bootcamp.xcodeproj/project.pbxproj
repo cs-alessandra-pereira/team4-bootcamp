@@ -21,7 +21,7 @@
 		CDD41619206ABB9400988317 /* Team4BootcampTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD41618206ABB9400988317 /* Team4BootcampTests.swift */; };
 		CDD41624206ABB9400988317 /* Team4BootcampUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD41623206ABB9400988317 /* Team4BootcampUITests.swift */; };
 		CDD41634206B110300988317 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD41633206B110300988317 /* Movie.swift */; };
-		CDD41636206B12FB00988317 /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD41635206B12FB00988317 /* Genre.swift */; };
+		CDD41636206B12FB00988317 /* Genres.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD41635206B12FB00988317 /* Genres.swift */; };
 		CDD4163B206C491500988317 /* MovieListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD4163A206C491500988317 /* MovieListViewController.swift */; };
 		CDD4163E206C4E6D00988317 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD4163D206C4E6D00988317 /* Extensions.swift */; };
 		EA284CC0206D0D0200E4D7CD /* MoviesServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA284CBF206D0D0200E4D7CD /* MoviesServiceProtocol.swift */; };
@@ -70,7 +70,7 @@
 		CDD41623206ABB9400988317 /* Team4BootcampUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team4BootcampUITests.swift; sourceTree = "<group>"; };
 		CDD41625206ABB9400988317 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CDD41633206B110300988317 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
-		CDD41635206B12FB00988317 /* Genre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genre.swift; sourceTree = "<group>"; };
+		CDD41635206B12FB00988317 /* Genres.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genres.swift; sourceTree = "<group>"; };
 		CDD4163A206C491500988317 /* MovieListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListViewController.swift; sourceTree = "<group>"; };
 		CDD4163D206C4E6D00988317 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		EA284CBF206D0D0200E4D7CD /* MoviesServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesServiceProtocol.swift; sourceTree = "<group>"; };
@@ -192,7 +192,7 @@
 			isa = PBXGroup;
 			children = (
 				CDD41633206B110300988317 /* Movie.swift */,
-				CDD41635206B12FB00988317 /* Genre.swift */,
+				CDD41635206B12FB00988317 /* Genres.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -434,7 +434,7 @@
 				CDD41601206ABB9400988317 /* AppDelegate.swift in Sources */,
 				CD91F9E220743B38002BB9EE /* FavoriteButton.swift in Sources */,
 				CD91F9DA2073EE96002BB9EE /* MovieCollectionViewCell.swift in Sources */,
-				CDD41636206B12FB00988317 /* Genre.swift in Sources */,
+				CDD41636206B12FB00988317 /* Genres.swift in Sources */,
 				CD91F9E52074413C002BB9EE /* MovieListDatasource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

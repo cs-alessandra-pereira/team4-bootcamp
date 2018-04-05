@@ -40,7 +40,8 @@ extension MoviesAPI: MoviesServiceProtocol {
         request(endpoint: MoviesConstants.Endpoints.movieList) { result in
             switch result {
             case .success(let movieListJson):
-                let movies = movieListJson.results.map { Movie(id: $0.id, title: $0.title, releaseDate: $0.release_date, genresIds: $0.genre_ids, overview: $0.overview, posterPath: $0.poster_path) }
+                //let movies = movieListJson.results.map { Movie(id: $0.id, title: $0.title, releaseDate: $0.release_date, genresIds: $0.genre_ids, overview: $0.overview, posterPath: $0.poster_path) }
+                let movies = movieListJson.results
                 DispatchQueue.main.async {
                     callback(movies)
                 }
@@ -57,21 +58,24 @@ extension MoviesAPI: MoviesServiceProtocol {
     }
 }
 
-struct MovieListWrapper: Codable {
-    //let success: Bool
+struct MovieListWrapper: Decodable {
     let page: Int
     let total_results: Int
     let total_pages: Int
-    let results: [MovieWrapper]
+    let results: [Movie]
 }
-struct MovieWrapper: Codable {
+
+struct GenresWrapper: Decodable {
+    let
+}
+/*struct MovieWrapper: Codable {
     let id: Int
     let title: String
     let release_date: String
     let genre_ids: [Int]
     let overview: String
     let poster_path: String
-}
+}*/
 
 /*"vote_count": 1126,
  "id": 337167,

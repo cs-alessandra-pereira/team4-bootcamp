@@ -15,6 +15,7 @@ struct MoviesConstants {
     static let imgBaseURL = "https://image.tmdb.org/t/p/w500"
     
     enum Endpoints {
+        
         case movieList
         case moviePoster(String)
         case genre
@@ -24,7 +25,7 @@ struct MoviesConstants {
             case .movieList:
                 return "movie/popular?api_key=\(MoviesConstants.apiKey)&language=en-US&page=1"
             case .genre:
-                return ""
+                return "genre/movie/list?api_key=\(MoviesConstants.apiKey)&language=en-US"
             case .moviePoster(let posterPath):
                 return "\(MoviesConstants.imgBaseURL)\(posterPath)"
             }

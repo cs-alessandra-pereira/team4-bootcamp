@@ -27,6 +27,7 @@ class MovieListViewController: UIViewController {
     var delegate: UICollectionViewDelegate?
     
     var movieService: MoviesServiceProtocol = MoviesAPI()
+    var genres: [Int:String] = [:]
     var movies: [Movie] = [] {
         didSet {
             setupDatasource()
@@ -59,6 +60,12 @@ class MovieListViewController: UIViewController {
             self.activityIndicator.isHidden = true
             self.movies = movies
         }
+    }
+    
+    func fetchGenres() {
+        self.activityIndicator.isHidden = false
+        self.activityIndicator.startAnimating()
+        self.collectionView.isHidden = true
     }
     
 }

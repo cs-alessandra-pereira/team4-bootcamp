@@ -13,7 +13,7 @@ struct Movie {
     let id: Int
     let title: String
     let releaseDate: Date
-    let genres: [String]
+    var genres: [Genre]
     let overview: String
     let posterPath: String
     
@@ -21,7 +21,7 @@ struct Movie {
         case id
         case title
         case releaseDate = "release_date"
-        case genresIds = "genre_ids"
+        case genresIDs = "genre_ids"
         case overview
         case posterPath = "poster_path"
     }
@@ -41,16 +41,14 @@ extension Movie: Decodable {
         
         let asd = dateString.split(separator: "-")
         
-        let genreIds = try values.decode([Int].self, forKey: .genresIds)
-        
-        var genres: [String] = []
-        
-        for id in genreIds {
-            //TO-DO - Map genres id to strings obtained by a previous request
-            genres.append(String(id))
+        let genreIDs = try values.decode([Int].self, forKey: .genresIDs)
+        var genres: [Genre] = []
+        for id in genreIDs {
+            genres.append(Genre(id: id))
         }
-        
         self.genres = genres
+
+        
         //TO_DO - Convert to proper date
         releaseDate = Date()
     }

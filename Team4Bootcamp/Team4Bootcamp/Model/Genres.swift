@@ -10,4 +10,19 @@ import Foundation
 
 typealias GenreName = String
 typealias GenreId = Int
-typealias Genres = [GenreId: GenreName]
+
+struct Genre: Decodable {
+    
+    let id: Int
+    var name: String
+    
+    init(id: Int) {
+        self.id = id
+        self.name = ""
+    }
+    
+    init(id: Int, name: String) {
+        self.id = id
+        self.name = name
+    }
+}

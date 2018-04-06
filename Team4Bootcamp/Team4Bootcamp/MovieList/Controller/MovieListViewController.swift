@@ -27,14 +27,13 @@ class MovieListViewController: UIViewController {
     var delegate: UICollectionViewDelegate?
     
     var movieService: MoviesServiceProtocol = MoviesAPI()
-    var genres: Genres = [:] {
+    var genres: [GenreId: GenreName] = [:] {
         didSet {
             fetchMovies()
         }
     }
     var movies: [Movie] = [] {
         didSet {
-            //-->> método para mapear string dos generos nos filmes
             setupDatasource()
         }
     }
@@ -58,7 +57,7 @@ class MovieListViewController: UIViewController {
     
     func fetchMovies() {
         movieService.fetchMovies { movies in
-            self.movies = movies
+            self.movies = self.fillMoviesWithGenreNames(genreList: self.genres, movieList: movies)
             self.state = .initial
         }
     }
@@ -94,5 +93,25 @@ class MovieListViewController: UIViewController {
         }
     }
     
-    
+    func fillMoviesWithGenreNames(genreList: [GenreId: GenreName], movieList: [Movie]) -> [Movie] {
+        //Usar inout ou atribuir a uma nova var?
+        var filledMovieList: [Movie] = []
+        
+        for var movie in movieList {
+            
+            var genres: [Genre] = []
+            
+            for var genre in movie.genres {
+                if let name = genreList[genre.id] {
+                    genre.name = name
+                    genres.append(genre)
+                }
+            }
+            
+            movie.genres = genres
+            filledMovieList.append(movie)
+        }
+        
+        return filledMovieList
+    }
 }

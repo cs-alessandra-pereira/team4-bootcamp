@@ -46,12 +46,12 @@ final class MoviesAPI {
 }
 
 extension MoviesAPI: MoviesServiceProtocol {
-    func fetchGenres(callback: @escaping ([GenreId:GenreName]) -> Void) {
+    func fetchGenres(callback: @escaping ([GenreId: GenreName]) -> Void) {
         request(endpoint: MoviesConstants.Endpoints.genre) { result in
             switch result {
             case .success(let genres):
                 guard let genresWrapper = genres as? GenresWrapper else {
-                    DispatchQueue.main.async { callback(Genres()) }
+                    DispatchQueue.main.async { callback([GenreId: GenreName]()) }
                     return
                 }
                 DispatchQueue.main.async {
@@ -60,7 +60,7 @@ extension MoviesAPI: MoviesServiceProtocol {
                 }
             case .error:
                 DispatchQueue.main.async {
-                    callback(Genres())
+                    callback([GenreId: GenreName]())
                 }
             }
         }
@@ -71,7 +71,7 @@ extension MoviesAPI: MoviesServiceProtocol {
             
             switch result {
             case .success(let movieListJson):
-                guard let movieList = movieListJson as? MovieListWrapper else{
+                guard let movieList = movieListJson as? MovieListWrapper else {
                     DispatchQueue.main.async { callback([]) }
                     return
                 }
@@ -89,16 +89,11 @@ struct MovieListWrapper: Decodable {
 
 struct GenresWrapper: Decodable {
     
-    var genreDictionary: Genres = [:]
-    
-    struct Genre: Decodable {
-        let id: GenreId
-        let name: GenreName
-    }
+    var genreDictionary: [GenreId: GenreName] = [:]
     
     private enum CodingKeys: String, CodingKey {
         case id
-        case title
+        case name
         case genres
     }
     

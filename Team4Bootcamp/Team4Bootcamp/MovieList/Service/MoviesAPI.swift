@@ -23,25 +23,37 @@ final class MoviesAPI {
                 callback(.error(APIError.invalidData))
                 return
             }
-            
-            let decoder = JSONDecoder()
-            
-            do {
-                switch endpoint {
-                case .movieList:
-                    let decodableResponse = try decoder.decode(MovieListWrapper.self, from: data)
-                    callback(.success(decodableResponse))
-                case .genre:
-                    let decodableResponse = try decoder.decode(GenresWrapper.self, from: data)
-                    callback(.success(decodableResponse))
-                default:
-                    break
-                }
-            } catch {
+
+            let content = self.decodeContent(from: data, withEndpoint: endpoint)
+            if let response = content.response {
+                callback(.success(response))
+            } else if let error = content.error {
                 callback(.error(APIError.parseError(error.localizedDescription)))
             }
+            
         }
         task.resume()
+    }
+    
+    func decodeContent(from data: Data, withEndpoint endpoint: Endpoints) -> (response: Any?, error: Error?) {
+        
+        let decoder = JSONDecoder()
+        
+        do {
+            switch endpoint {
+            case .movieList:
+                let decodableResponse = try decoder.decode(MovieListWrapper.self, from: data)
+                return (decodableResponse, nil)
+            case .genre:
+                let decodableResponse = try decoder.decode(GenresWrapper.self, from: data)
+                return (decodableResponse, nil)
+            default:
+                break
+            }
+        } catch {
+            return (nil, error)
+        }
+        return (nil, APIError.invalidData)
     }
 }
 

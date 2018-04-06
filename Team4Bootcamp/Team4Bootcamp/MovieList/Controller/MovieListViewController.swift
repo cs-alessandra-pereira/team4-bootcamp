@@ -96,18 +96,14 @@ class MovieListViewController: UIViewController {
     func fillMoviesWithGenreNames(genreList: [GenreId: GenreName], movieList: [Movie]) -> [Movie] {
         //Usar inout ou atribuir a uma nova var?
         var filledMovieList: [Movie] = []
-        
         for var movie in movieList {
-            
             var genres: [Genre] = []
-            
             for var genre in movie.genres {
                 if let name = genreList[genre.id] {
                     genre.name = name
                     genres.append(genre)
                 }
             }
-            
             movie.genres = genres
             filledMovieList.append(movie)
         }

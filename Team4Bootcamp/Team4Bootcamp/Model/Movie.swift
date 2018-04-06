@@ -39,7 +39,7 @@ extension Movie: Decodable {
         
         let dateString = try values.decode(String.self, forKey: .releaseDate)
         
-        let asd = dateString.split(separator: "-")
+        releaseDate = Date.getDateFromString(dateString: dateString)
         
         let genreIDs = try values.decode([Int].self, forKey: .genresIDs)
         var genres: [Genre] = []
@@ -47,9 +47,5 @@ extension Movie: Decodable {
             genres.append(Genre(id: id))
         }
         self.genres = genres
-
-        
-        //TO_DO - Convert to proper date
-        releaseDate = Date()
     }
 }

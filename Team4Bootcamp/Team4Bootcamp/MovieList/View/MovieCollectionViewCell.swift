@@ -47,7 +47,7 @@ final class MovieCollectionViewCell: UICollectionViewCell {
     
     func setup(movie: Movie) {
         textLabel.text = movie.title
-        let path = MoviesConstants.Endpoints.moviePoster(movie.posterPath).path
+        let path = Endpoints.moviePoster(movie.posterPath).path
         imageFetchable.fetch(imageURL: path, onImage: imageView) {}
     }
 }

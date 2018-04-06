@@ -10,7 +10,7 @@ import Foundation
 
 final class MoviesAPI {
     
-    fileprivate func request(endpoint: MoviesConstants.Endpoints, callback: @escaping (FetchResult<Any, APIError>) -> Void) {
+    fileprivate func request(endpoint: Endpoints, callback: @escaping (FetchResult<Any, APIError>) -> Void) {
         let url = URL(string: "\(MoviesConstants.baseURL)\(endpoint.path)")!
         let request = URLRequest(url: url)
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
@@ -47,7 +47,7 @@ final class MoviesAPI {
 
 extension MoviesAPI: MoviesServiceProtocol {
     func fetchGenres(callback: @escaping ([GenreId: GenreName]) -> Void) {
-        request(endpoint: MoviesConstants.Endpoints.genre) { result in
+        request(endpoint: Endpoints.genre) { result in
             switch result {
             case .success(let genres):
                 guard let genresWrapper = genres as? GenresWrapper else {
@@ -67,7 +67,7 @@ extension MoviesAPI: MoviesServiceProtocol {
     }
     
     func fetchMovies(callback: @escaping ([Movie]) -> Void) {
-        request(endpoint: MoviesConstants.Endpoints.movieList) { result in
+        request(endpoint: Endpoints.movieList) { result in
             
             switch result {
             case .success(let movieListJson):

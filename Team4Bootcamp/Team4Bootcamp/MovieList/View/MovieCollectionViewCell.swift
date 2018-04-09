@@ -16,12 +16,26 @@ class MovieCollectionViewCell: UICollectionViewCell {
     
     lazy var imageView: UIImageView = {
         let view = UIImageView(frame: .zero)
-        view.contentMode = UIViewContentMode.scaleToFill
+        view.contentMode = UIViewContentMode.scaleToFill //FIXME: Tales - imagem está distorcendo.
+        // Usar `scaleAspectFit` ou `scaleAspectFill` é melhor
+        
+        //FIXME: Tales - é boa pratica adicionar a linha
+        // `view.translatesAutoresizingMaskIntoConstraints = false`
+        // Como vocês estão usando constraints via código, isso evita que o sistema de autolayout crie automaticamente
+        // constraints faltantes com base no sistema de auto resizing mask - a forma "arcaica" de fazer views se
+        // redimensionarem. Sem essa linha, se você esquece de adicionar uma constraint, ele cria automaticamente,
+        // mas vai se comportar de maneiras bizarras e não vai saber porque. Se adicionar essa linha, ao executar o app
+        // vai dar um warning de constraint faltante/ambigua no console, facilitando corrigir as constraints no
+        // desenvolvimento
         return view
     }()
     
     lazy var textLabel: UILabel = {
         let view = UILabel(frame: .zero)
+        //FIXME: Tales - é boa pratica adicionar a linha
+        // `view.translatesAutoresizingMaskIntoConstraints = false`
+        // Outro ponto, por organização e performance, é colocar essas configurações de cor, linhas, etc no método
+        // `configure()` do seu protocolo `CodeView` - reimplementar aqui
         view.sizeToFit()
         view.textColor = UIColor.primaryColor
         view.numberOfLines = 2
@@ -34,6 +48,8 @@ class MovieCollectionViewCell: UICollectionViewCell {
     
     lazy var iconButton: UIButton = {
         let view = UIButton(frame: .zero)
+        //FIXME: Tales - é boa pratica adicionar a linha
+        // `view.translatesAutoresizingMaskIntoConstraints = false`
         view.setImage(UIImage(icon: .favGray), for: UIControlState.normal)
         view.setImage(UIImage(icon: .favFull), for: UIControlState.selected)
         view.contentMode = UIViewContentMode.scaleAspectFit

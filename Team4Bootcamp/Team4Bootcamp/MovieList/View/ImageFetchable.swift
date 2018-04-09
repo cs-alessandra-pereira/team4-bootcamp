@@ -14,8 +14,11 @@ protocol ImageFetchable {
 }
 
 final class KFImageFetchable: ImageFetchable {
+    //FIXME: Tales - imageURL passa a impressão de ser necessário uma URL, não uma string
+    // um padrão melhor é nomear tipos "ambiguos" de forma mais clara: `imageURLString`
     func fetch(imageURL: String, onImage: UIImageView, callback: @escaping () -> Void) {
         guard let imageURL = URL(string: imageURL) else {
+            //FIXME: Tales - imagem de erro? placeholder?
             callback()
             return
         }
@@ -25,6 +28,7 @@ final class KFImageFetchable: ImageFetchable {
                 onImage.image = image
             }
             callback()
+            //FIXME: o que acontece com erro de download?
         }
     }
 }

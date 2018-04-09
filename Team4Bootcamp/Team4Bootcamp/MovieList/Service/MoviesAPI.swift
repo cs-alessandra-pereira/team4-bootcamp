@@ -36,6 +36,8 @@ final class MoviesAPI {
 }
 
 extension MoviesAPI: MoviesServiceProtocol {
+    //FIXME: Tales - não faz paginação? apenas a primeira pagina de dados na request...
+    // `page=1` no endpoint `movieList`
     func fetchMovies(callback: @escaping ([Movie]) -> Void) {
         request(endpoint: MoviesConstants.Endpoints.movieList) { result in
             switch result {
@@ -46,6 +48,7 @@ extension MoviesAPI: MoviesServiceProtocol {
                 }
             case .error:
                 DispatchQueue.main.async {
+                    //FIXME: Tales - vale um tratamento de erros melhor - o que acontece numa busca vazia? timout?
                     callback([])
                 }
             }
@@ -53,10 +56,11 @@ extension MoviesAPI: MoviesServiceProtocol {
     }
     
     func fetchPosterImage(forMovie movie: Movie, callback: @escaping (FetchResult<[Movie], APIError>) -> Void) {
-        
+        //FIXME: Tales - método não usado ou não implementado? Se desnecessario, remover - mantenha o código limpo
     }
 }
 
+//FIXME: Tales - mover para outro arquivo, organização do código
 struct MovieListWrapper: Codable {
     //let success: Bool
     let page: Int
@@ -72,7 +76,8 @@ struct MovieWrapper: Codable {
     let overview: String
     let poster_path: String
 }
-
+//FIXME: Tales - evitem deixar comentários assim no código
+// fizeram pensando em testes? projeto não tem testes...
 /*"vote_count": 1126,
  "id": 337167,
  "video": false,

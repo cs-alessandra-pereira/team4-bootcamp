@@ -7,9 +7,11 @@
 //
 
 import UIKit
-
+//FIXME: Tales - evitem deixar um monte de extensões num unico arquivo - organização do projeto
 extension UIColor {
     convenience init(red: Int, green: Int, blue: Int) {
+        //FIXME: Tales - `precondition` ou `preconditionFailure` são opções melhores: vejam
+        // https://www.swiftbysundell.com/posts/picking-the-right-way-of-failing-in-swift
         assert(red >= 0 && red <= 255, "Invalid red component")
         assert(green >= 0 && green <= 255, "Invalid green component")
         assert(blue >= 0 && blue <= 255, "Invalid blue component")

@@ -20,6 +20,7 @@ class FavoriteButton: UIButton {
     }
     
     func setupView() {
+        self.translatesAutoresizingMaskIntoConstraints = false
         self.setImage(UIImage(icon: .favGray), for: UIControlState.normal)
         self.setImage(UIImage(icon: .favFull), for: UIControlState.selected)
         self.contentMode = UIViewContentMode.scaleAspectFit

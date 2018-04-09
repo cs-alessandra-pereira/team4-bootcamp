@@ -89,7 +89,9 @@ extension MoviesAPI: MoviesServiceProtocol {
                 }
                 DispatchQueue.main.async { callback(movieList.results) }
             case .error:
-                DispatchQueue.main.async { callback([]) }
+                DispatchQueue.main.async {
+                    //FIXME: Tales - vale um tratamento de erros melhor - o que acontece numa busca vazia? timout?
+                    callback([]) }
             }
         }
     }

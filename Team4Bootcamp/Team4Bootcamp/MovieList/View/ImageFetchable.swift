@@ -10,12 +10,13 @@ import UIKit
 import Kingfisher
 
 protocol ImageFetchable {
-    func fetch(imageURL: String, onImage: UIImageView, callback: @escaping () -> Void)
+    func fetch(imageURLString: String, onImage: UIImageView, callback: @escaping () -> Void)
 }
 
 final class KFImageFetchable: ImageFetchable {
-    func fetch(imageURL: String, onImage: UIImageView, callback: @escaping () -> Void) {
-        guard let imageURL = URL(string: imageURL) else {
+    func fetch(imageURLString: String, onImage: UIImageView, callback: @escaping () -> Void) {
+        guard let imageURL = URL(string: imageURLString) else {
+            //FIXME: Tales - imagem de erro? placeholder?
             callback()
             return
         }
@@ -25,6 +26,7 @@ final class KFImageFetchable: ImageFetchable {
                 onImage.image = image
             }
             callback()
+            //FIXME: o que acontece com erro de download?
         }
     }
 }

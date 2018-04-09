@@ -41,7 +41,6 @@ class MovieListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupDelegate()
-        //fetchMovies()
         fetchGenres()
     }
     
@@ -88,7 +87,6 @@ class MovieListViewController: UIViewController {
                 activityIndicator.stopAnimating()
                 self.activityIndicator.isHidden = true
                 collectionView.isHidden = false
-                //Tratar tela para erro
             }
         }
     }

@@ -27,11 +27,6 @@ class MovieListViewController: UIViewController {
     var delegate: UICollectionViewDelegate?
     
     var movieService: MoviesServiceProtocol = MoviesAPI()
-    var genres: [GenreId: GenreName] = [:] {
-        didSet {
-            fetchMovies()
-        }
-    }
     var movies: [Movie] = [] {
         didSet {
             setupDatasource()
@@ -41,8 +36,8 @@ class MovieListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupDelegate()
-        //fetchMovies()
         fetchGenres()
+        fetchMovies()
     }
     
     func setupDatasource() {
@@ -51,20 +46,23 @@ class MovieListViewController: UIViewController {
     }
     
     func setupDelegate() {
-        delegate = MovieListDelegate()
+        delegate = MovieListDelegate(viewController: self)
         collectionView.delegate = delegate
     }
     
     func fetchMovies() {
         movieService.fetchMovies { movies in
-            self.movies = self.fillMoviesWithGenreNames(genreList: self.genres, movieList: movies)
+            self.movies = movies
             self.state = .initial
         }
     }
     
     func fetchGenres() {
         self.state = .loading
-        movieService.fetchGenres { self.genres = $0 }
+        movieService.fetchGenres {
+            Genre.allGenres = $0
+            self.state = .initial
+        }
     }
     
     private enum UIState {
@@ -109,5 +107,10 @@ class MovieListViewController: UIViewController {
         }
         
         return filledMovieList
+    }
+    
+    func proceedToDetailsView(movie: Movie) {
+        let controller = MovieDetailsViewController(movie: movie)
+        navigationController?.pushViewController(controller, animated: true)
     }
 }

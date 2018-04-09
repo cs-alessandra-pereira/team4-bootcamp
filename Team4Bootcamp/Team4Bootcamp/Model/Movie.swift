@@ -25,6 +25,27 @@ struct Movie {
         case overview
         case posterPath = "poster_path"
     }
+    
+    func genresNameAsString() -> String {
+        let genreList = Genre.allGenres
+        var genresNames: String = ""
+        for genre in genres {
+            if let name = genreList[genre.id] {
+                genresNames += "\(name), "
+            }
+        }
+        let indexToRemove = genresNames.index(genresNames.endIndex, offsetBy: -1)
+        genresNames.remove(at: genresNames.index(before: indexToRemove))
+        return genresNames
+    }
+    
+    func releaseYearAsString() -> String {
+        let yearFormatter = DateFormatter()
+        yearFormatter.dateFormat = "yyyy"
+        let date = yearFormatter.string(from: releaseDate)
+        return date
+    }
+
 }
 
 extension Movie: Decodable {

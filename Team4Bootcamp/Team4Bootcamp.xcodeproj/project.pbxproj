@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CD1D7F29207BFAD1009722FA /* MovieDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1D7F28207BFAD1009722FA /* MovieDetailsViewController.swift */; };
+		CD1D7F2B207BFADD009722FA /* MovieDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1D7F2A207BFADD009722FA /* MovieDetailsView.swift */; };
+		CD1D7F2D207BFAE5009722FA /* MovieDetailsDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1D7F2C207BFAE5009722FA /* MovieDetailsDatasource.swift */; };
 		CD91F9D82073EE96002BB9EE /* CodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD91F9D42073EE96002BB9EE /* CodeView.swift */; };
 		CD91F9D92073EE96002BB9EE /* ImageFetchable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD91F9D52073EE96002BB9EE /* ImageFetchable.swift */; };
 		CD91F9DA2073EE96002BB9EE /* MovieCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD91F9D62073EE96002BB9EE /* MovieCollectionViewCell.swift */; };
@@ -70,6 +73,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		CD1D7F28207BFAD1009722FA /* MovieDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MovieDetailsViewController.swift; path = Team4Bootcamp/MovieDetails/Controller/MovieDetailsViewController.swift; sourceTree = SOURCE_ROOT; };
+		CD1D7F2A207BFADD009722FA /* MovieDetailsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MovieDetailsView.swift; path = Team4Bootcamp/MovieDetails/View/MovieDetailsView.swift; sourceTree = SOURCE_ROOT; };
+		CD1D7F2C207BFAE5009722FA /* MovieDetailsDatasource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MovieDetailsDatasource.swift; path = Team4Bootcamp/MovieDetails/Datasource/MovieDetailsDatasource.swift; sourceTree = SOURCE_ROOT; };
 		CD91F9D42073EE96002BB9EE /* CodeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CodeView.swift; path = Team4Bootcamp/MovieList/View/CodeView.swift; sourceTree = SOURCE_ROOT; };
 		CD91F9D52073EE96002BB9EE /* ImageFetchable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageFetchable.swift; path = Team4Bootcamp/MovieList/View/ImageFetchable.swift; sourceTree = SOURCE_ROOT; };
 		CD91F9D62073EE96002BB9EE /* MovieCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MovieCollectionViewCell.swift; path = Team4Bootcamp/MovieList/View/MovieCollectionViewCell.swift; sourceTree = SOURCE_ROOT; };
@@ -135,6 +141,41 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CD1D7F1E207BAEF2009722FA /* MovieDetails */ = {
+			isa = PBXGroup;
+			children = (
+				CD1D7F25207BB04C009722FA /* Controller */,
+				CD1D7F22207BB013009722FA /* View */,
+				CD1D7F1F207BAEFD009722FA /* Datasource */,
+			);
+			name = MovieDetails;
+			path = "Movie Details";
+			sourceTree = "<group>";
+		};
+		CD1D7F1F207BAEFD009722FA /* Datasource */ = {
+			isa = PBXGroup;
+			children = (
+				CD1D7F2C207BFAE5009722FA /* MovieDetailsDatasource.swift */,
+			);
+			path = Datasource;
+			sourceTree = "<group>";
+		};
+		CD1D7F22207BB013009722FA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CD1D7F2A207BFADD009722FA /* MovieDetailsView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CD1D7F25207BB04C009722FA /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				CD1D7F28207BFAD1009722FA /* MovieDetailsViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		CD91F9D12073EE59002BB9EE /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -187,6 +228,7 @@
 		CDD415FF206ABB9400988317 /* Team4Bootcamp */ = {
 			isa = PBXGroup;
 			children = (
+				CD1D7F1E207BAEF2009722FA /* MovieDetails */,
 				EA284CBB206D072300E4D7CD /* MovieList */,
 				CDD4163C206C4E2000988317 /* Extensions */,
 				CDD41632206B108B00988317 /* Model */,
@@ -469,7 +511,9 @@
 			files = (
 				CD91F9D92073EE96002BB9EE /* ImageFetchable.swift in Sources */,
 				CDD41609206ABB9400988317 /* Team4Bootcamp.xcdatamodeld in Sources */,
+				CD1D7F29207BFAD1009722FA /* MovieDetailsViewController.swift in Sources */,
 				CDD41634206B110300988317 /* Movie.swift in Sources */,
+				CD1D7F2B207BFADD009722FA /* MovieDetailsView.swift in Sources */,
 				EA284CC4206D106B00E4D7CD /* MoviesAPI.swift in Sources */,
 				CDD4163B206C491500988317 /* MovieListViewController.swift in Sources */,
 				CDD4163E206C4E6D00988317 /* Extensions.swift in Sources */,
@@ -481,6 +525,7 @@
 				EA284CC2206D0ED400E4D7CD /* FetchResult.swift in Sources */,
 				CDD41601206ABB9400988317 /* AppDelegate.swift in Sources */,
 				CD91F9E220743B38002BB9EE /* FavoriteButton.swift in Sources */,
+				CD1D7F2D207BFAE5009722FA /* MovieDetailsDatasource.swift in Sources */,
 				CD91F9DA2073EE96002BB9EE /* MovieCollectionViewCell.swift in Sources */,
 				CDD41636206B12FB00988317 /* Genres.swift in Sources */,
 				CD91F9E52074413C002BB9EE /* MovieListDatasource.swift in Sources */,

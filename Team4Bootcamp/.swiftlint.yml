@@ -6,3 +6,9 @@ disabled_rules: # rule identifiers to exclude from running
 excluded: # paths to ignore during linting. Takes precedence over `included`.
  - Carthage
  - Pods
+
+# configurable rules can be customized from this configuration file
+identifier_name:
+  allowed_symbols: "_"
+  excluded: # excluded via string array
+    - id

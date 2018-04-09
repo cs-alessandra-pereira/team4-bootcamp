@@ -7,14 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CD91F9D82073EE96002BB9EE /* CodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD91F9D42073EE96002BB9EE /* CodeView.swift */; };
+		CD91F9D92073EE96002BB9EE /* ImageFetchable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD91F9D52073EE96002BB9EE /* ImageFetchable.swift */; };
+		CD91F9DA2073EE96002BB9EE /* MovieCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD91F9D62073EE96002BB9EE /* MovieCollectionViewCell.swift */; };
+		CD91F9DD2073F034002BB9EE /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD91F9DC2073F034002BB9EE /* SnapKit.framework */; };
 		CDD41601206ABB9400988317 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD41600206ABB9400988317 /* AppDelegate.swift */; };
-		CDD41603206ABB9400988317 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD41602206ABB9400988317 /* ViewController.swift */; };
 		CDD41606206ABB9400988317 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDD41604206ABB9400988317 /* Main.storyboard */; };
 		CDD41609206ABB9400988317 /* Team4Bootcamp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CDD41607206ABB9400988317 /* Team4Bootcamp.xcdatamodeld */; };
 		CDD4160B206ABB9400988317 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDD4160A206ABB9400988317 /* Assets.xcassets */; };
 		CDD4160E206ABB9400988317 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDD4160C206ABB9400988317 /* LaunchScreen.storyboard */; };
 		CDD41619206ABB9400988317 /* Team4BootcampTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD41618206ABB9400988317 /* Team4BootcampTests.swift */; };
 		CDD41624206ABB9400988317 /* Team4BootcampUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD41623206ABB9400988317 /* Team4BootcampUITests.swift */; };
+		CDD41634206B110300988317 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD41633206B110300988317 /* Movie.swift */; };
+		CDD41636206B12FB00988317 /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD41635206B12FB00988317 /* Genre.swift */; };
+		CDD4163B206C491500988317 /* MovieListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD4163A206C491500988317 /* MovieListViewController.swift */; };
+		CDD4163E206C4E6D00988317 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD4163D206C4E6D00988317 /* Extensions.swift */; };
+		EA284CC0206D0D0200E4D7CD /* MoviesServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA284CBF206D0D0200E4D7CD /* MoviesServiceProtocol.swift */; };
+		EA284CC2206D0ED400E4D7CD /* FetchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA284CC1206D0ED400E4D7CD /* FetchResult.swift */; };
+		EA284CC4206D106B00E4D7CD /* MoviesAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA284CC3206D106B00E4D7CD /* MoviesAPI.swift */; };
+		EA284CC6206D137200E4D7CD /* MoviesConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA284CC5206D137200E4D7CD /* MoviesConstants.swift */; };
+		EA71E3A0206BE70100970A47 /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA71E39E206BE70100970A47 /* Kingfisher.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,9 +47,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CD91F9D42073EE96002BB9EE /* CodeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CodeView.swift; path = Team4Bootcamp/MovieList/View/CodeView.swift; sourceTree = SOURCE_ROOT; };
+		CD91F9D52073EE96002BB9EE /* ImageFetchable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageFetchable.swift; path = Team4Bootcamp/MovieList/View/ImageFetchable.swift; sourceTree = SOURCE_ROOT; };
+		CD91F9D62073EE96002BB9EE /* MovieCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MovieCollectionViewCell.swift; path = Team4Bootcamp/MovieList/View/MovieCollectionViewCell.swift; sourceTree = SOURCE_ROOT; };
+		CD91F9DC2073F034002BB9EE /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapKit.framework; path = Carthage/Build/iOS/SnapKit.framework; sourceTree = "<group>"; };
 		CDD415FD206ABB9400988317 /* Team4Bootcamp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Team4Bootcamp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDD41600206ABB9400988317 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CDD41602206ABB9400988317 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		CDD41605206ABB9400988317 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CDD41608206ABB9400988317 /* Team4Bootcamp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Team4Bootcamp.xcdatamodel; sourceTree = "<group>"; };
 		CDD4160A206ABB9400988317 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -49,6 +64,16 @@
 		CDD4161F206ABB9400988317 /* Team4BootcampUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Team4BootcampUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDD41623206ABB9400988317 /* Team4BootcampUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team4BootcampUITests.swift; sourceTree = "<group>"; };
 		CDD41625206ABB9400988317 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CDD41633206B110300988317 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		CDD41635206B12FB00988317 /* Genre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genre.swift; sourceTree = "<group>"; };
+		CDD4163A206C491500988317 /* MovieListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListViewController.swift; sourceTree = "<group>"; };
+		CDD4163D206C4E6D00988317 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		EA284CBF206D0D0200E4D7CD /* MoviesServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesServiceProtocol.swift; sourceTree = "<group>"; };
+		EA284CC1206D0ED400E4D7CD /* FetchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchResult.swift; sourceTree = "<group>"; };
+		EA284CC3206D106B00E4D7CD /* MoviesAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesAPI.swift; sourceTree = "<group>"; };
+		EA284CC5206D137200E4D7CD /* MoviesConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesConstants.swift; sourceTree = "<group>"; };
+		EA71E39E206BE70100970A47 /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
+		EA71E39F206BE70100970A47 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +81,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD91F9DD2073F034002BB9EE /* SnapKit.framework in Frameworks */,
+				EA71E3A0206BE70100970A47 /* Kingfisher.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,6 +103,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CD91F9D12073EE59002BB9EE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CD91F9D42073EE96002BB9EE /* CodeView.swift */,
+				CD91F9D52073EE96002BB9EE /* ImageFetchable.swift */,
+				CD91F9D62073EE96002BB9EE /* MovieCollectionViewCell.swift */,
+			);
+			name = View;
+			path = "New Group";
+			sourceTree = "<group>";
+		};
 		CDD415F4206ABB9400988317 = {
 			isa = PBXGroup;
 			children = (
@@ -83,6 +121,7 @@
 				CDD41617206ABB9400988317 /* Team4BootcampTests */,
 				CDD41622206ABB9400988317 /* Team4BootcampUITests */,
 				CDD415FE206ABB9400988317 /* Products */,
+				EA71E39D206BE70000970A47 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,13 +138,11 @@
 		CDD415FF206ABB9400988317 /* Team4Bootcamp */ = {
 			isa = PBXGroup;
 			children = (
-				CDD41600206ABB9400988317 /* AppDelegate.swift */,
-				CDD41602206ABB9400988317 /* ViewController.swift */,
+				EA284CBB206D072300E4D7CD /* MovieList */,
+				CDD4163C206C4E2000988317 /* Extensions */,
+				CDD41632206B108B00988317 /* Model */,
+				EA284CBC206D078300E4D7CD /* Supporting Files */,
 				CDD41604206ABB9400988317 /* Main.storyboard */,
-				CDD4160A206ABB9400988317 /* Assets.xcassets */,
-				CDD4160C206ABB9400988317 /* LaunchScreen.storyboard */,
-				CDD4160F206ABB9400988317 /* Info.plist */,
-				CDD41607206ABB9400988317 /* Team4Bootcamp.xcdatamodeld */,
 			);
 			path = Team4Bootcamp;
 			sourceTree = "<group>";
@@ -128,6 +165,74 @@
 			path = Team4BootcampUITests;
 			sourceTree = "<group>";
 		};
+		CDD41632206B108B00988317 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CDD41633206B110300988317 /* Movie.swift */,
+				CDD41635206B12FB00988317 /* Genre.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CDD41637206C2B7F00988317 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				CDD4163A206C491500988317 /* MovieListViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		CDD4163C206C4E2000988317 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				CDD4163D206C4E6D00988317 /* Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		EA284CBB206D072300E4D7CD /* MovieList */ = {
+			isa = PBXGroup;
+			children = (
+				CD91F9D12073EE59002BB9EE /* View */,
+				EA284CBE206D0CDC00E4D7CD /* Service */,
+				CDD41637206C2B7F00988317 /* Controller */,
+			);
+			path = MovieList;
+			sourceTree = "<group>";
+		};
+		EA284CBC206D078300E4D7CD /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				CDD41600206ABB9400988317 /* AppDelegate.swift */,
+				CDD4160A206ABB9400988317 /* Assets.xcassets */,
+				CDD4160C206ABB9400988317 /* LaunchScreen.storyboard */,
+				CDD4160F206ABB9400988317 /* Info.plist */,
+				CDD41607206ABB9400988317 /* Team4Bootcamp.xcdatamodeld */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		EA284CBE206D0CDC00E4D7CD /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				EA284CBF206D0D0200E4D7CD /* MoviesServiceProtocol.swift */,
+				EA284CC1206D0ED400E4D7CD /* FetchResult.swift */,
+				EA284CC3206D106B00E4D7CD /* MoviesAPI.swift */,
+				EA284CC5206D137200E4D7CD /* MoviesConstants.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		EA71E39D206BE70000970A47 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CD91F9DC2073F034002BB9EE /* SnapKit.framework */,
+				EA71E39F206BE70100970A47 /* Alamofire.framework */,
+				EA71E39E206BE70100970A47 /* Kingfisher.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -138,7 +243,7 @@
 				CDD415F9206ABB9400988317 /* Sources */,
 				CDD415FA206ABB9400988317 /* Frameworks */,
 				CDD415FB206ABB9400988317 /* Resources */,
-				CDD41631206ABBAF00988317 /* ShellScript */,
+				CDD41631206ABBAF00988317 /* Run Script */,
 			);
 			buildRules = (
 			);
@@ -192,7 +297,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0920;
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = alessandra.l.pereira;
 				TargetAttributes = {
 					CDD415FC206ABB9400988317 = {
@@ -259,18 +364,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		CDD41631206ABBAF00988317 /* ShellScript */ = {
+		CDD41631206ABBAF00988317 /* Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Kingfisher.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SnapKit.framework",
 			);
+			name = "Run Script";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
+			shellScript = "/usr/local/bin/carthage copy-frameworks\nif which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -279,9 +387,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CDD41603206ABB9400988317 /* ViewController.swift in Sources */,
+				CD91F9D92073EE96002BB9EE /* ImageFetchable.swift in Sources */,
 				CDD41609206ABB9400988317 /* Team4Bootcamp.xcdatamodeld in Sources */,
+				CDD41634206B110300988317 /* Movie.swift in Sources */,
+				EA284CC4206D106B00E4D7CD /* MoviesAPI.swift in Sources */,
+				CDD4163B206C491500988317 /* MovieListViewController.swift in Sources */,
+				CDD4163E206C4E6D00988317 /* Extensions.swift in Sources */,
+				EA284CC6206D137200E4D7CD /* MoviesConstants.swift in Sources */,
+				CD91F9D82073EE96002BB9EE /* CodeView.swift in Sources */,
+				EA284CC0206D0D0200E4D7CD /* MoviesServiceProtocol.swift in Sources */,
+				EA284CC2206D0ED400E4D7CD /* FetchResult.swift in Sources */,
 				CDD41601206ABB9400988317 /* AppDelegate.swift in Sources */,
+				CD91F9DA2073EE96002BB9EE /* MovieCollectionViewCell.swift in Sources */,
+				CDD41636206B12FB00988317 /* Genre.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -350,6 +468,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -357,6 +476,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -407,6 +527,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -414,6 +535,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -448,7 +570,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = Team4Bootcamp/Info.plist;
+				DEVELOPMENT_TEAM = 83C3V38WSB;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = "$(SRCROOT)/Team4Bootcamp/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.concrete.Team4Bootcamp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -462,7 +589,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = Team4Bootcamp/Info.plist;
+				DEVELOPMENT_TEAM = 83C3V38WSB;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = "$(SRCROOT)/Team4Bootcamp/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.concrete.Team4Bootcamp;
 				PRODUCT_NAME = "$(TARGET_NAME)";

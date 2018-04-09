@@ -86,7 +86,6 @@ class MovieListViewController: UIViewController {
                 activityIndicator.stopAnimating()
                 self.activityIndicator.isHidden = true
                 collectionView.isHidden = false
-                //Tratar tela para erro
             }
         }
     }

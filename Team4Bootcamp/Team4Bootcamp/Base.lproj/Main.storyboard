@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="az9-Aq-80i">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="az9-Aq-80i">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Nvi-OE-ODc">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="120" width="375" height="547"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="3Ma-b4-qWt">
                                     <size key="itemSize" width="50" height="50"/>
@@ -41,14 +41,21 @@
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="ckd-VN-ez5">
                                 <rect key="frame" x="177.5" y="323.5" width="20" height="20"/>
                             </activityIndicatorView>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="Pkj-oD-0OK">
+                                <rect key="frame" x="0.0" y="64" width="375" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Nvi-OE-ODc" firstAttribute="leading" secondItem="SPj-kH-0Jt" secondAttribute="leading" id="0Iq-xo-d7K"/>
                             <constraint firstItem="Nvi-OE-ODc" firstAttribute="trailing" secondItem="SPj-kH-0Jt" secondAttribute="trailing" id="Aep-na-oHr"/>
-                            <constraint firstItem="Nvi-OE-ODc" firstAttribute="top" secondItem="SPj-kH-0Jt" secondAttribute="top" id="RSh-m2-Z7l"/>
+                            <constraint firstItem="Pkj-oD-0OK" firstAttribute="top" secondItem="SPj-kH-0Jt" secondAttribute="top" id="Dnd-13-lhs"/>
                             <constraint firstItem="Nvi-OE-ODc" firstAttribute="bottom" secondItem="SPj-kH-0Jt" secondAttribute="bottom" id="S99-rM-6H9"/>
                             <constraint firstItem="ckd-VN-ez5" firstAttribute="centerX" secondItem="KSX-8o-OpI" secondAttribute="centerX" id="au1-Oy-Fye"/>
+                            <constraint firstItem="Pkj-oD-0OK" firstAttribute="leading" secondItem="SPj-kH-0Jt" secondAttribute="leading" id="c5Y-VO-bUC"/>
+                            <constraint firstItem="Pkj-oD-0OK" firstAttribute="trailing" secondItem="SPj-kH-0Jt" secondAttribute="trailing" id="h5c-je-IGs"/>
+                            <constraint firstItem="Nvi-OE-ODc" firstAttribute="top" secondItem="Pkj-oD-0OK" secondAttribute="bottom" id="tAe-2g-Pud"/>
                             <constraint firstItem="ckd-VN-ez5" firstAttribute="centerY" secondItem="KSX-8o-OpI" secondAttribute="centerY" id="tR4-sl-2IF"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="SPj-kH-0Jt"/>
@@ -57,6 +64,7 @@
                     <connections>
                         <outlet property="activityIndicator" destination="ckd-VN-ez5" id="T2H-AZ-0yD"/>
                         <outlet property="collectionView" destination="Nvi-OE-ODc" id="nmI-x7-9d6"/>
+                        <outlet property="searchBar" destination="Pkj-oD-0OK" id="bgI-Ry-wJ2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fqa-mD-IOo" userLabel="First Responder" sceneMemberID="firstResponder"/>

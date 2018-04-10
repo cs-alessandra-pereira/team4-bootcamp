@@ -12,7 +12,7 @@ typealias GenreName = String
 typealias GenreId = Int
 
 struct Genre: Decodable {
-    static var allGenres: [GenreId : GenreName] = [:]
+    static var allGenres: [GenreId: GenreName] = [:]
     
     let id: Int
     var name: String

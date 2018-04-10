@@ -20,14 +20,23 @@ class MovieListViewController: UIViewController {
             collectionView.backgroundColor = UIColor.white
         }
     }
+    @IBOutlet weak var searchBar: UISearchBar!
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     var datasource: UICollectionViewDataSource?
-    var delegate: UICollectionViewDelegate?
+    var collectionViewDelegate: UICollectionViewDelegate?
+    var searchBarDelegate: UISearchBarDelegate?
     
     var movieService: MoviesServiceProtocol = MoviesAPI()
+    
     var movies: [Movie] = [] {
+        didSet {
+            setupDatasource()
+        }
+    }
+    
+    var filterBy: String? = nil {
         didSet {
             setupDatasource()
         }
@@ -36,6 +45,7 @@ class MovieListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupDelegate()
+        setupSearchBar()
         fetchGenres()
         fetchMovies()
     }
@@ -46,8 +56,23 @@ class MovieListViewController: UIViewController {
     }
     
     func setupDelegate() {
-        delegate = MovieListDelegate(viewController: self)
-        collectionView.delegate = delegate
+        collectionViewDelegate = CollectionViewDelegate(viewController: self)
+        collectionView.delegate = collectionViewDelegate
+    }
+    
+    func setupSearchBar() {
+        searchBarDelegate = SearchBarDelegate { searchBar, searchBarEvent, searchText in
+            switch searchBarEvent {
+            case .cancelled:
+                self.filterBy = nil
+                searchBar.resignFirstResponder()
+            case .posted:
+                searchBar.resignFirstResponder()
+            case .textChanged:
+                self.filterBy = searchText ?? nil
+            }
+        }
+        self.searchBar.delegate = searchBarDelegate
     }
     
     func fetchMovies() {
@@ -65,6 +90,15 @@ class MovieListViewController: UIViewController {
         }
     }
     
+    // TODO: preciso chamar esta funcão para atualizar o datasource com os filmes filtrados
+    // como fazer isso sem o datasource ter conhecimento dos detalhes do vc específico?
+    func filteredMovies() -> [Movie] {
+        guard let filterBy = self.filterBy else {
+            return movies
+        }
+        return movies.filter { $0.title.lowercased().starts(with: filterBy.lowercased()) }
+    }
+    
     private enum UIState {
         case initial
         case error
@@ -78,11 +112,14 @@ class MovieListViewController: UIViewController {
                 activityIndicator.stopAnimating()
                 self.activityIndicator.isHidden = true
                 collectionView.isHidden = false
+                searchBar.isHidden = false
             case .loading:
                 collectionView.isHidden = true
+                searchBar.isHidden = true
                 activityIndicator.isHidden = false
                 activityIndicator.startAnimating()
             case .error:
+                searchBar.isHidden = true
                 activityIndicator.stopAnimating()
                 self.activityIndicator.isHidden = true
                 collectionView.isHidden = false

@@ -8,9 +8,9 @@
 
 import UIKit
 
-class MovieListDelegate: NSObject, UICollectionViewDelegate {
+class CollectionViewDelegate: NSObject, UICollectionViewDelegate {
     
-    let viewController: MovieListViewController
+    weak var viewController: MovieListViewController?
     
     init(viewController: MovieListViewController) {
         self.viewController = viewController
@@ -18,9 +18,10 @@ class MovieListDelegate: NSObject, UICollectionViewDelegate {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        let movie = viewController.movies[indexPath.row]
-        viewController.proceedToDetailsView(movie: movie)
+        if let controller = viewController {
+            let movie = controller.movies[indexPath.row]
+            controller.proceedToDetailsView(movie: movie)
+        }
     }
     
 }

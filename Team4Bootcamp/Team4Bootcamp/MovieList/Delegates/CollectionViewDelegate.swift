@@ -19,7 +19,7 @@ class CollectionViewDelegate: NSObject, UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let controller = viewController {
-            let movie = controller.movies[indexPath.row]
+            let movie = controller.filteredMovies()[indexPath.row]
             controller.proceedToDetailsView(movie: movie)
         }
     }

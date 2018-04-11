@@ -6,4 +6,11 @@
 //  Copyright © 2018 alessandra.l.pereira. All rights reserved.
 //
 
-import Foundation
+@testable import Team4Bootcamp
+import Quick
+import Nimble
+
+class MovieListViewControllerSpec: QuickSpec {
+    
+
+}

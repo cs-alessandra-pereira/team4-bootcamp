@@ -24,9 +24,9 @@ class MovieListViewController: UIViewController {
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
-    var datasource: UICollectionViewDataSource?
-    var collectionViewDelegate: UICollectionViewDelegate?
-    var searchBarDelegate: UISearchBarDelegate?
+    var movieListDatasource: MovieListDatasource?
+    var collectionViewDelegate: CollectionViewDelegate?
+    var searchBarDelegate: SearchBarDelegate?
     
     var movieService: MoviesServiceProtocol = MoviesAPI()
     
@@ -38,7 +38,7 @@ class MovieListViewController: UIViewController {
     
     var filterBy: String? = nil {
         didSet {
-            setupDatasource()
+            movieListDatasource?.movies = filteredMovies()
         }
     }
     
@@ -51,8 +51,8 @@ class MovieListViewController: UIViewController {
     }
     
     func setupDatasource() {
-        datasource = MovieListDatasource(collectioView: collectionView, movies: movies)
-        collectionView.dataSource = datasource
+        movieListDatasource = MovieListDatasource(collectionView: collectionView, movies: movies)
+        collectionView.dataSource = movieListDatasource
     }
     
     func setupDelegate() {
@@ -69,6 +69,7 @@ class MovieListViewController: UIViewController {
             case .posted:
                 searchBar.resignFirstResponder()
             case .textChanged:
+                //Posso (devo) acessar uma propriedade global aqui dentro?
                 self.filterBy = searchText ?? nil
             }
         }
@@ -90,8 +91,6 @@ class MovieListViewController: UIViewController {
         }
     }
     
-    // TODO: preciso chamar esta funcão para atualizar o datasource com os filmes filtrados
-    // como fazer isso sem o datasource ter conhecimento dos detalhes do vc específico?
     func filteredMovies() -> [Movie] {
         guard let filterBy = self.filterBy else {
             return movies
@@ -99,13 +98,13 @@ class MovieListViewController: UIViewController {
         return movies.filter { $0.title.lowercased().starts(with: filterBy.lowercased()) }
     }
     
-    private enum UIState {
+    private enum ScreenState {
         case initial
         case error
         case loading
     }
     
-    private var state: UIState = .initial {
+    private var state: ScreenState = .initial {
         didSet {
             switch state {
             case .initial:

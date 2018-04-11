@@ -11,12 +11,19 @@ import UIKit
 final class MovieListDatasource: NSObject, UICollectionViewDataSource {
     
     
-    let movies: [Movie]
+    var movies: [Movie] = [] {
+        didSet {
+            self.collectionView?.reloadData()
+        }
+    }
     
-    init(collectioView: UICollectionView, movies: [Movie]) {
+    weak var collectionView: UICollectionView?
+    
+    init(collectionView: UICollectionView, movies: [Movie]) {
         self.movies = movies
+        self.collectionView = collectionView
+        self.collectionView?.register(MovieCollectionViewCell.self, forCellWithReuseIdentifier: MovieCollectionViewCell.movieListCell)
         super.init()
-        collectioView.register(MovieCollectionViewCell.self, forCellWithReuseIdentifier: MovieCollectionViewCell.movieListCell)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -26,12 +33,7 @@ final class MovieListDatasource: NSObject, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MovieCollectionViewCell.movieListCell, for: indexPath) as? MovieCollectionViewCell else {
-                //FIXME: Tales - não é um bom tratamento de erro. Se é garantido/esperado que sempre seja desenfileirada uma
-                // `MovieColectionViewCell`, um `fatalError("mensagem")` avisa ao dev que esqueceu de registrar a cell esperada
-                // https://www.swiftbysundell.com/posts/picking-the-right-way-of-failing-in-swift
-                // se olharem o fonte da https://github.com/AliSoftware/Reusable, também conseguem facil adicionar essa
-                // funcionalidade numa versão simplificada, sem adicionar o Resuable como dependencia
-            return collectionView.dequeueReusableCell(withReuseIdentifier: MovieCollectionViewCell.movieListCell, for: indexPath)
+            fatalError()
         }
         
         let movie = self.movies[indexPath.row]

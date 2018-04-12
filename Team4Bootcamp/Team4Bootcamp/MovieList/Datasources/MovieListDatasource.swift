@@ -41,4 +41,5 @@ final class MovieListDatasource: NSObject, UICollectionViewDataSource {
         
         return cell
     }
+    
 }

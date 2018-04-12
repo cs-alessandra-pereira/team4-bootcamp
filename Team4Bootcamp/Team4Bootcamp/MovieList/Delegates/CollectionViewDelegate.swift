@@ -24,4 +24,12 @@ class CollectionViewDelegate: NSObject, UICollectionViewDelegate {
         }
     }
     
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if let data = viewController?.filteredMovies().count, indexPath.row == data - 1 {
+            if MoviesConstants.pageBaseURL <= MoviesConstants.paginationLimit {
+                viewController?.fetchMovies()
+            }
+        }
+    }
+    
 }

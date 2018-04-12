@@ -78,7 +78,7 @@ class MovieListViewController: UIViewController {
     
     func fetchMovies() {
         movieService.fetchMovies { movies in
-            self.movies = movies
+            self.movies.append(contentsOf: movies)
             self.state = .initial
         }
     }

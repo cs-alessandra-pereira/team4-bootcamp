@@ -8,19 +8,23 @@
 
 import UIKit
 
+typealias MovieCollectionViewCallback = (Movie) -> Void
+
 class CollectionViewDelegate: NSObject, UICollectionViewDelegate {
     
-    weak var viewController: MovieListViewController?
+    weak var datasource: MovieListDatasource?
+    let callback: MovieCollectionViewCallback
     
-    init(viewController: MovieListViewController) {
-        self.viewController = viewController
+    init(datasource: MovieListDatasource?, callback: @escaping MovieCollectionViewCallback) {
+        self.datasource = datasource
+        self.callback = callback
         super.init()
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let controller = viewController {
-            let movie = controller.filteredMovies()[indexPath.row]
-            controller.proceedToDetailsView(movie: movie)
+        if let datasource = datasource {
+            let movie = datasource.filteredMovieList[indexPath.row]
+            callback(movie)
         }
     }
     

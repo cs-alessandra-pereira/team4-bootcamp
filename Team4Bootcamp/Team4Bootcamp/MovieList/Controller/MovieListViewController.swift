@@ -26,21 +26,13 @@ class MovieListViewController: UIViewController {
     
     var movieListDatasource: MovieListDatasource?
     var collectionViewDelegate: CollectionViewDelegate?
-    var searchBarDelegate: SearchBarDelegate?
-    
     var movieService: MoviesServiceProtocol = MoviesAPI()
     
-    var movies: [Movie] = [] {
-        didSet {
-            setupDatasource()
-        }
-    }
-    
-    var filterBy: String? = nil {
-        didSet {
-            movieListDatasource?.movies = filteredMovies()
-        }
-    }
+//    var filterBy: String? = nil {
+//        didSet {
+//            movieListDatasource?.movies = filteredMovies()
+//        }
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,35 +42,27 @@ class MovieListViewController: UIViewController {
         fetchMovies()
     }
     
-    func setupDatasource() {
-        movieListDatasource = MovieListDatasource(collectionView: collectionView, movies: movies)
+    func setupDatasource(movies: [Movie], searchBarDelegate: SearchBarDelegate) {
+        movieListDatasource = MovieListDatasource(collectionView: collectionView, searchBarDelegate: searchBarDelegate)
         collectionView.dataSource = movieListDatasource
     }
     
     func setupDelegate() {
-        collectionViewDelegate = CollectionViewDelegate(viewController: self)
+        
+        collectionViewDelegate = CollectionViewDelegate(datasource: self.movieListDatasource) { movie in
+            self.proceedToDetailsView(movie: movie)
+        }
+        
         collectionView.delegate = collectionViewDelegate
     }
     
     func setupSearchBar() {
-        searchBarDelegate = SearchBarDelegate { searchBar, searchBarEvent, searchText in
-            switch searchBarEvent {
-            case .cancelled:
-                self.filterBy = nil
-                searchBar.resignFirstResponder()
-            case .posted:
-                searchBar.resignFirstResponder()
-            case .textChanged:
-                //Posso (devo) acessar uma propriedade global aqui dentro?
-                self.filterBy = searchText ?? nil
-            }
-        }
-        self.searchBar.delegate = searchBarDelegate
+        searchBar.delegate = SearchBarDelegate()
     }
     
     func fetchMovies() {
         movieService.fetchMovies { movies in
-            self.movies = movies
+            self.setupDatasource(movies: movies, searchBarDelegate: self.searchBar.delegate as! SearchBarDelegate) //swiftlint:disable:this force_cast
             self.state = .initial
         }
     }
@@ -91,12 +75,12 @@ class MovieListViewController: UIViewController {
         }
     }
     
-    func filteredMovies() -> [Movie] {
-        guard let filterBy = self.filterBy else {
-            return movies
-        }
-        return movies.filter { $0.title.lowercased().starts(with: filterBy.lowercased()) }
-    }
+//    func filteredMovies() -> [Movie] {
+//        guard let filterBy = self.filterBy else {
+//            return movies
+//        }
+//        return movies.filter { $0.title.lowercased().starts(with: filterBy.lowercased()) }
+//    }
     
     private enum ScreenState {
         case initial

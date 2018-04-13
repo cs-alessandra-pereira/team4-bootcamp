@@ -12,7 +12,7 @@ struct MoviesConstants {
     static let baseURL = "https://api.themoviedb.org/3/"
     static let apiKey = "4ffd9f3fe663db609ed457cca5ab2f4e"
     static let imgBaseURL = "https://image.tmdb.org/t/p/w500"
-    static let paginationLimit = 1000
+    static let paginationLimit = 852
     static var pageBaseURL = 1
 }
 

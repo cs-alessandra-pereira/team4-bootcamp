@@ -21,18 +21,12 @@ class MovieListViewController: UIViewController {
         }
     }
     @IBOutlet weak var searchBar: UISearchBar!
-    
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     var movieListDatasource: MovieListDatasource?
     var collectionViewDelegate: CollectionViewDelegate?
+    var searchBarDelegate: SearchBarDelegate?
     var movieService: MoviesServiceProtocol = MoviesAPI()
-    
-//    var filterBy: String? = nil {
-//        didSet {
-//            movieListDatasource?.movies = filteredMovies()
-//        }
-//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,8 +36,8 @@ class MovieListViewController: UIViewController {
         fetchMovies()
     }
     
-    func setupDatasource(movies: [Movie], searchBarDelegate: SearchBarDelegate) {
-        movieListDatasource = MovieListDatasource(collectionView: collectionView, searchBarDelegate: searchBarDelegate)
+    func setupDatasource(movies: [Movie], searchBarDelegate: SearchBarDelegate?) {
+        movieListDatasource = MovieListDatasource(movies: movies, collectionView: collectionView, searchBarDelegate: searchBarDelegate)
         collectionView.dataSource = movieListDatasource
     }
     
@@ -57,12 +51,13 @@ class MovieListViewController: UIViewController {
     }
     
     func setupSearchBar() {
-        searchBar.delegate = SearchBarDelegate()
+        searchBarDelegate = SearchBarDelegate()
+        searchBar.delegate = searchBarDelegate
     }
     
     func fetchMovies() {
         movieService.fetchMovies { movies in
-            self.setupDatasource(movies: movies, searchBarDelegate: self.searchBar.delegate as! SearchBarDelegate) //swiftlint:disable:this force_cast
+            self.setupDatasource(movies: movies, searchBarDelegate: self.searchBar.delegate as? SearchBarDelegate)
             self.state = .initial
         }
     }
@@ -74,13 +69,6 @@ class MovieListViewController: UIViewController {
             self.state = .initial
         }
     }
-    
-//    func filteredMovies() -> [Movie] {
-//        guard let filterBy = self.filterBy else {
-//            return movies
-//        }
-//        return movies.filter { $0.title.lowercased().starts(with: filterBy.lowercased()) }
-//    }
     
     private enum ScreenState {
         case initial

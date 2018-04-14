@@ -19,7 +19,7 @@ final class MovieListDatasource: NSObject, UICollectionViewDataSource {
     
     var filteredMovieList: [Movie] = []
     
-    private let collectionView: UICollectionView
+    weak private var collectionView: UICollectionView?
     
     private var searchString: String? = nil {
         didSet{
@@ -30,14 +30,16 @@ final class MovieListDatasource: NSObject, UICollectionViewDataSource {
             } else{
                 filteredMovieList = movies
             }
-            collectionView.reloadData()
+            collectionView?.reloadData()
         }
     }
     
-    init(collectionView: UICollectionView, searchBarDelegate: SearchBarDelegate) {
+    init(movies: [Movie], collectionView: UICollectionView, searchBarDelegate: SearchBarDelegate?) {
+        self.movies = movies
+        self.filteredMovieList = movies
         self.collectionView = collectionView
         super.init()
-        searchBarDelegate.callback = { [weak self] searchBar, searchEvent, searchString in
+        searchBarDelegate?.callback = { [weak self] searchBar, searchEvent, searchString in
             switch searchEvent {
             case .cancelled:
                 self?.searchString = nil
@@ -49,7 +51,7 @@ final class MovieListDatasource: NSObject, UICollectionViewDataSource {
             }
         }
         
-        self.collectionView.register(MovieCollectionViewCell.self, forCellWithReuseIdentifier: MovieCollectionViewCell.movieListCell)
+        self.collectionView?.register(MovieCollectionViewCell.self, forCellWithReuseIdentifier: MovieCollectionViewCell.movieListCell)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

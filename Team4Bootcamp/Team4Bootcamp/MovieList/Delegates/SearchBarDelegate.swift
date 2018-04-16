@@ -12,11 +12,7 @@ typealias SearchBarCallback = ((UISearchBar, SearchBarEvent, String?) -> Void)?
 
 class SearchBarDelegate: NSObject, UISearchBarDelegate {
     
-    let callback: SearchBarCallback
-    
-    init(callback: SearchBarCallback) {
-        self.callback = callback
-    }
+    var callback: SearchBarCallback = nil
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         callback?(searchBar, SearchBarEvent.textChanged, searchText)

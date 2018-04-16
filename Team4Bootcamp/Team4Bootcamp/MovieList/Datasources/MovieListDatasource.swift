@@ -12,22 +12,50 @@ final class MovieListDatasource: NSObject, UICollectionViewDataSource {
     
     
     var movies: [Movie] = [] {
-        didSet {
-            self.collectionView?.reloadData()
+        didSet{
+            filteredMovieList = movies
         }
     }
     
-    weak var collectionView: UICollectionView?
+    var filteredMovieList: [Movie] = []
     
-    init(collectionView: UICollectionView, movies: [Movie]) {
+    weak private var collectionView: UICollectionView?
+    
+    private var searchString: String? = nil {
+        didSet{
+            if let searchString = searchString {
+                filteredMovieList = searchString.isEmpty ? movies : movies.filter { movie in
+                    return movie.title.lowercased().starts(with: searchString.lowercased())
+                }
+            } else{
+                filteredMovieList = movies
+            }
+            collectionView?.reloadData()
+        }
+    }
+    
+    init(movies: [Movie], collectionView: UICollectionView, searchBarDelegate: SearchBarDelegate?) {
         self.movies = movies
+        self.filteredMovieList = movies
         self.collectionView = collectionView
-        self.collectionView?.register(MovieCollectionViewCell.self, forCellWithReuseIdentifier: MovieCollectionViewCell.movieListCell)
         super.init()
+        searchBarDelegate?.callback = { [weak self] searchBar, searchEvent, searchString in
+            switch searchEvent {
+            case .cancelled:
+                self?.searchString = nil
+                searchBar.resignFirstResponder()
+            case .posted:
+                searchBar.resignFirstResponder()
+            case .textChanged:
+                self?.searchString = searchString
+            }
+        }
+        
+        self.collectionView?.register(MovieCollectionViewCell.self, forCellWithReuseIdentifier: MovieCollectionViewCell.movieListCell)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return movies.count
+        return filteredMovieList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -36,7 +64,7 @@ final class MovieListDatasource: NSObject, UICollectionViewDataSource {
             fatalError()
         }
         
-        let movie = self.movies[indexPath.row]
+        let movie = self.filteredMovieList[indexPath.row]
         cell.setup(movie: movie)
         
         return cell

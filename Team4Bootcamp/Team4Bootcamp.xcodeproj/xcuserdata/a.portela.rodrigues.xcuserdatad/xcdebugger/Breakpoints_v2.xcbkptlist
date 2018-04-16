@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Team4Bootcamp/MovieList/Controller/MovieListViewController.swift"
-            timestampString = "545352455.78036"
+            timestampString = "545597617.1246049"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "94"
-            endingLineNumber = "94"
+            startingLineNumber = "100"
+            endingLineNumber = "100"
             landmarkName = "state"
             landmarkType = "24">
             <Locations>
@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Team4Bootcamp/MovieList/Controller/MovieListViewController.swift"
-            timestampString = "545352455.780707"
+            timestampString = "545597617.124981"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "118"
-            endingLineNumber = "118">
+            startingLineNumber = "121"
+            endingLineNumber = "121">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -72,13 +72,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Team4Bootcamp/MovieList/Controller/MovieListViewController.swift"
-            timestampString = "545352455.78087"
+            timestampString = "545597617.125175"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "88"
-            endingLineNumber = "88"
-            landmarkName = "ScreenState"
-            landmarkType = "13">
+            startingLineNumber = "94"
+            endingLineNumber = "94"
+            landmarkName = "state"
+            landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -88,12 +88,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Team4Bootcamp/MovieList/Controller/MovieListViewController.swift"
-            timestampString = "545352455.781068"
+            timestampString = "545597617.125416"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "46"
-            endingLineNumber = "46"
-            landmarkName = "setupDatasource(movies:searchBarDelegate:)"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
+            landmarkName = "setupDelegate()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

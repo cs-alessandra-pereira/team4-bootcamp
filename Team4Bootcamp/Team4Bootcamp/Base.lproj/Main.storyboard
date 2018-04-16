@@ -124,8 +124,8 @@
                         <outlet property="activityIndicator" destination="ckd-VN-ez5" id="T2H-AZ-0yD"/>
                         <outlet property="collectionView" destination="Nvi-OE-ODc" id="nmI-x7-9d6"/>
                         <outlet property="searchBar" destination="Pkj-oD-0OK" id="bgI-Ry-wJ2"/>
-                        <outlet property="viewError" destination="qgq-aa-OTX" id="FfQ-Ao-sxi"/>
-                        <outlet property="viewNoResults" destination="CfO-ay-zUp" id="waw-b7-FuE"/>
+                        <outlet property="viewError" destination="qgq-aa-OTX" id="TVz-cY-nnk"/>
+                        <outlet property="viewNoResults" destination="CfO-ay-zUp" id="Zn5-kl-0WX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fqa-mD-IOo" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -174,6 +174,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="AP6-5J-RgB"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="IIx-S9-jGt">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>

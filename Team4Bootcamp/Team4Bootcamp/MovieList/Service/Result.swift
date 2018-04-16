@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum FetchResult <T, E: Error> {
+enum Result <T, E: Error> {
     case success(T)
     case error(E)
 }

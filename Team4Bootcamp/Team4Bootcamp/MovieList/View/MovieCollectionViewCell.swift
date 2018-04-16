@@ -10,35 +10,26 @@ import UIKit
 import Kingfisher
 import SnapKit
 
-class MovieCollectionViewCell: UICollectionViewCell {
+final class MovieCollectionViewCell: UICollectionViewCell {
     
     let imageFetchable: ImageFetchable = KFImageFetchable()
     
+    static let movieListCell = "MovieCell"
+    
     lazy var imageView: UIImageView = {
         let view = UIImageView(frame: .zero)
-        view.contentMode = UIViewContentMode.scaleToFill
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.contentMode = UIViewContentMode.scaleAspectFit
         return view
     }()
     
     lazy var textLabel: UILabel = {
         let view = UILabel(frame: .zero)
-        view.sizeToFit()
-        view.textColor = UIColor.primaryColor
-        view.numberOfLines = 2
-        view.lineBreakMode = .byClipping
-        view.adjustsFontSizeToFitWidth = true
-        view.textAlignment = NSTextAlignment.center
-        view.baselineAdjustment = .alignCenters
+        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-    lazy var iconButton: UIButton = {
-        let view = UIButton(frame: .zero)
-        view.setImage(UIImage(icon: .favGray), for: UIControlState.normal)
-        view.setImage(UIImage(icon: .favFull), for: UIControlState.selected)
-        view.contentMode = UIViewContentMode.scaleAspectFit
-        return view
-    }()
+    lazy var iconButton = FavoriteButton()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -51,8 +42,8 @@ class MovieCollectionViewCell: UICollectionViewCell {
     
     func setup(movie: Movie) {
         textLabel.text = movie.title
-        let path = MoviesConstants.Endpoints.moviePoster(movie.posterPath).path
-        imageFetchable.fetch(imageURL: path, onImage: imageView) {}
+        let path = Endpoints.moviePoster(movie.posterPath).path
+        imageFetchable.fetch(imageURLString: path, onImage: imageView) {}
     }
 }
 
@@ -69,8 +60,8 @@ extension MovieCollectionViewCell: CodeView {
         
         imageView.snp.makeConstraints { make in
             make.height.equalTo(frame.size.height*3/4)
+            make.width.equalTo(frame.size.width)
             make.top.equalTo(safeAreaLayoutGuide.snp.topMargin)
-            make.left.right.equalTo(self)
         }
         
         iconButton.snp.makeConstraints { make in
@@ -89,5 +80,13 @@ extension MovieCollectionViewCell: CodeView {
     
     func configure() {
         backgroundColor = UIColor.secondaryColor
+        
+        textLabel.sizeToFit()
+        textLabel.textColor = UIColor.primaryColor
+        textLabel.numberOfLines = 2
+        textLabel.lineBreakMode = .byClipping
+        textLabel.adjustsFontSizeToFitWidth = true
+        textLabel.textAlignment = NSTextAlignment.center
+        textLabel.baselineAdjustment = .alignCenters
     }
 }

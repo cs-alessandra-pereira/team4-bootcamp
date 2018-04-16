@@ -45,6 +45,7 @@ struct Movie {
         let date = yearFormatter.string(from: releaseDate)
         return date
     }
+    
 
 }
 

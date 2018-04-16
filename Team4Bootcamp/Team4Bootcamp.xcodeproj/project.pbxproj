@@ -47,6 +47,7 @@
 		EA4FB51D2078339900C9D47D /* MoviesAPISpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4FB51C2078339900C9D47D /* MoviesAPISpec.swift */; };
 		EA71E3A0206BE70100970A47 /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA71E39E206BE70100970A47 /* Kingfisher.framework */; };
 		EA88DFDF207CE05100FFF0B1 /* SearchBarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA88DFDE207CE05100FFF0B1 /* SearchBarDelegate.swift */; };
+		EAD462B02084DE5000F0510D /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD462AF2084DE5000F0510D /* FavoritesViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -126,6 +127,7 @@
 		EA71E39E206BE70100970A47 /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
 		EA71E39F206BE70100970A47 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		EA88DFDE207CE05100FFF0B1 /* SearchBarDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarDelegate.swift; sourceTree = "<group>"; };
+		EAD462AF2084DE5000F0510D /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FavoritesViewController.swift; path = Team4Bootcamp/Favorites/FavoritesViewController.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -262,6 +264,7 @@
 		CDD415FF206ABB9400988317 /* Team4Bootcamp */ = {
 			isa = PBXGroup;
 			children = (
+				EAD462AE2084DE1500F0510D /* Favorites */,
 				CD1D7F1E207BAEF2009722FA /* MovieDetails */,
 				EA284CBB206D072300E4D7CD /* MovieList */,
 				CDD4163C206C4E2000988317 /* Extensions */,
@@ -393,6 +396,15 @@
 				EA71E39E206BE70100970A47 /* Kingfisher.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EAD462AE2084DE1500F0510D /* Favorites */ = {
+			isa = PBXGroup;
+			children = (
+				EAD462AF2084DE5000F0510D /* FavoritesViewController.swift */,
+			);
+			name = Favorites;
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -558,6 +570,7 @@
 				CD1D7F2B207BFADD009722FA /* MovieDetailsView.swift in Sources */,
 				EA284CC4206D106B00E4D7CD /* MoviesAPI.swift in Sources */,
 				CD1D7F42207E7321009722FA /* UIColor+Palette.swift in Sources */,
+				EAD462B02084DE5000F0510D /* FavoritesViewController.swift in Sources */,
 				CDD4163B206C491500988317 /* MovieListViewController.swift in Sources */,
 				EA88DFDF207CE05100FFF0B1 /* SearchBarDelegate.swift in Sources */,
 				EA284CC6206D137200E4D7CD /* APIConstants.swift in Sources */,

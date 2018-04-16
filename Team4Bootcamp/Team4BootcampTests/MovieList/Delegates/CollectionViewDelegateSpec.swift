@@ -35,7 +35,7 @@ class CollectionViewDelegateSpec: QuickSpec {
             
             context("responding to CollectionViewDelegate", closure: {
                 
-                it("should return Rodrigo if user select first Cell") {
+                it("should return true if user select cell") {
                     expect(sut.didSelectCell) == false
                     sut.collectionView(collectionView, didSelectItemAt: indexPath)
                     expect(sut.didSelectCell) == true

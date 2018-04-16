@@ -12,7 +12,7 @@ final class MovieListDatasource: NSObject, UICollectionViewDataSource {
     
     
     var movies: [Movie] = [] {
-        didSet{
+        didSet {
             filteredMovieList = movies
         }
     }
@@ -22,12 +22,12 @@ final class MovieListDatasource: NSObject, UICollectionViewDataSource {
     weak private var collectionView: UICollectionView?
     
     private var searchString: String? = nil {
-        didSet{
+        didSet {
             if let searchString = searchString {
                 filteredMovieList = searchString.isEmpty ? movies : movies.filter { movie in
                     return movie.title.lowercased().starts(with: searchString.lowercased())
                 }
-            } else{
+            } else {
                 filteredMovieList = movies
             }
             collectionView?.reloadData()

@@ -22,6 +22,8 @@ class MovieListViewController: UIViewController {
     }
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var viewNoResults: UIView!
+    @IBOutlet weak var viewError: UIView!
     
     var movieListDatasource: MovieListDatasource?
     var collectionViewDelegate: CollectionViewDelegate?
@@ -74,6 +76,7 @@ class MovieListViewController: UIViewController {
         case initial
         case error
         case loading
+        case noResults
     }
     
     private var state: ScreenState = .initial {
@@ -82,8 +85,11 @@ class MovieListViewController: UIViewController {
             case .initial:
                 activityIndicator.stopAnimating()
                 self.activityIndicator.isHidden = true
+                viewNoResults.isHidden = true
+                viewError.isHidden = true
                 collectionView.isHidden = false
                 searchBar.isHidden = false
+    
             case .loading:
                 collectionView.isHidden = true
                 searchBar.isHidden = true
@@ -93,7 +99,16 @@ class MovieListViewController: UIViewController {
                 searchBar.isHidden = true
                 activityIndicator.stopAnimating()
                 self.activityIndicator.isHidden = true
-                collectionView.isHidden = false
+                collectionView.isHidden = true
+                viewNoResults.isHidden = true
+                viewError.isHidden = false
+            case .noResults:
+                activityIndicator.stopAnimating()
+                self.activityIndicator.isHidden = true
+                collectionView.isHidden = true
+                viewError.isHidden = true
+                searchBar.isHidden = false
+                viewNoResults.isHidden = false
             }
         }
     }

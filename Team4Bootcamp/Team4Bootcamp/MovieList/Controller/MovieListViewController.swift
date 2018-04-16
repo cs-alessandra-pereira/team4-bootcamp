@@ -58,6 +58,7 @@ class MovieListViewController: UIViewController {
     func fetchMovies() {
         movieService.fetchMovies { movies in
             self.setupDatasource(movies: movies, searchBarDelegate: self.searchBar.delegate as? SearchBarDelegate)
+            //self.movies.append(contentsOf: movies)
             self.state = .initial
         }
     }

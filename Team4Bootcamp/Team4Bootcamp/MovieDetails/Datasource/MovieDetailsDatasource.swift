@@ -10,11 +10,12 @@ import UIKit
 
 class MovieDetailsDatasource: NSObject, UITableViewDataSource {
     let movie: Movie
-    var info: [Any]
+    var info: [String]
     
     init(tableView: UITableView, movie: Movie) {
         self.movie = movie
         self.info = [movie.title, movie.releaseYearAsString(), movie.genresNameAsString(), movie.overview]
+
         super.init()
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: MovieDetailsView.movieDetailsCell)
     }
@@ -30,10 +31,8 @@ class MovieDetailsDatasource: NSObject, UITableViewDataSource {
         switch data {
         case is String:
             cell.textLabel!.text = data as? String
-        case is Int:
-            cell.textLabel!.text = "\(data)"
         default:
-            cell.textLabel!.text = "Error"
+            cell.textLabel!.text = "Unknown"
         }
         cell.textLabel?.numberOfLines = 0
         return cell

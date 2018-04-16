@@ -12,7 +12,7 @@ struct Movie {
     
     let id: Int
     let title: String
-    let releaseDate: Date
+    let releaseDate: Date?
     var genres: [Genre]
     let overview: String
     let posterPath: String
@@ -40,10 +40,13 @@ struct Movie {
     }
     
     func releaseYearAsString() -> String {
+        var year = "Unknown"
         let yearFormatter = DateFormatter()
         yearFormatter.dateFormat = "yyyy"
-        let date = yearFormatter.string(from: releaseDate)
-        return date
+        if let date = releaseDate {
+            year = yearFormatter.string(from: date)
+        }
+        return year
     }
     
 

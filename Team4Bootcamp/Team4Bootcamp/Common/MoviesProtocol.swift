@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol MoviesServiceProtocol {
+protocol MoviesProtocol {
     func fetchMovies(callback: @escaping ([Movie]) -> Void)
     func fetchGenres(callback: @escaping ([GenreId: GenreName]) -> Void)
 }

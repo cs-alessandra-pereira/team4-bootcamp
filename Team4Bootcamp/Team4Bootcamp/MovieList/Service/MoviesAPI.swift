@@ -57,7 +57,7 @@ class MoviesAPI {
     }
 }
 
-extension MoviesAPI: MoviesServiceProtocol {
+extension MoviesAPI: MoviesProtocol {
     func fetchGenres(callback: @escaping ([GenreId: GenreName]) -> Void) {
         request(endpoint: Endpoints.genre) { result in
             switch result {

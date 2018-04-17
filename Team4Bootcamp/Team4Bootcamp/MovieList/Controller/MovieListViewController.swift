@@ -28,7 +28,7 @@ class MovieListViewController: UIViewController {
     var movieListDatasource: MovieListDatasource?
     var collectionViewDelegate: CollectionViewDelegate?
     var searchBarDelegate: SearchBarDelegate?
-    var movieService: MoviesServiceProtocol = MoviesAPI()
+    var movieService: MoviesProtocol = MoviesAPI()
     
     override func viewDidLoad() {
         super.viewDidLoad()

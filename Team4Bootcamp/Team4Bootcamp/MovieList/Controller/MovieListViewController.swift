@@ -44,12 +44,22 @@ class MovieListViewController: UIViewController {
     }
     
     func setupDelegate() {
-        
-        collectionViewDelegate = CollectionViewDelegate(datasource: self.movieListDatasource) { movie in
-            self.proceedToDetailsView(movie: movie)
-        }
-        
+        collectionViewDelegate = CollectionViewDelegate()
         collectionView.delegate = collectionViewDelegate
+        
+        collectionViewDelegate?.callback = { [weak self] collectionEvent, movieIndex in
+            switch collectionEvent {
+            case .didSelectItemAt:
+                self?.proceedToDetailsView(movieIndex: movieIndex)
+            case .willDisplayMoreCells:
+                let count = self?.movieListDatasource?.filteredList().count
+                if movieIndex == count! - 1 {
+                    if MoviesConstants.pageBaseURL <= MoviesConstants.paginationLimit {
+                        self?.fetchMovies()
+                    }
+                }
+            }
+        }
     }
     
     func setupSearchBar() {
@@ -59,8 +69,11 @@ class MovieListViewController: UIViewController {
     
     func fetchMovies() {
         movieService.fetchMovies { movies in
-            self.setupDatasource(movies: movies, searchBarDelegate: self.searchBar.delegate as? SearchBarDelegate)
-            //self.movies.append(contentsOf: movies)
+            if let datasource = self.movieListDatasource {
+                datasource.movies.append(contentsOf: movies)
+            } else {
+                self.setupDatasource(movies: movies, searchBarDelegate: self.searchBar.delegate as? SearchBarDelegate)
+            }
             self.state = .initial
         }
     }
@@ -114,8 +127,10 @@ class MovieListViewController: UIViewController {
         }
     }
     
-    func proceedToDetailsView(movie: Movie) {
-        let controller = MovieDetailsViewController(movie: movie)
-        navigationController?.pushViewController(controller, animated: true)
+    func proceedToDetailsView(movieIndex: Int) {
+        if let movie = movieListDatasource?.movies[movieIndex] {
+            let controller = MovieDetailsViewController(movie: movie)
+            navigationController?.pushViewController(controller, animated: true)
+        }
     }
 }

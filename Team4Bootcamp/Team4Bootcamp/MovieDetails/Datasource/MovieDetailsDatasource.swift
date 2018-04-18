@@ -14,7 +14,7 @@ class MovieDetailsDatasource: NSObject, UITableViewDataSource {
     
     init(tableView: UITableView, movie: Movie) {
         self.movie = movie
-        self.info = [movie.title, movie.releaseYearAsString(), movie.genresNameAsString(), movie.overview]
+        self.info = [movie.title, movie.releaseYearAsString(releaseDate: movie.releaseDate), movie.genresNameAsString(), movie.overview]
         super.init()
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: MovieDetailsView.movieDetailsCell)
     }

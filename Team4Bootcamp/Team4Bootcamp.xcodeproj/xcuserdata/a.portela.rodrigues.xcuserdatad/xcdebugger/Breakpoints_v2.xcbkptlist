@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Team4Bootcamp/MovieList/Controller/MovieListViewController.swift"
-            timestampString = "545597617.1246049"
+            timestampString = "545695019.029471"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "100"
@@ -58,7 +58,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Team4Bootcamp/MovieList/Controller/MovieListViewController.swift"
-            timestampString = "545597617.124981"
+            timestampString = "545695019.029532"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "121"
@@ -72,7 +72,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Team4Bootcamp/MovieList/Controller/MovieListViewController.swift"
-            timestampString = "545597617.125175"
+            timestampString = "545695019.029575"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "94"
@@ -88,7 +88,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Team4Bootcamp/MovieList/Controller/MovieListViewController.swift"
-            timestampString = "545597617.125416"
+            timestampString = "545695019.029613"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "48"
@@ -104,12 +104,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Team4Bootcamp/Model/Movie.swift"
-            timestampString = "544751048.9016269"
+            timestampString = "545708395.923817"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "44"
             endingLineNumber = "44"
-            landmarkName = "releaseYearAsString()"
+            landmarkName = "releaseYearAsString(releaseDate:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -120,7 +120,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Team4BootcampTests/MovieList/Service/MoviesAPIStub.swift"
-            timestampString = "544986784.919351"
+            timestampString = "545693226.51789"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "34"
@@ -136,13 +136,29 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Team4Bootcamp/MovieList/Datasources/MovieListDatasource.swift"
-            timestampString = "545160090.366504"
+            timestampString = "545694355.818572"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "30"
             endingLineNumber = "30"
             landmarkName = "searchString"
             landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Team4Bootcamp/Model/Movie.swift"
+            timestampString = "545708395.923944"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "79"
+            endingLineNumber = "79"
+            landmarkName = "init(from:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -29,7 +29,11 @@ final class MovieCollectionViewCell: UICollectionViewCell {
         return view
     }()
     
-    lazy var iconButton = FavoriteButton()
+    lazy var iconButton: FavoriteButton = {
+        let view = FavoriteButton(frame: .zero)
+        view.addTarget(self, action: #selector(didTouchFavoriteButton), for: .touchUpInside)
+        return view
+    }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -47,6 +51,18 @@ final class MovieCollectionViewCell: UICollectionViewCell {
     }
 }
 
+extension MovieCollectionViewCell {
+    @objc
+    fileprivate func didTouchFavoriteButton() {
+        
+        if iconButton.isSelected {
+            iconButton.isSelected = false
+        }
+        else {
+            iconButton.isSelected = true
+        }
+    }
+}
 extension MovieCollectionViewCell: CodeView {
     
     func buildHierarchy() {

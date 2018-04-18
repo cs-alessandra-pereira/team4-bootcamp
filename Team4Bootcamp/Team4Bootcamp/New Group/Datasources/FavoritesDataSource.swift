@@ -10,15 +10,38 @@ import UIKit
 
 class FavoritesDataSource: NSObject, UITableViewDataSource {
     
+    private let tableView: UITableView
     
+    var favoriteMovies: [Movie] = [] {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+    
+    init(movies: [Movie], tableView: UITableView) {
+        self.favoriteMovies = movies
+        self.tableView = tableView
+        self.tableView.rowHeight = CGFloat(FavoriteTableViewCell.cellHeight)
+        self.tableView.register(FavoriteTableViewCell.self, forCellReuseIdentifier: FavoriteTableViewCell.reuseIdentifier)
+        super.init()
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return favoriteMovies.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: FavoriteTableViewCell.reuseIdentifier, for: indexPath) as? FavoriteTableViewCell else {
+            fatalError()
+        }
+        
+        let movie = favoriteMovies[indexPath.row]
+        cell.setup(movie: movie)
+        return cell
     }
     
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        
+    }
     
 }

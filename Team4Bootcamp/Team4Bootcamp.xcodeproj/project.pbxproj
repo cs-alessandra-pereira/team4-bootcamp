@@ -29,6 +29,9 @@
 		CDD41634206B110300988317 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD41633206B110300988317 /* Movie.swift */; };
 		CDD41636206B12FB00988317 /* Genres.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD41635206B12FB00988317 /* Genres.swift */; };
 		CDD4163B206C491500988317 /* MovieListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD4163A206C491500988317 /* MovieListViewController.swift */; };
+		EA0AA958208686370039C195 /* CellConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0AA957208686370039C195 /* CellConstants.swift */; };
+		EA0AA95B2086C6C20039C195 /* MovieDAO+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0AA9592086C6C20039C195 /* MovieDAO+CoreDataClass.swift */; };
+		EA0AA95C2086C6C20039C195 /* MovieDAO+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0AA95A2086C6C20039C195 /* MovieDAO+CoreDataProperties.swift */; };
 		EA1B563B2078022F00390669 /* Date+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1B563A2078022F00390669 /* Date+String.swift */; };
 		EA284CC0206D0D0200E4D7CD /* MoviesProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA284CBF206D0D0200E4D7CD /* MoviesProtocol.swift */; };
 		EA284CC2206D0ED400E4D7CD /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA284CC1206D0ED400E4D7CD /* Result.swift */; };
@@ -49,6 +52,7 @@
 		EA7A7D7920855BE200F8C637 /* FavoritePersistenceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7A7D7820855BE200F8C637 /* FavoritePersistenceService.swift */; };
 		EA7A7D7C20855D9F00F8C637 /* PersistenceConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7A7D7B20855D9F00F8C637 /* PersistenceConstants.swift */; };
 		EA88DFDF207CE05100FFF0B1 /* SearchBarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA88DFDE207CE05100FFF0B1 /* SearchBarDelegate.swift */; };
+		EA9A117A20862BA600F5ECA7 /* FavoriteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9A117920862BA600F5ECA7 /* FavoriteTableViewCell.swift */; };
 		EAD462B02084DE5000F0510D /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD462AF2084DE5000F0510D /* FavoritesViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -112,6 +116,9 @@
 		CDD41633206B110300988317 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		CDD41635206B12FB00988317 /* Genres.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genres.swift; sourceTree = "<group>"; };
 		CDD4163A206C491500988317 /* MovieListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListViewController.swift; sourceTree = "<group>"; };
+		EA0AA957208686370039C195 /* CellConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellConstants.swift; sourceTree = "<group>"; };
+		EA0AA9592086C6C20039C195 /* MovieDAO+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MovieDAO+CoreDataClass.swift"; sourceTree = "<group>"; };
+		EA0AA95A2086C6C20039C195 /* MovieDAO+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MovieDAO+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		EA1B563A2078022F00390669 /* Date+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+String.swift"; sourceTree = "<group>"; };
 		EA284CBF206D0D0200E4D7CD /* MoviesProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesProtocol.swift; sourceTree = "<group>"; };
 		EA284CC1206D0ED400E4D7CD /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
@@ -131,6 +138,7 @@
 		EA7A7D7820855BE200F8C637 /* FavoritePersistenceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePersistenceService.swift; sourceTree = "<group>"; };
 		EA7A7D7B20855D9F00F8C637 /* PersistenceConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceConstants.swift; sourceTree = "<group>"; };
 		EA88DFDE207CE05100FFF0B1 /* SearchBarDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarDelegate.swift; sourceTree = "<group>"; };
+		EA9A117920862BA600F5ECA7 /* FavoriteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteTableViewCell.swift; sourceTree = "<group>"; };
 		EAD462AF2084DE5000F0510D /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FavoritesViewController.swift; path = "Team4Bootcamp/New Group/Controller/FavoritesViewController.swift"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -426,15 +434,27 @@
 		EA7A7D7A20855CAA00F8C637 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				EA0AA9592086C6C20039C195 /* MovieDAO+CoreDataClass.swift */,
+				EA0AA95A2086C6C20039C195 /* MovieDAO+CoreDataProperties.swift */,
 				EA284CBF206D0D0200E4D7CD /* MoviesProtocol.swift */,
 				EA284CC1206D0ED400E4D7CD /* Result.swift */,
+				EA0AA957208686370039C195 /* CellConstants.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		EA9A117820862B9200F5ECA7 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				EA9A117920862BA600F5ECA7 /* FavoriteTableViewCell.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		EAD462AE2084DE1500F0510D /* Favorites */ = {
 			isa = PBXGroup;
 			children = (
+				EA9A117820862B9200F5ECA7 /* View */,
 				EA7A7D7320855B3300F8C637 /* Controller */,
 				EA7A7D7220855B2500F8C637 /* Datasources */,
 				EA7A7D7120855B1800F8C637 /* Service */,
@@ -606,6 +626,7 @@
 				CDD41609206ABB9400988317 /* Team4Bootcamp.xcdatamodeld in Sources */,
 				CD1D7F29207BFAD1009722FA /* MovieDetailsViewController.swift in Sources */,
 				CDD41634206B110300988317 /* Movie.swift in Sources */,
+				EA0AA95C2086C6C20039C195 /* MovieDAO+CoreDataProperties.swift in Sources */,
 				CD1D7F2B207BFADD009722FA /* MovieDetailsView.swift in Sources */,
 				EA284CC4206D106B00E4D7CD /* MoviesAPI.swift in Sources */,
 				CD1D7F42207E7321009722FA /* UIColor+Palette.swift in Sources */,
@@ -614,14 +635,17 @@
 				CDD4163B206C491500988317 /* MovieListViewController.swift in Sources */,
 				EA88DFDF207CE05100FFF0B1 /* SearchBarDelegate.swift in Sources */,
 				EA284CC6206D137200E4D7CD /* APIConstants.swift in Sources */,
+				EA0AA95B2086C6C20039C195 /* MovieDAO+CoreDataClass.swift in Sources */,
 				CD91F9D82073EE96002BB9EE /* CodeView.swift in Sources */,
 				EA1B563B2078022F00390669 /* Date+String.swift in Sources */,
 				EA284CC0206D0D0200E4D7CD /* MoviesProtocol.swift in Sources */,
 				EA32507E207507980018BB28 /* CollectionViewDelegate.swift in Sources */,
 				EA284CC2206D0ED400E4D7CD /* Result.swift in Sources */,
 				CDD41601206ABB9400988317 /* AppDelegate.swift in Sources */,
+				EA0AA958208686370039C195 /* CellConstants.swift in Sources */,
 				CD1D7F45207E7360009722FA /* UIImage+Icons.swift in Sources */,
 				CD91F9E220743B38002BB9EE /* FavoriteButton.swift in Sources */,
+				EA9A117A20862BA600F5ECA7 /* FavoriteTableViewCell.swift in Sources */,
 				EA7A7D7920855BE200F8C637 /* FavoritePersistenceService.swift in Sources */,
 				CD1D7F2D207BFAE5009722FA /* MovieDetailsDatasource.swift in Sources */,
 				CD91F9DA2073EE96002BB9EE /* MovieCollectionViewCell.swift in Sources */,

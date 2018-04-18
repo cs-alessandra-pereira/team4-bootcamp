@@ -12,7 +12,7 @@ struct Movie {
     
     let id: Int
     let title: String
-    let releaseDate: Date
+    var releaseDate: Date?
     var genres: [Genre]
     let overview: String
     let posterPath: String
@@ -39,14 +39,27 @@ struct Movie {
         return genresNames
     }
     
-    func releaseYearAsString() -> String {
+    func releaseYearAsString(releaseDate: Date?) -> String {
+        guard let date = releaseDate else {
+            return ""
+        }
         let yearFormatter = DateFormatter()
         yearFormatter.dateFormat = "yyyy"
-        let date = yearFormatter.string(from: releaseDate)
-        return date
+        let dateString = yearFormatter.string(from: date)
+        return dateString
     }
-    
+}
 
+extension Movie {
+    init(from movieDAO: MovieDAO) {
+        let date = movieDAO.date as Date?
+        id = Int(movieDAO.id)
+        title = movieDAO.title
+        overview = movieDAO.overview
+        posterPath = movieDAO.posterPath
+        genres = []
+        releaseDate = date
+    }
 }
 
 extension Movie: Decodable {
@@ -59,10 +72,12 @@ extension Movie: Decodable {
         overview = try values.decode(String.self, forKey: .overview)
         posterPath = try values.decode(String.self, forKey: .posterPath)
         
-        let dateString = try values.decode(String.self, forKey: .releaseDate)
-        
-        releaseDate = Date.getDateFromString(dateString: dateString)
-        
+        do {
+            let dateString = try values.decode(String.self, forKey: .releaseDate)
+            releaseDate = Date.getDateFromString(dateString: dateString)
+        } catch {
+            releaseDate = nil
+        }
         let genreIDs = try values.decode([Int].self, forKey: .genresIDs)
         var genres: [Genre] = []
         for id in genreIDs {

@@ -11,7 +11,6 @@ import UIKit
 class MovieDetailsView: UIView {
     
     static let movieDetailsCell = "MovieCell"
-    var box = CGRect()
     
     lazy var imageView: UIImageView = {
         let view = UIImageView(frame: .zero)
@@ -30,7 +29,6 @@ class MovieDetailsView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        box = frame
         setupView()
     }
     

@@ -12,8 +12,18 @@ import UIKit
 class CollectionViewDelegateStub: CollectionViewDelegate {
     
     var didSelectCell = false
+    var didLastCellAppeared = false
+    var number = 0
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         didSelectCell = true
+        super.collectionView(collectionView, didSelectItemAt: indexPath)
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if indexPath.row == collectionView.numberOfItems(inSection: moviesSection) - 1 {
+            didLastCellAppeared = true
+        super.collectionView(collectionView, willDisplay: cell, forItemAt: indexPath)
+        }
     }
 }

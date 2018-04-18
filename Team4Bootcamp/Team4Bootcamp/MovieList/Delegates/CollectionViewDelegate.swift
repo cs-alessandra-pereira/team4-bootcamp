@@ -12,6 +12,7 @@ typealias MovieCollectionViewCallback = ((CollectionViewEvent, Int) -> Void)?
 
 class CollectionViewDelegate: NSObject, UICollectionViewDelegate {
 
+    let moviesSection = 0
     var callback: MovieCollectionViewCallback = nil
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -19,7 +20,9 @@ class CollectionViewDelegate: NSObject, UICollectionViewDelegate {
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        callback?(CollectionViewEvent.willDisplayMoreCells, indexPath.row)
+        if indexPath.row == collectionView.numberOfItems(inSection: moviesSection) - 1 {
+            callback?(CollectionViewEvent.willDisplayMoreCells, indexPath.row)
+        }
     }
 }
 

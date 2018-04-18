@@ -53,10 +53,10 @@ final class FavoriteTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setup(movie: Movie) {
+    func setup(movie: MovieDAO) {
         title.text = movie.title
         overview.text = movie.overview
-        if let movieDate = movie.releaseDate {
+        if let movieDate = movie.date as Date? {
             date.text = String(calendar.component(.year, from: movieDate))
         }
         let path = Endpoints.moviePoster(movie.posterPath).path

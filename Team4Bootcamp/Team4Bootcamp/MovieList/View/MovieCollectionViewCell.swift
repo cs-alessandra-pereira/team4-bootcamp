@@ -10,10 +10,14 @@ import UIKit
 import Kingfisher
 import SnapKit
 
+protocol MovieCollectionViewCellDelegate: class {
+    var didFavoriteCallBack: (Movie, Bool) -> Bool { get set }
+}
+
 final class MovieCollectionViewCell: UICollectionViewCell {
     
     let imageFetchable: ImageFetchable = KFImageFetchable()
-    
+
     static let movieListCell = "MovieCell"
     
     lazy var imageView: UIImageView = {
@@ -29,8 +33,11 @@ final class MovieCollectionViewCell: UICollectionViewCell {
         return view
     }()
     
+    var delegate: MovieCollectionViewCellDelegate?
+    
     lazy var iconButton: FavoriteButton = {
         let view = FavoriteButton(frame: .zero)
+        
         view.addTarget(self, action: #selector(didTouchFavoriteButton), for: .touchUpInside)
         return view
     }()
@@ -46,6 +53,11 @@ final class MovieCollectionViewCell: UICollectionViewCell {
     
     func setup(movie: Movie) {
         textLabel.text = movie.title
+        if movie.persisted {
+            iconButton.isSelected = true
+        } else {
+            iconButton.isSelected = false
+        }
         let path = Endpoints.moviePoster(movie.posterPath).path
         imageFetchable.fetch(imageURLString: path, onImage: imageView) {}
     }
@@ -54,11 +66,10 @@ final class MovieCollectionViewCell: UICollectionViewCell {
 extension MovieCollectionViewCell {
     @objc
     fileprivate func didTouchFavoriteButton() {
-        
+        //delegate?.didFavoriteCallBack()
         if iconButton.isSelected {
             iconButton.isSelected = false
-        }
-        else {
+        } else {
             iconButton.isSelected = true
         }
     }

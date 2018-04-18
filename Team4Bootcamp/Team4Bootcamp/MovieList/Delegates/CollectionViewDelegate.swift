@@ -10,6 +10,10 @@ import UIKit
 
 typealias MovieCollectionViewCallback = (Movie) -> Void
 
+protocol MovieCollectionViewDelegate: UICollectionViewDelegate {
+    func didFavorite(image: String)
+}
+
 class CollectionViewDelegate: NSObject, UICollectionViewDelegate {
     
     weak var datasource: MovieListDatasource?

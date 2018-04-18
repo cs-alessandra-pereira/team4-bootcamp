@@ -46,7 +46,8 @@ class MovieListViewController: UIViewController {
     func setupDelegate() {
         
         collectionViewDelegate = CollectionViewDelegate(datasource: self.movieListDatasource) { movie in
-            self.proceedToDetailsView(movie: movie)
+            let controller = MovieDetailsViewController(movie: movie)
+            self.navigationController?.pushViewController(controller, animated: true)
         }
         
         collectionView.delegate = collectionViewDelegate
@@ -63,7 +64,7 @@ class MovieListViewController: UIViewController {
             self.state = .initial
         }
     }
-    
+
     func fetchGenres() {
         self.state = .loading
         movieService.fetchGenres {
@@ -111,10 +112,5 @@ class MovieListViewController: UIViewController {
                 viewNoResults.isHidden = false
             }
         }
-    }
-    
-    func proceedToDetailsView(movie: Movie) {
-        let controller = MovieDetailsViewController(movie: movie)
-        navigationController?.pushViewController(controller, animated: true)
     }
 }

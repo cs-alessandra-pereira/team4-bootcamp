@@ -9,5 +9,5 @@
 import Foundation
 
 struct CellConstants {
-    static let standardPaddingValue = 8
+    static let standardPaddingValue = 12
 }

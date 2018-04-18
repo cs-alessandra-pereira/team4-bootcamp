@@ -12,18 +12,22 @@ class FavoritesDataSource: NSObject, UITableViewDataSource {
     
     private let tableView: UITableView
     
-    var favoriteMovies: [Movie] = [] {
+    var favoriteMovies: [MovieDAO] = [] {
         didSet {
             tableView.reloadData()
         }
     }
     
-    init(movies: [Movie], tableView: UITableView) {
+    init(movies: [MovieDAO], tableView: UITableView) {
         self.favoriteMovies = movies
         self.tableView = tableView
         self.tableView.rowHeight = CGFloat(FavoriteTableViewCell.cellHeight)
         self.tableView.register(FavoriteTableViewCell.self, forCellReuseIdentifier: FavoriteTableViewCell.reuseIdentifier)
         super.init()
+    }
+    
+    func addMovie(newMovie: MovieDAO) {
+        favoriteMovies.append(newMovie)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

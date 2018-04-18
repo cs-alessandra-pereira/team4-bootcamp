@@ -19,27 +19,31 @@ class FavoritesViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let movie = Movie(id: 01, title: "Teste", releaseDate: Date(), genres: [Genre(id: 01, name: "Terror")], overview: "Normally, the label text is drawn with the font you specify in the font property. If this property is set to true, and the text in the text property exceeds the label’s bounding rectangle, the", posterPath: "/eKi8dIrr8voobbaGzDpe8w0PVbC.jpg")
-        
-        setupDataSource(movies: [movie])
+        setupDataSource(movies: [])
+        fetchMovies()
+        addMovie()
     }
-    func setupDataSource(movies: [Movie]) {
+    
+    private func setupDataSource(movies: [MovieDAO]) {
         favoritesDataSouce = FavoritesDataSource(movies: movies, tableView: self.tableView)
         tableView.dataSource = favoritesDataSouce
     }
     
-    func fetchMovies() {
+    private func fetchMovies() {
         favoritePersistenceService.fetchMovies { movies in
             self.favoritesDataSouce?.favoriteMovies = movies
         }
     }
-//    let friend = Friend(entity: Friend.entity(), insertInto: context)
-//    friend.name = data.name
-//    appDelegate.saveContext()
-//    friends.append(friend)
-//    let index = IndexPath(row:friends.count - 1, section:0)
-//    collectionView?.insertItems(at: [index])
     
+    private func addMovie() {
+        let movie = Movie(id: 269149, title: "Zootopia", releaseDate: Date(), genres: [Genre(id: 01, name: "Terror")], overview: "Normally, the label text is drawn with the font you specify in the font property. If this property is set to true, and the text in the text property exceeds the label’s bounding rectangle, the", posterPath: "/sM33SANp9z6rXW8Itn7NnG1GOEs.jpg", persisted: false)
+        
+        let result = favoritePersistenceService.addMovie(movie: movie)
+        
+        if let newMovie = result {
+            favoritesDataSouce?.addMovie(newMovie: newMovie)
+        }
+    }
     
 }
 

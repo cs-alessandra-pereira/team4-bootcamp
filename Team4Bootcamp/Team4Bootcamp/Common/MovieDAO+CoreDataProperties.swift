@@ -2,7 +2,7 @@
 //  MovieDAO+CoreDataProperties.swift
 //  Team4Bootcamp
 //
-//  Created by a.portela.rodrigues on 17/04/18.
+//  Created by a.portela.rodrigues on 18/04/18.
 //  Copyright © 2018 alessandra.l.pereira. All rights reserved.
 //
 //
@@ -18,7 +18,7 @@ extension MovieDAO {
     }
 
     @NSManaged public var date: NSDate?
-    @NSManaged public var id: Int16
+    @NSManaged public var id: Int32
     @NSManaged public var overview: String
     @NSManaged public var posterPath: String
     @NSManaged public var title: String

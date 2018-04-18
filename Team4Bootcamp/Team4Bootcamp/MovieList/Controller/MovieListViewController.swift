@@ -128,7 +128,7 @@ class MovieListViewController: UIViewController {
     }
     
     func proceedToDetailsView(movieIndex: Int) {
-        if let movie = movieListDatasource?.movies[movieIndex] {
+        if let movie = movieListDatasource?.filteredList()[movieIndex] {
             let controller = MovieDetailsViewController(movie: movie)
             navigationController?.pushViewController(controller, animated: true)
         }

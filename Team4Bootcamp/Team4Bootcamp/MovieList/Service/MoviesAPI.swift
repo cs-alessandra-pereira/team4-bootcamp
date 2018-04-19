@@ -87,6 +87,9 @@ extension MoviesAPI: MoviesServiceProtocol {
                     DispatchQueue.main.async { callback([]) }
                     return
                 }
+                if MoviesConstants.pageBaseURL <= MoviesConstants.paginationLimit {
+                    MoviesConstants.pageBaseURL += 1
+                }
                 DispatchQueue.main.async { callback(movieList.results) }
             case .error:
                 DispatchQueue.main.async {

@@ -12,6 +12,8 @@ struct MoviesConstants {
     static let baseURL = "https://api.themoviedb.org/3/"
     static let apiKey = "4ffd9f3fe663db609ed457cca5ab2f4e"
     static let imgBaseURL = "https://image.tmdb.org/t/p/w500"
+    static let paginationLimit = 852
+    static var pageBaseURL = 1
 }
 
 enum Endpoints {
@@ -23,7 +25,7 @@ enum Endpoints {
     var path: String {
         switch self {
         case .movieList:
-            return "movie/popular?api_key=\(MoviesConstants.apiKey)&language=en-US&page=1"
+            return "movie/popular?api_key=\(MoviesConstants.apiKey)&language=en-US&page=\(MoviesConstants.pageBaseURL)"
         case .genre:
             return "genre/movie/list?api_key=\(MoviesConstants.apiKey)&language=en-US"
         case .moviePoster(let posterPath):

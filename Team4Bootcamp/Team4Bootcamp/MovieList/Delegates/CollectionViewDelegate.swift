@@ -8,24 +8,25 @@
 
 import UIKit
 
-typealias MovieCollectionViewCallback = (Movie) -> Void
+typealias MovieCollectionViewCallback = ((CollectionViewEvent, Int) -> Void)?
 
 class CollectionViewDelegate: NSObject, UICollectionViewDelegate {
-    
-    weak var datasource: MovieListDatasource?
-    let callback: MovieCollectionViewCallback
-    
-    init(datasource: MovieListDatasource?, callback: @escaping MovieCollectionViewCallback) {
-        self.datasource = datasource
-        self.callback = callback
-        super.init()
-    }
+
+    let moviesSection = 0
+    var callback: MovieCollectionViewCallback = nil
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let datasource = datasource {
-            let movie = datasource.filteredMovieList[indexPath.row]
-            callback(movie)
-        }
+        callback?(CollectionViewEvent.didSelectItemAt, indexPath.row)
     }
     
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if indexPath.row == collectionView.numberOfItems(inSection: moviesSection) - 1 {
+            callback?(CollectionViewEvent.willDisplayMoreCells, indexPath.row)
+        }
+    }
+}
+
+enum CollectionViewEvent {
+    case didSelectItemAt
+    case willDisplayMoreCells
 }

@@ -10,11 +10,13 @@ import UIKit
 
 class MovieDetailsDatasource: NSObject, UITableViewDataSource {
     let movie: Movie
-    var info: [Any]
+    var info: [String]
     
     init(tableView: UITableView, movie: Movie) {
         self.movie = movie
-        self.info = [movie.title, movie.releaseYearAsString(releaseDate: movie.releaseDate), movie.genresNameAsString(), movie.overview]
+
+        self.info = [movie.title, movie.releaseYearAsString(), movie.genresNameAsString(), movie.overview]
+
         super.init()
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: MovieDetailsView.movieDetailsCell)
     }
@@ -24,17 +26,9 @@ class MovieDetailsDatasource: NSObject, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        //TODO: Adicionar tratamento para quando a célula é ""
         let cell = tableView.dequeueReusableCell(withIdentifier: MovieDetailsView.movieDetailsCell, for: indexPath as IndexPath)
-        
-        let data = info[indexPath.row]
-        switch data {
-        case is String:
-            cell.textLabel!.text = data as? String
-        case is Int:
-            cell.textLabel!.text = "\(data)"
-        default:
-            cell.textLabel!.text = "Error"
-        }
+        cell.textLabel!.text = info[indexPath.row]
         cell.textLabel?.numberOfLines = 0
         return cell
     }

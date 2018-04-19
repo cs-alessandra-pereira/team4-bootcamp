@@ -42,14 +42,14 @@ struct Movie {
         return genresNames
     }
     
-    func releaseYearAsString(releaseDate: Date?) -> String {
-        guard let date = releaseDate else {
-            return ""
-        }
+    func releaseYearAsString() -> String {
+        var year = "Unknown"
         let yearFormatter = DateFormatter()
         yearFormatter.dateFormat = "yyyy"
-        let dateString = yearFormatter.string(from: date)
-        return dateString
+        if let date = releaseDate {
+            year = yearFormatter.string(from: date)
+        }
+        return year
     }
 }
 

@@ -98,7 +98,7 @@ extension MovieCollectionViewCell: CodeView {
         }
         
         textLabel.snp.makeConstraints { make in
-            make.width.equalTo(frame.size.width*6/8)
+            make.width.equalTo(frame.size.width*3/4)
             make.right.equalTo(iconButton.snp.left)
             make.centerY.equalTo(iconButton.snp.centerY)
             make.left.equalTo(imageView.snp.leftMargin)

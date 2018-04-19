@@ -10,8 +10,10 @@ import Foundation
 
 extension Date {
     
-    static func getDateFromString(dateString: String) -> Date {
-        
+    static func getDateFromString(dateString: String) -> Date? {
+        if dateString == "" {
+            return nil
+        }
         let dates = dateString.split(separator: "-")
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy/MM/dd"

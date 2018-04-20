@@ -11,7 +11,7 @@ import Kingfisher
 import SnapKit
 
 protocol MovieCollectionViewCellDelegate: class {
-    var didFavoriteCallBack: (Movie, Bool) -> Bool { get set }
+    func didFavoriteCell(_ isSelected: Bool, at position: IndexPath)
 }
 
 final class MovieCollectionViewCell: UICollectionViewCell {
@@ -34,6 +34,7 @@ final class MovieCollectionViewCell: UICollectionViewCell {
     }()
     
     var delegate: MovieCollectionViewCellDelegate?
+    var position: IndexPath?
     
     lazy var iconButton: FavoriteButton = {
         let view = FavoriteButton(frame: .zero)
@@ -51,13 +52,14 @@ final class MovieCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setup(movie: Movie) {
+    func setup(movie: Movie, at position: IndexPath) {
         textLabel.text = movie.title
         if movie.persisted {
             iconButton.isSelected = true
         } else {
             iconButton.isSelected = false
         }
+        self.position = position
         let path = Endpoints.moviePoster(movie.posterPath).path
         imageFetchable.fetch(imageURLString: path, onImage: imageView) {}
     }
@@ -66,11 +68,14 @@ final class MovieCollectionViewCell: UICollectionViewCell {
 extension MovieCollectionViewCell {
     @objc
     fileprivate func didTouchFavoriteButton() {
-        //delegate?.didFavoriteCallBack()
-        if iconButton.isSelected {
-            iconButton.isSelected = false
-        } else {
-            iconButton.isSelected = true
+        if let cellPosition = position {
+            if iconButton.isSelected {
+                iconButton.isSelected = false
+                delegate?.didFavoriteCell(iconButton.isSelected, at: cellPosition)
+            } else {
+                iconButton.isSelected = true
+                delegate?.didFavoriteCell(iconButton.isSelected, at: cellPosition)
+            }
         }
     }
 }

@@ -9,19 +9,41 @@
 import UIKit
 import CoreData
 
-protocol MoviePersistenceProtocol {
-    func fetchMovies(callback: @escaping ([MovieDAO]) -> Void)
+protocol MoviePersistenceProtocol: MoviesProtocol {
     func deleteMovie(movie: Movie) -> Bool
-    func addMovie(movie: Movie) -> MovieDAO?
+    func addMovie(movie: Movie) -> Bool
     func previouslyInserted(movieId: Int) -> Bool
 }
 
 final class FavoritePersistenceService: MoviePersistenceProtocol {
+    func fetchMovies(callback: @escaping (Result<[Movie], MoviesError>) -> Void) {
+        do {
+            
+            let movies = try self.context.fetch(MovieDAO.fetchRequest())
+            guard let moviesDAO = movies as? [MovieDAO] else {
+                callback(.error(MoviesError.invalidData))
+                return
+            }
+            
+            var movieModelList: [Movie] = []
+            for movieDAO in moviesDAO {
+                movieModelList.append(Movie(from: movieDAO))
+            }
+            callback(.success(movieModelList))
+            
+        } catch {
+            callback(.error(MoviesError.invalidData))
+        }
+    }
+    
+    func fetchGenres(callback: @escaping (Result<[GenreId : GenreName], MoviesError>) -> Void) {
+    }
+    
 
     private var appDelegate = UIApplication.shared.delegate as! AppDelegate //swiftlint:disable:this force_cast
     private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext //swiftlint:disable:this force_cast
 
-    func addMovie(movie: Movie) -> MovieDAO? {
+    func addMovie(movie: Movie) -> Bool {
         
         if previouslyInserted(movieId: movie.id) == false {
             let newMovieDAO = MovieDAO(entity: MovieDAO.entity(), insertInto: context)
@@ -31,26 +53,9 @@ final class FavoritePersistenceService: MoviePersistenceProtocol {
             newMovieDAO.title = movie.title
             newMovieDAO.posterPath = movie.posterPath
             appDelegate.saveContext()
-            return newMovieDAO
+            return true
         }
-        
-        return nil
-    }
-    
-    func fetchMovies(callback: @escaping ([MovieDAO]) -> Void) {
-        do {
-            
-            let movies = try self.context.fetch(MovieDAO.fetchRequest())
-            guard let moviesDAO = movies as? [MovieDAO] else {
-                callback([])
-                return
-            }
-           
-            callback(moviesDAO)
-            
-        } catch {
-            callback([])
-        }
+        return false
     }
     
     func deleteMovie(movie: Movie) -> Bool {

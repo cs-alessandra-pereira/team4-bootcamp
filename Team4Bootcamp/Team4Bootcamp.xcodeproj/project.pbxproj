@@ -280,6 +280,7 @@
 		CDD415FF206ABB9400988317 /* Team4Bootcamp */ = {
 			isa = PBXGroup;
 			children = (
+				EAFB94ED208A1DD800A730E8 /* Persistence */,
 				EA7A7D7A20855CAA00F8C637 /* Common */,
 				EAD462AE2084DE1500F0510D /* Favorites */,
 				CD1D7F1E207BAEF2009722FA /* MovieDetails */,
@@ -425,7 +426,6 @@
 			isa = PBXGroup;
 			children = (
 				EA7A7D7820855BE200F8C637 /* FavoritePersistenceService.swift */,
-				EA7A7D7B20855D9F00F8C637 /* PersistenceConstants.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -449,8 +449,6 @@
 		EA7A7D7A20855CAA00F8C637 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				EA30FDAD2087AE1B00EF3A56 /* MovieDAO+CoreDataClass.swift */,
-				EA30FDAE2087AE1B00EF3A56 /* MovieDAO+CoreDataProperties.swift */,
 				EA284CBF206D0D0200E4D7CD /* MoviesProtocol.swift */,
 				EA284CC1206D0ED400E4D7CD /* Result.swift */,
 				EA0AA957208686370039C195 /* CellConstants.swift */,
@@ -477,6 +475,16 @@
 			);
 			name = Favorites;
 			path = "New Group";
+			sourceTree = "<group>";
+		};
+		EAFB94ED208A1DD800A730E8 /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				EA30FDAD2087AE1B00EF3A56 /* MovieDAO+CoreDataClass.swift */,
+				EA30FDAE2087AE1B00EF3A56 /* MovieDAO+CoreDataProperties.swift */,
+				EA7A7D7B20855D9F00F8C637 /* PersistenceConstants.swift */,
+			);
+			path = Persistence;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

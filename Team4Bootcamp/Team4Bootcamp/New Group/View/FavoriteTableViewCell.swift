@@ -53,10 +53,10 @@ final class FavoriteTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setup(movie: MovieDAO) {
+    func setup(movie: Movie) {
         title.text = movie.title
         overview.text = movie.overview
-        if let movieDate = movie.date as Date? {
+        if let movieDate = movie.releaseDate {
             date.text = String(calendar.component(.year, from: movieDate))
         }
         let path = Endpoints.moviePoster(movie.posterPath).path
@@ -114,7 +114,6 @@ extension FavoriteTableViewCell: CodeView {
     func configure() {
         backgroundColor = UIColor.terciaryColor
         
-        //title.sizeToFit()
         title.textColor = UIColor.secondaryColor
         date.textColor = UIColor.secondaryColor
         overview.textColor = UIColor.secondaryColor
@@ -125,7 +124,6 @@ extension FavoriteTableViewCell: CodeView {
         
         date.adjustsFontSizeToFitWidth = true
         date.lineBreakMode = .byTruncatingTail
-        //posterImage.setContentCompressionResistancePriority(UILayoutPriority.init(rawValue: 749.0), for: .horizontal)
         overview.textAlignment = NSTextAlignment.justified
         overview.adjustsFontSizeToFitWidth = true
         

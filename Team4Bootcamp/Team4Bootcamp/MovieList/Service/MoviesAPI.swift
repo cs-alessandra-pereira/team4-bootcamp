@@ -10,25 +10,25 @@ import Foundation
 
 class MoviesAPI {
     
-    func request(endpoint: Endpoints, callback: @escaping (Result<Any, APIError>) -> Void) {
+    func request(endpoint: Endpoints, callback: @escaping (Result<Any, MoviesError>) -> Void) {
         let url = URL(string: "\(MoviesConstants.baseURL)\(endpoint.path)")!
         let request = URLRequest(url: url)
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             
-            if let error = error {
-                callback(.error(APIError.customError(error)))
+            if error != nil {
+                callback(.error(MoviesError.noConection))
                 return
             }
             guard let data = data else {
-                callback(.error(APIError.invalidData))
+                callback(.error(MoviesError.invalidData))
                 return
             }
 
             let content = self.decodeContent(from: data, withEndpoint: endpoint)
             if let response = content.response {
                 callback(.success(response))
-            } else if let error = content.error {
-                callback(.error(APIError.parseError(error.localizedDescription)))
+            } else if content.error != nil {
+                callback(.error(MoviesError.invalidData))
             }
             
         }
@@ -51,50 +51,49 @@ class MoviesAPI {
                 break
             }
         } catch {
-            return (nil, error)
+            return (nil, MoviesError.invalidData)
         }
-        return (nil, APIError.invalidData)
+        return (nil, MoviesError.invalidData)
     }
 }
 
 extension MoviesAPI: MoviesProtocol {
-    func fetchGenres(callback: @escaping ([GenreId: GenreName]) -> Void) {
-        request(endpoint: Endpoints.genre) { result in
-            switch result {
-            case .success(let genres):
-                guard let genresWrapper = genres as? GenresWrapper else {
-                    DispatchQueue.main.async { callback([GenreId: GenreName]()) }
-                    return
-                }
-                DispatchQueue.main.async {
-                    callback(genresWrapper.genreDictionary)
-                    return
-                }
-            case .error:
-                DispatchQueue.main.async {
-                    callback([GenreId: GenreName]())
-                }
-            }
-        }
-    }
-    
-    func fetchMovies(callback: @escaping ([Movie]) -> Void) {
+    func fetchMovies(callback: @escaping (Result<[Movie], MoviesError>) -> Void) {
         request(endpoint: Endpoints.movieList) { result in
             
             switch result {
             case .success(let movieListJson):
                 guard let movieList = movieListJson as? MovieListWrapper else {
-                    DispatchQueue.main.async { callback([]) }
+                    DispatchQueue.main.async { callback(.error(MoviesError.invalidData)) }
                     return
                 }
                 if MoviesConstants.pageBaseURL <= MoviesConstants.paginationLimit {
                     MoviesConstants.pageBaseURL += 1
                 }
-                DispatchQueue.main.async { callback(movieList.results) }
-            case .error:
+                DispatchQueue.main.async { callback(.success(movieList.results)) }
+            case .error(let err):
                 DispatchQueue.main.async {
-                    //FIXME: Tales - vale um tratamento de erros melhor - o que acontece numa busca vazia? timout?
-                    callback([]) }
+                    callback(.error(err)) }
+            }
+        }
+    }
+    
+    func fetchGenres(callback: @escaping (Result<[GenreId: GenreName], MoviesError>) -> Void) {
+        request(endpoint: Endpoints.genre) { result in
+            switch result {
+            case .success(let genres):
+                guard let genresWrapper = genres as? GenresWrapper else {
+                    DispatchQueue.main.async { callback(.error(MoviesError.invalidData)) }
+                    return
+                }
+                DispatchQueue.main.async {
+                    callback(.success(genresWrapper.genreDictionary))
+                    return
+                }
+            case .error(let err):
+                DispatchQueue.main.async {
+                    callback(.error(err))
+                }
             }
         }
     }

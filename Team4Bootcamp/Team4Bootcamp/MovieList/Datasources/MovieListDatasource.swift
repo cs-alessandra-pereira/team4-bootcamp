@@ -10,14 +10,15 @@ import UIKit
 
 final class MovieListDatasource: NSObject, UICollectionViewDataSource {
     
-    
     var movies: [Movie] = [] {
         didSet {
             collectionView?.reloadData()
         }
     }
     
-    weak private var collectionView: UICollectionView?
+    weak var collectionView: UICollectionView?
+    
+    private let favoritePersistenceService: MoviePersistenceProtocol = FavoritePersistenceService()
     
     private var searchString: String? = nil {
         didSet {
@@ -61,9 +62,19 @@ final class MovieListDatasource: NSObject, UICollectionViewDataSource {
         }
         
         let movie = self.filteredList()[indexPath.row]
-        cell.setup(movie: movie)
-        
+        cell.setup(movie: movie, at: indexPath)
+        cell.delegate = self
         return cell
     }
     
+}
+
+extension MovieListDatasource: MovieCollectionViewCellDelegate {
+    func didFavoriteCell(_ isSelected: Bool, at position: IndexPath) {
+        if isSelected {
+            movies[position.row].persisted = favoritePersistenceService.addMovie(movie: movies[position.row])
+        } else {
+            movies[position.row].persisted = !favoritePersistenceService.deleteMovie(movie: movies[position.row])
+        }
+    }
 }

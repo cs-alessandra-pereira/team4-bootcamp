@@ -38,6 +38,10 @@ class MovieListViewController: UIViewController {
         fetchMovies()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        collectionView.reloadData()
+    }
     func setupDatasource(movies: [Movie], searchBarDelegate: SearchBarDelegate?) {
         movieListDatasource = MovieListDatasource(movies: movies, collectionView: collectionView, searchBarDelegate: searchBarDelegate)
         collectionView.dataSource = movieListDatasource
@@ -68,21 +72,36 @@ class MovieListViewController: UIViewController {
     }
     
     func fetchMovies() {
-        movieService.fetchMovies { movies in
-            if let datasource = self.movieListDatasource {
-                datasource.movies.append(contentsOf: movies)
-            } else {
-                self.setupDatasource(movies: movies, searchBarDelegate: self.searchBar.delegate as? SearchBarDelegate)
+        movieService.fetchMovies { result in
+            switch result {
+            case .success(let movies):
+                if let datasource = self.movieListDatasource {
+                    datasource.movies.append(contentsOf: movies)
+                    self.state = .initial
+                } else {
+                    if movies.count > 0 {
+                        self.setupDatasource(movies: movies, searchBarDelegate: self.searchBar.delegate as? SearchBarDelegate)
+                        self.state = .initial
+                    } else {
+                        self.state = .noResults
+                    }
+                }
+            case .error:
+                self.state = .error
             }
-            self.state = .initial
         }
     }
 
     func fetchGenres() {
         self.state = .loading
-        movieService.fetchGenres {
-            Genre.allGenres = $0
-            self.state = .initial
+        movieService.fetchGenres { result in
+            switch result {
+            case .success(let genres):
+                Genre.allGenres = genres
+                self.state = .initial
+            case .error:
+                self.state = .error
+            }
         }
     }
     

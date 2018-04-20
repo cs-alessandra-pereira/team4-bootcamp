@@ -45,7 +45,13 @@ class FavoritesDataSource: NSObject, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        
+        if editingStyle == .delete {
+            let favoritePersistenceService: MoviePersistenceProtocol = FavoritePersistenceService()
+            let success = favoritePersistenceService.deleteMovie(movie: favoriteMovies[indexPath.row])
+            if success {
+                favoriteMovies.remove(at: indexPath.row)
+            }
+        }
     }
     
 }

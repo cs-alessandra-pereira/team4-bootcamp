@@ -28,8 +28,9 @@ class MovieListViewController: UIViewController {
     var movieListDatasource: MovieListDatasource?
     var collectionViewDelegate: CollectionViewDelegate?
     var searchBarDelegate: SearchBarDelegate?
-    var movieService: MoviesProtocol = MoviesAPI()
     
+    var movieService: MoviesProtocol = MoviesAPI()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupDelegate()
@@ -42,6 +43,8 @@ class MovieListViewController: UIViewController {
         super.viewWillAppear(animated)
         collectionView.reloadData()
     }
+    
+    
     func setupDatasource(movies: [Movie], searchBarDelegate: SearchBarDelegate?) {
         movieListDatasource = MovieListDatasource(movies: movies, collectionView: collectionView, searchBarDelegate: searchBarDelegate)
         collectionView.dataSource = movieListDatasource
@@ -56,7 +59,7 @@ class MovieListViewController: UIViewController {
             case .didSelectItemAt:
                 self?.proceedToDetailsView(movieIndex: movieIndex)
             case .willDisplayMoreCells:
-                let count = self?.movieListDatasource?.filteredList().count
+                let count = self?.movieListDatasource?.getMovieCount()
                 if movieIndex == count! - 1 {
                     if MoviesConstants.pageBaseURL <= MoviesConstants.paginationLimit {
                         self?.fetchMovies()
@@ -76,7 +79,7 @@ class MovieListViewController: UIViewController {
             switch result {
             case .success(let movies):
                 if let datasource = self.movieListDatasource {
-                    datasource.movies.append(contentsOf: movies)
+                    datasource.addMovies(newMovies: movies)
                     self.state = .initial
                 } else {
                     if movies.count > 0 {
@@ -147,10 +150,9 @@ class MovieListViewController: UIViewController {
     }
     
     func proceedToDetailsView(movieIndex: Int) {
-        if let movie = movieListDatasource?.filteredList()[movieIndex] {
+        if let movie = movieListDatasource?.getMovies()[movieIndex] {
             let controller = MovieDetailsViewController(movie: movie)
             navigationController?.pushViewController(controller, animated: true)
         }
     }
-
 }

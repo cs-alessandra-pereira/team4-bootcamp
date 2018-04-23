@@ -64,6 +64,7 @@ final class FavoritePersistenceService: MoviePersistenceProtocol {
         if let results = try? context.fetch(request) {
             if results.count > 0 {
                 context.delete(results[0])
+                appDelegate.saveContext()
                 return true
             }
         }

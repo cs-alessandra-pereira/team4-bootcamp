@@ -49,6 +49,8 @@ class FavoritesDataSource: NSObject, UITableViewDataSource {
             let favoritePersistenceService: MoviePersistenceProtocol = FavoritePersistenceService()
             let success = favoritePersistenceService.deleteMovie(movie: favoriteMovies[indexPath.row])
             if success {
+                let deletedMovie = favoriteMovies[indexPath.row]
+                NotificationCenter.default.post(name: .movieRemovedFromPersistence, object: self, userInfo: [PersistenceConstants.notificationUserInfoKey:deletedMovie])
                 favoriteMovies.remove(at: indexPath.row)
             }
         }

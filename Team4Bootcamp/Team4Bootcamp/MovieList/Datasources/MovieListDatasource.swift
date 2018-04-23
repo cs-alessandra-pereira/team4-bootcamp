@@ -33,6 +33,17 @@ final class MovieListDatasource: NSObject, UICollectionViewDataSource {
         return self.movies.filter { $0.title.lowercased().starts(with: searchString.lowercased()) }
     }
     
+    func registerMovieWasFavoritedObserver(notificationName: Notification.Name) {
+        NotificationCenter.default.addObserver(forName: notificationName, object: nil, queue: OperationQueue.main) { notification in
+            if let info = notification.userInfo, let movie = info[PersistenceConstants.notificationUserInfoKey] as? Movie {
+                if let index = self.getMovieIndex(movie: movie) {
+                    self.movies[index].persisted = notificationName == .movieAddedToPersistence ? true : false
+                }
+            }
+        }
+    }
+    
+    
     init(movies: [Movie], collectionView: UICollectionView, searchBarDelegate: SearchBarDelegate?) {
         self.movies = movies
         self.collectionView = collectionView
@@ -48,11 +59,13 @@ final class MovieListDatasource: NSObject, UICollectionViewDataSource {
                 self?.searchString = searchString
             }
         }
+        registerMovieWasFavoritedObserver(notificationName: .movieAddedToPersistence)
+        registerMovieWasFavoritedObserver(notificationName: .movieRemovedFromPersistence)
         self.collectionView?.register(MovieCollectionViewCell.self, forCellWithReuseIdentifier: MovieCollectionViewCell.movieListCell)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return filteredList().count
+        return getMovieCount()
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -61,12 +74,11 @@ final class MovieListDatasource: NSObject, UICollectionViewDataSource {
             fatalError()
         }
         
-        let movie = self.filteredList()[indexPath.row]
+        let movie = getMovies()[indexPath.row]
         cell.setup(movie: movie, at: indexPath)
         cell.delegate = self
         return cell
     }
-    
 }
 
 extension MovieListDatasource: MovieCollectionViewCellDelegate {
@@ -76,5 +88,15 @@ extension MovieListDatasource: MovieCollectionViewCellDelegate {
         } else {
             movies[position.row].persisted = !favoritePersistenceService.deleteMovie(movie: movies[position.row])
         }
+    }
+}
+
+extension MovieListDatasource: MovieListManagerProtocol {
+    func getMovieCount() -> Int {
+        return filteredList().count
+    }
+    
+    func getMovies() -> [Movie] {
+        return filteredList()
     }
 }

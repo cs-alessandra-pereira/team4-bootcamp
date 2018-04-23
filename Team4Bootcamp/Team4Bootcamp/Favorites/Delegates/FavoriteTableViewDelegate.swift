@@ -8,14 +8,14 @@
 
 import UIKit
 
-typealias FavoriteTableViewCallback = ((TableViewEvent, Int) -> Void)?
+typealias FavoriteTableViewCallback = ((TableViewEvent, IndexPath) -> Void)?
 
 class FavoriteTableViewDelegate: NSObject, UITableViewDelegate {
     
     var callback: FavoriteTableViewCallback = nil
     
     func  tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        callback?(TableViewEvent.didSelectItemAt, indexPath.row)
+        callback?(TableViewEvent.didSelectItemAt, indexPath)
     }
 }
 

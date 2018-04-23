@@ -29,7 +29,7 @@ class FavoritesViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        fetchMovies()
+        //fetchMovies()
     }
     private func setupDataSource(movies: [Movie]) {
         favoritesDataSouce = FavoritesDataSource(movies: movies, tableView: self.tableView)
@@ -47,27 +47,11 @@ class FavoritesViewController: UIViewController {
         }
     }
     
-    private func fetchMovies() {
-        if let context = FavoritesViewController.container?.viewContext {
-            self.favoritePersistenceService.fetchMovies(context: context) { result in
-                switch result {
-                case .success(let movies):
-                    self.favoritesDataSouce?.favoriteMovies = movies
-                case .error:
-                    break
-                }
-            }
-        }
-    }
-    
-    func proceedToDetailsView(movieIndex: Int) {
-        if let movie = favoritesDataSouce?.favoriteMovies[movieIndex] {
+    func proceedToDetailsView(movieIndex: IndexPath) {
+        if let movieDAO = FavoritesDataSource.fetchedResultsController?.object(at: movieIndex) {
+            let movie = Movie(from: movieDAO)
             let controller = MovieDetailsViewController(movie: movie)
             navigationController?.pushViewController(controller, animated: true)
         }
     }
-}
-
-extension FavoritesViewController: UITableViewDelegate {
-
 }

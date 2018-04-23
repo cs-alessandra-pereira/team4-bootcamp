@@ -15,6 +15,7 @@ class FavoritesViewController: UIViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     
     private let favoritePersistenceService = FavoritePersistenceService()
+    fileprivate var fetchedResultsController: NSFetchedResultsController<MovieDAO>?
     
     static var container: NSPersistentContainer? = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer
     
@@ -23,6 +24,7 @@ class FavoritesViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupNSFetched()
         setupDataSource(movies: [])
         setupDelegate()
     }
@@ -32,7 +34,7 @@ class FavoritesViewController: UIViewController {
         //fetchMovies()
     }
     private func setupDataSource(movies: [Movie]) {
-        favoritesDataSouce = FavoritesDataSource(movies: movies, tableView: self.tableView)
+        favoritesDataSouce = FavoritesDataSource(movies: movies, tableView: self.tableView, fetchedResults: fetchedResultsController!)
         tableView.dataSource = favoritesDataSouce
     }
     func setupDelegate() {
@@ -47,8 +49,23 @@ class FavoritesViewController: UIViewController {
         }
     }
     
+    func setupNSFetched() {
+        if let context = FavoritesViewController.container?.viewContext {
+            let request: NSFetchRequest<MovieDAO> = MovieDAO.fetchRequest()
+            request.sortDescriptors = [NSSortDescriptor(key: "id", ascending: true)]
+            fetchedResultsController = NSFetchedResultsController<MovieDAO>(
+                fetchRequest: request,
+                managedObjectContext: context,
+                sectionNameKeyPath: nil,
+                cacheName: nil
+            )
+            try? fetchedResultsController?.performFetch()
+            tableView.reloadData()
+        }
+    }
+    
     func proceedToDetailsView(movieIndex: IndexPath) {
-        if let movieDAO = FavoritesDataSource.fetchedResultsController?.object(at: movieIndex) {
+        if let movieDAO = fetchedResultsController?.object(at: movieIndex) {
             let movie = Movie(from: movieDAO)
             let controller = MovieDetailsViewController(movie: movie)
             navigationController?.pushViewController(controller, animated: true)

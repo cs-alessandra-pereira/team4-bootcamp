@@ -11,32 +11,22 @@ import CoreData
 
 class FavoritesDataSource: NSObject, UITableViewDataSource, NSFetchedResultsControllerDelegate {
     
-    static var fetchedResultsController: NSFetchedResultsController<MovieDAO>?
+    var fetchedResultsController: NSFetchedResultsController<MovieDAO>?
     
     let tableView: UITableView
     
-    init(movies: [Movie], tableView: UITableView) {
+    init(movies: [Movie], tableView: UITableView, fetchedResults: NSFetchedResultsController<MovieDAO>) {
+        self.fetchedResultsController = fetchedResults
         self.tableView = tableView
         self.tableView.rowHeight = CGFloat(FavoriteTableViewCell.cellHeight)
         self.tableView.register(FavoriteTableViewCell.self, forCellReuseIdentifier: FavoriteTableViewCell.reuseIdentifier)
-        if let context = FavoritesViewController.container?.viewContext {
-            let request: NSFetchRequest<MovieDAO> = MovieDAO.fetchRequest()
-            request.sortDescriptors = [NSSortDescriptor(key: "id", ascending: true)]
-            FavoritesDataSource.fetchedResultsController = NSFetchedResultsController<MovieDAO>(
-                fetchRequest: request,
-                managedObjectContext: context,
-                sectionNameKeyPath: nil,
-                cacheName: nil
-            )
-            try? FavoritesDataSource.fetchedResultsController?.performFetch()
-            tableView.reloadData()
-        }
+        
         super.init()
-        FavoritesDataSource.fetchedResultsController?.delegate = self
+        fetchedResultsController?.delegate = self
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let numberOfMovies = FavoritesDataSource.fetchedResultsController?.fetchedObjects?.count {
+        if let numberOfMovies = fetchedResultsController?.fetchedObjects?.count {
             return numberOfMovies
         }
         return 0
@@ -48,7 +38,7 @@ class FavoritesDataSource: NSObject, UITableViewDataSource, NSFetchedResultsCont
             fatalError()
         }
 
-        if let movieDAO = FavoritesDataSource.fetchedResultsController?.object(at: indexPath) {
+        if let movieDAO = fetchedResultsController?.object(at: indexPath) {
             let movie = Movie(from: movieDAO)
             cell.setup(movie: movie)
             return cell

@@ -18,7 +18,7 @@ struct Movie {
     let posterPath: String
     var persisted: Bool
     
-    static let moviePersistentceService: MoviePersistenceProtocol = FavoritePersistenceService()
+    static let moviePersistentceService = FavoritePersistenceService()
     
     private enum CodingKeys: String, CodingKey {
         case id
@@ -89,6 +89,12 @@ extension Movie: Decodable {
         }
         self.genres = genres
         
-        persisted = Movie.moviePersistentceService.previouslyInserted(movieId: id)
+        persisted = false
+        DispatchQueue.main.sync {
+            if let context = FavoritesViewController.container?.viewContext {
+                persisted = MovieDAO.previouslyInserted(movieId: id, context: context)
+            }
+        }
+            //persisted = Movie.moviePersistentceService.previouslyInserted(movieId: id)
     }
 }

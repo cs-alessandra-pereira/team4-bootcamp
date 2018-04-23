@@ -175,6 +175,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BE60FD5D208DCFA3008FFD5A /* Outros */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Outros;
+			sourceTree = "<group>";
+		};
 		CD1D7F1E207BAEF2009722FA /* MovieDetails */ = {
 			isa = PBXGroup;
 			children = (
@@ -467,6 +474,7 @@
 		EAD462AE2084DE1500F0510D /* Favorites */ = {
 			isa = PBXGroup;
 			children = (
+				BE60FD5D208DCFA3008FFD5A /* Outros */,
 				EA9A117820862B9200F5ECA7 /* View */,
 				EA7A7D7320855B3300F8C637 /* Controller */,
 				EA7A7D7220855B2500F8C637 /* Datasources */,

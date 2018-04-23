@@ -6,4 +6,19 @@
 //  Copyright © 2018 alessandra.l.pereira. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+typealias FavoriteTableViewCallback = ((TableViewEvent, Int) -> Void)?
+
+class FavoriteTableViewDelegate: NSObject, UITableViewDelegate {
+    
+    var callback: FavoriteTableViewCallback = nil
+    
+    func  tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        callback?(TableViewEvent.didSelectItemAt, indexPath.row)
+    }
+}
+
+enum TableViewEvent {
+    case didSelectItemAt
+}

@@ -14,6 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
+    
     lazy var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: PersistenceConstants.persistenceContainerName)
         container.loadPersistentStores(completionHandler: {

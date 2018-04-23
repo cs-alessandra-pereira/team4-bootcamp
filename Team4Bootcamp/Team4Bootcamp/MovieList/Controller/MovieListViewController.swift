@@ -7,8 +7,11 @@
 //
 
 import UIKit
+import CoreData
 
 class MovieListViewController: UIViewController {
+    
+    static var container: NSPersistentContainer? = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer
     
     @IBOutlet weak var collectionView: UICollectionView! {
         didSet {
@@ -152,5 +155,4 @@ class MovieListViewController: UIViewController {
             navigationController?.pushViewController(controller, animated: true)
         }
     }
-
 }

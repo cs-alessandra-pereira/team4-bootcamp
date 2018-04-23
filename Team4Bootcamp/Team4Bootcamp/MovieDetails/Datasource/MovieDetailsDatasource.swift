@@ -26,7 +26,6 @@ class MovieDetailsDatasource: NSObject, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        //TODO: Adicionar tratamento para quando a célula é ""
         let cell = tableView.dequeueReusableCell(withIdentifier: MovieDetailsView.movieDetailsCell, for: indexPath as IndexPath)
         cell.textLabel!.text = info[indexPath.row]
         cell.textLabel?.numberOfLines = 0

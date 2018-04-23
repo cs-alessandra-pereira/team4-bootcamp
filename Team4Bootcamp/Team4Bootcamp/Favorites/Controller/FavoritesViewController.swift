@@ -39,8 +39,8 @@ class FavoritesViewController: UIViewController {
         favoriteTableViewDelegate = FavoriteTableViewDelegate()
         tableView.delegate = favoriteTableViewDelegate
         
-        favoriteTableViewDelegate?.callback = { [weak self] TableViewEvent, movieIndex in
-            switch TableViewEvent {
+        favoriteTableViewDelegate?.callback = { [weak self] tableViewEvent, movieIndex in
+            switch tableViewEvent {
             case .didSelectItemAt:
                 self?.proceedToDetailsView(movieIndex: movieIndex)
             }
@@ -48,7 +48,7 @@ class FavoritesViewController: UIViewController {
     }
     
     private func fetchMovies() {
-        if let context = FavoritesViewController.container?.viewContext{
+        if let context = FavoritesViewController.container?.viewContext {
             self.favoritePersistenceService.fetchMovies(context: context) { result in
                 switch result {
                 case .success(let movies):

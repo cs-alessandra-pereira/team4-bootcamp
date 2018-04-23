@@ -332,8 +332,8 @@
 		CDD415FF206ABB9400988317 /* Team4Bootcamp */ = {
 			isa = PBXGroup;
 			children = (
-				CD27E23F208E285800349B46 /* Favorites */,
 				EAFB94ED208A1DD800A730E8 /* Persistence */,
+				CD27E23F208E285800349B46 /* Favorites */,
 				EA7A7D7A20855CAA00F8C637 /* Common */,
 				CD1D7F1E207BAEF2009722FA /* MovieDetails */,
 				EA284CBB206D072300E4D7CD /* MovieList */,

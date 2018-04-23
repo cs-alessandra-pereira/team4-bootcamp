@@ -61,6 +61,9 @@ extension Movie {
         overview = movieDAO.overview
         posterPath = movieDAO.posterPath
         genres = []
+        for gnr in movieDAO.genres {
+            genres.append(Genre(id: gnr))
+        }
         releaseDate = date
         persisted = true
     }
@@ -95,6 +98,5 @@ extension Movie: Decodable {
                 persisted = MovieDAO.previouslyInserted(movieId: id, context: context)
             }
         }
-            //persisted = Movie.moviePersistentceService.previouslyInserted(movieId: id)
     }
 }

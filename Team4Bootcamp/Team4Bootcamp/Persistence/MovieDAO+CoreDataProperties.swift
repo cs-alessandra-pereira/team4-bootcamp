@@ -22,5 +22,6 @@ extension MovieDAO {
     @NSManaged public var overview: String
     @NSManaged public var posterPath: String
     @NSManaged public var title: String
+    @NSManaged public var genres: [Int]
 
 }

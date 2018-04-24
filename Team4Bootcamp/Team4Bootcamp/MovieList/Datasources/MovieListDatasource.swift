@@ -85,13 +85,11 @@ extension MovieListDatasource: MovieCollectionViewCellDelegate {
     
     func didFavoriteCell(_ isSelected: Bool, at position: IndexPath) {
         if let context = FavoritesViewController.container?.viewContext {
-            DispatchQueue.main.async { // Correct
+            DispatchQueue.main.async {
                 if isSelected {
                     self.movies[position.row].persisted = MovieDAO.addMovie(movie: self.movies[position.row], context: context)
-                    //favoritePersistenceService.addMovie(movie: movies[position.row])
                 } else {
                     self.movies[position.row].persisted = !MovieDAO.deleteMovie(movie: self.movies[position.row], context: context)
-                    //!favoritePersistenceService.deleteMovie(movie: movies[position.row])
                 }
             }
         }

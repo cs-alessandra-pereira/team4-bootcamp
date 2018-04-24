@@ -37,7 +37,7 @@ class FavoritesViewController: UIViewController {
             if let context = FavoritesViewController.container?.viewContext {
                 let success = MovieDAO.deleteMovie(movie: movie, context: context)
                 if success {
-                    NotificationCenter.default.post(name: .movieRemovedFromPersistence, object: self, userInfo: [PersistenceConstants.notificationUserInfoKey:movie])
+                    NotificationCenter.default.post(name: .movieRemovedFromPersistence, object: self, userInfo: [PersistenceConstants.notificationUserInfoKey: movie])
                 }
             }
         }

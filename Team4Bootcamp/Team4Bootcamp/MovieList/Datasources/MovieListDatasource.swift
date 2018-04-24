@@ -74,7 +74,11 @@ final class MovieListDatasource: NSObject, UICollectionViewDataSource {
             fatalError()
         }
         
-        let movie = getMovies()[indexPath.row]
+        var movie = getMovies()[indexPath.row]
+
+        if let context = FavoritesViewController.container?.viewContext {
+            movie.persisted = MovieDAO.previouslyInserted(movieId: movie.id, context: context)
+        }
         cell.setup(movie: movie, at: indexPath)
         cell.delegate = self
         return cell

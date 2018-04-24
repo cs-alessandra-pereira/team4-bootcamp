@@ -39,13 +39,6 @@ class CollectionViewDelegateSpec: QuickSpec {
                     sut.collectionView(collectionView, didSelectItemAt: indexPath)
                     expect(sut.didSelectCell) == true
                 }
-                
-                it("should return true when detecting last cell") {
-                    indexPath.row = -1
-                    expect(sut.didLastCellAppeared) == false
-                    sut.collectionView(collectionView, willDisplay: cell, forItemAt: indexPath)
-                    expect(sut.didLastCellAppeared) == true
-                }
             })
         }
     }

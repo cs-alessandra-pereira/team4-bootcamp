@@ -29,14 +29,20 @@ class FavoritesViewController: UIViewController {
         setupDelegate()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        //fetchMovies()
-    }
     private func setupDataSource(movies: [Movie]) {
         favoritesDataSouce = FavoritesDataSource(movies: movies, tableView: self.tableView, fetchedResults: fetchedResultsController!)
         tableView.dataSource = favoritesDataSouce
+        
+        favoritesDataSouce?.deletedMovieCallback = { [weak self] movie in
+            if let context = FavoritesViewController.container?.viewContext {
+                let success = MovieDAO.deleteMovie(movie: movie, context: context)
+                if success {
+                    NotificationCenter.default.post(name: .movieRemovedFromPersistence, object: self, userInfo: [PersistenceConstants.notificationUserInfoKey:movie])
+                }
+            }
+        }
     }
+    
     func setupDelegate() {
         favoriteTableViewDelegate = FavoriteTableViewDelegate()
         tableView.delegate = favoriteTableViewDelegate

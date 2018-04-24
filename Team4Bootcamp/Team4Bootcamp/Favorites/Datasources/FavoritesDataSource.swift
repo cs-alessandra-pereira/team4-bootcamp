@@ -9,9 +9,13 @@
 import UIKit
 import CoreData
 
+typealias DeletedMovieCallback = ((Movie) -> Void)?
+
 class FavoritesDataSource: NSObject, UITableViewDataSource, NSFetchedResultsControllerDelegate {
     
     var fetchedResultsController: NSFetchedResultsController<MovieDAO>?
+    let container = FavoritesViewController.container
+    var deletedMovieCallback: DeletedMovieCallback = nil
     
     let tableView: UITableView
     
@@ -47,7 +51,12 @@ class FavoritesDataSource: NSObject, UITableViewDataSource, NSFetchedResultsCont
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        
+        if editingStyle == .delete {
+            if let movieDAO = fetchedResultsController?.object(at: indexPath) {
+                let movie = Movie(from: movieDAO)
+                deletedMovieCallback?(movie)
+            }
+        }
     }
     
     public func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {

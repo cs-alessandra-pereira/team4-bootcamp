@@ -98,7 +98,7 @@ extension MovieListDatasource: MovieCollectionViewCellDelegate {
     }
 }
 
-extension MovieListDatasource: MovieListManagerProtocol {
+extension MovieListDatasource: MovieListManager {
     func getMovieCount() -> Int {
         return filteredList().count
     }

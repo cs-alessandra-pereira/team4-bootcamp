@@ -1,4 +1,14 @@
 //
+//  MovieListManager.swift
+//  Team4Bootcamp
+//
+//  Created by a.portela.rodrigues on 24/04/18.
+//  Copyright © 2018 alessandra.l.pereira. All rights reserved.
+//
+
+import Foundation
+
+//
 //  MovieListManagerProtocol.swift
 //  Team4Bootcamp
 //
@@ -8,7 +18,7 @@
 
 import Foundation
 
-protocol MovieListManagerProtocol: class {
+protocol MovieListManager: class {
     var movies: [Movie] { get set}
     func getMovies() -> [Movie]
     func addMovies(newMovies: [Movie])
@@ -16,7 +26,7 @@ protocol MovieListManagerProtocol: class {
     func getMovieCount() -> Int
 }
 
-extension MovieListManagerProtocol {
+extension MovieListManager {
     
     func getMovies() -> [Movie] {
         return movies

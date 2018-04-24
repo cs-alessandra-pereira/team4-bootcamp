@@ -18,7 +18,7 @@ final class MovieListDatasource: NSObject, UICollectionViewDataSource {
     
     weak var collectionView: UICollectionView?
     
-    private let favoritePersistenceService: MoviePersistenceProtocol = FavoritePersistenceService()
+    private let favoritePersistenceService = FavoritePersistenceService()
     
     private var searchString: String? = nil {
         didSet {
@@ -82,11 +82,18 @@ final class MovieListDatasource: NSObject, UICollectionViewDataSource {
 }
 
 extension MovieListDatasource: MovieCollectionViewCellDelegate {
+    
     func didFavoriteCell(_ isSelected: Bool, at position: IndexPath) {
-        if isSelected {
-            movies[position.row].persisted = favoritePersistenceService.addMovie(movie: movies[position.row])
-        } else {
-            movies[position.row].persisted = !favoritePersistenceService.deleteMovie(movie: movies[position.row])
+        if let context = FavoritesViewController.container?.viewContext {
+            DispatchQueue.main.async { // Correct
+                if isSelected {
+                    self.movies[position.row].persisted = MovieDAO.addMovie(movie: self.movies[position.row], context: context)
+                    //favoritePersistenceService.addMovie(movie: movies[position.row])
+                } else {
+                    self.movies[position.row].persisted = !MovieDAO.deleteMovie(movie: self.movies[position.row], context: context)
+                    //!favoritePersistenceService.deleteMovie(movie: movies[position.row])
+                }
+            }
         }
     }
 }

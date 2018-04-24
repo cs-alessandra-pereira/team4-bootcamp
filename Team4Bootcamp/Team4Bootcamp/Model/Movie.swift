@@ -70,8 +70,8 @@ extension Movie {
 }
 
 extension Movie: Decodable {
+    
     init(from decoder: Decoder) throws {
-        
         let values = try decoder.container(keyedBy: CodingKeys.self)
         
         id = try values.decode(Int.self, forKey: .id)
@@ -93,10 +93,5 @@ extension Movie: Decodable {
         self.genres = genres
         
         persisted = false
-        DispatchQueue.main.sync {
-            if let context = FavoritesViewController.container?.viewContext {
-                persisted = MovieDAO.previouslyInserted(movieId: id, context: context)
-            }
-        }
     }
 }

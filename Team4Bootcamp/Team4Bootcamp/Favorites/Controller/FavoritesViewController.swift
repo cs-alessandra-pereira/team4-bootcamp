@@ -25,6 +25,7 @@ class FavoritesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNSFetched()
+        // FIXME: Tales - o parametro `movies` parece ter sido depreciado/inutilizado/não referenciado. Se for verdade, remover
         setupDataSource(movies: [])
         setupDelegate()
     }

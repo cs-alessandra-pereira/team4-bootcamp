@@ -11,7 +11,7 @@ import UIKit
 typealias FavoriteTableViewCallback = ((TableViewEvent, IndexPath) -> Void)?
 
 class FavoriteTableViewDelegate: NSObject, UITableViewDelegate {
-    
+    //FIXME: Tales - esse valor pode ser alterado? caso negativo, mude pra let e crie um init passando o valor
     var callback: FavoriteTableViewCallback = nil
     
     func  tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

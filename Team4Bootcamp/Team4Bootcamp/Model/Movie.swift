@@ -43,6 +43,13 @@ struct Movie {
     }
     
     func releaseYearAsString() -> String {
+        // uma forma melhor de pegar o ano é
+        // let calendar = Calendar.current
+        // let components = calendar.dateComponents([.year], from: Date())
+        // var year = "Unknown"
+        // if let y = components.year { year = "\(y)" }
+        // a forma acima é valida para contas com calendário (somar dia/mês/ano)
+        // no passado, criar date formatter era custoso, então o código acima teria melhor performance, mas isso mudou
         var year = "Unknown"
         let yearFormatter = DateFormatter()
         yearFormatter.dateFormat = "yyyy"

@@ -8,6 +8,8 @@
 
 import Foundation
 
+// FIXME: Tales - conteúdo duplicado :p
+
 //
 //  MovieListManagerProtocol.swift
 //  Team4Bootcamp

@@ -38,7 +38,7 @@ class MoviesAPI {
     func decodeContent(from data: Data, withEndpoint endpoint: Endpoints) -> (response: Any?, error: Error?) {
         
         let decoder = JSONDecoder()
-        
+        decoder.dateDecodingStrategy = .iso8601
         do {
             switch endpoint {
             case .movieList:

@@ -8,7 +8,7 @@
 
 import UIKit
 import Kingfisher
-
+// FIXME: Tales - mover esse arq para uma pasta/grupo mais apropriado
 protocol ImageFetchable {
     func fetch(imageURLString: String, onImage: UIImageView, callback: @escaping () -> Void)
 }

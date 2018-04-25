@@ -18,7 +18,8 @@ class FavoritesDataSource: NSObject, UITableViewDataSource, NSFetchedResultsCont
     var deletedMovieCallback: DeletedMovieCallback = nil
     
     let tableView: UITableView
-    
+
+    // o parametro `movies` parece ter sido depreciado/inutilizado/não referenciado. Se for verdade, remover
     init(movies: [Movie], tableView: UITableView, fetchedResults: NSFetchedResultsController<MovieDAO>) {
         self.fetchedResultsController = fetchedResults
         self.tableView = tableView
@@ -26,6 +27,11 @@ class FavoritesDataSource: NSObject, UITableViewDataSource, NSFetchedResultsCont
         self.tableView.register(FavoriteTableViewCell.self, forCellReuseIdentifier: FavoriteTableViewCell.reuseIdentifier)
         
         super.init()
+        // um warning para a linha abaixo. Digamos que o nome da var no init também fosse fetchedResultsController.
+        // se a variável passada fosse um value type ou fosse passado como copia, a linha abaixo, sem referenciar self,
+        // poderia alterar o valor na variável adicional, e não na copia. Isso pode causar um problema chamado shadowing
+        // onde a variável local é "sombreada" pela variável passada, podendo causar uns bugs.
+        // É recomendado que dentro do init sempre seja referenciada a local com `self.nomeDaPoroperty`
         fetchedResultsController?.delegate = self
     }
     

@@ -8,12 +8,11 @@
 
 @testable import Team4Bootcamp
 import UIKit
+import CoreData
 
 class FavoritesDataSourceStub: FavoritesDataSource {
 
     var numberOfMovies = 0
-    var cell = UITableViewCell()
-    var fetchedMovies: [Movie] = []
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         numberOfMovies = 20

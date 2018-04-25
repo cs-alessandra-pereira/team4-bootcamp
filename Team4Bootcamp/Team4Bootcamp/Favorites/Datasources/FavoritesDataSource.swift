@@ -17,7 +17,7 @@ class FavoritesDataSource: NSObject, UITableViewDataSource, NSFetchedResultsCont
     let container = FavoritesViewController.container
     var deletedMovieCallback: DeletedMovieCallback = nil
     
-    let tableView: UITableView
+    var tableView: UITableView
     
     init(tableView: UITableView, fetchedResults: NSFetchedResultsController<MovieDAO>) {
         self.fetchedResultsController = fetchedResults

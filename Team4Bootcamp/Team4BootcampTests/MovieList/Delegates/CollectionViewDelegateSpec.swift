@@ -19,7 +19,6 @@ class CollectionViewDelegateSpec: QuickSpec {
         var collectionView: UICollectionView!
         var layout: UICollectionViewLayout!
         var indexPath: IndexPath!
-        var cell: MovieCollectionViewCell!
         var sut: CollectionViewDelegateStub!
         
         describe("CollectionViewDelegate") {
@@ -27,7 +26,6 @@ class CollectionViewDelegateSpec: QuickSpec {
                 layout = UICollectionViewFlowLayout()
                 collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
                 indexPath = IndexPath(row: 0, section: 0)
-                cell = MovieCollectionViewCell()
                 sut = CollectionViewDelegateStub()
                 collectionView.delegate = sut
             }

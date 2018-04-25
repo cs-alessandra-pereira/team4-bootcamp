@@ -18,15 +18,12 @@ class FavoritesDataSourceSpec: QuickSpec {
     override func spec() {
         
         var tableView: UITableView!
-        var indexPath: IndexPath!
-        var movies: [Movie] = []
         var sut: FavoritesDataSourceStub!
         let frc = NSFetchedResultsController<MovieDAO>()
         
         describe("FavoriteDatasource") {
             beforeEach {
                 tableView = UITableView(frame: .zero)
-                indexPath = IndexPath(row: 1, section: 0)
                 sut = FavoritesDataSourceStub(tableView: tableView, fetchedResults: frc)
                 tableView.dataSource = sut
             }

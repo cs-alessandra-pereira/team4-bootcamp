@@ -16,6 +16,7 @@ extension UIImage {
         case filter = "FilterIcon"
         case list = "list_icon"
         case search = "search_icon"
+        case error = "error_icon"
     }
     
     convenience init?(icon: Icons) {

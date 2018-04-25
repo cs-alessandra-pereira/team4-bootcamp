@@ -15,18 +15,39 @@ protocol ImageFetchable {
 
 final class KFImageFetchable: ImageFetchable {
     func fetch(imageURLString: String, onImage: UIImageView, callback: @escaping () -> Void) {
-        guard let imageURL = URL(string: imageURLString) else {
-            //FIXME: Tales - imagem de erro? placeholder?
+        let customIndicator = CustomLoadingIndicator(image: onImage)
+        if let imageURL = URL(string: imageURLString) {
+            let imageResource = ImageResource(downloadURL: imageURL)
+            onImage.kf.indicatorType = .custom(indicator: customIndicator)
+            onImage.kf.setImage(with: imageResource, placeholder: nil, options: nil, progressBlock: nil) { image, _, _, _ in
+                if let image = image {
+                    onImage.image = image
+                } else {
+                    onImage.image = UIImage(icon: .error)
+                }
+                callback()
+            }
+        } else {
+            onImage.image = UIImage(icon: .error)
             callback()
             return
         }
-        let imageResource = ImageResource(downloadURL: imageURL)
-        onImage.kf.setImage(with: imageResource, placeholder: nil, options: nil, progressBlock: nil) { image, _, _, _ in
-            if let image = image {
-                onImage.image = image
-            }
-            callback()
-            //FIXME: o que acontece com erro de download?
-        }
+    }
+}
+
+struct CustomLoadingIndicator: Indicator {
+    let view: UIView = UIView()
+    let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .white)
+    func startAnimatingView() {
+        view.isHidden = false
+        activityIndicator.startAnimating()
+    }
+    func stopAnimatingView() {
+        view.isHidden = true
+        activityIndicator.stopAnimating()
+    }
+    init(image: UIImageView) {
+        activityIndicator.center = image.center
+        view.addSubview(activityIndicator)
     }
 }

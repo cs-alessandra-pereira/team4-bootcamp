@@ -69,6 +69,11 @@ class FavoritesDataSource: NSObject, UITableViewDataSource, NSFetchedResultsCont
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if let searching = searchString {
+            if searching.count > 0 {
+                return
+            }
+        }
         if editingStyle == .delete {
             let movieDAO = getMovies()[indexPath.row]
             let movie = Movie(from: movieDAO)

@@ -26,6 +26,10 @@
 		CD91F9DD2073F034002BB9EE /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD91F9DC2073F034002BB9EE /* SnapKit.framework */; };
 		CD91F9E220743B38002BB9EE /* FavoriteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD91F9E120743B38002BB9EE /* FavoriteButton.swift */; };
 		CD91F9E52074413C002BB9EE /* MovieListDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD91F9E42074413C002BB9EE /* MovieListDatasource.swift */; };
+		CDCF6D11208FC0FA00D05FDF /* FavoriteTableViewDelegateSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDCF6D10208FC0FA00D05FDF /* FavoriteTableViewDelegateSpec.swift */; };
+		CDCF6D13208FC10300D05FDF /* FavoriteTableViewDelegateStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDCF6D12208FC10300D05FDF /* FavoriteTableViewDelegateStub.swift */; };
+		CDCF6D16208FC50600D05FDF /* FavoriteDataSourceSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDCF6D15208FC50600D05FDF /* FavoriteDataSourceSpec.swift */; };
+		CDCF6D18208FC52600D05FDF /* FavoriteDataSourceStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDCF6D17208FC52600D05FDF /* FavoriteDataSourceStub.swift */; };
 		CDD41601206ABB9400988317 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD41600206ABB9400988317 /* AppDelegate.swift */; };
 		CDD41606206ABB9400988317 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDD41604206ABB9400988317 /* Main.storyboard */; };
 		CDD41609206ABB9400988317 /* Team4Bootcamp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CDD41607206ABB9400988317 /* Team4Bootcamp.xcdatamodeld */; };
@@ -54,7 +58,6 @@
 		EA4FB5192078316700C9D47D /* Quick.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = EA4FB50E207822EA00C9D47D /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		EA4FB51D2078339900C9D47D /* MoviesAPISpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4FB51C2078339900C9D47D /* MoviesAPISpec.swift */; };
 		EA71E3A0206BE70100970A47 /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA71E39E206BE70100970A47 /* Kingfisher.framework */; };
-		EA741B7E209216B2001B6FB3 /* FavoritesViewControllerStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA741B7D209216B2001B6FB3 /* FavoritesViewControllerStub.swift */; };
 		EA7A7D7C20855D9F00F8C637 /* PersistenceConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7A7D7B20855D9F00F8C637 /* PersistenceConstants.swift */; };
 		EA7B5F4D208F762100414C9B /* MovieListManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7B5F4C208F762100414C9B /* MovieListManager.swift */; };
 		EA88DFDF207CE05100FFF0B1 /* SearchBarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA88DFDE207CE05100FFF0B1 /* SearchBarDelegate.swift */; };
@@ -111,6 +114,10 @@
 		CD91F9DC2073F034002BB9EE /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapKit.framework; path = Carthage/Build/iOS/SnapKit.framework; sourceTree = "<group>"; };
 		CD91F9E120743B38002BB9EE /* FavoriteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FavoriteButton.swift; path = "Team4Bootcamp/Supporting Files/FavoriteButton.swift"; sourceTree = SOURCE_ROOT; };
 		CD91F9E42074413C002BB9EE /* MovieListDatasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListDatasource.swift; sourceTree = "<group>"; };
+		CDCF6D10208FC0FA00D05FDF /* FavoriteTableViewDelegateSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteTableViewDelegateSpec.swift; sourceTree = "<group>"; };
+		CDCF6D12208FC10300D05FDF /* FavoriteTableViewDelegateStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteTableViewDelegateStub.swift; sourceTree = "<group>"; };
+		CDCF6D15208FC50600D05FDF /* FavoriteDataSourceSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteDataSourceSpec.swift; sourceTree = "<group>"; };
+		CDCF6D17208FC52600D05FDF /* FavoriteDataSourceStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteDataSourceStub.swift; sourceTree = "<group>"; };
 		CDD415FD206ABB9400988317 /* Team4Bootcamp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Team4Bootcamp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDD41600206ABB9400988317 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CDD41605206ABB9400988317 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -144,7 +151,6 @@
 		EA4FB51C2078339900C9D47D /* MoviesAPISpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesAPISpec.swift; sourceTree = "<group>"; };
 		EA71E39E206BE70100970A47 /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
 		EA71E39F206BE70100970A47 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
-		EA741B7D209216B2001B6FB3 /* FavoritesViewControllerStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewControllerStub.swift; sourceTree = "<group>"; };
 		EA7A7D7B20855D9F00F8C637 /* PersistenceConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceConstants.swift; sourceTree = "<group>"; };
 		EA7B5F4C208F762100414C9B /* MovieListManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListManager.swift; sourceTree = "<group>"; };
 		EA88DFDE207CE05100FFF0B1 /* SearchBarDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarDelegate.swift; sourceTree = "<group>"; };
@@ -280,7 +286,6 @@
 			isa = PBXGroup;
 			children = (
 				CD63A294207E7859009DE53C /* MovieListViewControllerSpec.swift */,
-				EA741B7D209216B2001B6FB3 /* FavoritesViewControllerStub.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -309,6 +314,33 @@
 			isa = PBXGroup;
 			children = (
 				CD91F9E42074413C002BB9EE /* MovieListDatasource.swift */,
+			);
+			path = Datasources;
+			sourceTree = "<group>";
+		};
+		CDCF6D0E208FC0CE00D05FDF /* Favorites */ = {
+			isa = PBXGroup;
+			children = (
+				CDCF6D14208FC4E400D05FDF /* Datasources */,
+				CDCF6D0F208FC0D800D05FDF /* Delegates */,
+			);
+			path = Favorites;
+			sourceTree = "<group>";
+		};
+		CDCF6D0F208FC0D800D05FDF /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				CDCF6D10208FC0FA00D05FDF /* FavoriteTableViewDelegateSpec.swift */,
+				CDCF6D12208FC10300D05FDF /* FavoriteTableViewDelegateStub.swift */,
+			);
+			path = Delegates;
+			sourceTree = "<group>";
+		};
+		CDCF6D14208FC4E400D05FDF /* Datasources */ = {
+			isa = PBXGroup;
+			children = (
+				CDCF6D15208FC50600D05FDF /* FavoriteDataSourceSpec.swift */,
+				CDCF6D17208FC52600D05FDF /* FavoriteDataSourceStub.swift */,
 			);
 			path = Datasources;
 			sourceTree = "<group>";
@@ -353,6 +385,7 @@
 		CDD41617206ABB9400988317 /* Team4BootcampTests */ = {
 			isa = PBXGroup;
 			children = (
+				CDCF6D0E208FC0CE00D05FDF /* Favorites */,
 				EA4FB51A2078335300C9D47D /* MovieList */,
 				CDD41618206ABB9400988317 /* Team4BootcampTests.swift */,
 				CDD4161A206ABB9400988317 /* Info.plist */,
@@ -688,13 +721,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CDCF6D16208FC50600D05FDF /* FavoriteDataSourceSpec.swift in Sources */,
 				EA28EFBD20790A88006EB8CB /* MoviesAPIStub.swift in Sources */,
 				EA4FB51D2078339900C9D47D /* MoviesAPISpec.swift in Sources */,
-				EA741B7E209216B2001B6FB3 /* FavoritesViewControllerStub.swift in Sources */,
+				CDCF6D13208FC10300D05FDF /* FavoriteTableViewDelegateStub.swift in Sources */,
 				CD41C7AC208523CB00BC28C8 /* CollectionViewDelegateStub.swift in Sources */,
 				CD41C7AB208523CB00BC28C8 /* CollectionViewDelegateSpec.swift in Sources */,
+				CDCF6D18208FC52600D05FDF /* FavoriteDataSourceStub.swift in Sources */,
 				CD63A295207E7859009DE53C /* MovieListViewControllerSpec.swift in Sources */,
 				CDD41619206ABB9400988317 /* Team4BootcampTests.swift in Sources */,
+				CDCF6D11208FC0FA00D05FDF /* FavoriteTableViewDelegateSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -29,8 +29,8 @@ class FavoritesViewController: UIViewController {
         setupDelegate()
     }
     
-    func setupDataSource(movies: [Movie]) {
-        favoritesDataSouce = FavoritesDataSource(movies: movies, tableView: self.tableView, fetchedResults: fetchedResultsController!)
+    private func setupDataSource(movies: [Movie]) {
+        favoritesDataSouce = FavoritesDataSource(tableView: self.tableView, fetchedResults: fetchedResultsController!)
         tableView.dataSource = favoritesDataSouce
         
         favoritesDataSouce?.deletedMovieCallback = { [weak self] movie in
@@ -46,12 +46,8 @@ class FavoritesViewController: UIViewController {
     func setupDelegate() {
         favoriteTableViewDelegate = FavoriteTableViewDelegate()
         tableView.delegate = favoriteTableViewDelegate
-        
-        favoriteTableViewDelegate?.callback = { [weak self] tableViewEvent, movieIndex in
-            switch tableViewEvent {
-            case .didSelectItemAt:
-                self?.proceedToDetailsView(movieIndex: movieIndex)
-            }
+        favoriteTableViewDelegate?.callbackFromSelectedRow = { [weak self] movieIndex in
+            self?.proceedToDetailsView(movieIndex: movieIndex)
         }
     }
     

@@ -17,9 +17,9 @@ class FavoritesDataSource: NSObject, UITableViewDataSource, NSFetchedResultsCont
     let container = FavoritesViewController.container
     var deletedMovieCallback: DeletedMovieCallback = nil
     
-    let tableView: UITableView
+    var tableView: UITableView
     
-    init(movies: [Movie], tableView: UITableView, fetchedResults: NSFetchedResultsController<MovieDAO>) {
+    init(tableView: UITableView, fetchedResults: NSFetchedResultsController<MovieDAO>) {
         self.fetchedResultsController = fetchedResults
         self.tableView = tableView
         self.tableView.rowHeight = CGFloat(FavoriteTableViewCell.cellHeight)
@@ -41,13 +41,14 @@ class FavoritesDataSource: NSObject, UITableViewDataSource, NSFetchedResultsCont
         guard let cell = tableView.dequeueReusableCell(withIdentifier: FavoriteTableViewCell.reuseIdentifier, for: indexPath) as? FavoriteTableViewCell else {
             fatalError()
         }
-
+        
         if let movieDAO = fetchedResultsController?.object(at: indexPath) {
             let movie = Movie(from: movieDAO)
             cell.setup(movie: movie)
             return cell
         }
         return cell
+    
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {

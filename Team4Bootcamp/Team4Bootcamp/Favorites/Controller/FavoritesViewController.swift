@@ -29,7 +29,7 @@ class FavoritesViewController: UIViewController {
         setupDelegate()
     }
     
-    private func setupDataSource(movies: [Movie]) {
+    func setupDataSource(movies: [Movie]) {
         favoritesDataSouce = FavoritesDataSource(movies: movies, tableView: self.tableView, fetchedResults: fetchedResultsController!)
         tableView.dataSource = favoritesDataSouce
         

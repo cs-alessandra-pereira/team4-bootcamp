@@ -16,24 +16,44 @@ class FavoritesDataSource: NSObject, UITableViewDataSource, NSFetchedResultsCont
     var fetchedResultsController: NSFetchedResultsController<MovieDAO>?
     let container = FavoritesViewController.container
     var deletedMovieCallback: DeletedMovieCallback = nil
-    
     var tableView: UITableView
     
-    init(tableView: UITableView, fetchedResults: NSFetchedResultsController<MovieDAO>) {
+    init(tableView: UITableView, fetchedResults: NSFetchedResultsController<MovieDAO>, searchBarDelegate: SearchBarDelegate?) {
         self.fetchedResultsController = fetchedResults
         self.tableView = tableView
         self.tableView.rowHeight = CGFloat(FavoriteTableViewCell.cellHeight)
         self.tableView.register(FavoriteTableViewCell.self, forCellReuseIdentifier: FavoriteTableViewCell.reuseIdentifier)
-        
         super.init()
+        searchBarDelegate?.callback = { [weak self] searchBar, searchEvent, searchString in
+            switch searchEvent {
+            case .cancelled:
+                self?.searchString = nil
+                searchBar.resignFirstResponder()
+            case .posted:
+                searchBar.resignFirstResponder()
+            case .textChanged:
+                self?.searchString = searchString
+            }
+        }
         fetchedResultsController?.delegate = self
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let numberOfMovies = fetchedResultsController?.fetchedObjects?.count {
-            return numberOfMovies
+    private var searchString: String? = nil {
+        didSet {
+            tableView.reloadData()
         }
-        return 0
+    }
+    
+    func filteredList() -> [MovieDAO] {
+        guard let searchString = self.searchString else {
+            return self.movies
+        }
+        return self.movies.filter { $0.title.lowercased().starts(with: searchString.lowercased()) }
+    }
+    
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return getMovieCount()
     }
     
     
@@ -42,21 +62,17 @@ class FavoritesDataSource: NSObject, UITableViewDataSource, NSFetchedResultsCont
             fatalError()
         }
         
-        if let movieDAO = fetchedResultsController?.object(at: indexPath) {
-            let movie = Movie(from: movieDAO)
-            cell.setup(movie: movie)
-            return cell
-        }
+        let movieDAO = getMovies()[indexPath.row]
+        let movie = Movie(from: movieDAO)
+        cell.setup(movie: movie)
         return cell
-    
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            if let movieDAO = fetchedResultsController?.object(at: indexPath) {
-                let movie = Movie(from: movieDAO)
-                deletedMovieCallback?(movie)
-            }
+            let movieDAO = getMovies()[indexPath.row]
+            let movie = Movie(from: movieDAO)
+            deletedMovieCallback?(movie)
         }
     }
     
@@ -83,4 +99,25 @@ class FavoritesDataSource: NSObject, UITableViewDataSource, NSFetchedResultsCont
         tableView.endUpdates()
     }
     
+}
+
+extension FavoritesDataSource: MovieListManager {
+    var movies: [MovieDAO] {
+        get {
+            return fetchedResultsController?.fetchedObjects ?? []
+        }
+        set {
+            
+        }
+    }
+    
+    typealias Item = MovieDAO
+    
+    func getMovieCount() -> Int {
+        return filteredList().count
+    }
+    
+    func getMovies() -> [MovieDAO] {
+        return filteredList()
+    }
 }

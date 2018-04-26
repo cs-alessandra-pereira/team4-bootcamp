@@ -55,4 +55,10 @@ class MovieDAO: NSManagedObject {
         }
         return false
     }
+    
+    static func == (lhs: MovieDAO, rhs: MovieDAO) -> Bool {
+        return lhs.id == rhs.id
+    }
 }
+
+

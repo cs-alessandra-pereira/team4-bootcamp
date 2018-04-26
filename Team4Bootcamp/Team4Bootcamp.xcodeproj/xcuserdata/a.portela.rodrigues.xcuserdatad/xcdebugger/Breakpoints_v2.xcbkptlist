@@ -58,7 +58,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Team4Bootcamp/MovieList/Datasources/MovieListDatasource.swift"
-            timestampString = "546273183.298613"
+            timestampString = "546459035.78713"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "15"
@@ -74,13 +74,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Team4Bootcamp/MovieList/Datasources/MovieListDatasource.swift"
-            timestampString = "546273183.298687"
+            timestampString = "546459035.787196"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "87"
             endingLineNumber = "87"
-            landmarkName = "didFavoriteCell(_:at:)"
-            landmarkType = "7">
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -90,12 +90,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Team4Bootcamp/MovieList/Datasources/MovieListDatasource.swift"
-            timestampString = "546273183.2987339"
+            timestampString = "546459035.787244"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "89"
             endingLineNumber = "89"
-            landmarkName = "didFavoriteCell(_:at:)"
+            landmarkName = "MovieListDatasource"
+            landmarkType = "21">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Team4Bootcamp/Favorites/Datasources/FavoritesDataSource.swift"
+            timestampString = "546459035.787292"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
+            landmarkName = "init(tableView:fetchedResults:searchBarDelegate:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

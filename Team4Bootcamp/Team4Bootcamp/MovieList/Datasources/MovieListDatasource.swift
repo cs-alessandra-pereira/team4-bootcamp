@@ -101,6 +101,9 @@ extension MovieListDatasource: MovieCollectionViewCellDelegate {
 }
 
 extension MovieListDatasource: MovieListManager {
+    
+    typealias Item = Movie
+    
     func getMovieCount() -> Int {
         return filteredList().count
     }

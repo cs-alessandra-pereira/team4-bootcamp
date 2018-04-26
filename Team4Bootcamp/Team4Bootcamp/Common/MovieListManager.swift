@@ -19,27 +19,28 @@ import Foundation
 import Foundation
 
 protocol MovieListManager: class {
-    var movies: [Movie] { get set}
-    func getMovies() -> [Movie]
-    func addMovies(newMovies: [Movie])
-    func getMovieIndex(movie: Movie) -> Int?
+    associatedtype Item: Equatable
+    var movies: [Item] { get set}
+    func getMovies() -> [Item]
+    func addMovies(newMovies: [Item])
+    func getMovieIndex(movie: Item) -> Int?
     func getMovieCount() -> Int
 }
 
 extension MovieListManager {
     
-    func getMovies() -> [Movie] {
+    func getMovies() -> [Item] {
         return movies
     }
     
-    func addMovies(newMovies: [Movie]) {
+    func addMovies(newMovies: [Item]) {
         movies += newMovies
     }
     
-    func getMovieIndex(movie: Movie) -> Int? {
+    func getMovieIndex(movie: Item) -> Int? {
         var index = 0
         for element in movies {
-            if element.id == movie.id {
+            if element == movie {
                 return index
             }
             index += 1

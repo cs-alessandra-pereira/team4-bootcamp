@@ -21,16 +21,18 @@ class FavoritesViewController: UIViewController {
     
     var favoritesDataSouce: FavoritesDataSource?
     var favoriteTableViewDelegate: FavoriteTableViewDelegate?
+    var searchBarDelegate: SearchBarDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNSFetched()
-        setupDataSource(movies: [])
+        setupSearchBar()
+        setupDataSource()
         setupDelegate()
     }
     
-    private func setupDataSource(movies: [Movie]) {
-        favoritesDataSouce = FavoritesDataSource(tableView: self.tableView, fetchedResults: fetchedResultsController!)
+    private func setupDataSource() {
+        favoritesDataSouce = FavoritesDataSource(tableView: self.tableView, fetchedResults: fetchedResultsController!, searchBarDelegate: searchBarDelegate)
         tableView.dataSource = favoritesDataSouce
         
         favoritesDataSouce?.deletedMovieCallback = { [weak self] movie in
@@ -49,6 +51,11 @@ class FavoritesViewController: UIViewController {
         favoriteTableViewDelegate?.callbackFromSelectedRow = { [weak self] movieIndex in
             self?.proceedToDetailsView(movieIndex: movieIndex)
         }
+    }
+    
+    func setupSearchBar() {
+        searchBarDelegate = SearchBarDelegate()
+        searchBar.delegate = searchBarDelegate
     }
     
     func setupNSFetched() {

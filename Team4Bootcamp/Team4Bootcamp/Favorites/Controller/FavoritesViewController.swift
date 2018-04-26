@@ -74,7 +74,7 @@ class FavoritesViewController: UIViewController {
     }
     
     func proceedToDetailsView(movieIndex: IndexPath) {
-        if let movieDAO = fetchedResultsController?.object(at: movieIndex) {
+        if let movieDAO = favoritesDataSouce?.filteredList()[movieIndex.row] {
             let movie = Movie(from: movieDAO)
             let controller = MovieDetailsViewController(movie: movie)
             navigationController?.pushViewController(controller, animated: true)

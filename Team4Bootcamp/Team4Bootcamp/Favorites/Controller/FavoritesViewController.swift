@@ -31,7 +31,7 @@ class FavoritesViewController: UIViewController {
         setupDelegate()
     }
     
-    private func setupDataSource() {
+    func setupDataSource() {
         favoritesDataSouce = FavoritesDataSource(tableView: self.tableView, fetchedResults: fetchedResultsController!, searchBarDelegate: searchBarDelegate)
         tableView.dataSource = favoritesDataSouce
         

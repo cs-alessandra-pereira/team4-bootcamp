@@ -10,6 +10,13 @@ DerivedData/
 ../.DS_Store
 .DS_Store?
 
+Team4Bootcamp.xcodeproj/project.xcworkspace/xcuserdata/a.portela.rodrigues.xcuserdatad/UserInterfaceState.xcuserstate
+Team4Bootcamp.xcodeproj/project.xcworkspace/xcuserdata/alessandra.l.pereira.xcuserdatad/UserInterfaceState.xcuserstate
+
+## Build generated
+build/
+DerivedData/
+
 ## Various settings
 *.pbxuser
 !default.pbxuser
@@ -19,13 +26,11 @@ DerivedData/
 !default.mode2v3
 *.perspectivev3
 !default.perspectivev3
-*/xcuserdata/*
-
+xcuserdata/
 ## Other
 *.moved-aside
 *.xccheckout
 *.xcscmblueprint
-
 ## Obj-C/Swift specific
 *.hmap
 *.ipa

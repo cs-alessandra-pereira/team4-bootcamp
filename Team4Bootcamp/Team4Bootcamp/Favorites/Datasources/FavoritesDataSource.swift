@@ -35,7 +35,7 @@ class FavoritesDataSource: NSObject, UITableViewDataSource, NSFetchedResultsCont
                 self?.searchString = searchString
             }
         }
-        fetchedResultsController?.delegate = self
+        self.fetchedResultsController?.delegate = self
     }
     
     private var searchString: String? = nil {

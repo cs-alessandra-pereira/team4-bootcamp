@@ -46,11 +46,10 @@ class FavoritesViewController: UIViewController {
     }
     
     func setupDelegate() {
-        favoriteTableViewDelegate = FavoriteTableViewDelegate()
-        tableView.delegate = favoriteTableViewDelegate
-        favoriteTableViewDelegate?.callbackFromSelectedRow = { [weak self] movieIndex in
+        favoriteTableViewDelegate = FavoriteTableViewDelegate { [weak self] movieIndex in
             self?.proceedToDetailsView(movieIndex: movieIndex)
         }
+        tableView.delegate = favoriteTableViewDelegate
     }
     
     func setupSearchBar() {

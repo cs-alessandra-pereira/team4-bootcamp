@@ -16,7 +16,7 @@ struct Movie {
     var genres: [Genre]
     let overview: String
     let posterPath: String
-    var persisted: Bool
+    var persisted = false
     
     static let moviePersistentceService = FavoritePersistenceService()
     
@@ -43,14 +43,12 @@ struct Movie {
     }
     
     func releaseYearAsString() -> String {
-        var year = "Unknown"
-        let yearFormatter = DateFormatter()
-        yearFormatter.dateFormat = "yyyy"
-        if let date = releaseDate {
-            year = yearFormatter.string(from: date)
+        guard let date = releaseDate, let year = Calendar.current.dateComponents([.year], from: date).year else {
+            return "Unknown"
         }
-        return year
+        return "\(year)"
     }
+    
 }
 
 extension Movie {
@@ -91,8 +89,6 @@ extension Movie: Decodable {
             genres.append(Genre(id: id))
         }
         self.genres = genres
-        
-        persisted = false
     }
 }
 

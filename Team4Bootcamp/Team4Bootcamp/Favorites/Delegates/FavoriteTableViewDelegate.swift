@@ -12,8 +12,12 @@ typealias FavoriteTableViewCallback = ((IndexPath) -> Void)?
 
 class FavoriteTableViewDelegate: NSObject, UITableViewDelegate {
     
-    var callbackFromSelectedRow: FavoriteTableViewCallback = nil
+    let callbackFromSelectedRow: FavoriteTableViewCallback
     
+    init(selectedRowCallback: FavoriteTableViewCallback) {
+        self.callbackFromSelectedRow = selectedRowCallback
+        super.init()
+    }
     func  tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         callbackFromSelectedRow?(indexPath)
     }

@@ -311,8 +311,7 @@
 				CD41C7A9208523CB00BC28C8 /* CollectionViewDelegateSpec.swift */,
 				CD41C7AA208523CB00BC28C8 /* CollectionViewDelegateStub.swift */,
 			);
-			name = Delegates;
-			path = "New Group";
+			path = Delegates;
 			sourceTree = "<group>";
 		};
 		CD63A293207E7829009DE53C /* Controller */ = {

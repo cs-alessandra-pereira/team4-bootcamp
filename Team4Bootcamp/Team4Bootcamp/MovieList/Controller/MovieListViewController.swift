@@ -11,7 +11,7 @@ import CoreData
 
 class MovieListViewController: UIViewController {
     
-    static var container: NSPersistentContainer? = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer
+    static var container: NSPersistentContainer? = (UIApplication.shared.delegate as? AppDelegate)?.coredata.persistentContainer
     
     @IBOutlet weak var collectionView: UICollectionView! {
         didSet {

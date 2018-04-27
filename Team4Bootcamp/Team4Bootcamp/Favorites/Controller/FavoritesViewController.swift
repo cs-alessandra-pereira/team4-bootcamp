@@ -17,7 +17,7 @@ class FavoritesViewController: UIViewController {
     private let favoritePersistenceService = FavoritePersistenceService()
     fileprivate var fetchedResultsController: NSFetchedResultsController<MovieDAO>?
     
-    static var container: NSPersistentContainer? = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer
+    static var container: NSPersistentContainer? = (UIApplication.shared.delegate as? AppDelegate)?.coredata.persistentContainer
     
     var favoritesDataSouce: FavoritesDataSource?
     var favoriteTableViewDelegate: FavoriteTableViewDelegate?

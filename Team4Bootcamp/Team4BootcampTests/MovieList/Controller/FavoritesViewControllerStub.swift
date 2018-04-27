@@ -9,7 +9,7 @@
 @testable import Team4Bootcamp
 import Foundation
 
-class FavoritesViewControllerStub : FavoritesViewController {
+class FavoritesViewControllerStub: FavoritesViewController {
     
     var setupNSFetchedWasCalled = false
     var setupDelegateWasCalled = false

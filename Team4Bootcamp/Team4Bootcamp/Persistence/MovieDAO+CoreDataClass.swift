@@ -60,5 +60,3 @@ class MovieDAO: NSManagedObject {
         return lhs.id == rhs.id
     }
 }
-
-

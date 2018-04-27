@@ -23,7 +23,7 @@ class MovieDAO: NSManagedObject {
         } catch let error as NSError {
             print("Could not fetch. \(error), \(error.userInfo)")
         }
-        return true
+        return false
     }
     
     class func addMovie(movie: Movie, context: NSManagedObjectContext) -> Bool {

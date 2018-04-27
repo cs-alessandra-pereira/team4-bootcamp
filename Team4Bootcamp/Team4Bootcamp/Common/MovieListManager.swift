@@ -8,16 +8,6 @@
 
 import Foundation
 
-//
-//  MovieListManagerProtocol.swift
-//  Team4Bootcamp
-//
-//  Created by a.portela.rodrigues on 23/04/18.
-//  Copyright © 2018 alessandra.l.pereira. All rights reserved.
-//
-
-import Foundation
-
 protocol MovieListManager: class {
     associatedtype Item: Equatable
     var movies: [Item] { get set}

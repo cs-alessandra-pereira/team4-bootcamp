@@ -46,10 +46,12 @@ class FavoritesViewController: UIViewController {
     }
     
     func setupDelegate() {
-        favoriteTableViewDelegate = FavoriteTableViewDelegate { [weak self] movieIndex in
+        favoriteTableViewDelegate = FavoriteTableViewDelegate()
+        tableView.delegate = favoriteTableViewDelegate
+        favoriteTableViewDelegate?.callbackFromSelectedRow = { [weak self] movieIndex in
             self?.proceedToDetailsView(movieIndex: movieIndex)
         }
-        tableView.delegate = favoriteTableViewDelegate
+
     }
     
     func setupSearchBar() {
@@ -73,10 +75,12 @@ class FavoritesViewController: UIViewController {
     }
     
     func proceedToDetailsView(movieIndex: IndexPath) {
-        if let movieDAO = favoritesDataSouce?.filteredList()[movieIndex.row] {
-            let movie = Movie(from: movieDAO)
-            let controller = MovieDetailsViewController(movie: movie)
-            navigationController?.pushViewController(controller, animated: true)
+        if let moviesDAO = favoritesDataSouce?.movies {
+            if let movieDAO = favoritesDataSouce?.filteredList(movies: moviesDAO)[movieIndex.row] {
+                let movie = Movie(from: movieDAO)
+                let controller = MovieDetailsViewController(movie: movie)
+                navigationController?.pushViewController(controller, animated: true)
+            }
         }
     }
 }

@@ -21,6 +21,7 @@ class FavoritesDataSourceSpec: QuickSpec {
         let searchBarDelegate = SearchBarDelegate()
         var sut: FavoritesDataSource!
         let frc = NSFetchedResultsController<MovieDAO>()
+        var indexPath: IndexPath!
         
         describe("FavoriteDatasource") {
             beforeEach {
@@ -35,17 +36,34 @@ class FavoritesDataSourceSpec: QuickSpec {
                 
                 beforeEach {
                     sut = FavoritesDataSourceStub(tableView: tableView, fetchedResults: frc, searchBarDelegate: searchBarDelegate)
+                    indexPath = IndexPath(row: 0, section: 0)
                 }
                 
                 it("should return true if initialized correctly") {
                     expect(sut).to(beAnInstanceOf(FavoritesDataSourceStub.self))
                     
                 }
-                it("should return true if number of rows is equal to zero and numberOfMovies changes conforme expected") {
-                    expect(sut.numberOfMovies) == 0
-                    expect(sut.tableView(tableView, numberOfRowsInSection: 0)) == 0
-                    expect(sut.numberOfMovies) == 20
+                it("should return true if return the expected movie") {
+                    expect(sut.searchString).to(beNil())
+                    sut.searchString = "Fifty Shades Freed"
+                    let movies = sut.filteredList(movies: sut.movies)
+                    expect(sut.searchString) == (movies[0].title)
+                    
+                    
+                    
                 }
+                it("should return true if numberOfMovies changes conforme expected and number of rows is equal to one") {
+                    expect(sut.numberOfMovies) == 0
+                    expect(sut.tableView(tableView, numberOfRowsInSection: indexPath.section)) == 1
+                    expect(sut.numberOfMovies) == 1
+                    
+                }
+                it("should return a valid cell of expected type") {
+                    let cell = sut.tableView(tableView, cellForRowAt: indexPath)
+                    expect(cell).to(beAKindOf(FavoriteTableViewCell.self))
+                }
+                
+                
             })
         }
     }

@@ -38,17 +38,17 @@ class FavoritesDataSource: NSObject, UITableViewDataSource, NSFetchedResultsCont
         self.fetchedResultsController?.delegate = self
     }
     
-    private var searchString: String? = nil {
+    var searchString: String? = nil {
         didSet {
             tableView.reloadData()
         }
     }
     
-    func filteredList() -> [MovieDAO] {
+    func filteredList(movies: [MovieDAO]) -> [MovieDAO] {
         guard let searchString = self.searchString else {
-            return self.movies
+            return movies
         }
-        return self.movies.filter { $0.title.lowercased().starts(with: searchString.lowercased()) }
+        return movies.filter { $0.title.lowercased().starts(with: searchString.lowercased()) }
     }
     
     
@@ -119,10 +119,10 @@ extension FavoritesDataSource: MovieListManager {
     typealias Item = MovieDAO
     
     func getMovieCount() -> Int {
-        return filteredList().count
+        return filteredList(movies: self.movies).count
     }
     
     func getMovies() -> [MovieDAO] {
-        return filteredList()
+        return filteredList(movies: self.movies)
     }
 }

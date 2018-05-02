@@ -40,7 +40,7 @@ class MovieDAO: NSManagedObject {
             }
             try? context.save()
             return true
-            }
+        }
         return false
     }
     
@@ -59,4 +59,7 @@ class MovieDAO: NSManagedObject {
     static func == (lhs: MovieDAO, rhs: MovieDAO) -> Bool {
         return lhs.id == rhs.id
     }
+    
 }
+
+

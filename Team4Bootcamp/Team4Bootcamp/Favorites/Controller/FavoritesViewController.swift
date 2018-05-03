@@ -29,6 +29,22 @@ class FavoritesViewController: UIViewController {
         setupSearchBar()
         setupDataSource()
         setupDelegate()
+        setupFilterButton()
+    }
+    
+    func setupFilterButton() {
+        let icon = UIImage(icon: .filter)
+        let button = UIBarButtonItem(image: icon, style: .plain, target: self, action: #selector(filterAction) )
+        self.navigationItem.rightBarButtonItem = button
+    }
+    
+    @objc
+    func filterAction() {
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
     }
     
     func setupDataSource() {

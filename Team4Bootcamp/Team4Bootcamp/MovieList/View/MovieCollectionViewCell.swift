@@ -10,10 +10,14 @@ import UIKit
 import Kingfisher
 import SnapKit
 
+protocol MovieCollectionViewCellDelegate: class {
+    func didFavoriteCell(_ isSelected: Bool, at position: IndexPath)
+}
+
 final class MovieCollectionViewCell: UICollectionViewCell {
     
     let imageFetchable: ImageFetchable = KFImageFetchable()
-    
+
     static let movieListCell = "MovieCell"
     
     lazy var imageView: UIImageView = {
@@ -29,7 +33,15 @@ final class MovieCollectionViewCell: UICollectionViewCell {
         return view
     }()
     
-    lazy var iconButton = FavoriteButton()
+    var delegate: MovieCollectionViewCellDelegate?
+    var position: IndexPath?
+    
+    lazy var iconButton: FavoriteButton = {
+        let view = FavoriteButton(frame: .zero)
+        
+        view.addTarget(self, action: #selector(didTouchFavoriteButton), for: .touchUpInside)
+        return view
+    }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -40,13 +52,33 @@ final class MovieCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setup(movie: Movie) {
+    func setup(movie: Movie, at position: IndexPath) {
         textLabel.text = movie.title
+        if movie.persisted {
+            iconButton.isSelected = true
+        } else {
+            iconButton.isSelected = false
+        }
+        self.position = position
         let path = Endpoints.moviePoster(movie.posterPath).path
         imageFetchable.fetch(imageURLString: path, onImage: imageView) {}
     }
 }
 
+extension MovieCollectionViewCell {
+    @objc
+    fileprivate func didTouchFavoriteButton() {
+        if let cellPosition = position {
+            if iconButton.isSelected {
+                iconButton.isSelected = false
+                delegate?.didFavoriteCell(iconButton.isSelected, at: cellPosition)
+            } else {
+                iconButton.isSelected = true
+                delegate?.didFavoriteCell(iconButton.isSelected, at: cellPosition)
+            }
+        }
+    }
+}
 extension MovieCollectionViewCell: CodeView {
     
     func buildHierarchy() {

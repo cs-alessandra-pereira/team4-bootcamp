@@ -12,10 +12,13 @@ struct Movie {
     
     let id: Int
     let title: String
-    let releaseDate: Date?
+    var releaseDate: Date?
     var genres: [Genre]
     let overview: String
     let posterPath: String
+    var persisted = false
+    
+    static let moviePersistentceService = FavoritePersistenceService()
     
     private enum CodingKeys: String, CodingKey {
         case id
@@ -40,21 +43,33 @@ struct Movie {
     }
     
     func releaseYearAsString() -> String {
-        var year = "Unknown"
-        let yearFormatter = DateFormatter()
-        yearFormatter.dateFormat = "yyyy"
-        if let date = releaseDate {
-            year = yearFormatter.string(from: date)
+        guard let date = releaseDate, let year = Calendar.current.dateComponents([.year], from: date).year else {
+            return "Unknown"
         }
-        return year
+        return "\(year)"
     }
     
+}
 
+extension Movie {
+    init(from movieDAO: MovieDAO) {
+        let date = movieDAO.date as Date?
+        id = Int(movieDAO.id)
+        title = movieDAO.title
+        overview = movieDAO.overview
+        posterPath = movieDAO.posterPath
+        genres = []
+        for gnr in movieDAO.genres {
+            genres.append(Genre(id: gnr))
+        }
+        releaseDate = date
+        persisted = true
+    }
 }
 
 extension Movie: Decodable {
+    
     init(from decoder: Decoder) throws {
-        
         let values = try decoder.container(keyedBy: CodingKeys.self)
         
         id = try values.decode(Int.self, forKey: .id)
@@ -62,15 +77,23 @@ extension Movie: Decodable {
         overview = try values.decode(String.self, forKey: .overview)
         posterPath = try values.decode(String.self, forKey: .posterPath)
         
-        let dateString = try values.decode(String.self, forKey: .releaseDate)
-        
-        releaseDate = Date.getDateFromString(dateString: dateString)
-        
+        do {
+            let dateString = try values.decode(String.self, forKey: .releaseDate)
+            releaseDate = Date.getDateFromString(dateString: dateString)
+        } catch {
+            releaseDate = nil
+        }
         let genreIDs = try values.decode([Int].self, forKey: .genresIDs)
         var genres: [Genre] = []
         for id in genreIDs {
             genres.append(Genre(id: id))
         }
         self.genres = genres
+    }
+}
+
+extension Movie: Equatable {
+    static func == (lhs: Movie, rhs: Movie) -> Bool {
+        return lhs.id == rhs.id
     }
 }

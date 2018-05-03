@@ -10,6 +10,10 @@ import UIKit
 
 typealias MovieCollectionViewCallback = ((CollectionViewEvent, Int) -> Void)?
 
+protocol MovieCollectionViewDelegate: UICollectionViewDelegate {
+    func didFavorite(image: String)
+}
+
 class CollectionViewDelegate: NSObject, UICollectionViewDelegate {
 
     let moviesSection = 0

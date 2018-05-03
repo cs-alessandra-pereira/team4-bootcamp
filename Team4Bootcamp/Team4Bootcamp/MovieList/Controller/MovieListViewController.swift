@@ -7,8 +7,11 @@
 //
 
 import UIKit
+import CoreData
 
 class MovieListViewController: UIViewController {
+    
+    static var container: NSPersistentContainer? = (UIApplication.shared.delegate as? AppDelegate)?.coredata.persistentContainer
     
     @IBOutlet weak var collectionView: UICollectionView! {
         didSet {
@@ -28,8 +31,9 @@ class MovieListViewController: UIViewController {
     var movieListDatasource: MovieListDatasource?
     var collectionViewDelegate: CollectionViewDelegate?
     var searchBarDelegate: SearchBarDelegate?
-    var movieService: MoviesServiceProtocol = MoviesAPI()
     
+    var movieService: MoviesProtocol = MoviesAPI()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupDelegate()
@@ -37,6 +41,12 @@ class MovieListViewController: UIViewController {
         fetchGenres()
         fetchMovies()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        collectionView.reloadData()
+    }
+    
     
     func setupDatasource(movies: [Movie], searchBarDelegate: SearchBarDelegate?) {
         movieListDatasource = MovieListDatasource(movies: movies, collectionView: collectionView, searchBarDelegate: searchBarDelegate)
@@ -46,13 +56,13 @@ class MovieListViewController: UIViewController {
     func setupDelegate() {
         collectionViewDelegate = CollectionViewDelegate()
         collectionView.delegate = collectionViewDelegate
-        
+
         collectionViewDelegate?.callback = { [weak self] collectionEvent, movieIndex in
             switch collectionEvent {
             case .didSelectItemAt:
                 self?.proceedToDetailsView(movieIndex: movieIndex)
             case .willDisplayMoreCells:
-                let count = self?.movieListDatasource?.filteredList().count
+                let count = self?.movieListDatasource?.getMovieCount()
                 if movieIndex == count! - 1 {
                     if MoviesConstants.pageBaseURL <= MoviesConstants.paginationLimit {
                         self?.fetchMovies()
@@ -68,21 +78,36 @@ class MovieListViewController: UIViewController {
     }
     
     func fetchMovies() {
-        movieService.fetchMovies { movies in
-            if let datasource = self.movieListDatasource {
-                datasource.movies.append(contentsOf: movies)
-            } else {
-                self.setupDatasource(movies: movies, searchBarDelegate: self.searchBar.delegate as? SearchBarDelegate)
+        movieService.fetchMovies { result in
+            switch result {
+            case .success(let movies):
+                if let datasource = self.movieListDatasource {
+                    datasource.addMovies(newMovies: movies)
+                    self.state = .initial
+                } else {
+                    if movies.count > 0 {
+                        self.setupDatasource(movies: movies, searchBarDelegate: self.searchBar.delegate as? SearchBarDelegate)
+                        self.state = .initial
+                    } else {
+                        self.state = .noResults
+                    }
+                }
+            case .error:
+                self.state = .error
             }
-            self.state = .initial
         }
     }
-    
+
     func fetchGenres() {
         self.state = .loading
-        movieService.fetchGenres {
-            Genre.allGenres = $0
-            self.state = .initial
+        movieService.fetchGenres { result in
+            switch result {
+            case .success(let genres):
+                Genre.allGenres = genres
+                self.state = .initial
+            case .error:
+                self.state = .error
+            }
         }
     }
     
@@ -128,7 +153,7 @@ class MovieListViewController: UIViewController {
     }
     
     func proceedToDetailsView(movieIndex: Int) {
-        if let movie = movieListDatasource?.filteredList()[movieIndex] {
+        if let movie = movieListDatasource?.getMovies()[movieIndex] {
             let controller = MovieDetailsViewController(movie: movie)
             navigationController?.pushViewController(controller, animated: true)
         }

@@ -31,15 +31,6 @@ class MovieDetailsViewController: UIViewController {
         setMovieImage()
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
     func setupDatasource() {
         
         datasource = MovieDetailsDatasource(tableView: movieDetailsView.tableView, movie: movie)

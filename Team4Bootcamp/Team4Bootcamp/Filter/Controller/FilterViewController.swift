@@ -11,7 +11,7 @@ import UIKit
 class FilterViewController: UIViewController {
     
     var filterView = FilterView()
-    var favoriteMovies: [MovieDAO]? {
+    private var favoriteMovies: [MovieDAO]? {
         didSet {
             extractYearsFromMovies()
         }
@@ -23,15 +23,15 @@ class FilterViewController: UIViewController {
     
     override func loadView() {
         self.view = filterView
-        
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        filterView.tableView.delegate = self
+        filterView.tableView.dataSource = self
     }
     
-    func setupMovies(_ movies: [MovieDAO]) {
+    func setupMovies(_ movies: [MovieDAO]?) {
         self.favoriteMovies = movies
     }
     
@@ -48,26 +48,39 @@ class FilterViewController: UIViewController {
     
 }
 
-//extension FilterViewController: UITableViewDataSource {
-//
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//
-//    }
-//
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//
-//    }
-//
-//}
-//
-//extension FilterViewController: UITableViewDelegate {
-//
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        
-//    }
-//
-//    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-//
-//    }
-//
-//}
+extension FilterViewController: UITableViewDataSource {
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 2
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = UITableViewCell(style: .value1, reuseIdentifier: FilterView.filterCell)
+        
+        if indexPath.row == 0 {
+            cell.textLabel?.text = FilterView.cellAgeLabel
+            cell.detailTextLabel?.text = "None"
+        } else {
+            cell.textLabel?.text = FilterView.cellGenreLabel
+            cell.detailTextLabel?.text = "None"
+        }
+        
+        cell.accessoryType = .disclosureIndicator
+        
+        return cell
+    }
+
+}
+
+extension FilterViewController: UITableViewDelegate {
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+    }
+
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+
+    }
+
+}

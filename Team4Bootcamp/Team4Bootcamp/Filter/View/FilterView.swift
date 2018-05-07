@@ -10,11 +10,15 @@ import UIKit
 
 class FilterView: UIView {
 
+    static let filterCell = "FilterCell"
+    static let cellAgeLabel = "Ano"
+    static let cellGenreLabel = "Gênero"
+    
     lazy var tableView: UITableView = {
         let view = UITableView(frame: .zero)
         view.allowsSelection = false
         view.alwaysBounceVertical = false
-        view.tableFooterView = UIView()
+        view.separatorStyle = UITableViewCellSeparatorStyle.none
         return view
     }()
     

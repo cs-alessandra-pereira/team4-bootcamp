@@ -16,7 +16,7 @@ class FilterSelectorViewController: UIViewController {
 
     private var filterSelectorTableView = FilterSelectorTableView()
     var data: [String] = []
-    private var selectedData: [String] = []
+    var selectedData: [String] = []
 
     var filterSelectedCallback: FilterSelectionCallback?
     

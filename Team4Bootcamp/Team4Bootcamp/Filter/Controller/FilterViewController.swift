@@ -85,7 +85,17 @@ extension FilterViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let filterSelectorVC = FilterSelectorViewController()
         
-        filterSelectorVC.data = indexPath.row == 0 ? allYears : []
+        switch indexPath.row {
+        case 0:
+            filterSelectorVC.data = allYears
+            filterSelectorVC.selectedData = selectedYears.count > 0 ? selectedYears : []
+        case 1:
+            filterSelectorVC.data = []
+            filterSelectorVC.selectedData = selectedGenreNames.count > 0 ? selectedGenreNames : []
+        default:
+            break
+        }
+        
         filterSelectorVC.filterSelectedCallback = { [weak self] selectedData in
             indexPath.row == 0 ? (self?.selectedYears = selectedData) : (self?.selectedGenreNames = selectedData)
             self?.filterView.tableView.reloadData()

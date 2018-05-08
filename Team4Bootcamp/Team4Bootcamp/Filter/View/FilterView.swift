@@ -21,6 +21,12 @@ class FilterView: UIView {
         return view
     }()
     
+    lazy var applyFilterButton: UIButton = {
+        let view = UIButton(type: .system)
+        view.addTarget(self, action: #selector(didTouchApplyFilterButton), for: .touchUpInside)
+        return view
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
@@ -35,6 +41,7 @@ class FilterView: UIView {
 extension FilterView: CodeView {
     func buildHierarchy() {
         addSubview(tableView)
+        addSubview(applyFilterButton)
     }
     
     func buildConstraints() {
@@ -43,5 +50,29 @@ extension FilterView: CodeView {
             //make.right.equalTo(self)
             make.size.equalTo(self)
         }
+        applyFilterButton.snp.makeConstraints { make in
+            make.bottom.equalTo(safeAreaLayoutGuide.snp.bottom)
+            make.left.equalTo(safeAreaLayoutGuide.snp.left).inset(10)
+            make.right.equalTo(safeAreaLayoutGuide.snp.right).inset(10)
+            make.height.equalTo(60)
+            
+        }
+    }
+    
+    func  configure() {
+        applyFilterButton.layer.backgroundColor = UIColor.primaryColor?.cgColor
+        applyFilterButton.layer.masksToBounds = true
+        applyFilterButton.layer.cornerRadius = 5
+        applyFilterButton.setTitle("Apply", for: .normal)
+        applyFilterButton.setTitleColor(UIColor.white, for: .normal)
+        applyFilterButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16.0)
+        
+    }
+}
+
+extension FilterView {
+    @objc
+    fileprivate func didTouchApplyFilterButton() {
+        //TODO: Aplica filtro
     }
 }

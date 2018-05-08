@@ -64,7 +64,7 @@ extension FilterView: CodeView {
         applyFilterButton.layer.masksToBounds = true
         applyFilterButton.layer.cornerRadius = 5
         applyFilterButton.setTitle("Apply", for: .normal)
-        applyFilterButton.setTitleColor(UIColor.white, for: .normal)
+        applyFilterButton.setTitleColor(UIColor.black, for: .normal)
         applyFilterButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16.0)
         
     }

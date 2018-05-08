@@ -29,6 +29,7 @@ class FilterViewController: UIViewController {
         super.viewDidLoad()
         filterView.tableView.delegate = self
         filterView.tableView.dataSource = self
+        filterView.delegate = self
         
     }
     
@@ -66,13 +67,14 @@ extension FilterViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = UITableViewCell(style: .value1, reuseIdentifier: FilterView.filterCell)
+        var data: [String] = []
         
-        if indexPath.row == 0 {
-            cell.textLabel?.text = FilterView.cellAgeLabel
-            cell.detailTextLabel?.text = selectedYears.first ?? ""
-        } else {
-            cell.textLabel?.text = FilterView.cellGenreLabel
-            cell.detailTextLabel?.text =  selectedGenreNames.first ?? ""
+        data = indexPath.row == 0 ? selectedYears : selectedGenreNames
+        cell.textLabel?.text = indexPath.row == 0 ? FilterView.cellAgeLabel : FilterView.cellGenreLabel
+        
+        cell.detailTextLabel?.text = data.first ?? ""
+        if data.count > 1 {
+            cell.detailTextLabel?.text = (cell.detailTextLabel?.text ?? "") + "..."
         }
         
         cell.accessoryType = .disclosureIndicator
@@ -80,21 +82,15 @@ extension FilterViewController: UITableViewDataSource {
     }
 }
 
-extension FilterViewController: UITableViewDelegate {
+extension FilterViewController: UITableViewDelegate, FilterViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let filterSelectorVC = FilterSelectorViewController()
+        var data: [String] = []
         
-        switch indexPath.row {
-        case 0:
-            filterSelectorVC.data = allYears
-            filterSelectorVC.selectedData = selectedYears.count > 0 ? selectedYears : []
-        case 1:
-            filterSelectorVC.data = []
-            filterSelectorVC.selectedData = selectedGenreNames.count > 0 ? selectedGenreNames : []
-        default:
-            break
-        }
+        filterSelectorVC.data = indexPath.row == 0 ? allYears : allGenreNames
+        data = indexPath.row == 0 ? selectedYears : selectedGenreNames
+        filterSelectorVC.selectedData = data.count > 0 ? data : []
         
         filterSelectorVC.filterSelectedCallback = { [weak self] selectedData in
             indexPath.row == 0 ? (self?.selectedYears = selectedData) : (self?.selectedGenreNames = selectedData)
@@ -102,5 +98,22 @@ extension FilterViewController: UITableViewDelegate {
         }
         
         self.navigationController?.pushViewController(filterSelectorVC, animated: true)
+    }
+    
+    func applyFilter() {
+        guard let vcs = self.navigationController?.viewControllers else {
+            fatalError()
+        }
+        for item in vcs where item.isKind(of: FavoritesViewController.self) {
+            guard let favoritesVC = item as? FavoritesViewController else {
+                fatalError()
+            }
+            favoritesVC.favoritesDataSouce?.yearToFilter = self.selectedYears
+            favoritesVC.favoritesDataSouce?.genresToFilter = self.selectedGenreNames
+        }
+        self.navigationController?.popViewController(animated: true)
+        
+        //TODO: Tá atualizando no FavoritesDataSource duas listas de Strings a partir daquelas
+        //selecionadas no filtro. Mas ainda não tá realizando o filtro.
     }
 }

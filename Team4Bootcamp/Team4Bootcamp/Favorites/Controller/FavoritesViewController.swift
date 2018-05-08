@@ -41,6 +41,7 @@ class FavoritesViewController: UIViewController {
     @objc
     func filterAction() {
         let filterViewController = FilterViewController()
+        filterViewController.hidesBottomBarWhenPushed = true
         filterViewController.setupMovies(favoritesDataSouce?.movies)
         self.navigationController?.pushViewController(filterViewController, animated: true)
     }

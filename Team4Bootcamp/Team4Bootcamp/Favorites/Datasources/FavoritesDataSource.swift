@@ -38,6 +38,17 @@ class FavoritesDataSource: NSObject, UITableViewDataSource, NSFetchedResultsCont
         self.fetchedResultsController?.delegate = self
     }
     
+    var yearToFilter: [String]? = [] {
+        didSet {
+            print(yearToFilter!)
+        }
+    }
+    var genresToFilter: [String]? = [] {
+        didSet {
+            print(genresToFilter!)
+        }
+    }
+    
     private var searchString: String? = nil {
         didSet {
             tableView.reloadData()

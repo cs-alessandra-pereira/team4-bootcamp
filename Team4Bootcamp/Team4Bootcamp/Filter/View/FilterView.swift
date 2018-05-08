@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol FilterViewDelegate: class {
+    func applyFilter()
+}
+
 class FilterView: UIView {
 
     static let filterCell = "FilterCell"
@@ -26,6 +30,8 @@ class FilterView: UIView {
         view.addTarget(self, action: #selector(didTouchApplyFilterButton), for: .touchUpInside)
         return view
     }()
+    
+    var delegate: FilterViewDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -51,7 +57,7 @@ extension FilterView: CodeView {
             make.size.equalTo(self)
         }
         applyFilterButton.snp.makeConstraints { make in
-            make.bottom.equalTo(safeAreaLayoutGuide.snp.bottom)
+            make.bottom.equalTo(safeAreaLayoutGuide.snp.bottom).inset(10)
             make.left.equalTo(safeAreaLayoutGuide.snp.left).inset(10)
             make.right.equalTo(safeAreaLayoutGuide.snp.right).inset(10)
             make.height.equalTo(60)
@@ -73,6 +79,6 @@ extension FilterView: CodeView {
 extension FilterView {
     @objc
     fileprivate func didTouchApplyFilterButton() {
-        //TODO: Aplica filtro
+        delegate?.applyFilter()
     }
 }

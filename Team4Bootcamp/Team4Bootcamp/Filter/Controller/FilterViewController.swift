@@ -13,13 +13,13 @@ class FilterViewController: UIViewController {
     var filterView = FilterView()
     private var favoriteMovies: [MovieDAO]? {
         didSet {
-            extractYearsFromMovies()
+            allYears = extractYearsFromMovies().sorted()
         }
     }
-    var allGenreNames: [String] = []
-    var allYears: [Int] = []
-    var selectedGenreNames: [String] = []
-    var selectedYears: [String] = []
+    fileprivate var allGenreNames: [String] = []
+    fileprivate var allYears: [String] = []
+    fileprivate var selectedGenreNames: [String] = []
+    fileprivate var selectedYears: [String] = []
     
     override func loadView() {
         self.view = filterView
@@ -29,17 +29,26 @@ class FilterViewController: UIViewController {
         super.viewDidLoad()
         filterView.tableView.delegate = self
         filterView.tableView.dataSource = self
+        
     }
     
     func setupMovies(_ movies: [MovieDAO]?) {
         self.favoriteMovies = movies
     }
     
-    func extractYearsFromMovies() {
+    func extractYearsFromMovies() -> [String] {
+        var years: [String] = []
         if let movies = favoriteMovies {
-            allYears = movies.map {Int($0.id)}
-            allYears.sort()
+            _ = movies.map { movie in
+                if let nsdate = movie.date, let date = nsdate as Date? {
+                    let year = Date.releaseYearAsString(date)
+                    if !years.contains(year) {
+                        years.append(year)
+                    }
+                }
+            }
         }
+        return years
     }
     
     func extractGenreNamesFromMovies() {
@@ -60,27 +69,28 @@ extension FilterViewController: UITableViewDataSource {
         
         if indexPath.row == 0 {
             cell.textLabel?.text = FilterView.cellAgeLabel
-            cell.detailTextLabel?.text = "None"
+            cell.detailTextLabel?.text = selectedYears.first ?? ""
         } else {
             cell.textLabel?.text = FilterView.cellGenreLabel
-            cell.detailTextLabel?.text = "None"
+            cell.detailTextLabel?.text =  selectedGenreNames.first ?? ""
         }
         
         cell.accessoryType = .disclosureIndicator
-        
         return cell
     }
-
 }
 
 extension FilterViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let filterSelectorVC = FilterSelectorViewController()
         
+        filterSelectorVC.data = indexPath.row == 0 ? allYears : []
+        filterSelectorVC.filterSelectedCallback = { [weak self] selectedData in
+            indexPath.row == 0 ? (self?.selectedYears = selectedData) : (self?.selectedGenreNames = selectedData)
+            self?.filterView.tableView.reloadData()
+        }
+        
+        self.navigationController?.pushViewController(filterSelectorVC, animated: true)
     }
-
-    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-
-    }
-
 }

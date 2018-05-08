@@ -18,8 +18,8 @@ class FilterViewController: UIViewController {
     }
     fileprivate var allGenreNames: [String] = []
     fileprivate var allYears: [String] = []
-    fileprivate var selectedGenreNames: [String] = []
-    fileprivate var selectedYears: [String] = []
+    var selectedGenreNames: [String] = []
+    var selectedYears: [String] = []
     
     override func loadView() {
         self.view = filterView

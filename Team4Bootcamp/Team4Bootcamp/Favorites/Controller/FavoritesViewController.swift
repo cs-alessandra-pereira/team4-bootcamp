@@ -43,6 +43,8 @@ class FavoritesViewController: UIViewController {
         let filterViewController = FilterViewController()
         filterViewController.hidesBottomBarWhenPushed = true
         filterViewController.setupMovies(favoritesDataSouce?.movies)
+        filterViewController.selectedYears = favoritesDataSouce?.yearToFilter ?? []
+        filterViewController.selectedGenreNames = favoritesDataSouce?.genresToFilter ?? []
         self.navigationController?.pushViewController(filterViewController, animated: true)
     }
     

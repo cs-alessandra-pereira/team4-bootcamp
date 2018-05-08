@@ -22,4 +22,11 @@ extension Date {
         }
         return movieDate
     }
+    
+    static func releaseYearAsString(_ releaseDate: Date?) -> String {
+        guard let date = releaseDate, let year = Calendar.current.dateComponents([.year], from: date).year else {
+            return "Unknown"
+        }
+        return "\(year)"
+    }
 }

@@ -68,6 +68,11 @@
 		EA71E3A0206BE70100970A47 /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA71E39E206BE70100970A47 /* Kingfisher.framework */; };
 		EA7A7D7C20855D9F00F8C637 /* PersistenceConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7A7D7B20855D9F00F8C637 /* PersistenceConstants.swift */; };
 		EA7B5F4D208F762100414C9B /* MovieListManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7B5F4C208F762100414C9B /* MovieListManager.swift */; };
+		EA7D5A0520A1C35C00DF4A72 /* FilterSelectorTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7D5A0420A1C35C00DF4A72 /* FilterSelectorTableView.swift */; };
+		EA7D5A0720A1D0E500DF4A72 /* FilterSelectorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7D5A0620A1D0E500DF4A72 /* FilterSelectorTableViewCell.swift */; };
+		EA7D5A0920A1D0F100DF4A72 /* FilterSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7D5A0820A1D0F100DF4A72 /* FilterSelectorViewController.swift */; };
+		EA80B14C209C9701009A0CBC /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA80B14B209C9701009A0CBC /* FilterViewController.swift */; };
+		EA80B14E209C975B009A0CBC /* FilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA80B14D209C975B009A0CBC /* FilterView.swift */; };
 		EA88DFDF207CE05100FFF0B1 /* SearchBarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA88DFDE207CE05100FFF0B1 /* SearchBarDelegate.swift */; };
 /* End PBXBuildFile section */
 
@@ -168,6 +173,11 @@
 		EA71E39F206BE70100970A47 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		EA7A7D7B20855D9F00F8C637 /* PersistenceConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceConstants.swift; sourceTree = "<group>"; };
 		EA7B5F4C208F762100414C9B /* MovieListManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListManager.swift; sourceTree = "<group>"; };
+		EA7D5A0420A1C35C00DF4A72 /* FilterSelectorTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterSelectorTableView.swift; sourceTree = "<group>"; };
+		EA7D5A0620A1D0E500DF4A72 /* FilterSelectorTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterSelectorTableViewCell.swift; sourceTree = "<group>"; };
+		EA7D5A0820A1D0F100DF4A72 /* FilterSelectorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterSelectorViewController.swift; sourceTree = "<group>"; };
+		EA80B14B209C9701009A0CBC /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
+		EA80B14D209C975B009A0CBC /* FilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterView.swift; sourceTree = "<group>"; };
 		EA88DFDE207CE05100FFF0B1 /* SearchBarDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -392,6 +402,7 @@
 		CDD415FF206ABB9400988317 /* Team4Bootcamp */ = {
 			isa = PBXGroup;
 			children = (
+				EA80B146209C954A009A0CBC /* Filter */,
 				CDD41632206B108B00988317 /* Model */,
 				EA7A7D7A20855CAA00F8C637 /* Common */,
 				EAFB94ED208A1DD800A730E8 /* Persistence */,
@@ -547,6 +558,34 @@
 				EA7B5F4C208F762100414C9B /* MovieListManager.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		EA80B146209C954A009A0CBC /* Filter */ = {
+			isa = PBXGroup;
+			children = (
+				EA80B148209C9606009A0CBC /* View */,
+				EA80B147209C95FD009A0CBC /* Controller */,
+			);
+			path = Filter;
+			sourceTree = "<group>";
+		};
+		EA80B147209C95FD009A0CBC /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				EA80B14B209C9701009A0CBC /* FilterViewController.swift */,
+				EA7D5A0820A1D0F100DF4A72 /* FilterSelectorViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		EA80B148209C9606009A0CBC /* View */ = {
+			isa = PBXGroup;
+			children = (
+				EA7D5A0420A1C35C00DF4A72 /* FilterSelectorTableView.swift */,
+				EA7D5A0620A1D0E500DF4A72 /* FilterSelectorTableViewCell.swift */,
+				EA80B14D209C975B009A0CBC /* FilterView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		EAFB94ED208A1DD800A730E8 /* Persistence */ = {
@@ -748,11 +787,16 @@
 				EA0AA958208686370039C195 /* CellConstants.swift in Sources */,
 				CD27E24E208E293000349B46 /* FavoriteTableViewDelegate.swift in Sources */,
 				CD1D7F45207E7360009722FA /* UIImage+Icons.swift in Sources */,
+				EA80B14C209C9701009A0CBC /* FilterViewController.swift in Sources */,
 				CD27E250208E293600349B46 /* FavoritesViewController.swift in Sources */,
 				CDD41636206B12FB00988317 /* Genres.swift in Sources */,
 				CD91F9E52074413C002BB9EE /* MovieListDatasource.swift in Sources */,
 				EA28EFC1207BCF0A006EB8CB /* GenresWrapper.swift in Sources */,
 				CD2B9F7620939EE500C91ECB /* MovieDetailsDatasource.swift in Sources */,
+				EA7D5A0520A1C35C00DF4A72 /* FilterSelectorTableView.swift in Sources */,
+				EA80B14E209C975B009A0CBC /* FilterView.swift in Sources */,
+				EA7D5A0720A1D0E500DF4A72 /* FilterSelectorTableViewCell.swift in Sources */,
+				EA7D5A0920A1D0F100DF4A72 /* FilterSelectorViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

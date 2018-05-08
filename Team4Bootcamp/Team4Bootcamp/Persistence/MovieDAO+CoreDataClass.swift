@@ -48,8 +48,8 @@ class MovieDAO: NSManagedObject {
         let request: NSFetchRequest<MovieDAO> = MovieDAO.fetchRequest()
         request.predicate = NSPredicate(format: "id == \(movie.id)")
         if let results = try? context.fetch(request) {
-            if results.count > 0 {
-                context.delete(results[0])
+            if let result = results.first {
+                context.delete(result)
                 return true
             }
         }
@@ -61,5 +61,3 @@ class MovieDAO: NSManagedObject {
     }
     
 }
-
-

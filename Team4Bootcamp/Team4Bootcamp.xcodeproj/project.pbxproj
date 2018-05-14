@@ -66,6 +66,7 @@
 		EA7A7D7C20855D9F00F8C637 /* PersistenceConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7A7D7B20855D9F00F8C637 /* PersistenceConstants.swift */; };
 		EA7B5F4D208F762100414C9B /* MovieListManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7B5F4C208F762100414C9B /* MovieListManager.swift */; };
 		EA88DFDF207CE05100FFF0B1 /* SearchBarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA88DFDE207CE05100FFF0B1 /* SearchBarDelegate.swift */; };
+		EACD6B0320AA494B00A3DF57 /* Nimble_Snapshots.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EACD6B0220AA494B00A3DF57 /* Nimble_Snapshots.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -163,6 +164,7 @@
 		EA7A7D7B20855D9F00F8C637 /* PersistenceConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceConstants.swift; sourceTree = "<group>"; };
 		EA7B5F4C208F762100414C9B /* MovieListManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListManager.swift; sourceTree = "<group>"; };
 		EA88DFDE207CE05100FFF0B1 /* SearchBarDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarDelegate.swift; sourceTree = "<group>"; };
+		EACD6B0220AA494B00A3DF57 /* Nimble_Snapshots.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble_Snapshots.framework; path = Carthage/Build/iOS/Nimble_Snapshots.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,6 +172,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EACD6B0320AA494B00A3DF57 /* Nimble_Snapshots.framework in Frameworks */,
 				CD91F9DD2073F034002BB9EE /* SnapKit.framework in Frameworks */,
 				EA71E3A0206BE70100970A47 /* Kingfisher.framework in Frameworks */,
 			);
@@ -520,6 +523,7 @@
 		EA71E39D206BE70000970A47 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EACD6B0220AA494B00A3DF57 /* Nimble_Snapshots.framework */,
 				EA4FB50D207822EA00C9D47D /* Nimble.framework */,
 				EA4FB50E207822EA00C9D47D /* Quick.framework */,
 				CD91F9DC2073F034002BB9EE /* SnapKit.framework */,
@@ -691,6 +695,7 @@
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/Kingfisher.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SnapKit.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Nimble_Snapshots.framework",
 			);
 			name = "Run Script";
 			outputPaths = (

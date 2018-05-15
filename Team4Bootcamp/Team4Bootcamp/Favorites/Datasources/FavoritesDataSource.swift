@@ -49,7 +49,7 @@ class FavoritesDataSource: NSObject, UITableViewDataSource, NSFetchedResultsCont
         }
     }
     
-    private var searchString: String? = nil {
+    var searchString: String? = nil {
         didSet {
             tableView.reloadData()
         }

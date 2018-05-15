@@ -64,16 +64,16 @@ class FavoritesDataSource: NSObject, UITableViewDataSource, NSFetchedResultsCont
     func setupFilteredMovies(_ filtered: [MovieDAO]) {
         filteredMovies = filtered
     }
-    
-    func filteredList() -> [MovieDAO] {
+
+    func filteredList(movies: [MovieDAO]) -> [MovieDAO] {
         return filteredMovies ?? movies
     }
     
     func searchedList(movies: [MovieDAO]) -> [MovieDAO] {
         guard let searchString = self.searchString else {
-            return filteredList()
+            return filteredList(movies: self.movies)
         }
-        return filteredList().filter { $0.title.lowercased().starts(with: searchString.lowercased()) }
+        return filteredList(movies: self.movies).filter { $0.title.lowercased().starts(with: searchString.lowercased()) }
     }
     
     

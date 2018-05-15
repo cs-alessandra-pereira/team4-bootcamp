@@ -8,16 +8,21 @@
 
 import Quick
 import Nimble
+import Nimble_Snapshots
 
 @testable import Team4Bootcamp
 
 class MovieDetailsViewSpec: QuickSpec {
     override func spec() {
-        describe("the 'Documentation' directory (exactly describes what component you are testing)") {
-            context("describes the purpose of the test or the current state of an object") {
-                it("has everything you need to get started (describes the expected result of the test)") {
-                    expect(true).to(beTrue())
-                }
+        describe("MovieDetailsView UI") {
+            it("should have the expected look and feel") {
+                let movie = Movie(id: 01, title: "Zootopia", releaseDate: nil, genres: [Genre(id: 12, name: "Adventure")], overview: "Blablablablabla blablablabla blabla blablablabla blablabla", posterPath: "/eKi8dIrr8voobb", persisted: false)
+                let frame = CGRect(x: 0, y: 0, width: 414, height: 736)
+                let view = MovieDetailsView(frame: frame)
+                let datasource = MovieDetailsDatasource(tableView: view.tableView, movie: movie)
+                view.tableView.dataSource = datasource
+                view.imageView.backgroundColor = .black
+                expect(view) == snapshot("MovieDetailsView")
             }
         }
     }

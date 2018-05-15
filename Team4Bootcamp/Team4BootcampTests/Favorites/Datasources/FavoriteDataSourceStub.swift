@@ -19,8 +19,8 @@ class FavoritesDataSourceStub: FavoritesDataSource {
     override init(tableView: UITableView, fetchedResults: NSFetchedResultsController<MovieDAO>, searchBarDelegate: SearchBarDelegate?) {
         super.init(tableView: tableView, fetchedResults: fetchedResults, searchBarDelegate: searchBarDelegate)
     }
-    
-    override func filteredList() -> [MovieDAO] {
+
+    override func filteredList(movies mvs: [MovieDAO]) -> [MovieDAO] {
         guard let context = container?.viewContext else {
             return []
         }
@@ -33,7 +33,7 @@ class FavoritesDataSourceStub: FavoritesDataSource {
         newMovieDAO.genres = []
         moviesTest.append(newMovieDAO)
 
-        return super.filteredList()
+        return super.filteredList(movies: moviesTest)
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

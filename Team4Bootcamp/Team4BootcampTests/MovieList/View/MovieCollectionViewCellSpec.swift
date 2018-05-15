@@ -25,7 +25,7 @@ class MovieCollectionViewCellSpec: QuickSpec {
                 let movieNotPersisted = Movie(id: 01, title: "Zootopia", releaseDate: nil, genres: [], overview: "", posterPath: "/eKi8dIrr8voobb", persisted: false)
                 
                 sut.setup(movie: movieNotPersisted, at: IndexPath(row: 0, section: 0))
-                expect(sut) == recordSnapshot("MovieCollectionViewCellNotPersisted")
+                expect(sut) == snapshot("MovieCollectionViewCellNotPersisted")
             }
             
             it("Shoud behave as if the movie is persisted") {
@@ -36,7 +36,7 @@ class MovieCollectionViewCellSpec: QuickSpec {
                 let persisted = Movie(id: 01, title: "Zootopia", releaseDate: nil, genres: [], overview: "", posterPath: "/eKi8dIrr8voobb", persisted: true)
                 
                 sut.setup(movie: persisted, at: IndexPath(row: 0, section: 0))
-                expect(sut) == recordSnapshot("MovieCollectionViewCellPersisted")
+                expect(sut) == snapshot("MovieCollectionViewCellPersisted")
             }
             
         }

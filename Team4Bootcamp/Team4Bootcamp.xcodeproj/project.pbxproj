@@ -24,6 +24,7 @@
 		CD2E098C2092973200275914 /* FavoritesViewControllerStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2E098A2092973200275914 /* FavoritesViewControllerStub.swift */; };
 		CD41C7AB208523CB00BC28C8 /* CollectionViewDelegateSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD41C7A9208523CB00BC28C8 /* CollectionViewDelegateSpec.swift */; };
 		CD41C7AC208523CB00BC28C8 /* CollectionViewDelegateStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD41C7AA208523CB00BC28C8 /* CollectionViewDelegateStub.swift */; };
+		CD5A0C7720AA3F24003D778F /* MovieDetailsViewSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5A0C7620AA3F24003D778F /* MovieDetailsViewSpec.swift */; };
 		CD63A295207E7859009DE53C /* MovieListViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD63A294207E7859009DE53C /* MovieListViewControllerSpec.swift */; };
 		CD91F9D82073EE96002BB9EE /* CodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD91F9D42073EE96002BB9EE /* CodeView.swift */; };
 		CD91F9D92073EE96002BB9EE /* ImageFetchable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD91F9D52073EE96002BB9EE /* ImageFetchable.swift */; };
@@ -122,6 +123,7 @@
 		CD2E098A2092973200275914 /* FavoritesViewControllerStub.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesViewControllerStub.swift; sourceTree = "<group>"; };
 		CD41C7A9208523CB00BC28C8 /* CollectionViewDelegateSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CollectionViewDelegateSpec.swift; path = Team4BootcampTests/MovieList/Delegates/CollectionViewDelegateSpec.swift; sourceTree = SOURCE_ROOT; };
 		CD41C7AA208523CB00BC28C8 /* CollectionViewDelegateStub.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CollectionViewDelegateStub.swift; path = Team4BootcampTests/MovieList/Delegates/CollectionViewDelegateStub.swift; sourceTree = SOURCE_ROOT; };
+		CD5A0C7620AA3F24003D778F /* MovieDetailsViewSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsViewSpec.swift; sourceTree = "<group>"; };
 		CD63A294207E7859009DE53C /* MovieListViewControllerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListViewControllerSpec.swift; sourceTree = "<group>"; };
 		CD91F9D42073EE96002BB9EE /* CodeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CodeView.swift; path = Team4Bootcamp/Common/View/CodeView.swift; sourceTree = SOURCE_ROOT; };
 		CD91F9D52073EE96002BB9EE /* ImageFetchable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageFetchable.swift; path = Team4Bootcamp/Common/View/ImageFetchable.swift; sourceTree = SOURCE_ROOT; };
@@ -327,6 +329,22 @@
 			path = Delegates;
 			sourceTree = "<group>";
 		};
+		CD5A0C7420AA2D8E003D778F /* MovieDetails */ = {
+			isa = PBXGroup;
+			children = (
+				CD5A0C7520AA2D9B003D778F /* View */,
+			);
+			path = MovieDetails;
+			sourceTree = "<group>";
+		};
+		CD5A0C7520AA2D9B003D778F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CD5A0C7620AA3F24003D778F /* MovieDetailsViewSpec.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		CD63A293207E7829009DE53C /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -413,6 +431,7 @@
 		CDD41617206ABB9400988317 /* Team4BootcampTests */ = {
 			isa = PBXGroup;
 			children = (
+				CD5A0C7420AA2D8E003D778F /* MovieDetails */,
 				CDCF6D0E208FC0CE00D05FDF /* Favorites */,
 				EA4FB51A2078335300C9D47D /* MovieList */,
 				CDD41618206ABB9400988317 /* Team4BootcampTests.swift */,
@@ -796,6 +815,7 @@
 				EA28EFBD20790A88006EB8CB /* MoviesAPIStub.swift in Sources */,
 				EA4FB51D2078339900C9D47D /* MoviesAPISpec.swift in Sources */,
 				CDCF6D13208FC10300D05FDF /* FavoriteTableViewDelegateStub.swift in Sources */,
+				CD5A0C7720AA3F24003D778F /* MovieDetailsViewSpec.swift in Sources */,
 				CD2E098C2092973200275914 /* FavoritesViewControllerStub.swift in Sources */,
 				CD2E098B2092973200275914 /* FavoritesViewControllerSpec.swift in Sources */,
 				EA639ADE209752AA006AC900 /* FavoritePersistenceServiceSpec.swift in Sources */,

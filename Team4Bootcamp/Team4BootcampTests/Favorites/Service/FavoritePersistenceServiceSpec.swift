@@ -10,6 +10,7 @@ import Foundation
 import Quick
 import Nimble
 import CoreData
+
 @testable import Team4Bootcamp
 
 class FavoritePersistenceServiceSpec: QuickSpec {

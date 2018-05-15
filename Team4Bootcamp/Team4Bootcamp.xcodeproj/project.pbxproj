@@ -45,6 +45,8 @@
 		CDD4163B206C491500988317 /* MovieListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD4163A206C491500988317 /* MovieListViewController.swift */; };
 		EA0AA958208686370039C195 /* CellConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0AA957208686370039C195 /* CellConstants.swift */; };
 		EA1B563B2078022F00390669 /* Date+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1B563A2078022F00390669 /* Date+String.swift */; };
+		EA1DC8B620AB0AC600CEE512 /* Nimble_Snapshots.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EACD6B0220AA494B00A3DF57 /* Nimble_Snapshots.framework */; };
+		EA1DC8B820AB0C8C00CEE512 /* Nimble_Snapshots.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = EACD6B0220AA494B00A3DF57 /* Nimble_Snapshots.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		EA284CC0206D0D0200E4D7CD /* MoviesProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA284CBF206D0D0200E4D7CD /* MoviesProtocol.swift */; };
 		EA284CC2206D0ED400E4D7CD /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA284CC1206D0ED400E4D7CD /* Result.swift */; };
 		EA284CC4206D106B00E4D7CD /* MoviesAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA284CC3206D106B00E4D7CD /* MoviesAPI.swift */; };
@@ -66,7 +68,6 @@
 		EA7A7D7C20855D9F00F8C637 /* PersistenceConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7A7D7B20855D9F00F8C637 /* PersistenceConstants.swift */; };
 		EA7B5F4D208F762100414C9B /* MovieListManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7B5F4C208F762100414C9B /* MovieListManager.swift */; };
 		EA88DFDF207CE05100FFF0B1 /* SearchBarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA88DFDE207CE05100FFF0B1 /* SearchBarDelegate.swift */; };
-		EACD6B0320AA494B00A3DF57 /* Nimble_Snapshots.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EACD6B0220AA494B00A3DF57 /* Nimble_Snapshots.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +94,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				EA1DC8B820AB0C8C00CEE512 /* Nimble_Snapshots.framework in CopyFiles */,
 				EA4FB5182078316700C9D47D /* Nimble.framework in CopyFiles */,
 				EA4FB5192078316700C9D47D /* Quick.framework in CopyFiles */,
 			);
@@ -172,7 +174,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EACD6B0320AA494B00A3DF57 /* Nimble_Snapshots.framework in Frameworks */,
 				CD91F9DD2073F034002BB9EE /* SnapKit.framework in Frameworks */,
 				EA71E3A0206BE70100970A47 /* Kingfisher.framework in Frameworks */,
 			);
@@ -182,6 +183,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA1DC8B620AB0AC600CEE512 /* Nimble_Snapshots.framework in Frameworks */,
 				EA4FB5142078313E00C9D47D /* Nimble.framework in Frameworks */,
 				EA4FB5152078313E00C9D47D /* Quick.framework in Frameworks */,
 			);
@@ -449,6 +451,13 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		EA1DC8B720AB0B8B00CEE512 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		EA284CBB206D072300E4D7CD /* MovieList */ = {
 			isa = PBXGroup;
 			children = (
@@ -496,6 +505,7 @@
 		EA4FB51A2078335300C9D47D /* MovieList */ = {
 			isa = PBXGroup;
 			children = (
+				EA1DC8B720AB0B8B00CEE512 /* View */,
 				CD41C7A02085237500BC28C8 /* Delegates */,
 				CD63A293207E7829009DE53C /* Controller */,
 				EA4FB51B2078335E00C9D47D /* Service */,
@@ -695,7 +705,6 @@
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/Kingfisher.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SnapKit.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Nimble_Snapshots.framework",
 			);
 			name = "Run Script";
 			outputPaths = (

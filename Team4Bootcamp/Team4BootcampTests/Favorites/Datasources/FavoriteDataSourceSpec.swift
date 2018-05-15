@@ -46,7 +46,7 @@ class FavoritesDataSourceSpec: QuickSpec {
                 it("should return true if return the expected movie") {
                     expect(sut.searchString).to(beNil())
                     sut.searchString = "Fifty Shades Freed"
-                    let movies = sut.filteredList(movies: sut.movies)
+                    let movies = sut.filteredList()
                     expect(sut.searchString) == (movies[0].title)
                     
                     

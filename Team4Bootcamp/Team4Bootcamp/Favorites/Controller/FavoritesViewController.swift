@@ -40,7 +40,12 @@ class FavoritesViewController: UIViewController {
     
     @objc
     func filterAction() {
-        
+        let filterViewController = FilterViewController()
+        filterViewController.hidesBottomBarWhenPushed = true
+        filterViewController.setupMovies(favoritesDataSouce?.movies)
+        filterViewController.selectedYears = favoritesDataSouce?.yearToFilter ?? []
+        filterViewController.selectedGenreNames = favoritesDataSouce?.genresToFilter ?? []
+        self.navigationController?.pushViewController(filterViewController, animated: true)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -92,7 +97,7 @@ class FavoritesViewController: UIViewController {
     
     func proceedToDetailsView(movieIndex: IndexPath) {
         if let moviesDAO = favoritesDataSouce?.movies {
-            if let movieDAO = favoritesDataSouce?.filteredList(movies: moviesDAO)[movieIndex.row] {
+            if let movieDAO = favoritesDataSouce?.searchedList(movies: moviesDAO)[movieIndex.row] {
                 let movie = Movie(from: movieDAO)
                 let controller = MovieDetailsViewController(movie: movie)
                 navigationController?.pushViewController(controller, animated: true)

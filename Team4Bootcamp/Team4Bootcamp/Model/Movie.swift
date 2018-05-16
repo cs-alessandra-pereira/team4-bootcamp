@@ -48,7 +48,6 @@ struct Movie {
         }
         return "\(year)"
     }
-    
 }
 
 extension Movie {

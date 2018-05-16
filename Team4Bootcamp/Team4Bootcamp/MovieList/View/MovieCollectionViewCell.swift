@@ -14,7 +14,7 @@ protocol MovieCollectionViewCellDelegate: class {
     func didFavoriteCell(_ isSelected: Bool, at position: IndexPath)
 }
 
-final class MovieCollectionViewCell: UICollectionViewCell {
+class MovieCollectionViewCell: UICollectionViewCell {
     
     let imageFetchable: ImageFetchable = KFImageFetchable()
 
@@ -23,7 +23,7 @@ final class MovieCollectionViewCell: UICollectionViewCell {
     lazy var imageView: UIImageView = {
         let view = UIImageView(frame: .zero)
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.contentMode = UIViewContentMode.scaleAspectFit
+        view.contentMode = UIViewContentMode.scaleToFill
         return view
     }()
     

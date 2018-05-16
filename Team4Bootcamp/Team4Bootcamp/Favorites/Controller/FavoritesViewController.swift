@@ -13,6 +13,7 @@ class FavoritesViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var removeFilterButton: UIButton!
     
     private let favoritePersistenceService = FavoritePersistenceService()
     fileprivate var fetchedResultsController: NSFetchedResultsController<MovieDAO>?
@@ -50,6 +51,12 @@ class FavoritesViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        var enableRemoveFilterButton = false
+        if favoritesDataSouce?.yearToFilter != [] || favoritesDataSouce?.genresToFilter != [] {
+            enableRemoveFilterButton = true
+        }
+        self.state = enableRemoveFilterButton == false ? .noFilter : .filtered
+    
     }
     
     func setupDataSource() {
@@ -100,7 +107,33 @@ class FavoritesViewController: UIViewController {
             if let movieDAO = favoritesDataSouce?.searchedList(movies: moviesDAO)[movieIndex.row] {
                 let movie = Movie(from: movieDAO)
                 let controller = MovieDetailsViewController(movie: movie)
+                controller.hidesBottomBarWhenPushed = true
                 navigationController?.pushViewController(controller, animated: true)
+            }
+        }
+    }
+    
+    @IBAction func removeFilter(_ sender: Any) {
+    
+        favoritesDataSouce?.yearToFilter = []
+        favoritesDataSouce?.genresToFilter = []
+        self.state = .noFilter
+        
+    }
+    
+    private enum ScreenState {
+        case noFilter
+        case filtered
+    }
+    
+    private var state: ScreenState = .noFilter {
+        didSet {
+            switch state {
+            case .noFilter:
+                removeFilterButton.isHidden = true
+                
+            case .filtered:
+                removeFilterButton.isHidden = false
             }
         }
     }

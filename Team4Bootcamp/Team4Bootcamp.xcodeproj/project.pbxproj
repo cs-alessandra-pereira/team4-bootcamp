@@ -77,6 +77,8 @@
 		EA904EA320AB469B00181C8E /* Nimble_Snapshots.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = EACD6B0220AA494B00A3DF57 /* Nimble_Snapshots.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		EA904EA520AB4A4B00181C8E /* FBSnapshotTestCase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA904EA420AB4A4B00181C8E /* FBSnapshotTestCase.framework */; };
 		EA904EA620AB4A5300181C8E /* FBSnapshotTestCase.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = EA904EA420AB4A4B00181C8E /* FBSnapshotTestCase.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		EAF6E04E20ACC2430077CEC7 /* MovieCollectionViewCellStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF6E04D20ACC2430077CEC7 /* MovieCollectionViewCellStub.swift */; };
+		EAF6E05020ACD62C0077CEC7 /* MovieListViewControllerStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF6E04F20ACD62C0077CEC7 /* MovieListViewControllerStub.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -185,6 +187,8 @@
 		EA904E9F20AB2F6F00181C8E /* MovieCollectionViewCellSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCollectionViewCellSpec.swift; sourceTree = "<group>"; };
 		EA904EA420AB4A4B00181C8E /* FBSnapshotTestCase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSnapshotTestCase.framework; path = Carthage/Build/iOS/FBSnapshotTestCase.framework; sourceTree = "<group>"; };
 		EACD6B0220AA494B00A3DF57 /* Nimble_Snapshots.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble_Snapshots.framework; path = Carthage/Build/iOS/Nimble_Snapshots.framework; sourceTree = "<group>"; };
+		EAF6E04D20ACC2430077CEC7 /* MovieCollectionViewCellStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCollectionViewCellStub.swift; sourceTree = "<group>"; };
+		EAF6E04F20ACD62C0077CEC7 /* MovieListViewControllerStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListViewControllerStub.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -361,6 +365,7 @@
 			isa = PBXGroup;
 			children = (
 				CD63A294207E7859009DE53C /* MovieListViewControllerSpec.swift */,
+				EAF6E04F20ACD62C0077CEC7 /* MovieListViewControllerStub.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -617,6 +622,7 @@
 			isa = PBXGroup;
 			children = (
 				EA904E9F20AB2F6F00181C8E /* MovieCollectionViewCellSpec.swift */,
+				EAF6E04D20ACC2430077CEC7 /* MovieCollectionViewCellStub.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -839,6 +845,7 @@
 				EA4FB51D2078339900C9D47D /* MoviesAPISpec.swift in Sources */,
 				CDCF6D13208FC10300D05FDF /* FavoriteTableViewDelegateStub.swift in Sources */,
 				CD5A0C7720AA3F24003D778F /* MovieDetailsViewSpec.swift in Sources */,
+				EAF6E04E20ACC2430077CEC7 /* MovieCollectionViewCellStub.swift in Sources */,
 				CD2E098C2092973200275914 /* FavoritesViewControllerStub.swift in Sources */,
 				CD2E098B2092973200275914 /* FavoritesViewControllerSpec.swift in Sources */,
 				EA639ADE209752AA006AC900 /* FavoritePersistenceServiceSpec.swift in Sources */,
@@ -846,6 +853,7 @@
 				EA639ADB20975239006AC900 /* Team4Bootcamp.xcdatamodeld in Sources */,
 				CD41C7AB208523CB00BC28C8 /* CollectionViewDelegateSpec.swift in Sources */,
 				CDCF6D18208FC52600D05FDF /* FavoriteDataSourceStub.swift in Sources */,
+				EAF6E05020ACD62C0077CEC7 /* MovieListViewControllerStub.swift in Sources */,
 				CD63A295207E7859009DE53C /* MovieListViewControllerSpec.swift in Sources */,
 				EA904EA020AB2F6F00181C8E /* MovieCollectionViewCellSpec.swift in Sources */,
 				CDD41619206ABB9400988317 /* Team4BootcampTests.swift in Sources */,

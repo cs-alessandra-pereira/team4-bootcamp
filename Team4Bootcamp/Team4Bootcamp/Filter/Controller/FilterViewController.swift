@@ -78,6 +78,8 @@ extension FilterViewController: UITableViewDataSource {
         }
         
         cell.accessoryType = .disclosureIndicator
+        cell.detailTextLabel?.textColor = UIColor.primaryColor
+        cell.detailTextLabel?.font = UIFont.boldSystemFont(ofSize: 18.0)
         return cell
     }
 }

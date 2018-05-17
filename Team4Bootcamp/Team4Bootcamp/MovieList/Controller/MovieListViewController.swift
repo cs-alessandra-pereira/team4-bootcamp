@@ -38,6 +38,7 @@ class MovieListViewController: UIViewController {
         super.viewDidLoad()
         setupDelegate()
         setupSearchBar()
+        adjustNavigationBar()
         fetchGenres()
         fetchMovies()
     }
@@ -75,7 +76,18 @@ class MovieListViewController: UIViewController {
     func setupSearchBar() {
         searchBarDelegate = SearchBarDelegate()
         searchBar.delegate = searchBarDelegate
+        searchBar.layer.borderWidth = 1
+        searchBar.layer.borderColor = UIColor.primaryColor?.cgColor
+        if let textField = searchBar.value(forKey: "_searchField") as? UITextField {
+            textField.backgroundColor = UIColor.accentColor
+        }
     }
+    
+    func adjustNavigationBar() {
+    self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+    self.navigationController?.navigationBar.shadowImage = UIImage()
+    }
+    
     
     func fetchMovies() {
         movieService.fetchMovies { result in
@@ -155,6 +167,7 @@ class MovieListViewController: UIViewController {
     func proceedToDetailsView(movieIndex: Int) {
         if let movie = movieListDatasource?.getMovies()[movieIndex] {
             let controller = MovieDetailsViewController(movie: movie)
+            controller.hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(controller, animated: true)
         }
     }

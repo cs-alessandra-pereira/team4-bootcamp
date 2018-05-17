@@ -12,7 +12,9 @@ class FilterSelectorTableViewCell: UITableViewCell {
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        
+        tintColor = UIColor.primaryColor
+        selectionStyle = .none
         accessoryType = selected ? .checkmark : .none
+        
     }
 }

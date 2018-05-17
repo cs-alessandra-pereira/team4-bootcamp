@@ -21,7 +21,7 @@ class FilterView: UIView {
     lazy var tableView: UITableView = {
         let view = UITableView(frame: .zero)
         view.alwaysBounceVertical = false
-        view.separatorStyle = UITableViewCellSeparatorStyle.none
+        view.tableFooterView = UIView()
         return view
     }()
     

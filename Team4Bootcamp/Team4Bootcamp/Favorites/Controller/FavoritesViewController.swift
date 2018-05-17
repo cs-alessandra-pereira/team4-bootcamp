@@ -28,6 +28,7 @@ class FavoritesViewController: UIViewController {
         super.viewDidLoad()
         setupNSFetched()
         setupSearchBar()
+        adjustNavigationBar()
         setupDataSource()
         setupDelegate()
         setupFilterButton()
@@ -85,6 +86,16 @@ class FavoritesViewController: UIViewController {
     func setupSearchBar() {
         searchBarDelegate = SearchBarDelegate()
         searchBar.delegate = searchBarDelegate
+        searchBar.layer.borderWidth = 1
+        searchBar.layer.borderColor = UIColor.primaryColor?.cgColor
+        if let textField = searchBar.value(forKey: "_searchField") as? UITextField {
+            textField.backgroundColor = UIColor.accentColor
+        }
+    }
+    
+    func adjustNavigationBar() {
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
     }
     
     func setupNSFetched() {

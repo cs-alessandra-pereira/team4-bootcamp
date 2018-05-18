@@ -40,8 +40,10 @@ class FavoritesDataSource: NSObject, UITableViewDataSource, NSFetchedResultsCont
     
     var yearToFilter: [String] = [] {
         didSet {
-            if let ctx = container?.viewContext {
-                let movies = MovieDAO.searchMoviesFrom(years: yearToFilter, context: ctx)
+            if let ctx = container?.viewContext, yearToFilter.count > 0 {
+                filteredMovies = MovieDAO.searchMoviesFrom(years: yearToFilter, context: ctx)
+            } else {
+                filteredMovies = nil
             }
         }
     }
@@ -98,6 +100,11 @@ class FavoritesDataSource: NSObject, UITableViewDataSource, NSFetchedResultsCont
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if let searching = searchString {
             if searching.count > 0 {
+                return
+            }
+        }
+        if let filtered = filteredMovies {
+            if filtered.count > 0 {
                 return
             }
         }

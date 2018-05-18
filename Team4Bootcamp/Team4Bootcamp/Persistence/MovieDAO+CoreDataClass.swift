@@ -60,30 +60,31 @@ class MovieDAO: NSManagedObject {
         return lhs.id == rhs.id
     }
     
-    class func searchMoviesFrom(years: [String], context: NSManagedObjectContext) -> [MovieDAO] {
-        
-        var startDates = [Date]()
-        var endDates = [Date]()
+    class func searchMoviesFrom(years: [String], context: NSManagedObjectContext) -> [MovieDAO]? {
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
-
+        
+        var predicates = [NSPredicate]()
         for year in years {
-            startDates.append(dateFormatter.date(from: "\(year)-01-01")!)
-            endDates.append(dateFormatter.date(from: "\(year)-12-31")!)
+            let startDate = dateFormatter.date(from: "\(year)-01-01")
+            let endDate = dateFormatter.date(from: "\(year)-12-31")
+            if let start = startDate, let end = endDate {
+                let predicate = NSPredicate(format: "(date >= %@) AND (date <= %@)", start as NSDate, end as NSDate)
+                predicates.append(predicate)
+            }
         }
         
+        let compoundPredicates = NSCompoundPredicate(orPredicateWithSubpredicates: predicates)
         let request: NSFetchRequest<MovieDAO> = MovieDAO.fetchRequest()
         request.returnsObjectsAsFaults = false
-        request.predicate = NSPredicate(format: "(date >= %@) AND (date <= %@)", startDates[0] as NSDate, endDates[0] as NSDate)
+        request.predicate = compoundPredicates
 
         if let results = try? context.fetch(request) {
-            let asd = results[0]
-            print(asd.title)
-            return results
+           return results
         }
         
-        return [MovieDAO]()
+        return nil
     }
     
 }

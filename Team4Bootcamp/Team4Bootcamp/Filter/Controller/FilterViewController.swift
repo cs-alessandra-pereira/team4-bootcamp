@@ -11,13 +11,10 @@ import UIKit
 class FilterViewController: UIViewController {
     
     var filterView = FilterView()
-    private var favoriteMovies: [MovieDAO]? {
-        didSet {
-            allYears = extractYearsFromMovies().sorted()
-        }
-    }
+    
     fileprivate var allGenreNames: [String] = []
     fileprivate var allYears: [String] = []
+    
     var selectedGenreNames: [String] = []
     var selectedYears: [String] = []
     
@@ -30,22 +27,19 @@ class FilterViewController: UIViewController {
         filterView.tableView.delegate = self
         filterView.tableView.dataSource = self
         filterView.delegate = self
-        
     }
     
-    func setupMovies(_ movies: [MovieDAO]?) {
-        self.favoriteMovies = movies
+    func setupMovies(_ movies: [MovieDAO]) {
+        allYears = extractYearsFromMovies(movies).sorted()
     }
     
-    func extractYearsFromMovies() -> [String] {
+    func extractYearsFromMovies(_ favoriteMovies: [MovieDAO]) -> [String] {
         var years: [String] = []
-        if let movies = favoriteMovies {
-            _ = movies.map { movie in
-                if let nsdate = movie.date, let date = nsdate as Date? {
-                    let year = Date.releaseYearAsString(date)
-                    if !years.contains(year) {
-                        years.append(year)
-                    }
+        _ = favoriteMovies.map { movie in
+            if let nsdate = movie.date, let date = nsdate as Date? {
+                let year = Date.releaseYearAsString(date)
+                if !years.contains(year) {
+                    years.append(year)
                 }
             }
         }

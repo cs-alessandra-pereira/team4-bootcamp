@@ -108,8 +108,5 @@ extension FilterViewController: UITableViewDelegate, FilterViewDelegate {
             favoritesVC.favoritesDataSouce?.genresToFilter = self.selectedGenreNames
         }
         self.navigationController?.popViewController(animated: true)
-        
-        //TODO: Tá atualizando no FavoritesDataSource duas listas de Strings a partir daquelas
-        //selecionadas no filtro. Mas ainda não tá realizando o filtro.
     }
 }

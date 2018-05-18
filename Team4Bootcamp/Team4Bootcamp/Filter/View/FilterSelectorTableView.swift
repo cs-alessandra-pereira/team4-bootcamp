@@ -12,7 +12,7 @@ class FilterSelectorTableView: UIView {
     
     lazy var tableView: UITableView = {
         let view = UITableView(frame: .zero)
-        view.allowsMultipleSelection = false
+        view.allowsMultipleSelection = true
         view.tableFooterView = UIView()
         return view
     }()

@@ -49,7 +49,6 @@ class FavoritesDataSource: NSObject, UITableViewDataSource, NSFetchedResultsCont
     }
     var genresToFilter: [String] = [] {
         didSet {
-            print(genresToFilter)
         }
     }
     

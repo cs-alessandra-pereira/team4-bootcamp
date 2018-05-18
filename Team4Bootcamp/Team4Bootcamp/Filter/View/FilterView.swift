@@ -52,8 +52,6 @@ extension FilterView: CodeView {
     
     func buildConstraints() {
         tableView.snp.makeConstraints { make in
-            //make.left.equalTo(self)
-            //make.right.equalTo(self)
             make.size.equalTo(self)
         }
         applyFilterButton.snp.makeConstraints { make in

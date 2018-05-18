@@ -14,6 +14,7 @@ class FavoritesViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var removeFilterButton: UIButton!
+    weak var rightBarButton: UIBarButtonItem?
     
     private let favoritePersistenceService = FavoritePersistenceService()
     fileprivate var fetchedResultsController: NSFetchedResultsController<MovieDAO>?
@@ -32,19 +33,25 @@ class FavoritesViewController: UIViewController {
         setupDataSource()
         setupDelegate()
         setupFilterButton()
+        updateDatabase()
     }
     
     func setupFilterButton() {
         let icon = UIImage(icon: .filter)
         let button = UIBarButtonItem(image: icon, style: .plain, target: self, action: #selector(filterAction) )
         self.navigationItem.rightBarButtonItem = button
+        rightBarButton = button
     }
     
     @objc
     func filterAction() {
         let filterViewController = FilterViewController()
         filterViewController.hidesBottomBarWhenPushed = true
-        filterViewController.setupMovies(favoritesDataSouce?.movies)
+        
+        if let movies = favoritesDataSouce?.movies {
+            filterViewController.setupMovies(movies)
+        }
+        
         filterViewController.selectedYears = favoritesDataSouce?.yearToFilter ?? []
         filterViewController.selectedGenreNames = favoritesDataSouce?.genresToFilter ?? []
         self.navigationController?.pushViewController(filterViewController, animated: true)
@@ -52,12 +59,7 @@ class FavoritesViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        var enableRemoveFilterButton = false
-        if favoritesDataSouce?.yearToFilter != [] || favoritesDataSouce?.genresToFilter != [] {
-            enableRemoveFilterButton = true
-        }
-        self.state = enableRemoveFilterButton == false ? .noFilter : .filtered
-    
+        refreshScreenState()
     }
     
     func setupDataSource() {
@@ -68,6 +70,11 @@ class FavoritesViewController: UIViewController {
             if let context = FavoritesViewController.container?.viewContext {
                 let success = MovieDAO.deleteMovie(movie: movie, context: context)
                 if success {
+                    if let datasource = self?.favoritesDataSouce, datasource.movies.count == 1 {
+                        try? self?.fetchedResultsController?.performFetch()
+                        self?.tableView.reloadData()
+                    }
+                    self?.refreshScreenState()
                     NotificationCenter.default.post(name: .movieRemovedFromPersistence, object: self, userInfo: [PersistenceConstants.notificationUserInfoKey: movie])
                 }
             }
@@ -80,7 +87,6 @@ class FavoritesViewController: UIViewController {
         favoriteTableViewDelegate?.callbackFromSelectedRow = { [weak self] movieIndex in
             self?.proceedToDetailsView(movieIndex: movieIndex)
         }
-
     }
     
     func setupSearchBar() {
@@ -97,8 +103,9 @@ class FavoritesViewController: UIViewController {
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
     }
-    
+
     func setupNSFetched() {
+        
         if let context = FavoritesViewController.container?.viewContext {
             let request: NSFetchRequest<MovieDAO> = MovieDAO.fetchRequest()
             request.sortDescriptors = [NSSortDescriptor(key: "id", ascending: true)]
@@ -110,6 +117,24 @@ class FavoritesViewController: UIViewController {
             )
             try? fetchedResultsController?.performFetch()
             tableView.reloadData()
+        }
+    }
+    
+    func updateDatabase() {
+        if let context = MovieListViewController.container?.viewContext {
+            let request: NSFetchRequest<GenreDAO> = GenreDAO.fetchRequest()
+            request.sortDescriptors = [NSSortDescriptor(key: "id", ascending: true)]
+            let fetchedResultsController = NSFetchedResultsController<GenreDAO>(
+                fetchRequest: request,
+                managedObjectContext: context,
+                sectionNameKeyPath: nil,
+                cacheName: nil
+            )
+            try? fetchedResultsController.performFetch()
+            if let genres = fetchedResultsController.fetchedObjects {
+                let genre = Genre(from: genres[1])
+                print(genre)
+            }
         }
     }
     
@@ -125,26 +150,48 @@ class FavoritesViewController: UIViewController {
     }
     
     @IBAction func removeFilter(_ sender: Any) {
-    
         favoritesDataSouce?.yearToFilter = []
         favoritesDataSouce?.genresToFilter = []
-        self.state = .noFilter
-        
+        refreshScreenState()
     }
     
     private enum ScreenState {
-        case noFilter
-        case filtered
+        case noFavorites
+        case filterOff
+        case filterOn
     }
     
-    private var state: ScreenState = .noFilter {
+    func refreshScreenState() {
+        guard let datasource = favoritesDataSouce, !datasource.movies.isEmpty else {
+            self.screenState = .noFavorites
+            return
+        }
+        if !datasource.yearToFilter.isEmpty || !datasource.genresToFilter.isEmpty {
+            screenState = .filterOn
+        } else {
+            screenState = .filterOff
+        }
+    }
+    
+    private var screenState: ScreenState = .noFavorites {
         didSet {
-            switch state {
-            case .noFilter:
+            switch screenState {
+            case .noFavorites:
+                self.navigationItem.rightBarButtonItem?.isEnabled = false
+                self.navigationItem.rightBarButtonItem?.tintColor = UIColor.clear
                 removeFilterButton.isHidden = true
-                
-            case .filtered:
+                searchBar.isHidden = true
+            case .filterOff:
+                self.navigationItem.rightBarButtonItem?.isEnabled = true
+                self.navigationItem.rightBarButtonItem?.tintColor = nil
+                removeFilterButton.isHidden = true
+                searchBar.isHidden = true
+                searchBar.isHidden = false
+            case .filterOn:
+                self.navigationItem.rightBarButtonItem?.isEnabled = true
+                self.navigationItem.rightBarButtonItem?.tintColor = nil
                 removeFilterButton.isHidden = false
+                searchBar.isHidden = false
             }
         }
     }

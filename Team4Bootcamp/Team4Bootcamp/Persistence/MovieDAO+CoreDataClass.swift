@@ -34,9 +34,9 @@ class MovieDAO: NSManagedObject {
             newMovieDAO.overview = movie.overview
             newMovieDAO.title = movie.title
             newMovieDAO.posterPath = movie.posterPath
-            newMovieDAO.genres = []
-            for gnr in movie.genres {
-                newMovieDAO.genres.append(gnr.id)
+            newMovieDAO.genresId = []
+            for gnr in movie.genresIds {
+                newMovieDAO.genresId.append(gnr.id)
             }
             try? context.save()
             return true
@@ -58,6 +58,32 @@ class MovieDAO: NSManagedObject {
     
     static func == (lhs: MovieDAO, rhs: MovieDAO) -> Bool {
         return lhs.id == rhs.id
+    }
+    
+    class func searchMoviesFrom(years: [String], context: NSManagedObjectContext) -> [MovieDAO] {
+        
+        var startDates = [Date]()
+        var endDates = [Date]()
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+
+        for year in years {
+            startDates.append(dateFormatter.date(from: "\(year)-01-01")!)
+            endDates.append(dateFormatter.date(from: "\(year)-12-31")!)
+        }
+        
+        let request: NSFetchRequest<MovieDAO> = MovieDAO.fetchRequest()
+        request.returnsObjectsAsFaults = false
+        request.predicate = NSPredicate(format: "(date >= %@) AND (date <= %@)", startDates[0] as NSDate, endDates[0] as NSDate)
+
+        if let results = try? context.fetch(request) {
+            let asd = results[0]
+            print(asd.title)
+            return results
+        }
+        
+        return [MovieDAO]()
     }
     
 }

@@ -84,8 +84,8 @@ class MovieListViewController: UIViewController {
     }
     
     func adjustNavigationBar() {
-    self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
-    self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
     }
     
     
@@ -111,11 +111,15 @@ class MovieListViewController: UIViewController {
     }
 
     func fetchGenres() {
+        guard let context = MovieListViewController.container?.viewContext else {
+            fatalError()
+        }
         self.state = .loading
         movieService.fetchGenres { result in
             switch result {
             case .success(let genres):
                 Genre.allGenres = genres
+                GenreDAO.addGenres(genres: genres, context: context)
                 self.state = .initial
             case .error:
                 self.state = .error

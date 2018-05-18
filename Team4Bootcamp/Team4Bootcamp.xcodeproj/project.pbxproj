@@ -30,6 +30,8 @@
 		CD91F9D92073EE96002BB9EE /* ImageFetchable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD91F9D52073EE96002BB9EE /* ImageFetchable.swift */; };
 		CD91F9DD2073F034002BB9EE /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD91F9DC2073F034002BB9EE /* SnapKit.framework */; };
 		CD91F9E52074413C002BB9EE /* MovieListDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD91F9E42074413C002BB9EE /* MovieListDatasource.swift */; };
+		CDA53CE120AE32D8006EB21F /* GenreDAO+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA53CDF20AE32D8006EB21F /* GenreDAO+CoreDataProperties.swift */; };
+		CDA53CE220AE32D8006EB21F /* GenreDAO+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA53CE020AE32D8006EB21F /* GenreDAO+CoreDataClass.swift */; };
 		CDCF6D11208FC0FA00D05FDF /* FavoriteTableViewDelegateSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDCF6D10208FC0FA00D05FDF /* FavoriteTableViewDelegateSpec.swift */; };
 		CDCF6D13208FC10300D05FDF /* FavoriteTableViewDelegateStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDCF6D12208FC10300D05FDF /* FavoriteTableViewDelegateStub.swift */; };
 		CDCF6D16208FC50600D05FDF /* FavoriteDataSourceSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDCF6D15208FC50600D05FDF /* FavoriteDataSourceSpec.swift */; };
@@ -138,6 +140,8 @@
 		CD91F9D52073EE96002BB9EE /* ImageFetchable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageFetchable.swift; path = Team4Bootcamp/Common/View/ImageFetchable.swift; sourceTree = SOURCE_ROOT; };
 		CD91F9DC2073F034002BB9EE /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapKit.framework; path = Carthage/Build/iOS/SnapKit.framework; sourceTree = "<group>"; };
 		CD91F9E42074413C002BB9EE /* MovieListDatasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListDatasource.swift; sourceTree = "<group>"; };
+		CDA53CDF20AE32D8006EB21F /* GenreDAO+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GenreDAO+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		CDA53CE020AE32D8006EB21F /* GenreDAO+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GenreDAO+CoreDataClass.swift"; sourceTree = "<group>"; };
 		CDCF6D10208FC0FA00D05FDF /* FavoriteTableViewDelegateSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteTableViewDelegateSpec.swift; sourceTree = "<group>"; };
 		CDCF6D12208FC10300D05FDF /* FavoriteTableViewDelegateStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteTableViewDelegateStub.swift; sourceTree = "<group>"; };
 		CDCF6D15208FC50600D05FDF /* FavoriteDataSourceSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteDataSourceSpec.swift; sourceTree = "<group>"; };
@@ -630,6 +634,8 @@
 		EAFB94ED208A1DD800A730E8 /* Persistence */ = {
 			isa = PBXGroup;
 			children = (
+				CDA53CE020AE32D8006EB21F /* GenreDAO+CoreDataClass.swift */,
+				CDA53CDF20AE32D8006EB21F /* GenreDAO+CoreDataProperties.swift */,
 				CD2B9F672093958800C91ECB /* CoreDataHelper.swift */,
 				EA30FDAD2087AE1B00EF3A56 /* MovieDAO+CoreDataClass.swift */,
 				EA30FDAE2087AE1B00EF3A56 /* MovieDAO+CoreDataProperties.swift */,
@@ -793,6 +799,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CDA53CE220AE32D8006EB21F /* GenreDAO+CoreDataClass.swift in Sources */,
 				EA7A7D7C20855D9F00F8C637 /* PersistenceConstants.swift in Sources */,
 				CD27E248208E291600349B46 /* FavoritesDataSource.swift in Sources */,
 				EA28EFBF207BCEAC006EB8CB /* MovieListWrapper.swift in Sources */,
@@ -831,6 +838,7 @@
 				CD2B9F7620939EE500C91ECB /* MovieDetailsDatasource.swift in Sources */,
 				EA7D5A0520A1C35C00DF4A72 /* FilterSelectorTableView.swift in Sources */,
 				EA80B14E209C975B009A0CBC /* FilterView.swift in Sources */,
+				CDA53CE120AE32D8006EB21F /* GenreDAO+CoreDataProperties.swift in Sources */,
 				EA7D5A0720A1D0E500DF4A72 /* FilterSelectorTableViewCell.swift in Sources */,
 				EA7D5A0920A1D0F100DF4A72 /* FilterSelectorViewController.swift in Sources */,
 			);

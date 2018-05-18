@@ -13,7 +13,7 @@ struct Movie {
     let id: Int
     let title: String
     var releaseDate: Date?
-    var genres: [Genre]
+    var genresIds: [Genre]
     let overview: String
     let posterPath: String
     var persisted = false
@@ -32,7 +32,7 @@ struct Movie {
     func genresNameAsString() -> String {
         let genreList = Genre.allGenres
         var genresNames: String = ""
-        for genre in genres {
+        for genre in genresIds {
             if let name = genreList[genre.id] {
                 genresNames += "\(name), "
             }
@@ -57,9 +57,9 @@ extension Movie {
         title = movieDAO.title
         overview = movieDAO.overview
         posterPath = movieDAO.posterPath
-        genres = []
-        for gnr in movieDAO.genres {
-            genres.append(Genre(id: gnr))
+        genresIds = []
+        for gnr in movieDAO.genresId {
+            genresIds.append(Genre(id: gnr))
         }
         releaseDate = date
         persisted = true
@@ -87,7 +87,7 @@ extension Movie: Decodable {
         for id in genreIDs {
             genres.append(Genre(id: id))
         }
-        self.genres = genres
+        self.genresIds = genres
     }
 }
 

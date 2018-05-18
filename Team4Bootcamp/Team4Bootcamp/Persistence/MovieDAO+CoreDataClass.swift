@@ -34,9 +34,9 @@ class MovieDAO: NSManagedObject {
             newMovieDAO.overview = movie.overview
             newMovieDAO.title = movie.title
             newMovieDAO.posterPath = movie.posterPath
-            newMovieDAO.genres = []
-            for gnr in movie.genres {
-                newMovieDAO.genres.append(gnr.id)
+            newMovieDAO.genresId = []
+            for gnr in movie.genresIds {
+                newMovieDAO.genresId.append(gnr.id)
             }
             try? context.save()
             return true

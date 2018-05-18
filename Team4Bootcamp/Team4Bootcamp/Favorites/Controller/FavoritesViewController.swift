@@ -32,6 +32,7 @@ class FavoritesViewController: UIViewController {
         setupDataSource()
         setupDelegate()
         setupFilterButton()
+        updateDatabase()
     }
     
     func setupFilterButton() {
@@ -97,8 +98,9 @@ class FavoritesViewController: UIViewController {
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
     }
-    
+
     func setupNSFetched() {
+        
         if let context = FavoritesViewController.container?.viewContext {
             let request: NSFetchRequest<MovieDAO> = MovieDAO.fetchRequest()
             request.sortDescriptors = [NSSortDescriptor(key: "id", ascending: true)]
@@ -110,6 +112,24 @@ class FavoritesViewController: UIViewController {
             )
             try? fetchedResultsController?.performFetch()
             tableView.reloadData()
+        }
+    }
+    
+    func updateDatabase() {
+        if let context = MovieListViewController.container?.viewContext {
+            let request: NSFetchRequest<GenreDAO> = GenreDAO.fetchRequest()
+            request.sortDescriptors = [NSSortDescriptor(key: "id", ascending: true)]
+            let fetchedResultsController = NSFetchedResultsController<GenreDAO>(
+                fetchRequest: request,
+                managedObjectContext: context,
+                sectionNameKeyPath: nil,
+                cacheName: nil
+            )
+            try? fetchedResultsController.performFetch()
+            if let genres = fetchedResultsController.fetchedObjects {
+                let genre = Genre(from: genres[1])
+                print(genre)
+            }
         }
     }
     

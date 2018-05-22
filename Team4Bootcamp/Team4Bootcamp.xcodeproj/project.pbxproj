@@ -65,6 +65,7 @@
 		EA4FB51D2078339900C9D47D /* MoviesAPISpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4FB51C2078339900C9D47D /* MoviesAPISpec.swift */; };
 		EA639ADB20975239006AC900 /* Team4Bootcamp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CDD41607206ABB9400988317 /* Team4Bootcamp.xcdatamodeld */; };
 		EA639ADE209752AA006AC900 /* FavoritePersistenceServiceSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA639ADD209752AA006AC900 /* FavoritePersistenceServiceSpec.swift */; };
+		EA6B116320B43C180014409F /* NSManagedContext+CRUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6B116220B43C180014409F /* NSManagedContext+CRUD.swift */; };
 		EA71E3A0206BE70100970A47 /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA71E39E206BE70100970A47 /* Kingfisher.framework */; };
 		EA7A7D7C20855D9F00F8C637 /* PersistenceConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7A7D7B20855D9F00F8C637 /* PersistenceConstants.swift */; };
 		EA7B5F4D208F762100414C9B /* MovieListManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7B5F4C208F762100414C9B /* MovieListManager.swift */; };
@@ -178,6 +179,7 @@
 		EA4FB50E207822EA00C9D47D /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
 		EA4FB51C2078339900C9D47D /* MoviesAPISpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesAPISpec.swift; sourceTree = "<group>"; };
 		EA639ADD209752AA006AC900 /* FavoritePersistenceServiceSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePersistenceServiceSpec.swift; sourceTree = "<group>"; };
+		EA6B116220B43C180014409F /* NSManagedContext+CRUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSManagedContext+CRUD.swift"; sourceTree = "<group>"; };
 		EA71E39E206BE70100970A47 /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
 		EA71E39F206BE70100970A47 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		EA7A7D7B20855D9F00F8C637 /* PersistenceConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceConstants.swift; sourceTree = "<group>"; };
@@ -490,6 +492,7 @@
 		CDD4163C206C4E2000988317 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				EA6B116220B43C180014409F /* NSManagedContext+CRUD.swift */,
 				EA1B563A2078022F00390669 /* Date+String.swift */,
 				CD1D7F41207E7321009722FA /* UIColor+Palette.swift */,
 				CD1D7F44207E7360009722FA /* UIImage+Icons.swift */,
@@ -825,6 +828,7 @@
 				EA32507E207507980018BB28 /* CollectionViewDelegate.swift in Sources */,
 				CD27E24A208E291C00349B46 /* FavoriteTableViewCell.swift in Sources */,
 				CD27E24C208E292700349B46 /* FavoritePersistenceService.swift in Sources */,
+				EA6B116320B43C180014409F /* NSManagedContext+CRUD.swift in Sources */,
 				EA284CC2206D0ED400E4D7CD /* Result.swift in Sources */,
 				CDD41601206ABB9400988317 /* AppDelegate.swift in Sources */,
 				EA0AA958208686370039C195 /* CellConstants.swift in Sources */,

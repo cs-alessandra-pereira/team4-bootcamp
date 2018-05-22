@@ -68,14 +68,15 @@ class FavoritesViewController: UIViewController {
         
         favoritesDataSouce?.deletedMovieCallback = { [weak self] movie in
             if let context = FavoritesViewController.container?.viewContext {
-                let success = MovieDAO.deleteMovie(movie: movie, context: context)
-                if success {
-                    if let datasource = self?.favoritesDataSouce, datasource.movies.count == 1 {
+                let restult = MovieDAO.deleteMovie(movie: movie, context: context, predicate: NSPredicate(format: "id == \(movie.id)"))
+                switch restult {
+                case .success:
                         try? self?.fetchedResultsController?.performFetch()
                         self?.tableView.reloadData()
-                    }
-                    self?.refreshScreenState()
-                    NotificationCenter.default.post(name: .movieRemovedFromPersistence, object: self, userInfo: [PersistenceConstants.notificationUserInfoKey: movie])
+                        self?.refreshScreenState()
+                        NotificationCenter.default.post(name: .movieRemovedFromPersistence, object: self, userInfo: [PersistenceConstants.notificationUserInfoKey: movie])
+                case .error:
+                    break
                 }
             }
         }
@@ -133,7 +134,6 @@ class FavoritesViewController: UIViewController {
             try? fetchedResultsController.performFetch()
             if let genres = fetchedResultsController.fetchedObjects {
                 let genre = Genre(from: genres[1])
-                print(genre)
             }
         }
     }
@@ -152,6 +152,7 @@ class FavoritesViewController: UIViewController {
     @IBAction func removeFilter(_ sender: Any) {
         favoritesDataSouce?.yearToFilter = []
         favoritesDataSouce?.genresToFilter = []
+        favoritesDataSouce?.filteredMovies = nil
         refreshScreenState()
     }
     

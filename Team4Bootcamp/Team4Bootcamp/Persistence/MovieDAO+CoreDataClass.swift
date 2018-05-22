@@ -13,54 +13,46 @@ import CoreData
 
 class MovieDAO: NSManagedObject {
     
-    class func previouslyInserted(movieId: Int, context: NSManagedObjectContext) -> Bool {
-        let request: NSFetchRequest<MovieDAO> =  MovieDAO.fetchRequest()
-        request.predicate = NSPredicate(format: "id == \(movieId)")
-        
+    class func addMovie(movie: Movie, context: NSManagedObjectContext) -> Result<Bool, CoreDataErrorHelper> {
         do {
-            let existingMovies = try context.fetch(request)
-            return existingMovies.count == 0 ? false : true
-        } catch let error as NSError {
-            print("Could not fetch. \(error), \(error.userInfo)")
+            let predicate = NSPredicate(format: "id == \(movie.id)")
+            let previouslyInserted = try context.previouslyInserted(MovieDAO.self, predicateForDuplicityCheck: predicate)
+            
+            if previouslyInserted == false {
+                let newMovieDAO = MovieDAO(context: context)
+                newMovieDAO.date = movie.releaseDate as NSDate?
+                newMovieDAO.id = Int32(movie.id)
+                newMovieDAO.overview = movie.overview
+                newMovieDAO.title = movie.title
+                newMovieDAO.posterPath = movie.posterPath
+                newMovieDAO.genresId = []
+                for gnr in movie.genresIds {
+                    newMovieDAO.genresId.append(gnr.id)
+                }
+                try? context.save()
+                return Result.success(true)
+            }
+            return Result.error(CoreDataErrorHelper.duplicateEntry)
+        } catch {
+            return Result.error(CoreDataErrorHelper.badPredicate)
         }
-        return false
     }
     
-    class func addMovie(movie: Movie, context: NSManagedObjectContext) -> Bool {
-        if previouslyInserted(movieId: movie.id, context: context) == false {
-            let newMovieDAO = MovieDAO(context: context)
-            newMovieDAO.date = movie.releaseDate as NSDate?
-            newMovieDAO.id = Int32(movie.id)
-            newMovieDAO.overview = movie.overview
-            newMovieDAO.title = movie.title
-            newMovieDAO.posterPath = movie.posterPath
-            newMovieDAO.genresId = []
-            for gnr in movie.genresIds {
-                newMovieDAO.genresId.append(gnr.id)
-            }
-            try? context.save()
-            return true
+    class func deleteMovie(movie: Movie, context: NSManagedObjectContext, predicate: NSPredicate) -> Result<Bool, CoreDataErrorHelper> {
+        do {
+            let predicate = predicate
+            let result = try context.deleteObjects(MovieDAO.self, predicate: predicate)
+            return result > 0 ? Result.success(true) : Result.error(CoreDataErrorHelper.noResults)
+        } catch {
+            return Result.error(CoreDataErrorHelper.badPredicate)
         }
-        return false
-    }
-    
-    class func deleteMovie(movie: Movie, context: NSManagedObjectContext) -> Bool {
-        let request: NSFetchRequest<MovieDAO> = MovieDAO.fetchRequest()
-        request.predicate = NSPredicate(format: "id == \(movie.id)")
-        if let results = try? context.fetch(request) {
-            if let result = results.first {
-                context.delete(result)
-                return true
-            }
-        }
-        return false
     }
     
     static func == (lhs: MovieDAO, rhs: MovieDAO) -> Bool {
         return lhs.id == rhs.id
     }
     
-    class func searchMoviesFrom(years: [String], context: NSManagedObjectContext) -> [MovieDAO]? {
+    class func searchMoviesFrom(years: [String], context: NSManagedObjectContext) -> Result<[MovieDAO], CoreDataErrorHelper > {
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
@@ -76,15 +68,11 @@ class MovieDAO: NSManagedObject {
         }
         
         let compoundPredicates = NSCompoundPredicate(orPredicateWithSubpredicates: predicates)
-        let request: NSFetchRequest<MovieDAO> = MovieDAO.fetchRequest()
-        request.returnsObjectsAsFaults = false
-        request.predicate = compoundPredicates
-
-        if let results = try? context.fetch(request) {
-           return results
+        if let results = try? context.fetchObjects(MovieDAO.self, predicate: compoundPredicates) {
+            return Result.success(results)
         }
-        
-        return nil
+
+        return Result.error(CoreDataErrorHelper.badPredicate)
     }
     
 }

@@ -103,7 +103,7 @@ extension MovieListDatasource: MovieCollectionViewCellDelegate {
                 } else {
                     let movie = self.movies[position.row]
                     let predicate = NSPredicate(format: "id == \(movie.id)")
-                    let result = MovieDAO.deleteMovie(movie: self.movies[position.row], context: context, predicate: predicate)
+                    let result = MovieDAO.deleteMovie(context: context, predicate: predicate)
                     switch result {
                     case .success:
                         self.movies[position.row].persisted = false

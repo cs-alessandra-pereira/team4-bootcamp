@@ -68,7 +68,7 @@ class FavoritesViewController: UIViewController {
         
         favoritesDataSouce?.deletedMovieCallback = { [weak self] movie in
             if let context = FavoritesViewController.container?.viewContext {
-                let restult = MovieDAO.deleteMovie(movie: movie, context: context, predicate: NSPredicate(format: "id == \(movie.id)"))
+                let restult = MovieDAO.deleteMovie(context: context, predicate: NSPredicate(format: "id == \(movie.id)"))
                 switch restult {
                 case .success:
                         try? self?.fetchedResultsController?.performFetch()
@@ -132,9 +132,6 @@ class FavoritesViewController: UIViewController {
                 cacheName: nil
             )
             try? fetchedResultsController.performFetch()
-            if let genres = fetchedResultsController.fetchedObjects {
-                let genre = Genre(from: genres[1])
-            }
         }
     }
     

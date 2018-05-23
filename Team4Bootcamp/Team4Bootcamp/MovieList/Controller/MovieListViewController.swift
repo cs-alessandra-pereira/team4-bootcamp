@@ -118,8 +118,16 @@ class MovieListViewController: UIViewController {
         movieService.fetchGenres { result in
             switch result {
             case .success(let genres):
-                Genre.allGenres = genres
-                GenreDAO.addGenres(genres: genres, context: context)
+                do {
+                    let existingGenres = try context.fetchObjects(MovieDAO.self)
+                    if existingGenres.count < genres.count {
+                        _ = GenreDAO.deleteGenre(context: context, predicate: nil)
+                        GenreDAO.addGenres(genres: genres, context: context)
+                    }
+                } catch {
+                    _ = GenreDAO.deleteGenre(context: context, predicate: nil)
+                    GenreDAO.addGenres(genres: genres, context: context)
+                }
                 self.state = .initial
             case .error:
                 self.state = .error

@@ -44,7 +44,6 @@
 		CDD41619206ABB9400988317 /* Team4BootcampTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD41618206ABB9400988317 /* Team4BootcampTests.swift */; };
 		CDD41624206ABB9400988317 /* Team4BootcampUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD41623206ABB9400988317 /* Team4BootcampUITests.swift */; };
 		CDD41634206B110300988317 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD41633206B110300988317 /* Movie.swift */; };
-		CDD41636206B12FB00988317 /* Genres.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD41635206B12FB00988317 /* Genres.swift */; };
 		CDD4163B206C491500988317 /* MovieListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD4163A206C491500988317 /* MovieListViewController.swift */; };
 		EA0AA958208686370039C195 /* CellConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0AA957208686370039C195 /* CellConstants.swift */; };
 		EA1B563B2078022F00390669 /* Date+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1B563A2078022F00390669 /* Date+String.swift */; };
@@ -161,7 +160,6 @@
 		CDD41623206ABB9400988317 /* Team4BootcampUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team4BootcampUITests.swift; sourceTree = "<group>"; };
 		CDD41625206ABB9400988317 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CDD41633206B110300988317 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
-		CDD41635206B12FB00988317 /* Genres.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genres.swift; sourceTree = "<group>"; };
 		CDD4163A206C491500988317 /* MovieListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListViewController.swift; sourceTree = "<group>"; };
 		EA0AA957208686370039C195 /* CellConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellConstants.swift; sourceTree = "<group>"; };
 		EA1B563A2078022F00390669 /* Date+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+String.swift"; sourceTree = "<group>"; };
@@ -476,7 +474,6 @@
 			isa = PBXGroup;
 			children = (
 				CDD41633206B110300988317 /* Movie.swift */,
-				CDD41635206B12FB00988317 /* Genres.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -836,7 +833,6 @@
 				CD1D7F45207E7360009722FA /* UIImage+Icons.swift in Sources */,
 				EA80B14C209C9701009A0CBC /* FilterViewController.swift in Sources */,
 				CD27E250208E293600349B46 /* FavoritesViewController.swift in Sources */,
-				CDD41636206B12FB00988317 /* Genres.swift in Sources */,
 				CD91F9E52074413C002BB9EE /* MovieListDatasource.swift in Sources */,
 				EA28EFC1207BCF0A006EB8CB /* GenresWrapper.swift in Sources */,
 				CD2B9F7620939EE500C91ECB /* MovieDetailsDatasource.swift in Sources */,

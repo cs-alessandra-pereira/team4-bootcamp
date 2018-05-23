@@ -26,8 +26,8 @@ class MovieDAO: NSManagedObject {
                 newMovieDAO.title = movie.title
                 newMovieDAO.posterPath = movie.posterPath
                 newMovieDAO.genresId = []
-                for gnr in movie.genresIds {
-                    newMovieDAO.genresId.append(gnr.id)
+                for id in movie.genresIds {
+                    newMovieDAO.genresId.append(id)
                 }
                 try? context.save()
                 return Result.success(true)
@@ -38,7 +38,7 @@ class MovieDAO: NSManagedObject {
         }
     }
     
-    class func deleteMovie(movie: Movie, context: NSManagedObjectContext, predicate: NSPredicate) -> Result<Bool, CoreDataErrorHelper> {
+    class func deleteMovie(context: NSManagedObjectContext, predicate: NSPredicate) -> Result<Bool, CoreDataErrorHelper> {
         do {
             let predicate = predicate
             let result = try context.deleteObjects(MovieDAO.self, predicate: predicate)

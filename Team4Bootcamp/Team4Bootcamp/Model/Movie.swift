@@ -7,13 +7,14 @@
 //
 
 import Foundation
+import CoreData
 
 struct Movie {
     
     let id: Int
     let title: String
     var releaseDate: Date?
-    var genresIds: [Genre]
+    var genresIds: [GenreId]
     let overview: String
     let posterPath: String
     var persisted = false
@@ -29,17 +30,33 @@ struct Movie {
         case posterPath = "poster_path"
     }
     
-    func genresNameAsString() -> String {
-        let genreList = Genre.allGenres
-        var genresNames: String = ""
-        for genre in genresIds {
-            if let name = genreList[genre.id] {
-                genresNames += "\(name), "
+    func genresNameAsString(container: NSPersistentContainer?) -> String {
+        
+        do {
+            
+            var genresNames: String = ""
+            
+            if let ctx = container?.viewContext {
+                let genreList = try ctx.fetchObjects(GenreDAO.self)
+                
+                for genre in genreList {
+                    for genreId in genresIds where genreId == genre.id {
+                        genresNames += "\(genre.name), "
+                    }
+                }
+                
+                if genreList.count > 0 {
+                    let indexToRemove = genresNames.index(genresNames.endIndex, offsetBy: -1)
+                    genresNames.remove(at: genresNames.index(before: indexToRemove))
+                } else {
+                    return "No data"
+                }
             }
+            
+            return genresNames
+        } catch {
+            return "Unknown"
         }
-        let indexToRemove = genresNames.index(genresNames.endIndex, offsetBy: -1)
-        genresNames.remove(at: genresNames.index(before: indexToRemove))
-        return genresNames
     }
     
     func releaseYearAsString() -> String {
@@ -58,8 +75,8 @@ extension Movie {
         overview = movieDAO.overview
         posterPath = movieDAO.posterPath
         genresIds = []
-        for gnr in movieDAO.genresId {
-            genresIds.append(Genre(id: gnr))
+        for id in movieDAO.genresId {
+            genresIds.append(id)
         }
         releaseDate = date
         persisted = true
@@ -82,12 +99,7 @@ extension Movie: Decodable {
         } catch {
             releaseDate = nil
         }
-        let genreIDs = try values.decode([Int].self, forKey: .genresIDs)
-        var genres: [Genre] = []
-        for id in genreIDs {
-            genres.append(Genre(id: id))
-        }
-        self.genresIds = genres
+        genresIds = try values.decode([Int].self, forKey: .genresIDs)
     }
 }
 

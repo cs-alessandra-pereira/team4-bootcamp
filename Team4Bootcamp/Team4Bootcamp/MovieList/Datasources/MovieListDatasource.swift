@@ -95,7 +95,8 @@ extension MovieListDatasource: MovieCollectionViewCellDelegate {
                 if isSelected {
                     let result = MovieDAO.addMovie(movie: self.movies[position.row], context: context)
                     switch result {
-                    case .success:
+                    case .success(let newMovieDAO):
+                        print(newMovieDAO)
                         self.movies[position.row].persisted = true
                     case .error:
                         self.movies[position.row].persisted = false

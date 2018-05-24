@@ -59,6 +59,8 @@ class FavoritesViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        try? self.fetchedResultsController?.performFetch()
+        self.tableView.reloadData()
         refreshScreenState()
     }
     
@@ -160,8 +162,6 @@ class FavoritesViewController: UIViewController {
     }
     
     func refreshScreenState() {
-        try? self.fetchedResultsController?.performFetch()
-        self.tableView.reloadData()
         guard let datasource = favoritesDataSouce, !datasource.movies.isEmpty else {
             self.screenState = .noFavorites
             return

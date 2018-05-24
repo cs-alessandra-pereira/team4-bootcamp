@@ -28,7 +28,7 @@ extension NSManagedObjectContext {
         return existingResults.count == 0 ? false : true
     }
     
-    func deleteObjects<T: NSManagedObject>(_ entityClass: T.Type, predicate: NSPredicate?) throws -> Int {
+    func deleteObjects<T: NSManagedObject>(_ entityClass: T.Type, predicate: NSPredicate? = nil) throws -> Int {
         
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: String(describing: T.self))
         request.predicate = predicate

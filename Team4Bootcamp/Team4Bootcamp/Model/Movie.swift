@@ -32,30 +32,22 @@ struct Movie {
     
     func genresNameAsString(container: NSPersistentContainer?) -> String {
         
-        do {
-            
-            var genresNames: String = ""
-            
-            if let ctx = container?.viewContext {
-                let genreList = try ctx.fetchObjects(GenreDAO.self)
-                
-                for genre in genreList {
-                    for genreId in genresIds where genreId == genre.id {
-                        genresNames += "\(genre.name), "
-                    }
-                }
-                
-                if genreList.count > 0 {
-                    let indexToRemove = genresNames.index(genresNames.endIndex, offsetBy: -1)
-                    genresNames.remove(at: genresNames.index(before: indexToRemove))
-                } else {
-                    return "No data"
-                }
+        var genresNames: String = ""
+        
+        let genreList = GenreDAO.allGenres
+        
+        for id in genresIds {
+            if let matchingGenre = genreList[id] {
+                genresNames += "\(matchingGenre), "
             }
-            
+        }
+        
+        if genreList.count > 0 {
+            let indexToRemove = genresNames.index(genresNames.endIndex, offsetBy: -1)
+            genresNames.remove(at: genresNames.index(before: indexToRemove))
             return genresNames
-        } catch {
-            return "Unknown"
+        } else {
+            return "No data"
         }
     }
     

@@ -11,8 +11,13 @@ import CoreData
 
 
 class GenreDAO: NSManagedObject {
+  
+    static var allGenres: [GenreId: GenreName] = [:]
     
     class func addGenres(genres: [GenreId: GenreName], context: NSManagedObjectContext) {
+        
+        GenreDAO.allGenres = genres
+        
         for (id, name) in genres {
             do {
                 let predicate = NSPredicate(format: "id == \(id)")
@@ -30,18 +35,22 @@ class GenreDAO: NSManagedObject {
         try? context.save()
     }
     
-    class func deleteGenre(context: NSManagedObjectContext, predicate: NSPredicate?) -> Result<Bool, CoreDataErrorHelper> {
+    class func deleteAllGenres(context: NSManagedObjectContext) -> Result<Bool, CoreDataErrorHelper> {
         
         do {
-            let predicate = predicate
-            let result = try context.deleteObjects(GenreDAO.self, predicate: predicate)
-            return result > 0 ? Result.success(true) : Result.error(CoreDataErrorHelper.noResults)
+            let result = try context.deleteObjects(GenreDAO.self)
+            if result > 0 {
+                allGenres = [:]
+                return Result.success(true)
+            } else {
+                return Result.error(CoreDataErrorHelper.noResults)
+            }
         } catch {
             return Result.error(CoreDataErrorHelper.badPredicate)
         }
         
     }
-    
+
     static func == (lhs: GenreDAO, rhs: GenreDAO) -> Bool {
         return lhs.id == rhs.id
     }

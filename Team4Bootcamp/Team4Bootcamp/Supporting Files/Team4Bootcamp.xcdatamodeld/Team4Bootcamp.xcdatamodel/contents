@@ -3,7 +3,7 @@
     <entity name="GenreDAO" representedClassName=".GenreDAO" syncable="YES">
         <attribute name="id" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="movies" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="MovieDAO" inverseName="genres" inverseEntity="MovieDAO" syncable="YES"/>
+        <relationship name="movies" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MovieDAO" inverseName="genres" inverseEntity="MovieDAO" syncable="YES"/>
     </entity>
     <entity name="MovieDAO" representedClassName=".MovieDAO" syncable="YES">
         <attribute name="date" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
@@ -12,10 +12,10 @@
         <attribute name="overview" attributeType="String" syncable="YES"/>
         <attribute name="posterPath" attributeType="String" syncable="YES"/>
         <attribute name="title" attributeType="String" syncable="YES"/>
-        <relationship name="genres" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="GenreDAO" inverseName="movies" inverseEntity="GenreDAO" syncable="YES"/>
+        <relationship name="genres" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="GenreDAO" inverseName="movies" inverseEntity="GenreDAO" syncable="YES"/>
     </entity>
     <elements>
-        <element name="MovieDAO" positionX="-0" positionY="-70" width="128" height="148"/>
-        <element name="GenreDAO" positionX="187" positionY="9" width="128" height="88"/>
+        <element name="GenreDAO" positionX="187" positionY="9" width="128" height="90"/>
+        <element name="MovieDAO" positionX="-0" positionY="-70" width="128" height="150"/>
     </elements>
 </model>

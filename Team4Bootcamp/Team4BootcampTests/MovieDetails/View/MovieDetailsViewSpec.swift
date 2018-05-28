@@ -16,7 +16,7 @@ class MovieDetailsViewSpec: QuickSpec {
     override func spec() {
         describe("MovieDetailsView UI") {
             it("should have the expected look and feel") {
-                let movie = Movie(id: 01, title: "Zootopia", releaseDate: nil, genres: [Genre(id: 12, name: "Adventure")], overview: "Blablablablabla blablablabla blabla blablablabla blablabla", posterPath: "/eKi8dIrr8voobb", persisted: false)
+                let movie = Movie(id: 01, title: "Zootopia", releaseDate: nil, genresIds: [12], overview: "Blablablablabla blablablabla blabla blablablabla blablabla", posterPath: "/eKi8dIrr8voobb", persisted: false)
                 let frame = CGRect(x: 0, y: 0, width: 414, height: 736)
                 let view = MovieDetailsView(frame: frame)
                 let datasource = MovieDetailsDatasource(tableView: view.tableView, movie: movie)

@@ -63,7 +63,7 @@ class FavoritesViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         try? self.fetchedResultsController?.performFetch()
-        self.tableView.reloadData()
+        self.tableView?.reloadData()
         refreshScreenState()
     }
     
@@ -182,19 +182,19 @@ class FavoritesViewController: UIViewController {
             case .noFavorites:
                 self.navigationItem.rightBarButtonItem?.isEnabled = false
                 self.navigationItem.rightBarButtonItem?.tintColor = UIColor.clear
-                removeFilterButton.isHidden = true
-                searchBar.isHidden = true
+                removeFilterButton?.isHidden = true
+                searchBar?.isHidden = true
             case .filterOff:
                 self.navigationItem.rightBarButtonItem?.isEnabled = true
                 self.navigationItem.rightBarButtonItem?.tintColor = nil
-                removeFilterButton.isHidden = true
-                searchBar.isHidden = true
-                searchBar.isHidden = false
+                removeFilterButton?.isHidden = true
+                searchBar?.isHidden = true
+                searchBar?.isHidden = false
             case .filterOn:
                 self.navigationItem.rightBarButtonItem?.isEnabled = true
                 self.navigationItem.rightBarButtonItem?.tintColor = nil
-                removeFilterButton.isHidden = false
-                searchBar.isHidden = false
+                removeFilterButton?.isHidden = false
+                searchBar?.isHidden = false
             }
         }
     }

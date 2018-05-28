@@ -36,12 +36,16 @@ class FilterViewController: UIViewController {
     
     func setupGenres(context: NSManagedObjectContext) {
         do {
-            //let predicate = NSPredicate(format: "unique = SELF.name MATCHES[c] %@", "action")
-            let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
-            let results = try context.fetchObjects(GenreDAO.self, sortBy: [sortDescriptor], predicate: nil)
-            let distinctNames = NSArray(array: results).value(forKeyPath: "@distinctUnionOfObjects.name")
-            allGenreNames = distinctNames as? [String]  ?? []
-            //allGenreNames = results.map {$0.name}
+            let request = NSFetchRequest<NSFetchRequestResult>(entityName: String(describing: GenreDAO.self))
+            request.returnsDistinctResults = true
+            request.propertiesToFetch = ["name"]
+            request.resultType = .dictionaryResultType
+            
+            let fetchedResult = try context.fetch(request) as? [[String: String]]
+            
+            if let result = fetchedResult {
+                allGenreNames = result.map {$0["name"] ?? ""}
+            }
             
         } catch {
             allGenreNames = []

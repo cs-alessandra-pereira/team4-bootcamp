@@ -86,14 +86,18 @@ public class MovieDAO: NSManagedObject {
     class func searchMoviesFromGenres(genres: [String], context: NSManagedObjectContext) -> Result<[MovieDAO], CoreDataErrorHelper > {
         
         var predicates = [NSPredicate]()
+        var moviesDAOFetched = [MovieDAO]()
         for genre in genres {
-            let predicate = NSPredicate(format: "%@ = %@", "genres.name", genre)
+            let predicate = NSPredicate(format: "name = %@", genre)
             predicates.append(predicate)
         }
         
         let compoundPredicates = NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
-        if let results = try? context.fetchObjects(MovieDAO.self, predicate: compoundPredicates) {
-            return Result.success(results)
+        if let results = try? context.fetchObjects(GenreDAO.self, predicate: compoundPredicates) {
+            for result in results {
+                moviesDAOFetched.append(result.movies!)
+            }
+            return Result.success(moviesDAOFetched)
         }
         
         return Result.error(CoreDataErrorHelper.badPredicate)

@@ -25,6 +25,7 @@ public class GenreDAO: NSManagedObject {
             newGenreDAO.name = name
             newGenres.insert(newGenreDAO)
         }
+        try? context.save()
         return newGenres
     }
     

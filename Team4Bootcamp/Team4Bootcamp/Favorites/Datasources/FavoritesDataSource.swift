@@ -38,25 +38,8 @@ class FavoritesDataSource: NSObject, UITableViewDataSource, NSFetchedResultsCont
         self.fetchedResultsController?.delegate = self
     }
     
-    var yearToFilter: [String] = [] {
-        didSet {
-//            if let ctx = container?.viewContext, yearToFilter.count > 0 {
-//                let result = MovieDAO.searchMoviesFrom(years: yearToFilter, context: ctx)
-//                switch result {
-//                case .success(let results):
-//                    filteredMovies = results
-//                case .error:
-//                    filteredMovies = nil
-//                }
-//            } else {
-//                filteredMovies = nil
-//            }
-        }
-    }
-    var genresToFilter: [String] = [] {
-        didSet {
-        }
-    }
+    var yearToFilter: [String] = []
+    var genresToFilter: [String] = []
     
     var searchString: String? = nil {
         didSet {

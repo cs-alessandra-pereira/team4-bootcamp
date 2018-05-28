@@ -18,7 +18,6 @@ extension NSManagedObjectContext {
         request.returnsObjectsAsFaults = false
         request.predicate = predicate
         request.sortDescriptors = sortBy
-        
         let fetchedResult = try self.fetch(request)
         return fetchedResult
     }

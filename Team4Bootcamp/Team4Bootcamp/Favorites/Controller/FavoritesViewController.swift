@@ -51,6 +51,9 @@ class FavoritesViewController: UIViewController {
         if let movies = favoritesDataSouce?.movies {
             filterViewController.setupMovies(movies)
         }
+        if let ctx = FavoritesViewController.container?.viewContext {
+            filterViewController.setupGenres(context: ctx)
+        }
         
         filterViewController.selectedYears = favoritesDataSouce?.yearToFilter ?? []
         filterViewController.selectedGenreNames = favoritesDataSouce?.genresToFilter ?? []

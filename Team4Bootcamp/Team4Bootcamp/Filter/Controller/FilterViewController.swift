@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class FilterViewController: UIViewController {
     
@@ -33,6 +34,20 @@ class FilterViewController: UIViewController {
         allYears = extractYearsFromMovies(movies).sorted()
     }
     
+    func setupGenres(context: NSManagedObjectContext) {
+        do {
+            //let predicate = NSPredicate(format: "unique = SELF.name MATCHES[c] %@", "action")
+            let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
+            let results = try context.fetchObjects(GenreDAO.self, sortBy: [sortDescriptor], predicate: nil)
+            let distinctNames = NSArray(array: results).value(forKeyPath: "@distinctUnionOfObjects.name")
+            allGenreNames = distinctNames as? [String]  ?? []
+            //allGenreNames = results.map {$0.name}
+            
+        } catch {
+            allGenreNames = []
+        }
+    }
+    
     func extractYearsFromMovies(_ favoriteMovies: [MovieDAO]) -> [String] {
         var years: [String] = []
         _ = favoriteMovies.map { movie in
@@ -45,17 +60,12 @@ class FilterViewController: UIViewController {
         }
         return years
     }
-    
-    func extractGenreNamesFromMovies() {
-        // TODO: Chamar banco pra retornar nomes únicos
-    }
-    
 }
 
 extension FilterViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return 2
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

@@ -2,55 +2,47 @@
 //  GenreDAO+CoreDataClass.swift
 //  Team4Bootcamp
 //
-//  Created by alessandra.l.pereira on 17/05/18.
+//  Created by a.portela.rodrigues on 24/05/18.
 //  Copyright © 2018 alessandra.l.pereira. All rights reserved.
+//
 //
 
 import Foundation
 import CoreData
 
 
-class GenreDAO: NSManagedObject {
-
-    class func previouslyInserted(genreId: Int, context: NSManagedObjectContext) -> Bool {
-        let request: NSFetchRequest<GenreDAO> =  GenreDAO.fetchRequest()
-        request.predicate = NSPredicate(format: "id == \(genreId)")
+public class GenreDAO: NSManagedObject {
+    
+    static var allGenres: [GenreId: GenreName] = [:]
+    
+    class func addGenres(genres: [GenreId: GenreName], context: NSManagedObjectContext) -> Set<GenreDAO> {
         
-        do {
-            let existingMovies = try context.fetch(request)
-            return existingMovies.count == 0 ? false : true
-        } catch let error as NSError {
-            print("Could not fetch. \(error), \(error.userInfo)")
-        }
-        return false
-    }
-    
-    class func addGenres(genres: [GenreId: GenreName], context: NSManagedObjectContext) {
+        var newGenres = Set<GenreDAO>()
+        
         for (id, name) in genres {
-            if previouslyInserted(genreId: id, context: context) == false {
-                let newGenreDAO = GenreDAO(context: context)
-                newGenreDAO.id = Int32(id)
-                newGenreDAO.name = name
-                //newGenreDAO.movies = try? MovieDAO.findOrCreateTwitterUser(matching: genre.id, in: context)
-            }
+            let newGenreDAO = GenreDAO(context: context)
+            newGenreDAO.id = Int32(id)
+            newGenreDAO.name = name
+            newGenres.insert(newGenreDAO)
         }
-        try? context.save()
+        return newGenres
     }
     
-    class func deleteGenre(genre: Genre, context: NSManagedObjectContext) -> Bool {
-        let request: NSFetchRequest<GenreDAO> = GenreDAO.fetchRequest()
-        request.predicate = NSPredicate(format: "id == \(genre.id)")
-        if let results = try? context.fetch(request) {
-            if let result = results.first {
-                context.delete(result)
-                return true
+    class func deleteAllGenres(context: NSManagedObjectContext) -> Result<Bool, CoreDataErrorHelper> {
+        do {
+            let result = try context.deleteObjects(GenreDAO.self)
+            if result > 0 {
+                allGenres = [:]
+                return Result.success(true)
+            } else {
+                return Result.error(CoreDataErrorHelper.noResults)
             }
+        } catch {
+            return Result.error(CoreDataErrorHelper.badPredicate)
         }
-        return false
     }
     
     static func == (lhs: GenreDAO, rhs: GenreDAO) -> Bool {
         return lhs.id == rhs.id
     }
-    
 }

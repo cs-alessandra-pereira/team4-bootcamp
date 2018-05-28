@@ -38,19 +38,8 @@ class FavoritesDataSource: NSObject, UITableViewDataSource, NSFetchedResultsCont
         self.fetchedResultsController?.delegate = self
     }
     
-    var yearToFilter: [String] = [] {
-        didSet {
-            if let ctx = container?.viewContext, yearToFilter.count > 0 {
-                filteredMovies = MovieDAO.searchMoviesFrom(years: yearToFilter, context: ctx)
-            } else {
-                filteredMovies = nil
-            }
-        }
-    }
-    var genresToFilter: [String] = [] {
-        didSet {
-        }
-    }
+    var yearToFilter: [String] = []
+    var genresToFilter: [String] = []
     
     var searchString: String? = nil {
         didSet {
@@ -58,9 +47,43 @@ class FavoritesDataSource: NSObject, UITableViewDataSource, NSFetchedResultsCont
         }
     }
     
-    private var filteredMovies: [MovieDAO]? = nil {
+    var filteredMovies: [MovieDAO]? = nil {
         didSet {
             tableView.reloadData()
+        }
+    }
+    
+    func setFilteredMovies() {
+        if let ctx = container?.viewContext {
+            var filteredMoviesDAOByYears = [MovieDAO]()
+            var filteredMoviesDAOByGenres = [MovieDAO]()
+            var filteredMoviesDAO = [MovieDAO]()
+            if yearToFilter.count > 0 {
+                let result = MovieDAO.searchMoviesFrom(years: yearToFilter, context: ctx)
+                switch result {
+                case .success(let results):
+                    filteredMoviesDAOByYears = results
+                    filteredMoviesDAO = results
+                case .error:
+                    filteredMoviesDAOByYears = []
+                }
+            }
+            if genresToFilter.count > 0 {
+                let result = MovieDAO.searchMoviesFrom(years: genresToFilter, context: ctx)
+                switch result {
+                case .success(let results):
+                    filteredMoviesDAOByGenres = results
+                    filteredMoviesDAO = results
+                case .error:
+                    filteredMoviesDAOByGenres = []
+                }
+            }
+            
+            if genresToFilter.count > 0 && yearToFilter.count > 0 {
+                filteredMoviesDAO = filteredMoviesDAOByYears.filter(filteredMoviesDAOByGenres.contains)
+            }
+            
+            filteredMovies = filteredMoviesDAO
         }
     }
     

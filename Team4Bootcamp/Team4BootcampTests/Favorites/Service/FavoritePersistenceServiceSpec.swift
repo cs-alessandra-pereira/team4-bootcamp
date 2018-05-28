@@ -37,9 +37,9 @@ class FavoritePersistenceServiceSpec: QuickSpec {
         
         
         func initStubs() {
-            let movie1 = Movie(id: 337167, title: "Fifty Shades Freed", releaseDate: Date(timeIntervalSince1970: 0), genres: [Genre(id: 18), Genre(id: 10749)], overview: "Believing they have left behind...", posterPath: "/jjPJ4s3DWZZvI4vw8Xfi4Vqa1Q8.jpg", persisted: false)
+            let movie1 = Movie(id: 337167, title: "Fifty Shades Freed", releaseDate: Date(timeIntervalSince1970: 0), genresIds: [Genre(id: 18), Genre(id: 10749)], overview: "Believing they have left behind...", posterPath: "/jjPJ4s3DWZZvI4vw8Xfi4Vqa1Q8.jpg", persisted: false)
             
-            let movie2 = Movie(id: 269149, title: "Zootopia", releaseDate: Date(timeIntervalSince1970: 0), genres: [Genre(id: 16), Genre(id: 12), Genre(id: 10751), Genre(id: 35)], overview: "Determined to prove herself...", posterPath: "/sM33SANp9z6rXW8Itn7NnG1GOEs.jpg", persisted: false)
+            let movie2 = Movie(id: 269149, title: "Zootopia", releaseDate: Date(timeIntervalSince1970: 0), genresIds: [Genre(id: 16), Genre(id: 12), Genre(id: 10751), Genre(id: 35)], overview: "Determined to prove herself...", posterPath: "/sM33SANp9z6rXW8Itn7NnG1GOEs.jpg", persisted: false)
             
             _ = MovieDAO.addMovie(movie: movie1, context: mockPersistantContainer.viewContext)
             _ = MovieDAO.addMovie(movie: movie2, context: mockPersistantContainer.viewContext)

@@ -116,6 +116,7 @@ extension FilterViewController: UITableViewDelegate, FilterViewDelegate {
             }
             favoritesVC.favoritesDataSouce?.yearToFilter = self.selectedYears
             favoritesVC.favoritesDataSouce?.genresToFilter = self.selectedGenreNames
+            favoritesVC.favoritesDataSouce?.setFilteredMovies()
         }
         self.navigationController?.popViewController(animated: true)
     }

@@ -83,11 +83,11 @@ public class MovieDAO: NSManagedObject {
         return Result.error(CoreDataErrorHelper.badPredicate)
     }
     
-    class func searchMoviesFrom(genres: [String], context: NSManagedObjectContext) -> Result<[MovieDAO], CoreDataErrorHelper > {
+    class func searchMoviesFromGenres(genres: [String], context: NSManagedObjectContext) -> Result<[MovieDAO], CoreDataErrorHelper > {
         
         var predicates = [NSPredicate]()
         for genre in genres {
-            let predicate = NSPredicate(format: "%K = %@", "name", genre)
+            let predicate = NSPredicate(format: "%@ = %@", "genres.name", genre)
             predicates.append(predicate)
         }
         

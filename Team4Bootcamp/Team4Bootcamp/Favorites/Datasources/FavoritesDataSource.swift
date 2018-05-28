@@ -69,7 +69,7 @@ class FavoritesDataSource: NSObject, UITableViewDataSource, NSFetchedResultsCont
                 }
             }
             if genresToFilter.count > 0 {
-                let result = MovieDAO.searchMoviesFrom(years: genresToFilter, context: ctx)
+                let result = MovieDAO.searchMoviesFromGenres(genres: genresToFilter, context: ctx)
                 switch result {
                 case .success(let results):
                     filteredMoviesDAOByGenres = results

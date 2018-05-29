@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CD08388620BDCD5700D16EE7 /* FilterViewSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD08388520BDCD5700D16EE7 /* FilterViewSpec.swift */; };
+		CD08388920BDDD7C00D16EE7 /* FilterViewControllerStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD08388820BDDD7C00D16EE7 /* FilterViewControllerStub.swift */; };
+		CD08388B20BDDDF000D16EE7 /* FilterViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD08388A20BDDDF000D16EE7 /* FilterViewControllerSpec.swift */; };
 		CD1D7F42207E7321009722FA /* UIColor+Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1D7F41207E7321009722FA /* UIColor+Palette.swift */; };
 		CD1D7F45207E7360009722FA /* UIImage+Icons.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1D7F44207E7360009722FA /* UIImage+Icons.swift */; };
 		CD27E248208E291600349B46 /* FavoritesDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD27E247208E291600349B46 /* FavoritesDataSource.swift */; };
@@ -118,6 +121,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		CD08388520BDCD5700D16EE7 /* FilterViewSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewSpec.swift; sourceTree = "<group>"; };
+		CD08388820BDDD7C00D16EE7 /* FilterViewControllerStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewControllerStub.swift; sourceTree = "<group>"; };
+		CD08388A20BDDDF000D16EE7 /* FilterViewControllerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewControllerSpec.swift; sourceTree = "<group>"; };
 		CD1D7F41207E7321009722FA /* UIColor+Palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Palette.swift"; sourceTree = "<group>"; };
 		CD1D7F44207E7360009722FA /* UIImage+Icons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Icons.swift"; sourceTree = "<group>"; };
 		CD27E247208E291600349B46 /* FavoritesDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesDataSource.swift; sourceTree = "<group>"; };
@@ -228,6 +234,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CD08388720BDD14600D16EE7 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				CD08388820BDDD7C00D16EE7 /* FilterViewControllerStub.swift */,
+				CD08388A20BDDDF000D16EE7 /* FilterViewControllerSpec.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		CD27E23F208E285800349B46 /* Favorites */ = {
 			isa = PBXGroup;
 			children = (
@@ -387,6 +402,7 @@
 		CDA53CE320BDBF97006EB21F /* Filter */ = {
 			isa = PBXGroup;
 			children = (
+				CD08388720BDD14600D16EE7 /* Controller */,
 				CDA53CE420BDBFA0006EB21F /* View */,
 			);
 			path = Filter;
@@ -396,6 +412,7 @@
 			isa = PBXGroup;
 			children = (
 				CDA53CE520BDBFBE006EB21F /* FilterSelectorTableViewSpec.swift */,
+				CD08388520BDCD5700D16EE7 /* FilterViewSpec.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -873,8 +890,10 @@
 				CDCF6D13208FC10300D05FDF /* FavoriteTableViewDelegateStub.swift in Sources */,
 				CD5A0C7720AA3F24003D778F /* MovieDetailsViewSpec.swift in Sources */,
 				EAF6E04E20ACC2430077CEC7 /* MovieCollectionViewCellStub.swift in Sources */,
+				CD08388920BDDD7C00D16EE7 /* FilterViewControllerStub.swift in Sources */,
 				CD2E098C2092973200275914 /* FavoritesViewControllerStub.swift in Sources */,
 				CD2E098B2092973200275914 /* FavoritesViewControllerSpec.swift in Sources */,
+				CD08388620BDCD5700D16EE7 /* FilterViewSpec.swift in Sources */,
 				EA639ADE209752AA006AC900 /* FavoritePersistenceServiceSpec.swift in Sources */,
 				CD41C7AC208523CB00BC28C8 /* CollectionViewDelegateStub.swift in Sources */,
 				EA639ADB20975239006AC900 /* Team4Bootcamp.xcdatamodeld in Sources */,
@@ -886,6 +905,7 @@
 				CDD41619206ABB9400988317 /* Team4BootcampTests.swift in Sources */,
 				CDA53CE620BDBFBE006EB21F /* FilterSelectorTableViewSpec.swift in Sources */,
 				CDCF6D11208FC0FA00D05FDF /* FavoriteTableViewDelegateSpec.swift in Sources */,
+				CD08388B20BDDDF000D16EE7 /* FilterViewControllerSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -13,7 +13,7 @@ class MovieDetailsViewController: UIViewController {
     var datasource: UITableViewDataSource?
     let imageFetchable: ImageFetchable = KFImageFetchable()
     
-    var movieDetailsView = MovieDetailsView()
+    var movieDetailsView = MovieDetailsView() 
     let movie: Movie
     
     init(movie: Movie) {
@@ -31,6 +31,9 @@ class MovieDetailsViewController: UIViewController {
         setMovieImage()
     }
     
+    override func viewDidLoad() {
+        movieDetailsView.persistedButton.isSelected = movie.persisted
+    }
     func setupDatasource() {
         
         datasource = MovieDetailsDatasource(tableView: movieDetailsView.tableView, movie: movie)
@@ -40,7 +43,7 @@ class MovieDetailsViewController: UIViewController {
     func setMovieImage() {
         
         let path = Endpoints.moviePoster(movie.posterPath).path
-        imageFetchable.fetch(imageURLString: path, onImage: movieDetailsView.imageView) {}
+        imageFetchable.fetch(imageURLString: path, onImage: movieDetailsView.posterIamge) {}
         
     }
     

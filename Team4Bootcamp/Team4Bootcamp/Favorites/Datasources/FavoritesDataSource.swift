@@ -57,7 +57,7 @@ class FavoritesDataSource: NSObject, UITableViewDataSource, NSFetchedResultsCont
         if let ctx = container?.viewContext {
             var filteredMoviesDAOByYears = [MovieDAO]()
             var filteredMoviesDAOByGenres = [MovieDAO]()
-            var filteredMoviesDAO = [MovieDAO]()
+            var filteredMoviesDAO: [MovieDAO]? = nil
             if yearToFilter.count > 0 {
                 let result = MovieDAO.searchMoviesFrom(years: yearToFilter, context: ctx)
                 switch result {

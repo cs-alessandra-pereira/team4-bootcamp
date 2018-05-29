@@ -30,6 +30,7 @@
 		CD91F9D92073EE96002BB9EE /* ImageFetchable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD91F9D52073EE96002BB9EE /* ImageFetchable.swift */; };
 		CD91F9DD2073F034002BB9EE /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD91F9DC2073F034002BB9EE /* SnapKit.framework */; };
 		CD91F9E52074413C002BB9EE /* MovieListDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD91F9E42074413C002BB9EE /* MovieListDatasource.swift */; };
+		CDA53CE620BDBFBE006EB21F /* FilterSelectorTableViewSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA53CE520BDBFBE006EB21F /* FilterSelectorTableViewSpec.swift */; };
 		CDCF6D11208FC0FA00D05FDF /* FavoriteTableViewDelegateSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDCF6D10208FC0FA00D05FDF /* FavoriteTableViewDelegateSpec.swift */; };
 		CDCF6D13208FC10300D05FDF /* FavoriteTableViewDelegateStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDCF6D12208FC10300D05FDF /* FavoriteTableViewDelegateStub.swift */; };
 		CDCF6D16208FC50600D05FDF /* FavoriteDataSourceSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDCF6D15208FC50600D05FDF /* FavoriteDataSourceSpec.swift */; };
@@ -140,6 +141,7 @@
 		CD91F9D52073EE96002BB9EE /* ImageFetchable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageFetchable.swift; path = Team4Bootcamp/Common/View/ImageFetchable.swift; sourceTree = SOURCE_ROOT; };
 		CD91F9DC2073F034002BB9EE /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapKit.framework; path = Carthage/Build/iOS/SnapKit.framework; sourceTree = "<group>"; };
 		CD91F9E42074413C002BB9EE /* MovieListDatasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListDatasource.swift; sourceTree = "<group>"; };
+		CDA53CE520BDBFBE006EB21F /* FilterSelectorTableViewSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterSelectorTableViewSpec.swift; sourceTree = "<group>"; };
 		CDCF6D10208FC0FA00D05FDF /* FavoriteTableViewDelegateSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteTableViewDelegateSpec.swift; sourceTree = "<group>"; };
 		CDCF6D12208FC10300D05FDF /* FavoriteTableViewDelegateStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteTableViewDelegateStub.swift; sourceTree = "<group>"; };
 		CDCF6D15208FC50600D05FDF /* FavoriteDataSourceSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteDataSourceSpec.swift; sourceTree = "<group>"; };
@@ -382,6 +384,22 @@
 			path = Datasources;
 			sourceTree = "<group>";
 		};
+		CDA53CE320BDBF97006EB21F /* Filter */ = {
+			isa = PBXGroup;
+			children = (
+				CDA53CE420BDBFA0006EB21F /* View */,
+			);
+			path = Filter;
+			sourceTree = "<group>";
+		};
+		CDA53CE420BDBFA0006EB21F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CDA53CE520BDBFBE006EB21F /* FilterSelectorTableViewSpec.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		CDCF6D0E208FC0CE00D05FDF /* Favorites */ = {
 			isa = PBXGroup;
 			children = (
@@ -452,6 +470,7 @@
 		CDD41617206ABB9400988317 /* Team4BootcampTests */ = {
 			isa = PBXGroup;
 			children = (
+				CDA53CE320BDBF97006EB21F /* Filter */,
 				CD5A0C7420AA2D8E003D778F /* MovieDetails */,
 				CDCF6D0E208FC0CE00D05FDF /* Favorites */,
 				EA4FB51A2078335300C9D47D /* MovieList */,
@@ -865,6 +884,7 @@
 				CD63A295207E7859009DE53C /* MovieListViewControllerSpec.swift in Sources */,
 				EA904EA020AB2F6F00181C8E /* MovieCollectionViewCellSpec.swift in Sources */,
 				CDD41619206ABB9400988317 /* Team4BootcampTests.swift in Sources */,
+				CDA53CE620BDBFBE006EB21F /* FilterSelectorTableViewSpec.swift in Sources */,
 				CDCF6D11208FC0FA00D05FDF /* FavoriteTableViewDelegateSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

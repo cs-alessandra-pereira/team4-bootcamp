@@ -14,7 +14,7 @@ class FavoritesDataSourceStub: FavoritesDataSource {
 
     var numberOfMovies = 0
     var moviesTest: [MovieDAO] = []
-    let movie = Movie(id: 337167, title: "Fifty Shades Freed", releaseDate: Date(), genres: [], overview: "", posterPath: "/jjPJ4s3DWZZvI4vw8Xfi4Vqa1Q8.jpg", persisted: false)
+    let movie = Movie(id: 337167, title: "Fifty Shades Freed", releaseDate: Date(), genresIds: [], overview: "", posterPath: "/jjPJ4s3DWZZvI4vw8Xfi4Vqa1Q8.jpg", persisted: false)
     
     override init(tableView: UITableView, fetchedResults: NSFetchedResultsController<MovieDAO>, searchBarDelegate: SearchBarDelegate?) {
         super.init(tableView: tableView, fetchedResults: fetchedResults, searchBarDelegate: searchBarDelegate)

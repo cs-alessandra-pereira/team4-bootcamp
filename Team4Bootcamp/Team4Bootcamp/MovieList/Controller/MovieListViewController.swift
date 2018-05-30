@@ -90,6 +90,7 @@ class MovieListViewController: UIViewController {
     
     
     func fetchMovies() {
+        if let searching = searchBar.text?.count, searching > 0 { return }
         movieService.fetchMovies { result in
             switch result {
             case .success(let movies):
@@ -101,11 +102,15 @@ class MovieListViewController: UIViewController {
                         self.setupDatasource(movies: movies, searchBarDelegate: self.searchBar.delegate as? SearchBarDelegate)
                         self.state = .initial
                     } else {
-                        self.state = .noResults
+                            self.state = .noResults
                     }
                 }
-            case .error:
-                self.state = .error
+            case .error(let error):
+                if case MoviesError.noData = error {
+                    self.state = .noResults
+                } else {
+                    self.state = .error
+                }
             }
         }
     }
@@ -156,10 +161,10 @@ class MovieListViewController: UIViewController {
             case .noResults:
                 activityIndicator.stopAnimating()
                 self.activityIndicator.isHidden = true
-                collectionView.isHidden = true
-                viewError.isHidden = true
                 searchBar.isHidden = false
+                viewError.isHidden = true
                 viewNoResults.isHidden = false
+                collectionView.isHidden = true
             }
         }
     }

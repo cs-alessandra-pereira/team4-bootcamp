@@ -14,5 +14,5 @@ protocol MoviesProtocol {
 }
 
 enum MoviesError: Error {
-    case invalidData, noConection, customError(Error)
+    case invalidData, noConection, noData, customError(Error)
 }

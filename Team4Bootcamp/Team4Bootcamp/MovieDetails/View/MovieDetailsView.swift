@@ -62,7 +62,7 @@ extension MovieDetailsView: CodeView {
     func buildHierarchy() {
         addSubview(posterIamge)
         addSubview(tableView)
-        addSubview(persistedButton)
+        //addSubview(persistedButton)
     }
     
     func buildConstraints() {
@@ -79,11 +79,11 @@ extension MovieDetailsView: CodeView {
             make.bottom.equalTo(safeAreaLayoutGuide.snp.bottomMargin)
         }
         
-        persistedButton.snp.makeConstraints { make in
-            make.top.equalTo(tableView).offset(12)
-            make.right.equalTo(tableView).inset(12)
-            make.width.equalTo(25)
-        }
+//        persistedButton.snp.makeConstraints { make in
+//            make.top.equalTo(tableView).offset(12)
+//            make.right.equalTo(tableView).inset(12)
+//            make.width.equalTo(25)
+//        }
     }
     
     func configure() {

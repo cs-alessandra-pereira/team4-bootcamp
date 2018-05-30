@@ -32,7 +32,7 @@ class MovieDetailsViewController: UIViewController {
     }
     
     override func viewDidLoad() {
-        movieDetailsView.persistedButton.isSelected = movie.persisted
+        //movieDetailsView.persistedButton.isSelected = movie.persisted
     }
     func setupDatasource() {
         

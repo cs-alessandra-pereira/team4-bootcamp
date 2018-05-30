@@ -22,7 +22,7 @@ class MovieCollectionViewCellSpec: QuickSpec {
                 let frame = CGRect(x: 0, y: 0, width: 180, height: 220)
                 let sut = MovieCollectionViewCellStub(frame: frame)
                 
-                let movieNotPersisted = Movie(id: 01, title: "Zootopia", releaseDate: nil, genres: [], overview: "", posterPath: "", persisted: false)
+                let movieNotPersisted = Movie(id: 01, title: "Zootopia", releaseDate: nil, genresIds: [], overview: "", posterPath: "", persisted: false)
                 
                 sut.setup(movie: movieNotPersisted, at: IndexPath(row: 0, section: 0))
                 expect(sut) == snapshot("MovieCollectionViewCellNotPersisted")
@@ -33,7 +33,7 @@ class MovieCollectionViewCellSpec: QuickSpec {
                 let frame = CGRect(x: 0, y: 0, width: 180, height: 220)
                 let sut = MovieCollectionViewCellStub(frame: frame)
                 
-                let persisted = Movie(id: 02, title: "Coco", releaseDate: nil, genres: [], overview: "", posterPath: "", persisted: true)
+                let persisted = Movie(id: 02, title: "Coco", releaseDate: nil, genresIds: [], overview: "", posterPath: "", persisted: true)
                 
                 sut.setup(movie: persisted, at: IndexPath(row: 0, section: 0))
                 expect(sut) == snapshot("MovieCollectionViewCellPersisted")

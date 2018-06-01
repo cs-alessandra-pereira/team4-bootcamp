@@ -8,15 +8,14 @@
 
 import UIKit
 
-protocol MovieDetailFavoriteDelegate {
+protocol MovieDetailFavoriteDelegate: class {
     func didFavoriteMovie(_ isSelected: Bool)
 }
 
 class MovieDetailsView: UIView {
     
     static let movieDetailsCell = "MovieCell"
-    
-    var persistedButtonDelegate: MovieDetailFavoriteDelegate? = nil
+    var persistedButtonDelegate: MovieDetailFavoriteDelegate?
     
     lazy var posterIamge: UIImageView = {
         let view = UIImageView(frame: .zero)
@@ -51,7 +50,7 @@ class MovieDetailsView: UIView {
 
 extension MovieDetailsView {
     @objc
-    func didFavoriteMovie(){
+    fileprivate func didFavoriteMovie() {
         persistedButton.isSelected = persistedButton.isSelected ? false : true
         persistedButtonDelegate?.didFavoriteMovie(persistedButton.isSelected)
     }
@@ -62,7 +61,7 @@ extension MovieDetailsView: CodeView {
     func buildHierarchy() {
         addSubview(posterIamge)
         addSubview(tableView)
-        //addSubview(persistedButton)
+        addSubview(persistedButton)
     }
     
     func buildConstraints() {
@@ -79,11 +78,11 @@ extension MovieDetailsView: CodeView {
             make.bottom.equalTo(safeAreaLayoutGuide.snp.bottomMargin)
         }
         
-//        persistedButton.snp.makeConstraints { make in
-//            make.top.equalTo(tableView).offset(12)
-//            make.right.equalTo(tableView).inset(12)
-//            make.width.equalTo(25)
-//        }
+        persistedButton.snp.makeConstraints { make in
+            make.top.equalTo(tableView).offset(12)
+            make.right.equalTo(tableView).inset(12)
+            make.width.equalTo(25)
+        }
     }
     
     func configure() {

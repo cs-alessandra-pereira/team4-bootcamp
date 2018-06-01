@@ -92,24 +92,25 @@ extension MovieListDatasource: MovieCollectionViewCellDelegate {
     func didFavoriteCell(_ isSelected: Bool, at position: IndexPath) {
         if let context = FavoritesViewController.container?.viewContext {
             DispatchQueue.main.async {
+                var movies = self.getMovies()
                 if isSelected {
-                    let result = MovieDAO.addMovie(movie: self.movies[position.row], context: context)
+                    let result = MovieDAO.addMovie(movie: self.getMovies()[position.row], context: context)
                     switch result {
                     case .success(let newMovieDAO):
                         print(newMovieDAO)
-                        self.movies[position.row].persisted = true
+                        movies[position.row].persisted = true
                     case .error:
-                        self.movies[position.row].persisted = false
+                        movies[position.row].persisted = false
                     }
                 } else {
-                    let movie = self.movies[position.row]
+                    let movie = movies[position.row]
                     let predicate = NSPredicate(format: "id == \(movie.id)")
                     let result = MovieDAO.deleteMovie(context: context, predicate: predicate)
                     switch result {
                     case .success:
-                        self.movies[position.row].persisted = false
+                        movies[position.row].persisted = false
                     case .error:
-                        self.movies[position.row].persisted = true
+                        movies[position.row].persisted = true
                     }
                 }
             }

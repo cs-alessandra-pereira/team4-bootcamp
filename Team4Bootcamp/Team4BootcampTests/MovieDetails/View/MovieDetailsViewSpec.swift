@@ -21,7 +21,7 @@ class MovieDetailsViewSpec: QuickSpec {
                 let view = MovieDetailsView(frame: frame)
                 let datasource = MovieDetailsDatasource(tableView: view.tableView, movie: movie)
                 view.tableView.dataSource = datasource
-                view.imageView.backgroundColor = .black
+                view.posterImage.backgroundColor = .black
                 expect(view) == snapshot("MovieDetailsView")
             }
         }

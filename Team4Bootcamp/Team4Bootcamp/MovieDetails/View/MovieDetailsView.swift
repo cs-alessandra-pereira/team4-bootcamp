@@ -17,7 +17,7 @@ class MovieDetailsView: UIView {
     static let movieDetailsCell = "MovieCell"
     var persistedButtonDelegate: MovieDetailFavoriteDelegate?
     
-    lazy var posterIamge: UIImageView = {
+    lazy var posterImage: UIImageView = {
         let view = UIImageView(frame: .zero)
         view.contentMode = UIViewContentMode.scaleAspectFit
         view.backgroundColor = UIColor.white
@@ -59,14 +59,14 @@ extension MovieDetailsView {
 extension MovieDetailsView: CodeView {
     
     func buildHierarchy() {
-        addSubview(posterIamge)
+        addSubview(posterImage)
         addSubview(tableView)
         addSubview(persistedButton)
     }
     
     func buildConstraints() {
         
-        posterIamge.snp.makeConstraints { make in
+        posterImage.snp.makeConstraints { make in
             make.left.right.equalTo(self)
             make.height.equalTo(300)
             make.top.equalTo(safeAreaLayoutGuide.snp.topMargin)
@@ -74,7 +74,7 @@ extension MovieDetailsView: CodeView {
         
         tableView.snp.makeConstraints { make in
             make.left.right.equalTo(self)
-            make.top.equalTo(posterIamge.snp.bottom)
+            make.top.equalTo(posterImage.snp.bottom)
             make.bottom.equalTo(safeAreaLayoutGuide.snp.bottomMargin)
         }
         

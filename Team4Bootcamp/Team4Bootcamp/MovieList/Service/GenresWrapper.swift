@@ -8,13 +8,14 @@
 
 import Foundation
 
+typealias GenreName = String
+typealias GenreId = Int
+
 struct GenresWrapper: Decodable {
     
     var genreDictionary: [GenreId: GenreName] = [:]
     
     private enum CodingKeys: String, CodingKey {
-        case id
-        case name
         case genres
     }
     
@@ -25,4 +26,9 @@ struct GenresWrapper: Decodable {
             genreDictionary[genre.id] = genre.name
         }
     }
+}
+
+fileprivate struct Genre: Decodable {
+    let id: GenreId
+    let name: GenreName
 }

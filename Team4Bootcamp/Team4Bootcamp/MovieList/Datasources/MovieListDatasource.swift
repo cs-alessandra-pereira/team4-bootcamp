@@ -77,7 +77,9 @@ final class MovieListDatasource: NSObject, UICollectionViewDataSource {
         var movie = getMovies()[indexPath.row]
 
         if let context = FavoritesViewController.container?.viewContext {
-            movie.persisted = MovieDAO.previouslyInserted(movieId: movie.id, context: context)
+            let predicate = NSPredicate(format: "id == \(movie.id)")
+            let previouslyInserted = try? context.previouslyInserted(MovieDAO.self, predicateForDuplicityCheck: predicate)
+            movie.persisted = previouslyInserted ?? false
         }
         cell.setup(movie: movie, at: indexPath)
         cell.delegate = self
@@ -91,9 +93,11 @@ extension MovieListDatasource: MovieCollectionViewCellDelegate {
         if let context = FavoritesViewController.container?.viewContext {
             DispatchQueue.main.async {
                 if isSelected {
-                    self.movies[position.row].persisted = MovieDAO.addMovie(movie: self.movies[position.row], context: context)
+                    _ = MovieDAO.addMovie(movie: self.getMovies()[position.row], context: context)
+
                 } else {
-                    self.movies[position.row].persisted = !MovieDAO.deleteMovie(movie: self.movies[position.row], context: context)
+                    let predicate = NSPredicate(format: "id == \(self.getMovies()[position.row].id)")
+                    _ = MovieDAO.deleteMovie(context: context, predicate: predicate)
                 }
             }
         }

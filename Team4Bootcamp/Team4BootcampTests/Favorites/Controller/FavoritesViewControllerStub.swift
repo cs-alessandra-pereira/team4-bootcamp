@@ -39,7 +39,6 @@ class FavoritesViewControllerStub: FavoritesViewController {
                                       bundle: Bundle(for: FavoritesViewController.self))
         
         let className = String.init(describing: FavoritesViewController.self)
-        
         guard let viewController = storyboard.instantiateViewController(withIdentifier: className) as? FavoritesViewController else {
             fatalError("Could not load controller called \(className)")
         }

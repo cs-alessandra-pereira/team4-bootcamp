@@ -38,17 +38,68 @@ class FavoritesDataSource: NSObject, UITableViewDataSource, NSFetchedResultsCont
         self.fetchedResultsController?.delegate = self
     }
     
+    var yearToFilter: [String] = []
+    var genresToFilter: [String] = []
+    
     var searchString: String? = nil {
         didSet {
             tableView.reloadData()
         }
     }
     
-    func filteredList(movies: [MovieDAO]) -> [MovieDAO] {
-        guard let searchString = self.searchString else {
-            return movies
+    var filteredMovies: [MovieDAO]? = nil {
+        didSet {
+            tableView.reloadData()
         }
-        return movies.filter { $0.title.lowercased().starts(with: searchString.lowercased()) }
+    }
+    
+    func setFilteredMovies() {
+        if let ctx = container?.viewContext {
+            var filteredMoviesDAOByYears = [MovieDAO]()
+            var filteredMoviesDAOByGenres = [MovieDAO]()
+            var filteredMoviesDAO: [MovieDAO]? = nil
+            if yearToFilter.count > 0 {
+                let result = MovieDAO.searchMoviesFrom(years: yearToFilter, context: ctx)
+                switch result {
+                case .success(let results):
+                    filteredMoviesDAOByYears = results
+                    filteredMoviesDAO = results
+                case .error:
+                    filteredMoviesDAOByYears = []
+                }
+            }
+            if genresToFilter.count > 0 {
+                let result = MovieDAO.searchMoviesFromGenres(genres: genresToFilter, context: ctx)
+                switch result {
+                case .success(let results):
+                    filteredMoviesDAOByGenres = results
+                    filteredMoviesDAO = results
+                case .error:
+                    filteredMoviesDAOByGenres = []
+                }
+            }
+            
+            if genresToFilter.count > 0 && yearToFilter.count > 0 {
+                filteredMoviesDAO = filteredMoviesDAOByYears.filter(filteredMoviesDAOByGenres.contains)
+            }
+            
+            filteredMovies = filteredMoviesDAO
+        }
+    }
+    
+    func setupFilteredMovies(_ filtered: [MovieDAO]) {
+        filteredMovies = filtered
+    }
+
+    func filteredList(movies: [MovieDAO]) -> [MovieDAO] {
+        return filteredMovies ?? movies
+    }
+    
+    func searchedList(movies: [MovieDAO]) -> [MovieDAO] {
+        guard let searchString = self.searchString else {
+            return filteredList(movies: self.movies)
+        }
+        return filteredList(movies: self.movies).filter { $0.title.lowercased().starts(with: searchString.lowercased()) }
     }
     
     
@@ -71,6 +122,11 @@ class FavoritesDataSource: NSObject, UITableViewDataSource, NSFetchedResultsCont
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if let searching = searchString {
             if searching.count > 0 {
+                return
+            }
+        }
+        if let filtered = filteredMovies {
+            if filtered.count > 0 {
                 return
             }
         }
@@ -119,10 +175,10 @@ extension FavoritesDataSource: MovieListManager {
     typealias Item = MovieDAO
     
     func getMovieCount() -> Int {
-        return filteredList(movies: self.movies).count
+        return searchedList(movies: self.movies).count
     }
     
     func getMovies() -> [MovieDAO] {
-        return filteredList(movies: self.movies)
+        return searchedList(movies: self.movies)
     }
 }

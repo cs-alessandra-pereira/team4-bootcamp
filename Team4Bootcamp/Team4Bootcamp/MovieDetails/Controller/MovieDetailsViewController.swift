@@ -14,7 +14,7 @@ class MovieDetailsViewController: UIViewController {
     let imageFetchable: ImageFetchable = KFImageFetchable()
     
     var movieDetailsView = MovieDetailsView()
-    let movie: Movie
+    var movie: Movie
     
     init(movie: Movie) {
         self.movie = movie
@@ -27,19 +27,14 @@ class MovieDetailsViewController: UIViewController {
     
     override func loadView() {
         self.view = movieDetailsView
+        movieDetailsView.persistedButtonDelegate = self
         setupDatasource()
         setMovieImage()
     }
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-        
+        isMovieFavorited()
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
     func setupDatasource() {
         
         datasource = MovieDetailsDatasource(tableView: movieDetailsView.tableView, movie: movie)
@@ -49,8 +44,32 @@ class MovieDetailsViewController: UIViewController {
     func setMovieImage() {
         
         let path = Endpoints.moviePoster(movie.posterPath).path
-        imageFetchable.fetch(imageURLString: path, onImage: movieDetailsView.imageView) {}
+        imageFetchable.fetch(imageURLString: path, onImage: movieDetailsView.posterImage) {}
         
     }
     
+    func isMovieFavorited() {
+        if let context = FavoritesViewController.container?.viewContext {
+            let predicate = NSPredicate(format: "id == \(movie.id)")
+            let previouslyInserted = try? context.previouslyInserted(MovieDAO.self, predicateForDuplicityCheck: predicate)
+            movie.persisted = previouslyInserted ?? false
+        }
+        movieDetailsView.persistedButton.isSelected = movie.persisted
+    }
+}
+
+extension MovieDetailsViewController: MovieDetailFavoriteDelegate {
+    func didFavoriteMovie(_ isSelected: Bool) {
+        if let context = FavoritesViewController.container?.viewContext {
+            DispatchQueue.main.async {
+                if isSelected {
+                    _ = MovieDAO.addMovie(movie: self.movie, context: context)
+                    
+                } else {
+                    let predicate = NSPredicate(format: "id == \(self.movie.id)")
+                    _ = MovieDAO.deleteMovie(context: context, predicate: predicate)
+                }
+            }
+        }
+    }
 }

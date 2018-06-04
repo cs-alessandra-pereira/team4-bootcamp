@@ -24,18 +24,18 @@ class MoviesAPI {
                 return
             }
 
-            let content = self.decodeContent(from: data, withEndpoint: endpoint)
-            if let response = content.response {
-                callback(.success(response))
-            } else if content.error != nil {
-                callback(.error(MoviesError.invalidData))
+            let (response, error) = self.decodeContent(from: data, withEndpoint: endpoint)
+            if let result = response {
+                callback(.success(result))
+            } else if error != nil {
+                callback(.error(error!))
             }
             
         }
         task.resume()
     }
     
-    func decodeContent(from data: Data, withEndpoint endpoint: Endpoints) -> (response: Any?, error: Error?) {
+    func decodeContent(from data: Data, withEndpoint endpoint: Endpoints) -> (response: Any?, error: MoviesError?) {
         
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .iso8601
@@ -49,12 +49,11 @@ class MoviesAPI {
                 let decodableResponse = try decoder.decode(GenresWrapper.self, from: data)
                 return (decodableResponse, nil)
             default:
-                break
+                return (nil, MoviesError.invalidData)
             }
         } catch {
-            return (nil, MoviesError.invalidData)
+            return (nil, MoviesError.noData)
         }
-        return (nil, MoviesError.invalidData)
     }
 }
 
@@ -65,7 +64,7 @@ extension MoviesAPI: MoviesProtocol {
             switch result {
             case .success(let movieListJson):
                 guard let movieList = movieListJson as? MovieListWrapper else {
-                    DispatchQueue.main.async { callback(.error(MoviesError.invalidData)) }
+                    DispatchQueue.main.async { callback(.error(MoviesError.noData)) }
                     return
                 }
                 if MoviesConstants.pageBaseURL <= MoviesConstants.paginationLimit {

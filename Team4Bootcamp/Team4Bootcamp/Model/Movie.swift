@@ -7,13 +7,14 @@
 //
 
 import Foundation
+import CoreData
 
 struct Movie {
     
     let id: Int
     let title: String
     var releaseDate: Date?
-    var genres: [Genre]
+    var genresIds: [GenreId]
     let overview: String
     let posterPath: String
     var persisted = false
@@ -29,17 +30,25 @@ struct Movie {
         case posterPath = "poster_path"
     }
     
-    func genresNameAsString() -> String {
-        let genreList = Genre.allGenres
+    func genresNameAsString(container: NSPersistentContainer?) -> String {
+        
         var genresNames: String = ""
-        for genre in genres {
-            if let name = genreList[genre.id] {
-                genresNames += "\(name), "
+        
+        let genreList = GenreDAO.allGenres
+        
+        for id in genresIds {
+            if let matchingGenre = genreList[id] {
+                genresNames += "\(matchingGenre), "
             }
         }
-        let indexToRemove = genresNames.index(genresNames.endIndex, offsetBy: -1)
-        genresNames.remove(at: genresNames.index(before: indexToRemove))
-        return genresNames
+        
+        if genreList.count > 0 {
+            let indexToRemove = genresNames.index(genresNames.endIndex, offsetBy: -1)
+            genresNames.remove(at: genresNames.index(before: indexToRemove))
+            return genresNames
+        } else {
+            return "No data"
+        }
     }
     
     func releaseYearAsString() -> String {
@@ -48,7 +57,6 @@ struct Movie {
         }
         return "\(year)"
     }
-    
 }
 
 extension Movie {
@@ -58,9 +66,9 @@ extension Movie {
         title = movieDAO.title
         overview = movieDAO.overview
         posterPath = movieDAO.posterPath
-        genres = []
-        for gnr in movieDAO.genres {
-            genres.append(Genre(id: gnr))
+        genresIds = []
+        for id in movieDAO.genresId {
+            genresIds.append(id)
         }
         releaseDate = date
         persisted = true
@@ -83,12 +91,7 @@ extension Movie: Decodable {
         } catch {
             releaseDate = nil
         }
-        let genreIDs = try values.decode([Int].self, forKey: .genresIDs)
-        var genres: [Genre] = []
-        for id in genreIDs {
-            genres.append(Genre(id: id))
-        }
-        self.genres = genres
+        genresIds = try values.decode([Int].self, forKey: .genresIDs)
     }
 }
 

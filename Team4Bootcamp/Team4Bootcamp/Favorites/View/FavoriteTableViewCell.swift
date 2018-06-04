@@ -126,7 +126,8 @@ extension FavoriteTableViewCell: CodeView {
         date.lineBreakMode = .byTruncatingTail
         overview.textAlignment = NSTextAlignment.justified
         overview.adjustsFontSizeToFitWidth = true
-        
+        overview.minimumScaleFactor = 0.8
         title.adjustsFontSizeToFitWidth = true
+        title.minimumScaleFactor = 0.9
     }
 }

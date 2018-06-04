@@ -14,7 +14,7 @@ protocol MovieCollectionViewCellDelegate: class {
     func didFavoriteCell(_ isSelected: Bool, at position: IndexPath)
 }
 
-final class MovieCollectionViewCell: UICollectionViewCell {
+class MovieCollectionViewCell: UICollectionViewCell {
     
     let imageFetchable: ImageFetchable = KFImageFetchable()
 
@@ -23,7 +23,7 @@ final class MovieCollectionViewCell: UICollectionViewCell {
     lazy var imageView: UIImageView = {
         let view = UIImageView(frame: .zero)
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.contentMode = UIViewContentMode.scaleAspectFit
+        view.contentMode = UIViewContentMode.scaleToFill
         return view
     }()
     
@@ -69,13 +69,8 @@ extension MovieCollectionViewCell {
     @objc
     fileprivate func didTouchFavoriteButton() {
         if let cellPosition = position {
-            if iconButton.isSelected {
-                iconButton.isSelected = false
-                delegate?.didFavoriteCell(iconButton.isSelected, at: cellPosition)
-            } else {
-                iconButton.isSelected = true
-                delegate?.didFavoriteCell(iconButton.isSelected, at: cellPosition)
-            }
+            iconButton.isSelected = iconButton.isSelected ? false : true
+            delegate?.didFavoriteCell(iconButton.isSelected, at: cellPosition)
         }
     }
 }
@@ -85,7 +80,6 @@ extension MovieCollectionViewCell: CodeView {
         addSubview(imageView)
         addSubview(iconButton)
         addSubview(textLabel)
-        
     }
     
     func buildConstraints() {
@@ -112,7 +106,6 @@ extension MovieCollectionViewCell: CodeView {
     
     func configure() {
         backgroundColor = UIColor.secondaryColor
-        
         textLabel.sizeToFit()
         textLabel.textColor = UIColor.primaryColor
         textLabel.numberOfLines = 2

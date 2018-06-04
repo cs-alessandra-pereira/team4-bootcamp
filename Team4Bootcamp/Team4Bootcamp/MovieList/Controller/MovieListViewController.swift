@@ -38,6 +38,7 @@ class MovieListViewController: UIViewController {
         super.viewDidLoad()
         setupDelegate()
         setupSearchBar()
+        adjustNavigationBar()
         fetchGenres()
         fetchMovies()
     }
@@ -75,9 +76,21 @@ class MovieListViewController: UIViewController {
     func setupSearchBar() {
         searchBarDelegate = SearchBarDelegate()
         searchBar.delegate = searchBarDelegate
+        searchBar.layer.borderWidth = 1
+        searchBar.layer.borderColor = UIColor.primaryColor?.cgColor
+        if let textField = searchBar.value(forKey: "_searchField") as? UITextField {
+            textField.backgroundColor = UIColor.accentColor
+        }
     }
     
+    func adjustNavigationBar() {
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+    }
+    
+    
     func fetchMovies() {
+        if let searching = searchBar.text?.count, searching > 0 { return }
         movieService.fetchMovies { result in
             switch result {
             case .success(let movies):
@@ -89,11 +102,15 @@ class MovieListViewController: UIViewController {
                         self.setupDatasource(movies: movies, searchBarDelegate: self.searchBar.delegate as? SearchBarDelegate)
                         self.state = .initial
                     } else {
-                        self.state = .noResults
+                            self.state = .noResults
                     }
                 }
-            case .error:
-                self.state = .error
+            case .error(let error):
+                if case MoviesError.noData = error {
+                    self.state = .noResults
+                } else {
+                    self.state = .error
+                }
             }
         }
     }
@@ -103,7 +120,7 @@ class MovieListViewController: UIViewController {
         movieService.fetchGenres { result in
             switch result {
             case .success(let genres):
-                Genre.allGenres = genres
+                GenreDAO.allGenres = genres
                 self.state = .initial
             case .error:
                 self.state = .error
@@ -144,10 +161,10 @@ class MovieListViewController: UIViewController {
             case .noResults:
                 activityIndicator.stopAnimating()
                 self.activityIndicator.isHidden = true
-                collectionView.isHidden = true
-                viewError.isHidden = true
                 searchBar.isHidden = false
+                viewError.isHidden = true
                 viewNoResults.isHidden = false
+                collectionView.isHidden = true
             }
         }
     }
@@ -155,6 +172,7 @@ class MovieListViewController: UIViewController {
     func proceedToDetailsView(movieIndex: Int) {
         if let movie = movieListDatasource?.getMovies()[movieIndex] {
             let controller = MovieDetailsViewController(movie: movie)
+            controller.hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(controller, animated: true)
         }
     }

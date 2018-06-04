@@ -46,12 +46,10 @@ class FavoritesDataSourceSpec: QuickSpec {
                 it("should return true if return the expected movie") {
                     expect(sut.searchString).to(beNil())
                     sut.searchString = "Fifty Shades Freed"
-                    let movies = sut.filteredList(movies: sut.movies)
+                    let movies = sut.filteredList(movies: [])
                     expect(sut.searchString) == (movies[0].title)
-                    
-                    
-                    
                 }
+                
                 it("should return true if numberOfMovies changes conforme expected and number of rows is equal to one") {
                     expect(sut.numberOfMovies) == 0
                     expect(sut.tableView(tableView, numberOfRowsInSection: indexPath.section)) == 1

@@ -33,3 +33,7 @@ class CoreDataHelper {
         }
     }
 }
+
+public enum CoreDataErrorHelper: Error {
+    case duplicateEntry, noResults, badPredicate, unknown
+}

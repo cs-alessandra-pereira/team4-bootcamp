@@ -8,11 +8,16 @@
 
 import UIKit
 
+protocol MovieDetailFavoriteDelegate: class {
+    func didFavoriteMovie(_ isSelected: Bool)
+}
+
 class MovieDetailsView: UIView {
     
     static let movieDetailsCell = "MovieCell"
+    var persistedButtonDelegate: MovieDetailFavoriteDelegate?
     
-    lazy var imageView: UIImageView = {
+    lazy var posterImage: UIImageView = {
         let view = UIImageView(frame: .zero)
         view.contentMode = UIViewContentMode.scaleAspectFit
         view.backgroundColor = UIColor.white
@@ -27,6 +32,12 @@ class MovieDetailsView: UIView {
         return view
     }()
     
+    lazy var persistedButton: FavoriteButton = {
+        let view = FavoriteButton(frame: .zero)
+        view.addTarget(self, action: #selector(didFavoriteMovie), for: .touchUpInside)
+        return view
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
@@ -37,16 +48,25 @@ class MovieDetailsView: UIView {
     }
 }
 
+extension MovieDetailsView {
+    @objc
+    fileprivate func didFavoriteMovie() {
+        persistedButton.isSelected = persistedButton.isSelected ? false : true
+        persistedButtonDelegate?.didFavoriteMovie(persistedButton.isSelected)
+    }
+}
+
 extension MovieDetailsView: CodeView {
     
     func buildHierarchy() {
-        addSubview(imageView)
+        addSubview(posterImage)
         addSubview(tableView)
+        addSubview(persistedButton)
     }
     
     func buildConstraints() {
         
-        imageView.snp.makeConstraints { make in
+        posterImage.snp.makeConstraints { make in
             make.left.right.equalTo(self)
             make.height.equalTo(300)
             make.top.equalTo(safeAreaLayoutGuide.snp.topMargin)
@@ -54,10 +74,15 @@ extension MovieDetailsView: CodeView {
         
         tableView.snp.makeConstraints { make in
             make.left.right.equalTo(self)
-            make.top.equalTo(imageView.snp.bottom)
+            make.top.equalTo(posterImage.snp.bottom)
             make.bottom.equalTo(safeAreaLayoutGuide.snp.bottomMargin)
         }
         
+        persistedButton.snp.makeConstraints { make in
+            make.top.equalTo(tableView).offset(12)
+            make.right.equalTo(tableView).inset(12)
+            make.width.equalTo(25)
+        }
     }
     
     func configure() {

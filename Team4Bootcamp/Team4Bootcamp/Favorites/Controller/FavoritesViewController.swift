@@ -24,6 +24,7 @@ class FavoritesViewController: UIViewController {
     var favoritesDataSouce: FavoritesDataSource?
     var favoriteTableViewDelegate: FavoriteTableViewDelegate?
     var searchBarDelegate: SearchBarDelegate?
+    var tabBarDelegate: TabBarDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +34,7 @@ class FavoritesViewController: UIViewController {
         setupDataSource()
         setupDelegate()
         setupFilterButton()
+        setupDelegateTabBar()
         updateDatabase()
     }
     
@@ -102,6 +104,20 @@ class FavoritesViewController: UIViewController {
         searchBar.layer.borderColor = UIColor.primaryColor?.cgColor
         if let textField = searchBar.value(forKey: "_searchField") as? UITextField {
             textField.backgroundColor = UIColor.accentColor
+        }
+    }
+    
+    func setupDelegateTabBar() {
+        tabBarDelegate = TabBarDelegate()
+        tabBarController?.delegate = tabBarDelegate
+        
+        tabBarDelegate?.callbackFromSelectedTabBarItem = { [weak self] event in
+            switch event {
+            case .firstItemSelected:
+                self?.removeFilter(self)
+            default:
+                break
+            }
         }
     }
     

@@ -7,7 +7,6 @@
 //
 
 import CoreData
-
 class CoreDataHelper {
     
     lazy var persistentContainer: NSPersistentContainer = {

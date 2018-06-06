@@ -41,7 +41,6 @@ struct Movie {
                 genresNames += "\(matchingGenre), "
             }
         }
-        
         if genreList.count > 0 {
             let indexToRemove = genresNames.index(genresNames.endIndex, offsetBy: -1)
             genresNames.remove(at: genresNames.index(before: indexToRemove))

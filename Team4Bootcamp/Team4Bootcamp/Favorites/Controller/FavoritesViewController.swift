@@ -114,7 +114,7 @@ class FavoritesViewController: UIViewController {
         tabBarDelegate?.callbackFromSelectedTabBarItem = { [weak self] event in
             switch event {
             case .firstItemSelected:
-                self?.removeFilter(self)
+                self?.removeFilter(true)
             default:
                 break
             }

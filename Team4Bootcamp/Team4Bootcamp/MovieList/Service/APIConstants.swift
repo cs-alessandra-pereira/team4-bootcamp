@@ -32,4 +32,19 @@ enum Endpoints {
             return "\(MoviesConstants.imgBaseURL)\(posterPath)"
         }
     }
+    
+    func decode(_ data: Data) throws -> Decodable {
+       
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .iso8601
+        
+        switch self {
+        case .genre:
+            return try decoder.decode(GenresWrapper.self, from: data)
+        case .movieList:
+            return try decoder.decode(MovieListWrapper.self, from: data)
+        default:
+            throw MoviesError.invalidData
+        }
+    }
 }

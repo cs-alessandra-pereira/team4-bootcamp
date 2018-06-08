@@ -18,7 +18,6 @@ extension MovieDAO {
     }
 
     @NSManaged public var date: NSDate?
-    @NSManaged public var genresId: [Int]
     @NSManaged public var id: Int32
     @NSManaged public var overview: String
     @NSManaged public var posterPath: String

@@ -25,15 +25,11 @@ public class MovieDAO: NSManagedObject {
                 newMovieDAO.overview = movie.overview
                 newMovieDAO.title = movie.title
                 newMovieDAO.posterPath = movie.posterPath
-                newMovieDAO.genresId = []
-
+                
                 var newGenresDict = [GenreId: GenreName]()
-
                 for id in movie.genresIds {
-                    newMovieDAO.genresId.append(id)
                     newGenresDict[id] = GenreDAO.allGenres[id]
                 }
-        
                 let newGenresDAO = GenreDAO.addGenres(genres: newGenresDict, context: context) as NSSet
                 newMovieDAO.addToGenres(newGenresDAO)
                 

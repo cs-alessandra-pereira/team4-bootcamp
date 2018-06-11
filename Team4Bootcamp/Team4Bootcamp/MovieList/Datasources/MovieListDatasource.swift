@@ -61,7 +61,7 @@ final class MovieListDatasource: NSObject, UICollectionViewDataSource {
         }
         registerMovieWasFavoritedObserver(notificationName: .movieAddedToPersistence)
         registerMovieWasFavoritedObserver(notificationName: .movieRemovedFromPersistence)
-        self.collectionView?.register(MovieCollectionViewCell.self, forCellWithReuseIdentifier: MovieCollectionViewCell.movieListCell)
+        self.collectionView?.register(MovieCollectionViewCell.self)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -70,7 +70,7 @@ final class MovieListDatasource: NSObject, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MovieCollectionViewCell.movieListCell, for: indexPath) as? MovieCollectionViewCell else {
+        guard let cell: MovieCollectionViewCell = self.collectionView?.dequeueReusableCell(for: indexPath) else {
             fatalError()
         }
         

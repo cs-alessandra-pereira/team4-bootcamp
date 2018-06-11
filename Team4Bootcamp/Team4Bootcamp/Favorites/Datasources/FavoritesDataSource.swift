@@ -22,7 +22,7 @@ class FavoritesDataSource: NSObject, UITableViewDataSource, NSFetchedResultsCont
         self.fetchedResultsController = fetchedResults
         self.tableView = tableView
         self.tableView.rowHeight = CGFloat(FavoriteTableViewCell.cellHeight)
-        self.tableView.register(FavoriteTableViewCell.self, forCellReuseIdentifier: FavoriteTableViewCell.reuseIdentifier)
+        self.tableView.register(FavoriteTableViewCell.self)
         super.init()
         searchBarDelegate?.callback = { [weak self] searchBar, searchEvent, searchString in
             switch searchEvent {
@@ -109,9 +109,7 @@ class FavoritesDataSource: NSObject, UITableViewDataSource, NSFetchedResultsCont
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: FavoriteTableViewCell.reuseIdentifier, for: indexPath) as? FavoriteTableViewCell else {
-            fatalError()
-        }
+        let cell: FavoriteTableViewCell = tableView.dequeueReusableCell(for: indexPath)
         
         let movieDAO = getMovies()[indexPath.row]
         let movie = Movie(from: movieDAO)

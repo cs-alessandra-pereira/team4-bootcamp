@@ -76,7 +76,7 @@ final class MovieListDatasource: NSObject, UICollectionViewDataSource {
         
         var movie = getMovies()[indexPath.row]
 
-        if let context = FavoritesViewController.container?.viewContext {
+        if let context = MovieListViewController.container?.viewContext {
             let predicate = NSPredicate(format: "id == \(movie.id)")
             let previouslyInserted = try? context.previouslyInserted(MovieDAO.self, predicateForDuplicityCheck: predicate)
             movie.persisted = previouslyInserted ?? false
@@ -90,7 +90,7 @@ final class MovieListDatasource: NSObject, UICollectionViewDataSource {
 extension MovieListDatasource: MovieCollectionViewCellDelegate {
     
     func didFavoriteCell(_ isSelected: Bool, at position: IndexPath) {
-        if let context = FavoritesViewController.container?.viewContext {
+        if let context = MovieListViewController.container?.viewContext {
             DispatchQueue.main.async {
                 if isSelected {
                     _ = MovieDAO.addMovie(movie: self.getMovies()[position.row], context: context)

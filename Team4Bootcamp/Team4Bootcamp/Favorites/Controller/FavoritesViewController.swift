@@ -19,7 +19,7 @@ class FavoritesViewController: UIViewController {
     private let favoritePersistenceService = FavoritePersistenceService()
     fileprivate var fetchedResultsController: NSFetchedResultsController<MovieDAO>?
     
-    static var container: NSPersistentContainer? = (UIApplication.shared.delegate as? AppDelegate)?.coredata.persistentContainer
+    weak static var container: NSPersistentContainer? = (UIApplication.shared.delegate as? AppDelegate)?.coredata.persistentContainer
     
     var favoritesDataSouce: FavoritesDataSource?
     var favoriteTableViewDelegate: FavoriteTableViewDelegate?
@@ -143,7 +143,7 @@ class FavoritesViewController: UIViewController {
     }
     
     func updateDatabase() {
-        if let context = MovieListViewController.container?.viewContext {
+        if let context = FavoritesViewController.container?.viewContext {
             let request: NSFetchRequest<GenreDAO> = GenreDAO.fetchRequest()
             request.sortDescriptors = [NSSortDescriptor(key: "id", ascending: true)]
             let fetchedResultsController = NSFetchedResultsController<GenreDAO>(

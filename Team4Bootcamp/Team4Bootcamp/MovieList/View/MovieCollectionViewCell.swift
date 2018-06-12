@@ -36,12 +36,7 @@ class MovieCollectionViewCell: UICollectionViewCell, Reusable {
     var delegate: MovieCollectionViewCellDelegate?
     var position: IndexPath?
     
-    lazy var iconButton: FavoriteButton = {
-        let view = FavoriteButton(frame: .zero)
-        
-        view.addTarget(self, action: #selector(didTouchFavoriteButton), for: .touchUpInside)
-        return view
-    }()
+    lazy var iconButton = UIButton.favoriteButton(target: self, withSelector: #selector(didTouchFavoriteButton))
     
     override init(frame: CGRect) {
         super.init(frame: frame)

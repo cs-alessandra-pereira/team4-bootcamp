@@ -17,6 +17,9 @@
 		CD27E24C208E292700349B46 /* FavoritePersistenceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD27E24B208E292600349B46 /* FavoritePersistenceService.swift */; };
 		CD27E24E208E293000349B46 /* FavoriteTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD27E24D208E293000349B46 /* FavoriteTableViewDelegate.swift */; };
 		CD27E250208E293600349B46 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD27E24F208E293600349B46 /* FavoritesViewController.swift */; };
+		CD28AD2620CF0B9000F0D2E0 /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD28AD2520CF0B9000F0D2E0 /* Reusable.swift */; };
+		CD28AD2820CF0D2900F0D2E0 /* UICollectionView+Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD28AD2720CF0D2900F0D2E0 /* UICollectionView+Reusable.swift */; };
+		CD28AD2A20CF190A00F0D2E0 /* UITableView+Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD28AD2920CF190A00F0D2E0 /* UITableView+Reusable.swift */; };
 		CD2B9F682093958800C91ECB /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2B9F672093958800C91ECB /* CoreDataHelper.swift */; };
 		CD2B9F6D20939E3B00C91ECB /* MovieCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2B9F6C20939E3B00C91ECB /* MovieCollectionViewCell.swift */; };
 		CD2B9F7420939EDF00C91ECB /* MovieDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2B9F7320939EDF00C91ECB /* MovieDetailsView.swift */; };
@@ -132,6 +135,9 @@
 		CD27E24B208E292600349B46 /* FavoritePersistenceService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritePersistenceService.swift; sourceTree = "<group>"; };
 		CD27E24D208E293000349B46 /* FavoriteTableViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteTableViewDelegate.swift; sourceTree = "<group>"; };
 		CD27E24F208E293600349B46 /* FavoritesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
+		CD28AD2520CF0B9000F0D2E0 /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
+		CD28AD2720CF0D2900F0D2E0 /* UICollectionView+Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Reusable.swift"; sourceTree = "<group>"; };
+		CD28AD2920CF190A00F0D2E0 /* UITableView+Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Reusable.swift"; sourceTree = "<group>"; };
 		CD2B9F672093958800C91ECB /* CoreDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
 		CD2B9F6C20939E3B00C91ECB /* MovieCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieCollectionViewCell.swift; sourceTree = "<group>"; };
 		CD2B9F7320939EDF00C91ECB /* MovieDetailsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieDetailsView.swift; sourceTree = "<group>"; };
@@ -531,6 +537,8 @@
 				EA1B563A2078022F00390669 /* Date+String.swift */,
 				CD1D7F41207E7321009722FA /* UIColor+Palette.swift */,
 				CD1D7F44207E7360009722FA /* UIImage+Icons.swift */,
+				CD28AD2720CF0D2900F0D2E0 /* UICollectionView+Reusable.swift */,
+				CD28AD2920CF190A00F0D2E0 /* UITableView+Reusable.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -637,6 +645,7 @@
 				EA284CC1206D0ED400E4D7CD /* Result.swift */,
 				EA284CBF206D0D0200E4D7CD /* MoviesProtocol.swift */,
 				EA7B5F4C208F762100414C9B /* MovieListManager.swift */,
+				CD28AD2520CF0B9000F0D2E0 /* Reusable.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -852,14 +861,17 @@
 				EA28EFBF207BCEAC006EB8CB /* MovieListWrapper.swift in Sources */,
 				CD91F9D92073EE96002BB9EE /* ImageFetchable.swift in Sources */,
 				CDD41609206ABB9400988317 /* Team4Bootcamp.xcdatamodeld in Sources */,
+				CD28AD2820CF0D2900F0D2E0 /* UICollectionView+Reusable.swift in Sources */,
 				CDD41634206B110300988317 /* Movie.swift in Sources */,
 				EA284CC4206D106B00E4D7CD /* MoviesAPI.swift in Sources */,
 				CD2B9F682093958800C91ECB /* CoreDataHelper.swift in Sources */,
 				CD1D7F42207E7321009722FA /* UIColor+Palette.swift in Sources */,
 				CDD4163B206C491500988317 /* MovieListViewController.swift in Sources */,
 				EA7BDBCA20B725790022F128 /* GenreDAO+CoreDataClass.swift in Sources */,
+				CD28AD2620CF0B9000F0D2E0 /* Reusable.swift in Sources */,
 				EA88DFDF207CE05100FFF0B1 /* SearchBarDelegate.swift in Sources */,
 				EA284CC6206D137200E4D7CD /* APIConstants.swift in Sources */,
+				CD28AD2A20CF190A00F0D2E0 /* UITableView+Reusable.swift in Sources */,
 				CD91F9D82073EE96002BB9EE /* CodeView.swift in Sources */,
 				EA1B563B2078022F00390669 /* Date+String.swift in Sources */,
 				CD2B9F6D20939E3B00C91ECB /* MovieCollectionViewCell.swift in Sources */,

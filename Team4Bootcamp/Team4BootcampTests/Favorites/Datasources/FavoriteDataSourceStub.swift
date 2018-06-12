@@ -11,7 +11,25 @@ import UIKit
 import CoreData
 
 class FavoritesDataSourceStub: FavoritesDataSource {
-
+    
+    lazy var mockPersistantContainer: NSPersistentContainer = {
+        
+        let container = NSPersistentContainer(name: PersistenceConstants.persistenceContainerName)
+        let description = NSPersistentStoreDescription()
+        description.type = NSInMemoryStoreType
+        description.shouldAddStoreAsynchronously = false
+        
+        container.persistentStoreDescriptions = [description]
+        container.loadPersistentStores { (description, error) in
+            precondition( description.type == NSInMemoryStoreType )
+            if let error = error {
+                fatalError("Create an in-mem coordinator failed \(error)")
+            }
+        }
+        
+        return container
+    }()
+    
     var numberOfMovies = 0
     var moviesTest: [MovieDAO] = []
     let movie = Movie(id: 337167, title: "Fifty Shades Freed", releaseDate: Date(), genresIds: [], overview: "", posterPath: "/jjPJ4s3DWZZvI4vw8Xfi4Vqa1Q8.jpg", persisted: false)
@@ -21,9 +39,8 @@ class FavoritesDataSourceStub: FavoritesDataSource {
     }
 
     override func filteredList(movies mvs: [MovieDAO]) -> [MovieDAO] {
-        guard let context = container?.viewContext else {
-            return []
-        }
+        
+        let context = self.mockPersistantContainer.viewContext
         let newMovieDAO = MovieDAO(context: context)
         newMovieDAO.date = movie.releaseDate as NSDate?
         newMovieDAO.id = Int32(movie.id)

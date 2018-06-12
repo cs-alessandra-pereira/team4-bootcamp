@@ -14,11 +14,11 @@ protocol MovieCollectionViewCellDelegate: class {
     func didFavoriteCell(_ isSelected: Bool, at position: IndexPath)
 }
 
-class MovieCollectionViewCell: UICollectionViewCell {
+class MovieCollectionViewCell: UICollectionViewCell, Reusable {
+    
+    static var nibName: UINib?
     
     let imageFetchable: ImageFetchable = KFImageFetchable()
-
-    static let movieListCell = "MovieCell"
     
     lazy var imageView: UIImageView = {
         let view = UIImageView(frame: .zero)

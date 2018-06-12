@@ -10,7 +10,7 @@ import UIKit
 import Kingfisher
 import SnapKit
 
-final class FavoriteTableViewCell: UITableViewCell {
+final class FavoriteTableViewCell: UITableViewCell {    
     
     private let imageFetchable: ImageFetchable = KFImageFetchable()
     private let calendar = Calendar.current

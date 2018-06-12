@@ -7,8 +7,11 @@
 //
 
 import UIKit
+import CoreData
 
 class MovieDetailsViewController: UIViewController {
+    
+    weak static var container: NSPersistentContainer? = (UIApplication.shared.delegate as? AppDelegate)?.coredata.persistentContainer
     
     var datasource: UITableViewDataSource?
     let imageFetchable: ImageFetchable = KFImageFetchable()
@@ -49,7 +52,7 @@ class MovieDetailsViewController: UIViewController {
     }
     
     func isMovieFavorited() {
-        if let context = FavoritesViewController.container?.viewContext {
+        if let context = MovieDetailsViewController.container?.viewContext {
             let predicate = NSPredicate(format: "id == \(movie.id)")
             let previouslyInserted = try? context.previouslyInserted(MovieDAO.self, predicateForDuplicityCheck: predicate)
             movie.persisted = previouslyInserted ?? false
@@ -60,7 +63,7 @@ class MovieDetailsViewController: UIViewController {
 
 extension MovieDetailsViewController: MovieDetailFavoriteDelegate {
     func didFavoriteMovie(_ isSelected: Bool) {
-        if let context = FavoritesViewController.container?.viewContext {
+        if let context = MovieDetailsViewController.container?.viewContext {
             DispatchQueue.main.async {
                 if isSelected {
                     _ = MovieDAO.addMovie(movie: self.movie, context: context)

@@ -61,7 +61,7 @@ final class MovieListDatasource: NSObject, UICollectionViewDataSource {
         }
         registerMovieWasFavoritedObserver(notificationName: .movieAddedToPersistence)
         registerMovieWasFavoritedObserver(notificationName: .movieRemovedFromPersistence)
-        self.collectionView?.register(MovieCollectionViewCell.self, forCellWithReuseIdentifier: MovieCollectionViewCell.movieListCell)
+        self.collectionView?.register(MovieCollectionViewCell.self)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -70,13 +70,13 @@ final class MovieListDatasource: NSObject, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MovieCollectionViewCell.movieListCell, for: indexPath) as? MovieCollectionViewCell else {
+        guard let cell: MovieCollectionViewCell = self.collectionView?.dequeueReusableCell(for: indexPath) else {
             fatalError()
         }
         
         var movie = getMovies()[indexPath.row]
 
-        if let context = FavoritesViewController.container?.viewContext {
+        if let context = MovieListViewController.container?.viewContext {
             let predicate = NSPredicate(format: "id == \(movie.id)")
             let previouslyInserted = try? context.previouslyInserted(MovieDAO.self, predicateForDuplicityCheck: predicate)
             movie.persisted = previouslyInserted ?? false
@@ -90,7 +90,7 @@ final class MovieListDatasource: NSObject, UICollectionViewDataSource {
 extension MovieListDatasource: MovieCollectionViewCellDelegate {
     
     func didFavoriteCell(_ isSelected: Bool, at position: IndexPath) {
-        if let context = FavoritesViewController.container?.viewContext {
+        if let context = MovieListViewController.container?.viewContext {
             DispatchQueue.main.async {
                 if isSelected {
                     _ = MovieDAO.addMovie(movie: self.getMovies()[position.row], context: context)

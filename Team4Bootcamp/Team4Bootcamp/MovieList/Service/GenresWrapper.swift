@@ -28,7 +28,7 @@ struct GenresWrapper: Decodable {
     }
 }
 
-fileprivate struct Genre: Decodable {
+private struct Genre: Decodable {
     let id: GenreId
     let name: GenreName
 }

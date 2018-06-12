@@ -14,7 +14,6 @@ protocol MovieDetailFavoriteDelegate: class {
 
 class MovieDetailsView: UIView {
     
-    static let movieDetailsCell = "MovieCell"
     var persistedButtonDelegate: MovieDetailFavoriteDelegate?
     
     lazy var posterImage: UIImageView = {

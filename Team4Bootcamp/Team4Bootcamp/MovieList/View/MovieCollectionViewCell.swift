@@ -88,10 +88,12 @@ extension MovieCollectionViewCell: CodeView {
             make.height.equalTo(frame.size.height*3/4)
             make.width.equalTo(frame.size.width)
             make.top.equalTo(safeAreaLayoutGuide.snp.topMargin)
+            make.centerX.equalTo(frame.size.width/2)
         }
         
         iconButton.snp.makeConstraints { make in
             make.height.equalTo(frame.size.height/12)
+            make.left.equalTo(textLabel.snp.right)
             make.topMargin.equalTo(imageView.snp.bottom).offset(25)
             make.right.equalTo(imageView.snp.rightMargin)
         }

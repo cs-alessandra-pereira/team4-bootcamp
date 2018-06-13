@@ -65,7 +65,7 @@ class MovieListViewController: UIViewController {
             case .willDisplayMoreCells:
                 let count = self?.movieListDatasource?.getMovieCount()
                 if movieIndex == count! - 1 {
-                    if MoviesConstants.pageBaseURL <= MoviesConstants.paginationLimit {
+                    if APIConstants.pageBaseURL <= APIConstants.paginationLimit {
                         self?.fetchMovies()
                     }
                 }

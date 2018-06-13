@@ -60,7 +60,7 @@ class MovieCollectionViewCell: UICollectionViewCell, Reusable {
             iconButton.isSelected = false
         }
         self.position = position
-        let path = Endpoints.moviePoster(movie.posterPath).path
+        let path = Endpoint.moviePoster(movie.posterPath).path
         imageFetchable.fetch(imageURLString: path, onImage: imageView) {}
     }
 }

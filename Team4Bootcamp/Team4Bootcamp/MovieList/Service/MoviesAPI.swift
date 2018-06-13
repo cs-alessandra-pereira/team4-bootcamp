@@ -10,9 +10,8 @@ import Foundation
 
 class MoviesAPI {
     
-    func request(endpoint: Endpoints, callback: @escaping (Result<Decodable, MoviesError>) -> Void) {
-        let url = URL(string: "\(MoviesConstants.baseURL)\(endpoint.path)")!
-        let request = URLRequest(url: url)
+    func request(endpoint: Endpoint, callback: @escaping (Result<Decodable, MoviesError>) -> Void) {
+        let request = endpoint.request()
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             
             if error != nil {
@@ -37,7 +36,8 @@ class MoviesAPI {
 extension MoviesAPI: MoviesProtocol {
 
     func fetchMovies(callback: @escaping (Result<[Movie], MoviesError>) -> Void) {
-        request(endpoint: Endpoints.movieList) { result in
+        
+        request(endpoint: Endpoint.movieList) { result in
             
             switch result {
             case .success(let movieListJson):
@@ -45,8 +45,8 @@ extension MoviesAPI: MoviesProtocol {
                     DispatchQueue.main.async { callback(.error(MoviesError.noData)) }
                     return
                 }
-                if MoviesConstants.pageBaseURL <= MoviesConstants.paginationLimit {
-                    MoviesConstants.pageBaseURL += 1
+                if APIConstants.pageBaseURL <= APIConstants.paginationLimit {
+                    APIConstants.pageBaseURL += 1
                 }
                 DispatchQueue.main.async { callback(.success(movieList.results)) }
             case .error(let err):
@@ -57,7 +57,7 @@ extension MoviesAPI: MoviesProtocol {
     }
     
     func fetchGenres(callback: @escaping (Result<[GenreId: GenreName], MoviesError>) -> Void) {
-        request(endpoint: Endpoints.genre) { result in
+        request(endpoint: Endpoint.genre) { result in
             switch result {
             case .success(let genres):
                 guard let genresWrapper = genres as? GenresWrapper else {

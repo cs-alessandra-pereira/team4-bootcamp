@@ -13,16 +13,7 @@ class MovieListViewController: UIViewController {
     
     weak static var container: NSPersistentContainer? = (UIApplication.shared.delegate as? AppDelegate)?.coredata.persistentContainer
     
-    @IBOutlet weak var collectionView: UICollectionView! {
-        didSet {
-            let insets = UIEdgeInsets(top: 20.0, left: 20.0, bottom: 20.0, right: 20.0)
-            let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-            layout.sectionInset = insets
-            layout.itemSize = CGSize(width: 180, height: 220)
-            collectionView.collectionViewLayout = layout
-            collectionView.backgroundColor = UIColor.white
-        }
-    }
+    @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var viewNoResults: UIView!
@@ -36,11 +27,11 @@ class MovieListViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupDelegate()
+        setupDelegates()
         setupSearchBar()
-        adjustNavigationBar()
         fetchGenres()
         fetchMovies()
+        adjustNavigationBar()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -48,13 +39,7 @@ class MovieListViewController: UIViewController {
         collectionView.reloadData()
     }
     
-    
-    func setupDatasource(movies: [Movie], searchBarDelegate: SearchBarDelegate?) {
-        movieListDatasource = MovieListDatasource(movies: movies, collectionView: collectionView, searchBarDelegate: searchBarDelegate)
-        collectionView.dataSource = movieListDatasource
-    }
-    
-    func setupDelegate() {
+    func setupDelegates() {
         collectionViewDelegate = CollectionViewDelegate()
         collectionView.delegate = collectionViewDelegate
 
@@ -76,18 +61,20 @@ class MovieListViewController: UIViewController {
     func setupSearchBar() {
         searchBarDelegate = SearchBarDelegate()
         searchBar.delegate = searchBarDelegate
-        searchBar.layer.borderWidth = 1
-        searchBar.layer.borderColor = UIColor.primaryColor?.cgColor
-        if let textField = searchBar.value(forKey: "_searchField") as? UITextField {
-            textField.backgroundColor = UIColor.accentColor
+    }
+    
+    func fetchGenres() {
+        self.state = .loading
+        movieService.fetchGenres { result in
+            switch result {
+            case .success(let genres):
+                GenreDAO.allGenres = genres
+                self.state = .initial
+            case .error:
+                self.state = .error
+            }
         }
     }
-    
-    func adjustNavigationBar() {
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-    }
-    
     
     func fetchMovies() {
         if let searching = searchBar.text?.count, searching > 0 { return }
@@ -114,18 +101,15 @@ class MovieListViewController: UIViewController {
             }
         }
     }
-
-    func fetchGenres() {
-        self.state = .loading
-        movieService.fetchGenres { result in
-            switch result {
-            case .success(let genres):
-                GenreDAO.allGenres = genres
-                self.state = .initial
-            case .error:
-                self.state = .error
-            }
-        }
+    
+    func setupDatasource(movies: [Movie], searchBarDelegate: SearchBarDelegate?) {
+        movieListDatasource = MovieListDatasource(movies: movies, collectionView: collectionView, searchBarDelegate: searchBarDelegate)
+        collectionView.dataSource = movieListDatasource
+    }
+    
+    func adjustNavigationBar() {
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
     }
     
     private enum ScreenState {

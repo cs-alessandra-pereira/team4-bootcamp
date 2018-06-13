@@ -20,6 +20,8 @@
 		CD28AD2620CF0B9000F0D2E0 /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD28AD2520CF0B9000F0D2E0 /* Reusable.swift */; };
 		CD28AD2820CF0D2900F0D2E0 /* UICollectionView+Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD28AD2720CF0D2900F0D2E0 /* UICollectionView+Reusable.swift */; };
 		CD28AD2A20CF190A00F0D2E0 /* UITableView+Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD28AD2920CF190A00F0D2E0 /* UITableView+Reusable.swift */; };
+		CD28AD2E20D1ADD300F0D2E0 /* MovieCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD28AD2D20D1ADD300F0D2E0 /* MovieCollectionView.swift */; };
+		CD28AD3020D1B32B00F0D2E0 /* MovieSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD28AD2F20D1B32B00F0D2E0 /* MovieSearchBar.swift */; };
 		CD2B9F682093958800C91ECB /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2B9F672093958800C91ECB /* CoreDataHelper.swift */; };
 		CD2B9F6D20939E3B00C91ECB /* MovieCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2B9F6C20939E3B00C91ECB /* MovieCollectionViewCell.swift */; };
 		CD2B9F7420939EDF00C91ECB /* MovieDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2B9F7320939EDF00C91ECB /* MovieDetailsView.swift */; };
@@ -138,6 +140,8 @@
 		CD28AD2520CF0B9000F0D2E0 /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
 		CD28AD2720CF0D2900F0D2E0 /* UICollectionView+Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Reusable.swift"; sourceTree = "<group>"; };
 		CD28AD2920CF190A00F0D2E0 /* UITableView+Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Reusable.swift"; sourceTree = "<group>"; };
+		CD28AD2D20D1ADD300F0D2E0 /* MovieCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCollectionView.swift; sourceTree = "<group>"; };
+		CD28AD2F20D1B32B00F0D2E0 /* MovieSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieSearchBar.swift; sourceTree = "<group>"; };
 		CD2B9F672093958800C91ECB /* CoreDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
 		CD2B9F6C20939E3B00C91ECB /* MovieCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieCollectionViewCell.swift; sourceTree = "<group>"; };
 		CD2B9F7320939EDF00C91ECB /* MovieDetailsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieDetailsView.swift; sourceTree = "<group>"; };
@@ -309,6 +313,7 @@
 				CD91F9D52073EE96002BB9EE /* ImageFetchable.swift */,
 				CD91F9D42073EE96002BB9EE /* CodeView.swift */,
 				EA0AA957208686370039C195 /* CellConstants.swift */,
+				CD28AD2F20D1B32B00F0D2E0 /* MovieSearchBar.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -317,6 +322,7 @@
 			isa = PBXGroup;
 			children = (
 				CD2B9F6C20939E3B00C91ECB /* MovieCollectionViewCell.swift */,
+				CD28AD2D20D1ADD300F0D2E0 /* MovieCollectionView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -865,6 +871,7 @@
 				CDD41634206B110300988317 /* Movie.swift in Sources */,
 				EA284CC4206D106B00E4D7CD /* MoviesAPI.swift in Sources */,
 				CD2B9F682093958800C91ECB /* CoreDataHelper.swift in Sources */,
+				CD28AD3020D1B32B00F0D2E0 /* MovieSearchBar.swift in Sources */,
 				CD1D7F42207E7321009722FA /* UIColor+Palette.swift in Sources */,
 				CDD4163B206C491500988317 /* MovieListViewController.swift in Sources */,
 				EA7BDBCA20B725790022F128 /* GenreDAO+CoreDataClass.swift in Sources */,
@@ -880,6 +887,7 @@
 				CD2B9F7A2093A07400C91ECB /* UIButton+FavoriteButton.swift in Sources */,
 				CD2B9F7420939EDF00C91ECB /* MovieDetailsView.swift in Sources */,
 				EA284CC0206D0D0200E4D7CD /* MoviesProtocol.swift in Sources */,
+				CD28AD2E20D1ADD300F0D2E0 /* MovieCollectionView.swift in Sources */,
 				EA7BDBCB20B725790022F128 /* GenreDAO+CoreDataProperties.swift in Sources */,
 				EA32507E207507980018BB28 /* CollectionViewDelegate.swift in Sources */,
 				CD27E24A208E291C00349B46 /* FavoriteTableViewCell.swift in Sources */,

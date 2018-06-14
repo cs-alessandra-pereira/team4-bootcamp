@@ -20,6 +20,8 @@ final class MovieListDatasource: NSObject, UICollectionViewDataSource {
     
     private let favoritePersistenceService = FavoritePersistenceService()
     
+    private var movieWasFavoritedObservers: [NSObjectProtocol] = []
+    
     private var searchString: String? = nil {
         didSet {
             collectionView?.reloadData()
@@ -33,8 +35,8 @@ final class MovieListDatasource: NSObject, UICollectionViewDataSource {
         return self.movies.filter { $0.title.lowercased().starts(with: searchString.lowercased()) }
     }
     
-    func registerMovieWasFavoritedObserver(notificationName: Notification.Name) {
-        NotificationCenter.default.addObserver(forName: notificationName, object: nil, queue: OperationQueue.main) { notification in
+    func registerMovieWasFavoritedObserver(notificationName: Notification.Name) -> NSObjectProtocol {
+        return NotificationCenter.default.addObserver(forName: notificationName, object: nil, queue: OperationQueue.main) { notification in
             if let info = notification.userInfo, let movie = info[PersistenceConstants.notificationUserInfoKey] as? Movie {
                 if let index = self.getMovieIndex(movie: movie) {
                     self.movies[index].persisted = notificationName == .movieAddedToPersistence ? true : false
@@ -59,9 +61,17 @@ final class MovieListDatasource: NSObject, UICollectionViewDataSource {
                 self?.searchString = searchString
             }
         }
-        registerMovieWasFavoritedObserver(notificationName: .movieAddedToPersistence)
-        registerMovieWasFavoritedObserver(notificationName: .movieRemovedFromPersistence)
+        
+        movieWasFavoritedObservers.append(registerMovieWasFavoritedObserver(notificationName: .movieAddedToPersistence))
+        movieWasFavoritedObservers.append(registerMovieWasFavoritedObserver(notificationName: .movieRemovedFromPersistence))
+        
         self.collectionView?.register(MovieCollectionViewCell.self)
+    }
+    
+    deinit {
+        for obeserver in movieWasFavoritedObservers {
+            NotificationCenter.default.removeObserver(obeserver)
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

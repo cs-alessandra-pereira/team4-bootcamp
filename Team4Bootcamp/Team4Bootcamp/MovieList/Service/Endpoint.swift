@@ -47,17 +47,22 @@ enum Endpoint {
         return request as URLRequest
     }
     
-    func decode(_ data: Data) throws -> Decodable {
+    func decode(_ data: Data) -> Decodable? {
+        
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .iso8601
         
-        switch self {
-        case .genre:
-            return try decoder.decode(GenresWrapper.self, from: data)
-        case .movieList:
-            return try decoder.decode(MovieListWrapper.self, from: data)
-        default:
-            throw MoviesError.invalidData
+        do {
+            switch self {
+            case .genre:
+                return try decoder.decode(GenresWrapper.self, from: data)
+            case .movieList:
+                return try decoder.decode(MovieListWrapper.self, from: data)
+            default:
+                return nil
+            }
+        } catch {
+            return nil
         }
     }
     

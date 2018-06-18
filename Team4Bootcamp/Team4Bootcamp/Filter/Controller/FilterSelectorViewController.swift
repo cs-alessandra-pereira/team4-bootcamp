@@ -26,7 +26,7 @@ class FilterSelectorViewController: UIViewController {
     override func viewDidLoad() {
         filterSelectorTableView.tableView.delegate = self
         filterSelectorTableView.tableView.dataSource = self
-        filterSelectorTableView.tableView.register(FilterSelectorTableViewCell.self, forCellReuseIdentifier: filterSelectorCell)
+        filterSelectorTableView.tableView.register(FilterSelectorTableViewCell.self)
     }
     
     override func willMove(toParentViewController parent: UIViewController?) {
@@ -43,10 +43,8 @@ extension FilterSelectorViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
- 
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: filterSelectorCell, for: indexPath) as? FilterSelectorTableViewCell else {
-            fatalError()
-        }
+        
+        let cell: FilterSelectorTableViewCell = tableView.dequeueReusableCell(for: indexPath)
         cell.textLabel?.text = data[indexPath.row]
         for element in selectedData where element == data[indexPath.row] {
             tableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)

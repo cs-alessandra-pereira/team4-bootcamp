@@ -30,12 +30,8 @@ class MovieDetailsView: UIView {
         view.tableFooterView = UIView()
         return view
     }()
-    
-    lazy var persistedButton: FavoriteButton = {
-        let view = FavoriteButton(frame: .zero)
-        view.addTarget(self, action: #selector(didFavoriteMovie), for: .touchUpInside)
-        return view
-    }()
+   
+    lazy var persistedButton = UIButton.favoriteButton(target: self, withSelector: #selector(didFavoriteMovie))
     
     override init(frame: CGRect) {
         super.init(frame: frame)

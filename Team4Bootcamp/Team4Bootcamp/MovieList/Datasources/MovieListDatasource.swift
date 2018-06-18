@@ -46,8 +46,7 @@ final class MovieListDatasource: NSObject, UICollectionViewDataSource {
     }
     
     
-    init(movies: [Movie], collectionView: UICollectionView, searchBarDelegate: SearchBarDelegate?) {
-        self.movies = movies
+    init(collectionView: UICollectionView, searchBarDelegate: SearchBarDelegate?) {
         self.collectionView = collectionView
         super.init()
         searchBarDelegate?.callback = { [weak self] searchBar, searchEvent, searchString in

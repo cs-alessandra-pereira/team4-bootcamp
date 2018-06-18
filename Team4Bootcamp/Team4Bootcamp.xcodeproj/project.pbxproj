@@ -43,6 +43,7 @@
 		CDCF6D13208FC10300D05FDF /* FavoriteTableViewDelegateStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDCF6D12208FC10300D05FDF /* FavoriteTableViewDelegateStub.swift */; };
 		CDCF6D16208FC50600D05FDF /* FavoriteDataSourceSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDCF6D15208FC50600D05FDF /* FavoriteDataSourceSpec.swift */; };
 		CDCF6D18208FC52600D05FDF /* FavoriteDataSourceStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDCF6D17208FC52600D05FDF /* FavoriteDataSourceStub.swift */; };
+		CDD37E8D20D3006C00528F4B /* MovieListStatesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD37E8C20D3006C00528F4B /* MovieListStatesController.swift */; };
 		CDD41601206ABB9400988317 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD41600206ABB9400988317 /* AppDelegate.swift */; };
 		CDD41606206ABB9400988317 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDD41604206ABB9400988317 /* Main.storyboard */; };
 		CDD41609206ABB9400988317 /* Team4Bootcamp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CDD41607206ABB9400988317 /* Team4Bootcamp.xcdatamodeld */; };
@@ -163,6 +164,7 @@
 		CDCF6D12208FC10300D05FDF /* FavoriteTableViewDelegateStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteTableViewDelegateStub.swift; sourceTree = "<group>"; };
 		CDCF6D15208FC50600D05FDF /* FavoriteDataSourceSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteDataSourceSpec.swift; sourceTree = "<group>"; };
 		CDCF6D17208FC52600D05FDF /* FavoriteDataSourceStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteDataSourceStub.swift; sourceTree = "<group>"; };
+		CDD37E8C20D3006C00528F4B /* MovieListStatesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListStatesController.swift; sourceTree = "<group>"; };
 		CDD415FD206ABB9400988317 /* Team4Bootcamp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Team4Bootcamp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDD41600206ABB9400988317 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CDD41605206ABB9400988317 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -530,6 +532,7 @@
 		CDD41637206C2B7F00988317 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				CDD37E8C20D3006C00528F4B /* MovieListStatesController.swift */,
 				CDD4163A206C491500988317 /* MovieListViewController.swift */,
 			);
 			path = Controller;
@@ -873,6 +876,7 @@
 				CD2B9F682093958800C91ECB /* CoreDataHelper.swift in Sources */,
 				CD28AD3020D1B32B00F0D2E0 /* MovieSearchBar.swift in Sources */,
 				CD1D7F42207E7321009722FA /* UIColor+Palette.swift in Sources */,
+				CDD37E8D20D3006C00528F4B /* MovieListStatesController.swift in Sources */,
 				CDD4163B206C491500988317 /* MovieListViewController.swift in Sources */,
 				EA7BDBCA20B725790022F128 /* GenreDAO+CoreDataClass.swift in Sources */,
 				CD28AD2620CF0B9000F0D2E0 /* Reusable.swift in Sources */,

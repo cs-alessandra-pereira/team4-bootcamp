@@ -20,6 +20,7 @@ class MovieListViewController: UIViewController {
     @IBOutlet weak var viewError: UIView!
     
     var movieListDatasource: MovieListDatasource?
+    var delegate: MovieListViewHandler?
     var collectionViewDelegate: CollectionViewDelegate?
     var searchBarDelegate: SearchBarDelegate?
     
@@ -28,10 +29,10 @@ class MovieListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupDelegates()
-        setupSearchBar()
+        setupDatasource()
+        setupCallbacks()
         fetchGenres()
         fetchMovies()
-        adjustNavigationBar()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -40,9 +41,21 @@ class MovieListViewController: UIViewController {
     }
     
     func setupDelegates() {
+        self.delegate = MovieListStatesController(viewController: self)
+
         collectionViewDelegate = CollectionViewDelegate()
         collectionView.delegate = collectionViewDelegate
-
+        
+        searchBarDelegate = SearchBarDelegate()
+        searchBar.delegate = searchBarDelegate
+    }
+    
+    func setupDatasource() {
+        movieListDatasource = MovieListDatasource(collectionView: collectionView, searchBarDelegate: searchBarDelegate)
+        collectionView.dataSource = movieListDatasource
+    }
+    
+    func setupCallbacks() {
         collectionViewDelegate?.callback = { [weak self] collectionEvent, movieIndex in
             switch collectionEvent {
             case .didSelectItemAt:
@@ -58,20 +71,13 @@ class MovieListViewController: UIViewController {
         }
     }
     
-    func setupSearchBar() {
-        searchBarDelegate = SearchBarDelegate()
-        searchBar.delegate = searchBarDelegate
-    }
-    
     func fetchGenres() {
-        self.state = .loading
         movieService.fetchGenres { result in
             switch result {
             case .success(let genres):
                 GenreDAO.allGenres = genres
-                self.state = .initial
             case .error:
-                self.state = .error
+                self.delegate?.state = .error
             }
         }
     }
@@ -81,74 +87,16 @@ class MovieListViewController: UIViewController {
         movieService.fetchMovies { result in
             switch result {
             case .success(let movies):
-                if let datasource = self.movieListDatasource {
-                    datasource.addMovies(newMovies: movies)
-                    self.state = .initial
-                } else {
-                    if movies.count > 0 {
-                        self.setupDatasource(movies: movies, searchBarDelegate: self.searchBar.delegate as? SearchBarDelegate)
-                        self.state = .initial
-                    } else {
-                            self.state = .noResults
-                    }
+                if movies.count > 0 {
+                    self.movieListDatasource?.addMovies(newMovies: movies)
                 }
+                self.delegate?.state = .success
             case .error(let error):
                 if case MoviesError.noData = error {
-                    self.state = .noResults
+                    self.delegate?.state = .noData
                 } else {
-                    self.state = .error
+                    self.delegate?.state = .error
                 }
-            }
-        }
-    }
-    
-    func setupDatasource(movies: [Movie], searchBarDelegate: SearchBarDelegate?) {
-        movieListDatasource = MovieListDatasource(movies: movies, collectionView: collectionView, searchBarDelegate: searchBarDelegate)
-        collectionView.dataSource = movieListDatasource
-    }
-    
-    func adjustNavigationBar() {
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-    }
-    
-    private enum ScreenState {
-        case initial
-        case error
-        case loading
-        case noResults
-    }
-    
-    private var state: ScreenState = .initial {
-        didSet {
-            switch state {
-            case .initial:
-                activityIndicator.stopAnimating()
-                self.activityIndicator.isHidden = true
-                viewNoResults.isHidden = true
-                viewError.isHidden = true
-                collectionView.isHidden = false
-                searchBar.isHidden = false
-    
-            case .loading:
-                collectionView.isHidden = true
-                searchBar.isHidden = true
-                activityIndicator.isHidden = false
-                activityIndicator.startAnimating()
-            case .error:
-                searchBar.isHidden = true
-                activityIndicator.stopAnimating()
-                self.activityIndicator.isHidden = true
-                collectionView.isHidden = true
-                viewNoResults.isHidden = true
-                viewError.isHidden = false
-            case .noResults:
-                activityIndicator.stopAnimating()
-                self.activityIndicator.isHidden = true
-                searchBar.isHidden = false
-                viewError.isHidden = true
-                viewNoResults.isHidden = false
-                collectionView.isHidden = true
             }
         }
     }

@@ -21,6 +21,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         KingfisherManager.shared.cache.maxMemoryCost = 5_000_000
         KingfisherManager.shared.cache.maxDiskCacheSize = 50_000_000
         
+        UINavigationBar.appearance().shadowImage = UIImage()
+        UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
+        
         return true
     }
 

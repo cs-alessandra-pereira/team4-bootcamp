@@ -16,7 +16,7 @@ enum FechatbleViewControllerStates {
 }
 
 protocol FechatbleVCStateDelegate: class {
-    
+
     var state: FechatbleViewControllerStates { get set }
     
     func loadingView()
@@ -24,6 +24,17 @@ protocol FechatbleVCStateDelegate: class {
     func errorView()
     func noDataView()
     func updateView(forState newState: FechatbleViewControllerStates)
+}
+
+extension FechatbleVCStateDelegate {
+    func updateView(forState newState: FechatbleViewControllerStates) {
+        switch newState {
+        case (.loading): loadingView()
+        case (.success): successView()
+        case (.error): errorView()
+        case (.noData): noDataView()
+        }
+    }
 }
 
 class MovieListStatesController: FechatbleVCStateDelegate {
@@ -74,14 +85,5 @@ class MovieListStatesController: FechatbleVCStateDelegate {
         viewController?.activityIndicator.isHidden = false
         viewController?.viewNoResults.isHidden = true
         viewController?.viewError.isHidden = true
-    }
-    
-    func updateView(forState newState: FechatbleViewControllerStates) {
-        switch newState {
-        case (.loading): loadingView()
-        case (.success): successView()
-        case (.error): errorView()
-        case (.noData): noDataView()
-        }
     }
 }

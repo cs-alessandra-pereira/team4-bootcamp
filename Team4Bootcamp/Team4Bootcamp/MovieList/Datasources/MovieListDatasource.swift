@@ -18,8 +18,6 @@ final class MovieListDatasource: NSObject, UICollectionViewDataSource {
     
     weak var collectionView: UICollectionView?
     
-    private let favoritePersistenceService = FavoritePersistenceService()
-    
     private var movieWasFavoritedObservers: [NSObjectProtocol] = []
     
     private var searchString: String? = nil {

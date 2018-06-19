@@ -14,7 +14,6 @@
 		CD1D7F45207E7360009722FA /* UIImage+Icons.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1D7F44207E7360009722FA /* UIImage+Icons.swift */; };
 		CD27E248208E291600349B46 /* FavoritesDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD27E247208E291600349B46 /* FavoritesDataSource.swift */; };
 		CD27E24A208E291C00349B46 /* FavoriteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD27E249208E291C00349B46 /* FavoriteTableViewCell.swift */; };
-		CD27E24C208E292700349B46 /* FavoritePersistenceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD27E24B208E292600349B46 /* FavoritePersistenceService.swift */; };
 		CD27E24E208E293000349B46 /* FavoriteTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD27E24D208E293000349B46 /* FavoriteTableViewDelegate.swift */; };
 		CD27E250208E293600349B46 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD27E24F208E293600349B46 /* FavoritesViewController.swift */; };
 		CD28AD2620CF0B9000F0D2E0 /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD28AD2520CF0B9000F0D2E0 /* Reusable.swift */; };
@@ -137,7 +136,6 @@
 		CD1D7F44207E7360009722FA /* UIImage+Icons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Icons.swift"; sourceTree = "<group>"; };
 		CD27E247208E291600349B46 /* FavoritesDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesDataSource.swift; sourceTree = "<group>"; };
 		CD27E249208E291C00349B46 /* FavoriteTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteTableViewCell.swift; sourceTree = "<group>"; };
-		CD27E24B208E292600349B46 /* FavoritePersistenceService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritePersistenceService.swift; sourceTree = "<group>"; };
 		CD27E24D208E293000349B46 /* FavoriteTableViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteTableViewDelegate.swift; sourceTree = "<group>"; };
 		CD27E24F208E293600349B46 /* FavoritesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		CD28AD2520CF0B9000F0D2E0 /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
@@ -266,7 +264,6 @@
 			children = (
 				CD27E246208E28B700349B46 /* Datasources */,
 				CD27E245208E28AF00349B46 /* View */,
-				CD27E244208E28A900349B46 /* Service */,
 				CD27E243208E289900349B46 /* Delegates */,
 				CD27E240208E286400349B46 /* Controller */,
 			);
@@ -287,14 +284,6 @@
 				CD27E24D208E293000349B46 /* FavoriteTableViewDelegate.swift */,
 			);
 			path = Delegates;
-			sourceTree = "<group>";
-		};
-		CD27E244208E28A900349B46 /* Service */ = {
-			isa = PBXGroup;
-			children = (
-				CD27E24B208E292600349B46 /* FavoritePersistenceService.swift */,
-			);
-			path = Service;
 			sourceTree = "<group>";
 		};
 		CD27E245208E28AF00349B46 /* View */ = {
@@ -902,7 +891,6 @@
 				EA7BDBCB20B725790022F128 /* GenreDAO+CoreDataProperties.swift in Sources */,
 				EA32507E207507980018BB28 /* CollectionViewDelegate.swift in Sources */,
 				CD27E24A208E291C00349B46 /* FavoriteTableViewCell.swift in Sources */,
-				CD27E24C208E292700349B46 /* FavoritePersistenceService.swift in Sources */,
 				EA6B116320B43C180014409F /* NSManagedContext+CRUD.swift in Sources */,
 				EA284CC2206D0ED400E4D7CD /* Result.swift in Sources */,
 				CDD41601206ABB9400988317 /* AppDelegate.swift in Sources */,

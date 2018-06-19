@@ -72,7 +72,8 @@ public class MovieDAO: NSManagedObject {
         }
         
         let compoundPredicates = NSCompoundPredicate(orPredicateWithSubpredicates: predicates)
-        if let results = try? context.fetchObjects(MovieDAO.self, predicate: compoundPredicates) {
+        let request = context.buildNSFetchRequest(forClass: MovieDAO.self, predicate: compoundPredicates)
+        if let results = try? context.fetchObjects(withRequest: request) {
             return Result.success(results)
         }
         
@@ -83,8 +84,8 @@ public class MovieDAO: NSManagedObject {
         
         var moviesDAOFetched = [MovieDAO]()
         let predicate = NSPredicate(format: "name IN %@", genres)
-        
-        if let results = try? context.fetchObjects(GenreDAO.self, predicate: predicate) {
+        let request = context.buildNSFetchRequest(forClass: GenreDAO.self, predicate: predicate)
+        if let results = try? context.fetchObjects(withRequest: request) {
             for result in results {
                 if let movie = result.movies {
                     moviesDAOFetched.append(movie)

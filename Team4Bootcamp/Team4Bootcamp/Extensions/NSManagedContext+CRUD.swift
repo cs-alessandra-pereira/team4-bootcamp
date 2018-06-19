@@ -11,19 +11,14 @@ import CoreData
 
 extension NSManagedObjectContext {
     
-    func fetchObjects <T: NSManagedObject>(_ entityClass: T.Type, sortBy: [NSSortDescriptor]? = nil, predicate: NSPredicate? = nil) throws -> [T] {
-        
-        let request: NSFetchRequest<T>
-        request = NSFetchRequest(entityName: String(describing: entityClass))
-        request.returnsObjectsAsFaults = false
-        request.predicate = predicate
-        request.sortDescriptors = sortBy
+    func fetchObjects <T: NSManagedObject>(withRequest request: NSFetchRequest<T>) throws -> [T] {
         let fetchedResult = try self.fetch(request)
         return fetchedResult
     }
     
     func previouslyInserted<T: NSManagedObject>(_ entityClass: T.Type, predicateForDuplicityCheck: NSPredicate) throws -> Bool {
-        let existingResults = try fetchObjects(entityClass, predicate: predicateForDuplicityCheck)
+        let request = self.buildNSFetchRequest(forClass: entityClass, predicate: predicateForDuplicityCheck)
+        let existingResults = try fetchObjects(withRequest: request)
         return existingResults.count == 0 ? false : true
     }
     
@@ -42,4 +37,23 @@ extension NSManagedObjectContext {
         
         return objectIDs.count
     }
+    
+    func buildNSFetchedResultsController<T: NSManagedObject>(withRequest request: NSFetchRequest<T>) -> NSFetchedResultsController<T> {
+        let fetchedResultsController = NSFetchedResultsController<T>(
+            fetchRequest: request,
+            managedObjectContext: self,
+            sectionNameKeyPath: nil,
+            cacheName: nil)
+        return fetchedResultsController
+    }
+    
+    func buildNSFetchRequest <T: NSManagedObject>(forClass entityClass: T.Type, sortBy: [NSSortDescriptor]? = nil, predicate: NSPredicate? = nil)  -> NSFetchRequest<T> {
+        let request: NSFetchRequest<T>
+        request = NSFetchRequest(entityName: String(describing: entityClass))
+        request.returnsObjectsAsFaults = false
+        request.predicate = predicate
+        request.sortDescriptors = sortBy
+        return request
+    }
+
 }

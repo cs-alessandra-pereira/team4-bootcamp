@@ -8,24 +8,42 @@
 
 import Foundation
 
-enum MovieListState {
+enum FechatbleViewControllerStates {
     case loading
     case success
     case error
     case noData
 }
 
-protocol MovieListViewHandler: class {
-    var viewController: MovieListViewController { get }
-    var state: MovieListState { get set }
+protocol FechatbleVCStateDelegate: class {
+
+    var state: FechatbleViewControllerStates { get set }
+    
+    func loadingView()
+    func successView()
+    func errorView()
+    func noDataView()
+    func updateView(forState newState: FechatbleViewControllerStates)
 }
 
-class MovieListStatesController: MovieListViewHandler {
+extension FechatbleVCStateDelegate {
+    func updateView(forState newState: FechatbleViewControllerStates) {
+        switch newState {
+        case (.loading): loadingView()
+        case (.success): successView()
+        case (.error): errorView()
+        case (.noData): noDataView()
+        }
+    }
+}
+
+class MovieListStatesController: FechatbleVCStateDelegate {
     
-    var viewController: MovieListViewController
-    var state: MovieListState = .loading {
+    weak var viewController: MovieListViewController?
+    
+    var state: FechatbleViewControllerStates = .loading {
         willSet(newState) {
-            updateView(newState: newState)
+            updateView(forState: newState)
         }
     }
     
@@ -34,47 +52,38 @@ class MovieListStatesController: MovieListViewHandler {
     }
     
     func loadingView() {
-        viewController.collectionView.isHidden = true
-        viewController.searchBar.isHidden = true
-        viewController.activityIndicator.startAnimating()
-        viewController.activityIndicator.isHidden = false
-        viewController.viewNoResults.isHidden = true
-        viewController.viewError.isHidden = true
+        viewController?.collectionView.isHidden = true
+        viewController?.searchBar.isHidden = true
+        viewController?.activityIndicator.startAnimating()
+        viewController?.activityIndicator.isHidden = false
+        viewController?.viewNoResults.isHidden = true
+        viewController?.viewError.isHidden = true
     }
     
     func successView() {
-        viewController.collectionView.isHidden = false
-        viewController.searchBar.isHidden = false
-        viewController.activityIndicator.stopAnimating()
-        viewController.activityIndicator.isHidden = true
-        viewController.viewNoResults.isHidden = true
-        viewController.viewError.isHidden = true
+        viewController?.collectionView.isHidden = false
+        viewController?.searchBar.isHidden = false
+        viewController?.activityIndicator.stopAnimating()
+        viewController?.activityIndicator.isHidden = true
+        viewController?.viewNoResults.isHidden = true
+        viewController?.viewError.isHidden = true
     }
     
     func errorView() {
-        viewController.collectionView.isHidden = true
-        viewController.searchBar.isHidden = true
-        viewController.activityIndicator.stopAnimating()
-        viewController.activityIndicator.isHidden = true
-        viewController.viewNoResults.isHidden = true
-        viewController.viewError.isHidden = false
+        viewController?.collectionView.isHidden = true
+        viewController?.searchBar.isHidden = true
+        viewController?.activityIndicator.stopAnimating()
+        viewController?.activityIndicator.isHidden = true
+        viewController?.viewNoResults.isHidden = true
+        viewController?.viewError.isHidden = false
     }
     
     func noDataView() {
-        viewController.collectionView.isHidden = true
-        viewController.searchBar.isHidden = true
-        viewController.activityIndicator.startAnimating()
-        viewController.activityIndicator.isHidden = false
-        viewController.viewNoResults.isHidden = true
-        viewController.viewError.isHidden = true
-    }
-    
-    func updateView(newState: MovieListState) {
-        switch newState {
-        case (.loading): loadingView()
-        case (.success): successView()
-        case (.error): errorView()
-        case (.noData): noDataView()
-        }
+        viewController?.collectionView.isHidden = true
+        viewController?.searchBar.isHidden = true
+        viewController?.activityIndicator.startAnimating()
+        viewController?.activityIndicator.isHidden = false
+        viewController?.viewNoResults.isHidden = true
+        viewController?.viewError.isHidden = true
     }
 }

@@ -59,7 +59,7 @@ final class FavoriteTableViewCell: UITableViewCell {
         if let movieDate = movie.releaseDate {
             date.text = String(calendar.component(.year, from: movieDate))
         }
-        let path = Endpoints.moviePoster(movie.posterPath).path
+        let path = Endpoint.moviePoster(movie.posterPath).path
         imageFetchable.fetch(imageURLString: path, onImage: posterImage) {}
     }
     

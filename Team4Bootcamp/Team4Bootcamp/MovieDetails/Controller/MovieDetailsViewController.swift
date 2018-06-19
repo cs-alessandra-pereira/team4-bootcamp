@@ -46,7 +46,7 @@ class MovieDetailsViewController: UIViewController {
     
     func setMovieImage() {
         
-        let path = Endpoints.moviePoster(movie.posterPath).path
+        let path = Endpoint.moviePoster(movie.posterPath).path
         imageFetchable.fetch(imageURLString: path, onImage: movieDetailsView.posterImage) {}
         
     }

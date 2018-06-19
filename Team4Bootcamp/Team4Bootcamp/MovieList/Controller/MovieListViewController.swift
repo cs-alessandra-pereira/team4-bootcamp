@@ -20,7 +20,7 @@ class MovieListViewController: UIViewController {
     @IBOutlet weak var viewError: UIView!
     
     var movieListDatasource: MovieListDatasource?
-    var delegate: MovieListViewHandler?
+    var stateDelegate: FechatbleVCStateDelegate?
     var collectionViewDelegate: CollectionViewDelegate?
     var searchBarDelegate: SearchBarDelegate?
     
@@ -41,7 +41,7 @@ class MovieListViewController: UIViewController {
     }
     
     func setupDelegates() {
-        self.delegate = MovieListStatesController(viewController: self)
+        self.stateDelegate = MovieListStatesController(viewController: self)
 
         collectionViewDelegate = CollectionViewDelegate()
         collectionView.delegate = collectionViewDelegate
@@ -63,7 +63,7 @@ class MovieListViewController: UIViewController {
             case .willDisplayMoreCells:
                 let count = self?.movieListDatasource?.getMovieCount()
                 if movieIndex == count! - 1 {
-                    if MoviesConstants.pageBaseURL <= MoviesConstants.paginationLimit {
+                    if APIConstants.pageBaseURL <= APIConstants.paginationLimit {
                         self?.fetchMovies()
                     }
                 }
@@ -77,7 +77,7 @@ class MovieListViewController: UIViewController {
             case .success(let genres):
                 GenreDAO.allGenres = genres
             case .error:
-                self.delegate?.state = .error
+                self.stateDelegate?.state = .error
             }
         }
     }
@@ -90,12 +90,12 @@ class MovieListViewController: UIViewController {
                 if movies.count > 0 {
                     self.movieListDatasource?.addMovies(newMovies: movies)
                 }
-                self.delegate?.state = .success
+                self.stateDelegate?.state = .success
             case .error(let error):
                 if case MoviesError.noData = error {
-                    self.delegate?.state = .noData
+                    self.stateDelegate?.state = .noData
                 } else {
-                    self.delegate?.state = .error
+                    self.stateDelegate?.state = .error
                 }
             }
         }

@@ -75,6 +75,8 @@
 		EA71E3A0206BE70100970A47 /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA71E39E206BE70100970A47 /* Kingfisher.framework */; };
 		EA7A7D7C20855D9F00F8C637 /* PersistenceConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7A7D7B20855D9F00F8C637 /* PersistenceConstants.swift */; };
 		EA7B5F4D208F762100414C9B /* MovieListManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7B5F4C208F762100414C9B /* MovieListManager.swift */; };
+		EA7BC84120D1942200D13F93 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7BC84020D1942200D13F93 /* Endpoint.swift */; };
+		EA7BC84320D194E300D13F93 /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7BC84220D194E300D13F93 /* Connection.swift */; };
 		EA7BDBCA20B725790022F128 /* GenreDAO+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7BDBC820B725790022F128 /* GenreDAO+CoreDataClass.swift */; };
 		EA7BDBCB20B725790022F128 /* GenreDAO+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7BDBC920B725790022F128 /* GenreDAO+CoreDataProperties.swift */; };
 		EA7BDBCE20B7259B0022F128 /* MovieDAO+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7BDBCC20B7259B0022F128 /* MovieDAO+CoreDataClass.swift */; };
@@ -200,6 +202,8 @@
 		EA71E39F206BE70100970A47 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		EA7A7D7B20855D9F00F8C637 /* PersistenceConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceConstants.swift; sourceTree = "<group>"; };
 		EA7B5F4C208F762100414C9B /* MovieListManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListManager.swift; sourceTree = "<group>"; };
+		EA7BC84020D1942200D13F93 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		EA7BC84220D194E300D13F93 /* Connection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connection.swift; sourceTree = "<group>"; };
 		EA7BDBC820B725790022F128 /* GenreDAO+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GenreDAO+CoreDataClass.swift"; sourceTree = "<group>"; };
 		EA7BDBC920B725790022F128 /* GenreDAO+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GenreDAO+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		EA7BDBCC20B7259B0022F128 /* MovieDAO+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MovieDAO+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -591,6 +595,8 @@
 				EA284CC5206D137200E4D7CD /* APIConstants.swift */,
 				EA28EFBE207BCEAC006EB8CB /* MovieListWrapper.swift */,
 				EA28EFC0207BCF0A006EB8CB /* GenresWrapper.swift */,
+				EA7BC84020D1942200D13F93 /* Endpoint.swift */,
+				EA7BC84220D194E300D13F93 /* Connection.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -884,6 +890,7 @@
 				EA284CC6206D137200E4D7CD /* APIConstants.swift in Sources */,
 				CD28AD2A20CF190A00F0D2E0 /* UITableView+Reusable.swift in Sources */,
 				CD91F9D82073EE96002BB9EE /* CodeView.swift in Sources */,
+				EA7BC84120D1942200D13F93 /* Endpoint.swift in Sources */,
 				EA1B563B2078022F00390669 /* Date+String.swift in Sources */,
 				CD2B9F6D20939E3B00C91ECB /* MovieCollectionViewCell.swift in Sources */,
 				CD2B9F7820939EEB00C91ECB /* MovieDetailsViewController.swift in Sources */,
@@ -909,6 +916,7 @@
 				CD2B9F7620939EE500C91ECB /* MovieDetailsDatasource.swift in Sources */,
 				EA7D5A0520A1C35C00DF4A72 /* FilterSelectorTableView.swift in Sources */,
 				EA7BDBCF20B7259B0022F128 /* MovieDAO+CoreDataProperties.swift in Sources */,
+				EA7BC84320D194E300D13F93 /* Connection.swift in Sources */,
 				EA80B14E209C975B009A0CBC /* FilterView.swift in Sources */,
 				CDE3C3B420C1F261000A26B6 /* TabBarDelegate.swift in Sources */,
 				EA7D5A0720A1D0E500DF4A72 /* FilterSelectorTableViewCell.swift in Sources */,

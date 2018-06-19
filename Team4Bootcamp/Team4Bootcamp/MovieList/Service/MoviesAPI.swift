@@ -8,92 +8,38 @@
 
 import Foundation
 
-class MoviesAPI {
-    
-    func request(endpoint: Endpoints, callback: @escaping (Result<Any, MoviesError>) -> Void) {
-        let url = URL(string: "\(MoviesConstants.baseURL)\(endpoint.path)")!
-        let request = URLRequest(url: url)
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            
-            if error != nil {
-                callback(.error(MoviesError.noConection))
-                return
-            }
-            guard let data = data else {
-                callback(.error(MoviesError.invalidData))
-                return
-            }
-
-            let (response, error) = self.decodeContent(from: data, withEndpoint: endpoint)
-            if let result = response {
-                callback(.success(result))
-            } else if error != nil {
-                callback(.error(error!))
-            }
-            
-        }
-        task.resume()
-    }
-    
-    func decodeContent(from data: Data, withEndpoint endpoint: Endpoints) -> (response: Any?, error: MoviesError?) {
-        
-        let decoder = JSONDecoder()
-        decoder.dateDecodingStrategy = .iso8601
-        
-        do {
-            switch endpoint {
-            case .movieList:
-                let decodableResponse = try decoder.decode(MovieListWrapper.self, from: data)
-                return (decodableResponse, nil)
-            case .genre:
-                let decodableResponse = try decoder.decode(GenresWrapper.self, from: data)
-                return (decodableResponse, nil)
-            default:
-                return (nil, MoviesError.invalidData)
-            }
-        } catch {
-            return (nil, MoviesError.noData)
-        }
-    }
-}
-
-extension MoviesAPI: MoviesProtocol {
+class MoviesAPI: MoviesProtocol {
     func fetchMovies(callback: @escaping (Result<[Movie], MoviesError>) -> Void) {
-        request(endpoint: Endpoints.movieList) { result in
-            
+        let connection: Connectable = Connection(endpoint: .movieList)
+        connection.makeRequest { result in
             switch result {
-            case .success(let movieListJson):
-                guard let movieList = movieListJson as? MovieListWrapper else {
-                    DispatchQueue.main.async { callback(.error(MoviesError.noData)) }
+            case .success(let data):
+                guard let decoded = connection.endpoint.decode(data), let movieList = decoded as? MovieListWrapper else {
+                    callback(.error(MoviesError.invalidData))
                     return
                 }
-                if MoviesConstants.pageBaseURL <= MoviesConstants.paginationLimit {
-                    MoviesConstants.pageBaseURL += 1
+                if APIConstants.pageBaseURL <= APIConstants.paginationLimit {
+                    APIConstants.pageBaseURL += 1
                 }
                 DispatchQueue.main.async { callback(.success(movieList.results)) }
-            case .error(let err):
-                DispatchQueue.main.async {
-                    callback(.error(err)) }
+            case .error:
+                DispatchQueue.main.async { callback(.error(MoviesError.noConection)) }
             }
         }
     }
     
     func fetchGenres(callback: @escaping (Result<[GenreId: GenreName], MoviesError>) -> Void) {
-        request(endpoint: Endpoints.genre) { result in
+        let connection: Connectable = Connection(endpoint: .genre)
+        connection.makeRequest { result in
             switch result {
-            case .success(let genres):
-                guard let genresWrapper = genres as? GenresWrapper else {
-                    DispatchQueue.main.async { callback(.error(MoviesError.invalidData)) }
+            case .success(let data):
+                guard let decoded = connection.endpoint.decode(data), let genres = decoded as? GenresWrapper else {
+                    callback(.error(MoviesError.invalidData))
                     return
                 }
-                DispatchQueue.main.async {
-                    callback(.success(genresWrapper.genreDictionary))
-                    return
-                }
-            case .error(let err):
-                DispatchQueue.main.async {
-                    callback(.error(err))
-                }
+                DispatchQueue.main.async { callback(.success(genres.genreDictionary)) }
+            case .error:
+                DispatchQueue.main.async { callback(.error(MoviesError.noConection)) }
             }
         }
     }

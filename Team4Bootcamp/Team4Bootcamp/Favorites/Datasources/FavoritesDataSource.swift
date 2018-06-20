@@ -100,10 +100,6 @@ class FavoritesDataSource: NSObject, UITableViewDataSource, NSFetchedResultsCont
         }
     }
     
-    func setupFilteredMovies(_ filtered: [MovieDAO]) {
-        filteredMovies = filtered
-    }
-
     func filteredList(movies: [MovieDAO]) -> [MovieDAO] {
         return filteredMovies ?? movies
     }

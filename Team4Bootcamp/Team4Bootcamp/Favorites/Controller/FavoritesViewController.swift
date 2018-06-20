@@ -25,7 +25,6 @@ class FavoritesViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        //setupNSFetched()
         setupSearchBar()
         adjustNavigationBar()
         setupDataSource()
@@ -71,7 +70,7 @@ class FavoritesViewController: UIViewController {
         
         favoritesDataSource?.deletedMovieCallback = { [weak self] movie in
             if let context = FavoritesViewController.container?.viewContext {
-                let restult = MovieDAO.deleteMovie(context: context, predicate: NSPredicate(format: "id == \(movie.id)"))
+                let restult = MovieDAO.deleteMovie(context: context, movie: movie)
                 switch restult {
                 case .success:
                     

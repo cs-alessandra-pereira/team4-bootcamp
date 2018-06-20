@@ -91,6 +91,7 @@
 		EA904EA320AB469B00181C8E /* Nimble_Snapshots.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = EACD6B0220AA494B00A3DF57 /* Nimble_Snapshots.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		EA904EA520AB4A4B00181C8E /* FBSnapshotTestCase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA904EA420AB4A4B00181C8E /* FBSnapshotTestCase.framework */; };
 		EA904EA620AB4A5300181C8E /* FBSnapshotTestCase.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = EA904EA420AB4A4B00181C8E /* FBSnapshotTestCase.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		EA98D5BB20DACBD2000CAF1A /* MovieDAOPredicates.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA98D5BA20DACBD2000CAF1A /* MovieDAOPredicates.swift */; };
 		EAF6E04E20ACC2430077CEC7 /* MovieCollectionViewCellStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF6E04D20ACC2430077CEC7 /* MovieCollectionViewCellStub.swift */; };
 		EAF6E05020ACD62C0077CEC7 /* MovieListViewControllerStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF6E04F20ACD62C0077CEC7 /* MovieListViewControllerStub.swift */; };
 /* End PBXBuildFile section */
@@ -214,6 +215,7 @@
 		EA88DFDE207CE05100FFF0B1 /* SearchBarDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarDelegate.swift; sourceTree = "<group>"; };
 		EA904E9F20AB2F6F00181C8E /* MovieCollectionViewCellSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCollectionViewCellSpec.swift; sourceTree = "<group>"; };
 		EA904EA420AB4A4B00181C8E /* FBSnapshotTestCase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSnapshotTestCase.framework; path = Carthage/Build/iOS/FBSnapshotTestCase.framework; sourceTree = "<group>"; };
+		EA98D5BA20DACBD2000CAF1A /* MovieDAOPredicates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDAOPredicates.swift; sourceTree = "<group>"; };
 		EACD6B0220AA494B00A3DF57 /* Nimble_Snapshots.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble_Snapshots.framework; path = Carthage/Build/iOS/Nimble_Snapshots.framework; sourceTree = "<group>"; };
 		EAF6E04D20ACC2430077CEC7 /* MovieCollectionViewCellStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCollectionViewCellStub.swift; sourceTree = "<group>"; };
 		EAF6E04F20ACD62C0077CEC7 /* MovieListViewControllerStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListViewControllerStub.swift; sourceTree = "<group>"; };
@@ -700,6 +702,7 @@
 				EA7BDBC920B725790022F128 /* GenreDAO+CoreDataProperties.swift */,
 				CD2B9F672093958800C91ECB /* CoreDataHelper.swift */,
 				EA7A7D7B20855D9F00F8C637 /* PersistenceConstants.swift */,
+				EA98D5BA20DACBD2000CAF1A /* MovieDAOPredicates.swift */,
 			);
 			path = Persistence;
 			sourceTree = "<group>";
@@ -870,6 +873,7 @@
 				EA284CC4206D106B00E4D7CD /* MoviesAPI.swift in Sources */,
 				CD2B9F682093958800C91ECB /* CoreDataHelper.swift in Sources */,
 				CD28AD3020D1B32B00F0D2E0 /* MovieSearchBar.swift in Sources */,
+				EA98D5BB20DACBD2000CAF1A /* MovieDAOPredicates.swift in Sources */,
 				CD1D7F42207E7321009722FA /* UIColor+Palette.swift in Sources */,
 				CDD37E8D20D3006C00528F4B /* MovieListStatesController.swift in Sources */,
 				CDD4163B206C491500988317 /* MovieListViewController.swift in Sources */,

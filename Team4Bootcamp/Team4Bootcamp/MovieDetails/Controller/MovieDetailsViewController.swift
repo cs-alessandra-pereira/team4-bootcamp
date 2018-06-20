@@ -53,8 +53,7 @@ class MovieDetailsViewController: UIViewController {
     
     func isMovieFavorited() {
         if let context = MovieDetailsViewController.container?.viewContext {
-            let predicate = NSPredicate(format: "id == \(movie.id)")
-            let previouslyInserted = try? context.previouslyInserted(MovieDAO.self, predicateForDuplicityCheck: predicate)
+            let previouslyInserted = try? MovieDAO.wasPreviouslyInserted(movie: movie, context: context)
             movie.persisted = previouslyInserted ?? false
         }
         movieDetailsView.persistedButton.isSelected = movie.persisted
@@ -66,11 +65,10 @@ extension MovieDetailsViewController: MovieDetailFavoriteDelegate {
         if let context = MovieDetailsViewController.container?.viewContext {
             DispatchQueue.main.async {
                 if isSelected {
-                    _ = MovieDAO.addMovie(movie: self.movie, context: context)
+                    MovieDAO.addMovie(movie: self.movie, context: context)
                     
                 } else {
-                    let predicate = NSPredicate(format: "id == \(self.movie.id)")
-                    _ = MovieDAO.deleteMovie(context: context, predicate: predicate)
+                    MovieDAO.deleteMovie(context: context, movie: self.movie)
                 }
             }
         }

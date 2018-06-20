@@ -19,8 +19,6 @@ struct Movie {
     let posterPath: String
     var persisted = false
     
-    static let moviePersistentceService = FavoritePersistenceService()
-    
     private enum CodingKeys: String, CodingKey {
         case id
         case title

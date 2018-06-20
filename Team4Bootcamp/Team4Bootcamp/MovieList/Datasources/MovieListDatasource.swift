@@ -18,8 +18,6 @@ final class MovieListDatasource: NSObject, UICollectionViewDataSource {
     
     weak var collectionView: UICollectionView?
     
-    private let favoritePersistenceService = FavoritePersistenceService()
-    
     private var movieWasFavoritedObservers: [NSObjectProtocol] = []
     
     private var searchString: String? = nil {
@@ -86,8 +84,7 @@ final class MovieListDatasource: NSObject, UICollectionViewDataSource {
         var movie = getMovies()[indexPath.row]
 
         if let context = MovieListViewController.container?.viewContext {
-            let predicate = NSPredicate(format: "id == \(movie.id)")
-            let previouslyInserted = try? context.previouslyInserted(MovieDAO.self, predicateForDuplicityCheck: predicate)
+            let previouslyInserted = try? MovieDAO.wasPreviouslyInserted(movie: movie, context: context)
             movie.persisted = previouslyInserted ?? false
         }
         cell.setup(movie: movie, at: indexPath)
@@ -102,11 +99,10 @@ extension MovieListDatasource: MovieCollectionViewCellDelegate {
         if let context = MovieListViewController.container?.viewContext {
             DispatchQueue.main.async {
                 if isSelected {
-                    _ = MovieDAO.addMovie(movie: self.getMovies()[position.row], context: context)
+                    MovieDAO.addMovie(movie: self.getMovies()[position.row], context: context)
 
                 } else {
-                    let predicate = NSPredicate(format: "id == \(self.getMovies()[position.row].id)")
-                    _ = MovieDAO.deleteMovie(context: context, predicate: predicate)
+                    MovieDAO.deleteMovie(context: context, movie: self.getMovies()[position.row])
                 }
             }
         }

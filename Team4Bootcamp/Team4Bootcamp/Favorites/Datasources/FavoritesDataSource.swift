@@ -18,8 +18,9 @@ class FavoritesDataSource: NSObject, UITableViewDataSource, NSFetchedResultsCont
     var deletedMovieCallback: DeletedMovieCallback = nil
     var tableView: UITableView
     
-    init(tableView: UITableView, fetchedResults: NSFetchedResultsController<MovieDAO>, searchBarDelegate: SearchBarDelegate?) {
-        self.fetchedResultsController = fetchedResults
+    weak static var container: NSPersistentContainer? = (UIApplication.shared.delegate as? AppDelegate)?.coredata.persistentContainer
+    
+    init(tableView: UITableView, searchBarDelegate: SearchBarDelegate?) {
         self.tableView = tableView
         self.tableView.rowHeight = CGFloat(FavoriteTableViewCell.cellHeight)
         self.tableView.register(FavoriteTableViewCell.self)
@@ -35,7 +36,7 @@ class FavoritesDataSource: NSObject, UITableViewDataSource, NSFetchedResultsCont
                 self?.searchString = searchString
             }
         }
-        self.fetchedResultsController?.delegate = self
+        setupFetchedResultController()
     }
     
     var yearToFilter: [String] = []
@@ -53,6 +54,18 @@ class FavoritesDataSource: NSObject, UITableViewDataSource, NSFetchedResultsCont
         }
     }
     
+    func setupFetchedResultController(withPredicate predicate: NSPredicate? = nil) {
+        let sortDescriptors = [NSSortDescriptor(key: "id", ascending: true)]
+        let request = container!.viewContext.buildNSFetchRequest(forClass: MovieDAO.self, sortBy: sortDescriptors, predicate: predicate)
+        let fetchedRC = container?.viewContext.buildNSFetchedResultsController(withRequest: request)
+        self.fetchedResultsController = fetchedRC
+        self.fetchedResultsController?.delegate = self
+    }
+    
+    func refreshFetchedResultsController() {
+        try? self.fetchedResultsController?.performFetch()
+    }
+
     func setFilteredMovies() {
         if let ctx = container?.viewContext {
             var filteredMoviesDAOByYears = [MovieDAO]()
@@ -87,15 +100,11 @@ class FavoritesDataSource: NSObject, UITableViewDataSource, NSFetchedResultsCont
         }
     }
     
-    func setupFilteredMovies(_ filtered: [MovieDAO]) {
-        filteredMovies = filtered
-    }
-
     func filteredList(movies: [MovieDAO]) -> [MovieDAO] {
         return filteredMovies ?? movies
     }
     
-    func searchedList(movies: [MovieDAO]) -> [MovieDAO] {
+    func searchedList() -> [MovieDAO] {
         guard let searchString = self.searchString else {
             return filteredList(movies: self.movies)
         }
@@ -173,10 +182,10 @@ extension FavoritesDataSource: MovieListManager {
     typealias Item = MovieDAO
     
     func getMovieCount() -> Int {
-        return searchedList(movies: self.movies).count
+        return searchedList().count
     }
     
     func getMovies() -> [MovieDAO] {
-        return searchedList(movies: self.movies)
+        return searchedList()
     }
 }

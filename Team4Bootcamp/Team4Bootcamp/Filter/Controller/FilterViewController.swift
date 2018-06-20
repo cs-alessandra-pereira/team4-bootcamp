@@ -120,7 +120,7 @@ extension FilterViewController: UITableViewDelegate, FilterViewDelegate {
             }
             favoritesVC.favoritesDataSource?.yearToFilter = self.selectedYears
             favoritesVC.favoritesDataSource?.genresToFilter = self.selectedGenreNames
-            favoritesVC.favoritesDataSource?.setFilteredMovies()
+            favoritesVC.favoritesDataSource?.performNewFetch()
         }
         self.navigationController?.popViewController(animated: true)
     }

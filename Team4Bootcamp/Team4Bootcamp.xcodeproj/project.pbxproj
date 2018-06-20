@@ -52,7 +52,6 @@
 		CDD41624206ABB9400988317 /* Team4BootcampUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD41623206ABB9400988317 /* Team4BootcampUITests.swift */; };
 		CDD41634206B110300988317 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD41633206B110300988317 /* Movie.swift */; };
 		CDD4163B206C491500988317 /* MovieListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD4163A206C491500988317 /* MovieListViewController.swift */; };
-		CDE3C3B420C1F261000A26B6 /* TabBarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE3C3B320C1F261000A26B6 /* TabBarDelegate.swift */; };
 		EA0AA958208686370039C195 /* CellConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0AA957208686370039C195 /* CellConstants.swift */; };
 		EA1B563B2078022F00390669 /* Date+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1B563A2078022F00390669 /* Date+String.swift */; };
 		EA284CC0206D0D0200E4D7CD /* MoviesProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA284CBF206D0D0200E4D7CD /* MoviesProtocol.swift */; };
@@ -181,7 +180,6 @@
 		CDD41625206ABB9400988317 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CDD41633206B110300988317 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		CDD4163A206C491500988317 /* MovieListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListViewController.swift; sourceTree = "<group>"; };
-		CDE3C3B320C1F261000A26B6 /* TabBarDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarDelegate.swift; sourceTree = "<group>"; };
 		EA0AA957208686370039C195 /* CellConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellConstants.swift; sourceTree = "<group>"; };
 		EA1B563A2078022F00390669 /* Date+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+String.swift"; sourceTree = "<group>"; };
 		EA284CBF206D0D0200E4D7CD /* MoviesProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesProtocol.swift; sourceTree = "<group>"; };
@@ -547,14 +545,6 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		CDE3C3B520C1FAAA000A26B6 /* Delegate */ = {
-			isa = PBXGroup;
-			children = (
-				CDE3C3B320C1F261000A26B6 /* TabBarDelegate.swift */,
-			);
-			path = Delegate;
-			sourceTree = "<group>";
-		};
 		EA284CBB206D072300E4D7CD /* MovieList */ = {
 			isa = PBXGroup;
 			children = (
@@ -646,7 +636,6 @@
 		EA7A7D7A20855CAA00F8C637 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				CDE3C3B520C1FAAA000A26B6 /* Delegate */,
 				CD2B9F692093976300C91ECB /* View */,
 				EA284CC1206D0ED400E4D7CD /* Result.swift */,
 				EA284CBF206D0D0200E4D7CD /* MoviesProtocol.swift */,
@@ -910,7 +899,6 @@
 				EA7BDBCF20B7259B0022F128 /* MovieDAO+CoreDataProperties.swift in Sources */,
 				EA7BC84320D194E300D13F93 /* Connection.swift in Sources */,
 				EA80B14E209C975B009A0CBC /* FilterView.swift in Sources */,
-				CDE3C3B420C1F261000A26B6 /* TabBarDelegate.swift in Sources */,
 				EA7D5A0720A1D0E500DF4A72 /* FilterSelectorTableViewCell.swift in Sources */,
 				EA7D5A0920A1D0F100DF4A72 /* FilterSelectorViewController.swift in Sources */,
 			);

@@ -12,6 +12,7 @@ enum MovieDAOPredicates {
     
     case yearFiltering([String])
     case genreFiltering([String])
+    case titleSearch(String)
     case idSelection(Movie)
     
     var predicate: NSPredicate {
@@ -30,8 +31,9 @@ enum MovieDAOPredicates {
             }
             return NSCompoundPredicate(orPredicateWithSubpredicates: predicates)
         case .genreFiltering(let genres):
-            //return NSPredicate(format: "ANY genres.name in %@", genres)
-            return NSPredicate(format: "name IN %@", genres)
+            return NSPredicate(format: "ANY genres.name IN %@", genres)
+        case .titleSearch(let title):
+            return NSPredicate(format: "title BEGINSWITH[c] %@", title)
         case .idSelection(let movie):
             return  NSPredicate(format: "id == \(movie.id)")
         }

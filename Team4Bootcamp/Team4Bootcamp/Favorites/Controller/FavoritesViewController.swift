@@ -21,7 +21,6 @@ class FavoritesViewController: UIViewController {
     var favoritesDataSource: FavoritesDataSource?
     var favoriteTableViewDelegate: FavoriteTableViewDelegate?
     var searchBarDelegate: SearchBarDelegate?
-    var tabBarDelegate: TabBarDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +29,6 @@ class FavoritesViewController: UIViewController {
         setupDataSource()
         setupDelegate()
         setupFilterButton()
-        setupDelegateTabBar()
     }
     
     func setupFilterButton() {
@@ -101,20 +99,6 @@ class FavoritesViewController: UIViewController {
         searchBar.delegate = searchBarDelegate
     }
     
-    func setupDelegateTabBar() {
-        tabBarDelegate = TabBarDelegate()
-        tabBarController?.delegate = tabBarDelegate
-        
-        tabBarDelegate?.callbackFromSelectedTabBarItem = { [weak self] event in
-            switch event {
-            case .firstItemSelected:
-                self?.removeFilter(true)
-            default:
-                break
-            }
-        }
-    }
-    
     func adjustNavigationBar() {
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
@@ -122,7 +106,7 @@ class FavoritesViewController: UIViewController {
     
     func proceedToDetailsView(movieIndex: IndexPath) {
         if let favorites = favoritesDataSource {
-            let movieDAO = favorites.searchedList()[movieIndex.row]
+            let movieDAO = favorites.movies[movieIndex.row]
             let movie = Movie(from: movieDAO)
             let controller = MovieDetailsViewController(movie: movie)
             controller.hidesBottomBarWhenPushed = true
@@ -133,7 +117,7 @@ class FavoritesViewController: UIViewController {
     @IBAction func removeFilter(_ sender: Any) {
         favoritesDataSource?.yearToFilter = []
         favoritesDataSource?.genresToFilter = []
-        favoritesDataSource?.filteredMovies = nil
+        favoritesDataSource?.performNewFetch()
         refreshScreenState()
     }
     

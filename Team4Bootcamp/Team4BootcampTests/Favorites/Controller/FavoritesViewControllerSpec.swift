@@ -32,9 +32,6 @@ class FavoritesViewControllerSpec: QuickSpec {
                 it("should call setupSearchBar") {
                     expect(sut.setupSearchBarWasCalled).to(beTrue())
                 }
-                it("should call setupNSFetched") {
-                    expect(sut.setupNSFetchedWasCalled).to(beTrue())
-                }
             }
         }
     }

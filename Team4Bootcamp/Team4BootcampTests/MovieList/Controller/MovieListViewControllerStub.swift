@@ -11,21 +11,16 @@ import UIKit
 
 final class MovieListViewControllerStub: MovieListViewController {
     
-    var setupDelegateWasCalled = false
-    var setupSearchBarWasCalled = false
+    var setupDelegatesWasCalled = false
     var fetchGenresWasCalled = false
     var fetchMoviesWasCalled = false
     var setupDatasourceWasCalled = false
     
-    override func setupDelegate() {
-        setupDelegateWasCalled = true
+    override func setupDelegates() {
+        setupDelegatesWasCalled = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
-    }
-    
-    override func setupSearchBar() {
-        setupSearchBarWasCalled = true
     }
     
     override func fetchGenres() {
@@ -36,7 +31,7 @@ final class MovieListViewControllerStub: MovieListViewController {
         fetchMoviesWasCalled = true
     }
     
-    override func setupDatasource(movies: [Movie], searchBarDelegate: SearchBarDelegate?) {
+    override func setupDatasource() {
         setupDatasourceWasCalled = true
     }
     

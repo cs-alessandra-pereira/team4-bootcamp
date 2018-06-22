@@ -83,10 +83,12 @@ class FavoritesDataSource: NSObject, UITableViewDataSource, NSFetchedResultsCont
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: FavoriteTableViewCell = tableView.dequeueReusableCell(for: indexPath)
-        
-        let movieDAO = getMovies()[indexPath.row]
-        let movie = Movie(from: movieDAO)
-        cell.setup(movie: movie)
+
+        if getMovieCount() > 0 {
+            let movieDAO = getMovies()[indexPath.row]
+            let movie = Movie(from: movieDAO)
+            cell.setup(movie: movie)
+        }
         return cell
     }
     

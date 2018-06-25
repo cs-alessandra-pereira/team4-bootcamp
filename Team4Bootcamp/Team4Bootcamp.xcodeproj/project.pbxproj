@@ -39,6 +39,7 @@
 		CD91F9E52074413C002BB9EE /* MovieListDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD91F9E42074413C002BB9EE /* MovieListDatasource.swift */; };
 		CDA53CE620BDBFBE006EB21F /* FilterSelectorTableViewSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA53CE520BDBFBE006EB21F /* FilterSelectorTableViewSpec.swift */; };
 		CDB417EB20E1768D0077F668 /* MovieCollectionViewSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB417EA20E1768D0077F668 /* MovieCollectionViewSpec.swift */; };
+		CDB417ED20E1A51C0077F668 /* MovieCollectioViewStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB417EC20E1A51C0077F668 /* MovieCollectioViewStub.swift */; };
 		CDCF6D11208FC0FA00D05FDF /* FavoriteTableViewDelegateSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDCF6D10208FC0FA00D05FDF /* FavoriteTableViewDelegateSpec.swift */; };
 		CDCF6D13208FC10300D05FDF /* FavoriteTableViewDelegateStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDCF6D12208FC10300D05FDF /* FavoriteTableViewDelegateStub.swift */; };
 		CDCF6D16208FC50600D05FDF /* FavoriteDataSourceSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDCF6D15208FC50600D05FDF /* FavoriteDataSourceSpec.swift */; };
@@ -161,6 +162,7 @@
 		CD91F9E42074413C002BB9EE /* MovieListDatasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListDatasource.swift; sourceTree = "<group>"; };
 		CDA53CE520BDBFBE006EB21F /* FilterSelectorTableViewSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterSelectorTableViewSpec.swift; sourceTree = "<group>"; };
 		CDB417EA20E1768D0077F668 /* MovieCollectionViewSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCollectionViewSpec.swift; sourceTree = "<group>"; };
+		CDB417EC20E1A51C0077F668 /* MovieCollectioViewStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCollectioViewStub.swift; sourceTree = "<group>"; };
 		CDCF6D10208FC0FA00D05FDF /* FavoriteTableViewDelegateSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteTableViewDelegateSpec.swift; sourceTree = "<group>"; };
 		CDCF6D12208FC10300D05FDF /* FavoriteTableViewDelegateStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteTableViewDelegateStub.swift; sourceTree = "<group>"; };
 		CDCF6D15208FC50600D05FDF /* FavoriteDataSourceSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteDataSourceSpec.swift; sourceTree = "<group>"; };
@@ -670,6 +672,7 @@
 				EA904E9F20AB2F6F00181C8E /* MovieCollectionViewCellSpec.swift */,
 				EAF6E04D20ACC2430077CEC7 /* MovieCollectionViewCellStub.swift */,
 				CDB417EA20E1768D0077F668 /* MovieCollectionViewSpec.swift */,
+				CDB417EC20E1A51C0077F668 /* MovieCollectioViewStub.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -907,6 +910,7 @@
 				CD5A0C7720AA3F24003D778F /* MovieDetailsViewSpec.swift in Sources */,
 				EAF6E04E20ACC2430077CEC7 /* MovieCollectionViewCellStub.swift in Sources */,
 				CD08388920BDDD7C00D16EE7 /* FilterViewControllerStub.swift in Sources */,
+				CDB417ED20E1A51C0077F668 /* MovieCollectioViewStub.swift in Sources */,
 				CD2E098C2092973200275914 /* FavoritesViewControllerStub.swift in Sources */,
 				CD2E098B2092973200275914 /* FavoritesViewControllerSpec.swift in Sources */,
 				CDB417EB20E1768D0077F668 /* MovieCollectionViewSpec.swift in Sources */,

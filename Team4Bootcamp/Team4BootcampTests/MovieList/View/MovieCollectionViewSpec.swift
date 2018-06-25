@@ -16,12 +16,15 @@ class MovieCollectionViewSpec: QuickSpec {
     override func spec() {
         describe("MovieCollectionView UI") {
             it("should have the expected look and feel") {
-//                let movie = Movie(id: 01, title: "Zootopia", releaseDate: nil, genresIds: [12], overview: "Blablablablabla blablablabla blabla blablablabla blablabla", posterPath: "/eKi8dIrr8voobb", persisted: false)
-//                let movies = [movie, movie, movie, movie, movie, movie]
-//                let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-//                let frame = CGRect(x: 0, y: 0, width: 414, height: 736)
-//                let view = MovieListViewController(nibName: nil, bundle: nil)
-//                expect(view) == recordSnapshot("MovieCollectionView")
+                
+                let frame = CGRect(x: 0, y: 0, width: 414, height: 567)
+                var movieListDatasource: MovieCollectioViewStub?
+                let sut = MovieCollectionView(frame: frame)
+                
+                movieListDatasource = MovieCollectioViewStub(collectionView: sut)
+                sut.dataSource = movieListDatasource
+                
+                expect(sut) == snapshot("MovieCollectionView")
             }
         }
     }

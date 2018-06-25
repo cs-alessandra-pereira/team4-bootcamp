@@ -20,7 +20,7 @@ class FilterSelectorTableViewSpec: QuickSpec {
                 let frame = CGRect(x: 0, y: 0, width: 414, height: 736)
                 let controller = FilterSelectorViewController(nibName: nil, bundle: nil)
                 let view = FilterSelectorTableView(frame: frame)
-                view.tableView.register(FilterSelectorTableViewCell.self, forCellReuseIdentifier: "SelectorCell")
+                view.tableView.register(FilterSelectorTableViewCell.self)
                 view.tableView.dataSource = controller
                 controller.data = mock
                 expect(view) == snapshot("FilterSelectorTableView")

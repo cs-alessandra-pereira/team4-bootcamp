@@ -13,7 +13,7 @@ import Quick
 import Nimble
 
 
-class WrappersSpec: QuickSpec {
+class MoviesAPISpec: QuickSpec {
     
     override func spec() {
     

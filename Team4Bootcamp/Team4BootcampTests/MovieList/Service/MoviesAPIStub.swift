@@ -9,7 +9,7 @@
 import Foundation
 @testable import Team4Bootcamp
 
-class MoviesAPIStub: MoviesAPI {
+class WrappersStub: MoviesAPI {
     
     var genreWasParsed = false
     var movieWasParsed = false

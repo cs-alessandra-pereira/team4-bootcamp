@@ -13,15 +13,13 @@ import Nimble_Snapshots
 @testable import Team4Bootcamp
 
 class MovieDetailsViewSpec: QuickSpec {
+
     override func spec() {
+        
         describe("MovieDetailsView UI") {
             
-            beforeEach {
-                let movieListViewController = MovieListViewController()
-                movieListViewController.fetchGenres()
-            }
-
             it("should have the expected look and feel") {
+                
                 let movie = Movie(id: 01, title: "Zootopia", releaseDate: nil, genresIds: [12], overview: "Blablablablabla blablablabla blabla blablablabla blablabla", posterPath: "/eKi8dIrr8voobb", persisted: false)
                 let frame = CGRect(x: 0, y: 0, width: 414, height: 736)
                 let view = MovieDetailsView(frame: frame)

@@ -64,7 +64,9 @@ class MovieListViewController: UIViewController {
                 let count = self?.movieListDatasource?.getMovieCount()
                 if movieIndex == count! - 1 {
                     if APIConstants.pageBaseURL <= APIConstants.paginationLimit {
-                        self?.fetchMovies()
+                        if let searching = self?.searchBar.text?.count, searching == 0 {
+                            self?.fetchMovies()
+                        }
                     }
                 }
             }
@@ -83,7 +85,6 @@ class MovieListViewController: UIViewController {
     }
     
     func fetchMovies() {
-        if let searching = searchBar.text?.count, searching > 0 { return }
         movieService.fetchMovies { result in
             switch result {
             case .success(let movies):

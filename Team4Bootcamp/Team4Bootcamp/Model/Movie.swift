@@ -19,8 +19,6 @@ struct Movie {
     let posterPath: String
     var persisted = false
     
-    static let moviePersistentceService = FavoritePersistenceService()
-    
     private enum CodingKeys: String, CodingKey {
         case id
         case title
@@ -66,9 +64,13 @@ extension Movie {
         overview = movieDAO.overview
         posterPath = movieDAO.posterPath
         genresIds = []
-        for id in movieDAO.genresId {
-            genresIds.append(id)
+        
+        if let genres = movieDAO.genres?.allObjects as? [GenreDAO] {
+            for genre in genres {
+                genresIds.append(Int(genre.id))
+            }
         }
+           
         releaseDate = date
         persisted = true
     }

@@ -18,7 +18,7 @@ final class MovieListDatasource: NSObject, UICollectionViewDataSource {
     
     weak var collectionView: UICollectionView?
     
-    private let favoritePersistenceService = FavoritePersistenceService()
+    private var movieWasFavoritedObservers: [NSObjectProtocol] = []
     
     private var searchString: String? = nil {
         didSet {
@@ -33,8 +33,8 @@ final class MovieListDatasource: NSObject, UICollectionViewDataSource {
         return self.movies.filter { $0.title.lowercased().starts(with: searchString.lowercased()) }
     }
     
-    func registerMovieWasFavoritedObserver(notificationName: Notification.Name) {
-        NotificationCenter.default.addObserver(forName: notificationName, object: nil, queue: OperationQueue.main) { notification in
+    func registerMovieWasFavoritedObserver(notificationName: Notification.Name) -> NSObjectProtocol {
+        return NotificationCenter.default.addObserver(forName: notificationName, object: nil, queue: OperationQueue.main) { notification in
             if let info = notification.userInfo, let movie = info[PersistenceConstants.notificationUserInfoKey] as? Movie {
                 if let index = self.getMovieIndex(movie: movie) {
                     self.movies[index].persisted = notificationName == .movieAddedToPersistence ? true : false
@@ -44,8 +44,7 @@ final class MovieListDatasource: NSObject, UICollectionViewDataSource {
     }
     
     
-    init(movies: [Movie], collectionView: UICollectionView, searchBarDelegate: SearchBarDelegate?) {
-        self.movies = movies
+    init(collectionView: UICollectionView, searchBarDelegate: SearchBarDelegate?) {
         self.collectionView = collectionView
         super.init()
         searchBarDelegate?.callback = { [weak self] searchBar, searchEvent, searchString in
@@ -59,9 +58,17 @@ final class MovieListDatasource: NSObject, UICollectionViewDataSource {
                 self?.searchString = searchString
             }
         }
-        registerMovieWasFavoritedObserver(notificationName: .movieAddedToPersistence)
-        registerMovieWasFavoritedObserver(notificationName: .movieRemovedFromPersistence)
-        self.collectionView?.register(MovieCollectionViewCell.self, forCellWithReuseIdentifier: MovieCollectionViewCell.movieListCell)
+        
+        movieWasFavoritedObservers.append(registerMovieWasFavoritedObserver(notificationName: .movieAddedToPersistence))
+        movieWasFavoritedObservers.append(registerMovieWasFavoritedObserver(notificationName: .movieRemovedFromPersistence))
+        
+        self.collectionView?.register(MovieCollectionViewCell.self)
+    }
+    
+    deinit {
+        for obeserver in movieWasFavoritedObservers {
+            NotificationCenter.default.removeObserver(obeserver)
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -70,15 +77,14 @@ final class MovieListDatasource: NSObject, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MovieCollectionViewCell.movieListCell, for: indexPath) as? MovieCollectionViewCell else {
+        guard let cell: MovieCollectionViewCell = self.collectionView?.dequeueReusableCell(for: indexPath) else {
             fatalError()
         }
         
         var movie = getMovies()[indexPath.row]
 
-        if let context = FavoritesViewController.container?.viewContext {
-            let predicate = NSPredicate(format: "id == \(movie.id)")
-            let previouslyInserted = try? context.previouslyInserted(MovieDAO.self, predicateForDuplicityCheck: predicate)
+        if let context = MovieListViewController.container?.viewContext {
+            let previouslyInserted = try? MovieDAO.wasPreviouslyInserted(movie: movie, context: context)
             movie.persisted = previouslyInserted ?? false
         }
         cell.setup(movie: movie, at: indexPath)
@@ -90,14 +96,13 @@ final class MovieListDatasource: NSObject, UICollectionViewDataSource {
 extension MovieListDatasource: MovieCollectionViewCellDelegate {
     
     func didFavoriteCell(_ isSelected: Bool, at position: IndexPath) {
-        if let context = FavoritesViewController.container?.viewContext {
+        if let context = MovieListViewController.container?.viewContext {
             DispatchQueue.main.async {
                 if isSelected {
-                    _ = MovieDAO.addMovie(movie: self.getMovies()[position.row], context: context)
+                    MovieDAO.addMovie(movie: self.getMovies()[position.row], context: context)
 
                 } else {
-                    let predicate = NSPredicate(format: "id == \(self.getMovies()[position.row].id)")
-                    _ = MovieDAO.deleteMovie(context: context, predicate: predicate)
+                    MovieDAO.deleteMovie(context: context, movie: self.getMovies()[position.row])
                 }
             }
         }

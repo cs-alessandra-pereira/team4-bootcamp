@@ -13,6 +13,25 @@ import CoreData
 @testable import Team4Bootcamp
 
 class FilterViewControllerSpec: QuickSpec {
+    
+    lazy var mockPersistantContainer: NSPersistentContainer = {
+        
+        let container = NSPersistentContainer(name: PersistenceConstants.persistenceContainerName)
+        let description = NSPersistentStoreDescription()
+        description.type = NSInMemoryStoreType
+        description.shouldAddStoreAsynchronously = false
+        
+        container.persistentStoreDescriptions = [description]
+        container.loadPersistentStores { (description, error) in
+            precondition( description.type == NSInMemoryStoreType )
+            if let error = error {
+                fatalError("Create an in-mem coordinator failed \(error)")
+            }
+        }
+        
+        return container
+    }()
+    
     override func spec() {
         describe("FilterViewController") {
             context("When FilterViewController is being initialized") {
@@ -36,9 +55,9 @@ class FilterViewControllerSpec: QuickSpec {
                     expect(sut.isSetupMoviesCalled).to(beTrue())
                     
                     expect(sut.isSetupGenresCalled).to(beFalse())
-                    if let ctx = FavoritesViewController.container?.viewContext {
-                        sut.setupGenres(context: ctx)
-                    }
+                    let ctx = self.mockPersistantContainer.viewContext
+                    sut.setupGenres(context: ctx)
+                    
                     expect(sut.isSetupGenresCalled).to(beTrue())
                 }
                 

@@ -16,26 +16,19 @@ class FavoritesViewController: UIViewController {
     @IBOutlet weak var removeFilterButton: UIButton!
     weak var rightBarButton: UIBarButtonItem?
     
-    private let favoritePersistenceService = FavoritePersistenceService()
-    fileprivate var fetchedResultsController: NSFetchedResultsController<MovieDAO>?
+    weak static var container: NSPersistentContainer? = (UIApplication.shared.delegate as? AppDelegate)?.coredata.persistentContainer
     
-    static var container: NSPersistentContainer? = (UIApplication.shared.delegate as? AppDelegate)?.coredata.persistentContainer
-    
-    var favoritesDataSouce: FavoritesDataSource?
+    var favoritesDataSource: FavoritesDataSource?
     var favoriteTableViewDelegate: FavoriteTableViewDelegate?
     var searchBarDelegate: SearchBarDelegate?
-    var tabBarDelegate: TabBarDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupNSFetched()
         setupSearchBar()
         adjustNavigationBar()
         setupDataSource()
         setupDelegate()
         setupFilterButton()
-        setupDelegateTabBar()
-        updateDatabase()
     }
     
     func setupFilterButton() {
@@ -50,38 +43,42 @@ class FavoritesViewController: UIViewController {
         let filterViewController = FilterViewController()
         filterViewController.hidesBottomBarWhenPushed = true
         
-        if let movies = favoritesDataSouce?.movies {
+        if let movies = favoritesDataSource?.movies {
             filterViewController.setupMovies(movies)
         }
         if let ctx = FavoritesViewController.container?.viewContext {
             filterViewController.setupGenres(context: ctx)
         }
         
-        filterViewController.selectedYears = favoritesDataSouce?.yearToFilter ?? []
-        filterViewController.selectedGenreNames = favoritesDataSouce?.genresToFilter ?? []
+        filterViewController.selectedYears = favoritesDataSource?.yearToFilter ?? []
+        filterViewController.selectedGenreNames = favoritesDataSource?.genresToFilter ?? []
         self.navigationController?.pushViewController(filterViewController, animated: true)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        try? self.fetchedResultsController?.performFetch()
+        favoritesDataSource?.refreshFetchedResultsController()
         self.tableView?.reloadData()
         refreshScreenState()
     }
     
     func setupDataSource() {
-        favoritesDataSouce = FavoritesDataSource(tableView: self.tableView, fetchedResults: fetchedResultsController!, searchBarDelegate: searchBarDelegate)
-        tableView.dataSource = favoritesDataSouce
+        favoritesDataSource = FavoritesDataSource(tableView: self.tableView, searchBarDelegate: searchBarDelegate)
+        tableView.dataSource = favoritesDataSource
         
-        favoritesDataSouce?.deletedMovieCallback = { [weak self] movie in
+        favoritesDataSource?.deletedMovieCallback = { [weak self] movie in
             if let context = FavoritesViewController.container?.viewContext {
-                let restult = MovieDAO.deleteMovie(context: context, predicate: NSPredicate(format: "id == \(movie.id)"))
+                let restult = MovieDAO.deleteMovie(context: context, movie: movie)
                 switch restult {
                 case .success:
-                        try? self?.fetchedResultsController?.performFetch()
+                    
+                    do {
+                        try self?.favoritesDataSource?.fetchedResultsController?.performFetch()
                         self?.tableView.reloadData()
                         self?.refreshScreenState()
-                        NotificationCenter.default.post(name: .movieRemovedFromPersistence, object: self, userInfo: [PersistenceConstants.notificationUserInfoKey: movie])
+                    } catch { fatalError("Could not perform fetch") }
+                    NotificationCenter.default.post(name: .movieRemovedFromPersistence, object: self, userInfo: [PersistenceConstants.notificationUserInfoKey: movie])
+                    
                 case .error:
                     break
                 }
@@ -100,77 +97,27 @@ class FavoritesViewController: UIViewController {
     func setupSearchBar() {
         searchBarDelegate = SearchBarDelegate()
         searchBar.delegate = searchBarDelegate
-        searchBar.layer.borderWidth = 1
-        searchBar.layer.borderColor = UIColor.primaryColor?.cgColor
-        if let textField = searchBar.value(forKey: "_searchField") as? UITextField {
-            textField.backgroundColor = UIColor.accentColor
-        }
-    }
-    
-    func setupDelegateTabBar() {
-        tabBarDelegate = TabBarDelegate()
-        tabBarController?.delegate = tabBarDelegate
-        
-        tabBarDelegate?.callbackFromSelectedTabBarItem = { [weak self] event in
-            switch event {
-            case .firstItemSelected:
-                self?.removeFilter(true)
-            default:
-                break
-            }
-        }
     }
     
     func adjustNavigationBar() {
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
     }
-
-    func setupNSFetched() {
-        
-        if let context = FavoritesViewController.container?.viewContext {
-            let request: NSFetchRequest<MovieDAO> = MovieDAO.fetchRequest()
-            request.sortDescriptors = [NSSortDescriptor(key: "id", ascending: true)]
-            fetchedResultsController = NSFetchedResultsController<MovieDAO>(
-                fetchRequest: request,
-                managedObjectContext: context,
-                sectionNameKeyPath: nil,
-                cacheName: nil
-            )
-            try? fetchedResultsController?.performFetch()
-            tableView.reloadData()
-        }
-    }
-    
-    func updateDatabase() {
-        if let context = MovieListViewController.container?.viewContext {
-            let request: NSFetchRequest<GenreDAO> = GenreDAO.fetchRequest()
-            request.sortDescriptors = [NSSortDescriptor(key: "id", ascending: true)]
-            let fetchedResultsController = NSFetchedResultsController<GenreDAO>(
-                fetchRequest: request,
-                managedObjectContext: context,
-                sectionNameKeyPath: nil,
-                cacheName: nil
-            )
-            try? fetchedResultsController.performFetch()
-        }
-    }
     
     func proceedToDetailsView(movieIndex: IndexPath) {
-        if let moviesDAO = favoritesDataSouce?.movies {
-            if let movieDAO = favoritesDataSouce?.searchedList(movies: moviesDAO)[movieIndex.row] {
-                let movie = Movie(from: movieDAO)
-                let controller = MovieDetailsViewController(movie: movie)
-                controller.hidesBottomBarWhenPushed = true
-                navigationController?.pushViewController(controller, animated: true)
-            }
+        if let favorites = favoritesDataSource {
+            let movieDAO = favorites.movies[movieIndex.row]
+            let movie = Movie(from: movieDAO)
+            let controller = MovieDetailsViewController(movie: movie)
+            controller.hidesBottomBarWhenPushed = true
+            navigationController?.pushViewController(controller, animated: true)
         }
     }
     
     @IBAction func removeFilter(_ sender: Any) {
-        favoritesDataSouce?.yearToFilter = []
-        favoritesDataSouce?.genresToFilter = []
-        favoritesDataSouce?.filteredMovies = nil
+        favoritesDataSource?.yearToFilter = []
+        favoritesDataSource?.genresToFilter = []
+        favoritesDataSource?.performNewFetch()
         refreshScreenState()
     }
     
@@ -181,7 +128,7 @@ class FavoritesViewController: UIViewController {
     }
     
     func refreshScreenState() {
-        guard let datasource = favoritesDataSouce, !datasource.movies.isEmpty else {
+        guard let datasource = favoritesDataSource, !datasource.movies.isEmpty else {
             self.screenState = .noFavorites
             return
         }

@@ -118,9 +118,9 @@ extension FilterViewController: UITableViewDelegate, FilterViewDelegate {
             guard let favoritesVC = item as? FavoritesViewController else {
                 fatalError()
             }
-            favoritesVC.favoritesDataSouce?.yearToFilter = self.selectedYears
-            favoritesVC.favoritesDataSouce?.genresToFilter = self.selectedGenreNames
-            favoritesVC.favoritesDataSouce?.setFilteredMovies()
+            favoritesVC.favoritesDataSource?.yearToFilter = self.selectedYears
+            favoritesVC.favoritesDataSource?.genresToFilter = self.selectedGenreNames
+            favoritesVC.favoritesDataSource?.performNewFetch()
         }
         self.navigationController?.popViewController(animated: true)
     }

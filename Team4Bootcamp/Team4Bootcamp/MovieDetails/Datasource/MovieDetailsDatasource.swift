@@ -11,14 +11,12 @@ import CoreData
 
 class MovieDetailsDatasource: NSObject, UITableViewDataSource {
     
-    static var container: NSPersistentContainer? = (UIApplication.shared.delegate as? AppDelegate)?.coredata.persistentContainer
-    
     var info: [String]
     
     init(tableView: UITableView, movie: Movie) {
-        self.info = [movie.title, Date.releaseYearAsString(movie.releaseDate), movie.genresNameAsString(container: MovieDetailsDatasource.container), movie.overview]
+        self.info = [movie.title, Date.releaseYearAsString(movie.releaseDate), movie.genresNameAsString(container: MovieDetailsViewController.container), movie.overview]
         super.init()
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: MovieDetailsView.movieDetailsCell)
+        tableView.register(UITableViewCell.self)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -26,7 +24,7 @@ class MovieDetailsDatasource: NSObject, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: MovieDetailsView.movieDetailsCell, for: indexPath as IndexPath)
+        let cell = tableView.dequeueReusableCell(for: indexPath)
         cell.textLabel!.text = info[indexPath.row]
         cell.textLabel?.numberOfLines = 0
         return cell

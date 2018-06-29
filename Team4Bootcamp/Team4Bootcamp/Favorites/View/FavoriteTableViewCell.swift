@@ -10,7 +10,7 @@ import UIKit
 import Kingfisher
 import SnapKit
 
-final class FavoriteTableViewCell: UITableViewCell {
+final class FavoriteTableViewCell: UITableViewCell {    
     
     private let imageFetchable: ImageFetchable = KFImageFetchable()
     private let calendar = Calendar.current
@@ -59,7 +59,7 @@ final class FavoriteTableViewCell: UITableViewCell {
         if let movieDate = movie.releaseDate {
             date.text = String(calendar.component(.year, from: movieDate))
         }
-        let path = Endpoints.moviePoster(movie.posterPath).path
+        let path = Endpoint.moviePoster(movie.posterPath).path
         imageFetchable.fetch(imageURLString: path, onImage: posterImage) {}
     }
     

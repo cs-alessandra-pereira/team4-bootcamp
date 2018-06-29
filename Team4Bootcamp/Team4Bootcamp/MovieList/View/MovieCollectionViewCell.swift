@@ -14,11 +14,11 @@ protocol MovieCollectionViewCellDelegate: class {
     func didFavoriteCell(_ isSelected: Bool, at position: IndexPath)
 }
 
-class MovieCollectionViewCell: UICollectionViewCell {
+class MovieCollectionViewCell: UICollectionViewCell, Reusable {
+    
+    static var nibName: UINib?
     
     let imageFetchable: ImageFetchable = KFImageFetchable()
-
-    static let movieListCell = "MovieCell"
     
     lazy var imageView: UIImageView = {
         let view = UIImageView(frame: .zero)
@@ -36,12 +36,7 @@ class MovieCollectionViewCell: UICollectionViewCell {
     var delegate: MovieCollectionViewCellDelegate?
     var position: IndexPath?
     
-    lazy var iconButton: FavoriteButton = {
-        let view = FavoriteButton(frame: .zero)
-        
-        view.addTarget(self, action: #selector(didTouchFavoriteButton), for: .touchUpInside)
-        return view
-    }()
+    lazy var iconButton = UIButton.favoriteButton(target: self, withSelector: #selector(didTouchFavoriteButton))
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -60,7 +55,7 @@ class MovieCollectionViewCell: UICollectionViewCell {
             iconButton.isSelected = false
         }
         self.position = position
-        let path = Endpoints.moviePoster(movie.posterPath).path
+        let path = Endpoint.moviePoster(movie.posterPath).path
         imageFetchable.fetch(imageURLString: path, onImage: imageView) {}
     }
 }
@@ -88,10 +83,12 @@ extension MovieCollectionViewCell: CodeView {
             make.height.equalTo(frame.size.height*3/4)
             make.width.equalTo(frame.size.width)
             make.top.equalTo(safeAreaLayoutGuide.snp.topMargin)
+            make.centerX.equalTo(frame.size.width/2)
         }
         
         iconButton.snp.makeConstraints { make in
             make.height.equalTo(frame.size.height/12)
+            make.left.equalTo(textLabel.snp.right)
             make.topMargin.equalTo(imageView.snp.bottom).offset(25)
             make.right.equalTo(imageView.snp.rightMargin)
         }

@@ -15,7 +15,6 @@ class FavoritesViewControllerStub: FavoritesViewController {
     var setupDataSourceWasCalled = false
     var setupDelegateWasCalled = false
     var setupSearchBarWasCalled = false
-    var setupNSFetchedWasCalled = false
     
     override func setupDataSource() {
         setupDataSourceWasCalled = true
@@ -27,10 +26,6 @@ class FavoritesViewControllerStub: FavoritesViewController {
     
     override func setupSearchBar() {
         setupSearchBarWasCalled = true
-    }
-    
-    override func setupNSFetched() {
-        setupNSFetchedWasCalled = true
     }
     
     static func initFromStoryboard() -> FavoritesViewController {

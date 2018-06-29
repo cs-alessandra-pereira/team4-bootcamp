@@ -22,12 +22,12 @@ class MovieListViewControllerSpec: QuickSpec {
                 sut.beginAppearanceTransition(true, animated: false)
                 sut.endAppearanceTransition()
                 
-                it("should call setupDelegate") {
-                    expect(sut.setupDelegateWasCalled).to(beTrue())
+                it("should call setupDelegates") {
+                    expect(sut.setupDelegatesWasCalled).to(beTrue())
                 }
                 
-                it("should call setupSearchBar") {
-                    expect(sut.setupSearchBarWasCalled).to(beTrue())
+                it("should call setupDatasources") {
+                    expect(sut.setupDatasourceWasCalled).to(beTrue())
                 }
                 
                 it("should call fetchGenres") {

@@ -25,6 +25,7 @@ final class MovieListViewControllerStub: MovieListViewController {
     
     override func fetchGenres() {
         fetchGenresWasCalled = true
+        super.fetchGenres()
     }
     
     override func fetchMovies() {

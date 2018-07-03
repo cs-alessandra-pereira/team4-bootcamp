@@ -14,7 +14,7 @@ typealias DeletedMovieCallback = ((Movie) -> Void)?
 class FavoritesDataSource: NSObject, UITableViewDataSource, NSFetchedResultsControllerDelegate {
     
     var fetchedResultsController: NSFetchedResultsController<MovieDAO>?
-    let container = FavoritesViewController.container
+    var container = FavoritesViewController.container
     var deletedMovieCallback: DeletedMovieCallback = nil
     var tableView: UITableView
     

@@ -13,6 +13,7 @@ enum Endpoint {
     case movieList
     case moviePoster(String)
     case genre
+    case recommendations(Int)
     
     var path: String {
         switch self {
@@ -22,6 +23,8 @@ enum Endpoint {
             return "genre/movie/list?api_key=\(APIConstants.apiKey)&language=en-US"
         case .moviePoster(let posterPath):
             return "\(APIConstants.imgBaseURL)\(posterPath)"
+        case .recommendations(let movieId):
+            return "movie/\(movieId)/recommendations?api_key=\(APIConstants.apiKey)"
         }
     }
     
@@ -32,6 +35,8 @@ enum Endpoint {
         case .genre:
             return .GET
         case .moviePoster:
+            return .GET
+        case .recommendations:
             return .GET
         }
     }

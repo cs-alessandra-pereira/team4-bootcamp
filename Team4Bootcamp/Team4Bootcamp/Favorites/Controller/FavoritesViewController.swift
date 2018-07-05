@@ -129,7 +129,7 @@ class FavoritesViewController: UIViewController {
     
     func refreshScreenState() {
         guard let datasource = favoritesDataSource, !datasource.movies.isEmpty else {
-            self.screenState = .noFavorites
+            self.screenState = searchBar.text?.count == 0 ? .noFavorites : .filterOff
             return
         }
         if !datasource.yearToFilter.isEmpty || !datasource.genresToFilter.isEmpty {
@@ -151,7 +151,6 @@ class FavoritesViewController: UIViewController {
                 self.navigationItem.rightBarButtonItem?.isEnabled = true
                 self.navigationItem.rightBarButtonItem?.tintColor = nil
                 removeFilterButton?.isHidden = true
-                searchBar?.isHidden = true
                 searchBar?.isHidden = false
             case .filterOn:
                 self.navigationItem.rightBarButtonItem?.isEnabled = true

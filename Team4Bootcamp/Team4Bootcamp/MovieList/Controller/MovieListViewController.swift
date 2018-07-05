@@ -25,7 +25,7 @@ class MovieListViewController: UIViewController {
     var searchBarDelegate: SearchBarDelegate?
     
     var movieService: MoviesProtocol = MoviesAPI()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupDelegates()
@@ -42,7 +42,7 @@ class MovieListViewController: UIViewController {
     
     func setupDelegates() {
         self.stateDelegate = MovieListStatesController(viewController: self)
-
+        
         collectionViewDelegate = CollectionViewDelegate()
         collectionView.delegate = collectionViewDelegate
         
